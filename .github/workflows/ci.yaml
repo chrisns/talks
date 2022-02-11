@@ -15,6 +15,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - run: apt install tree
       - uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579 # renovate: tag=v2.4.0
       - uses: actions/setup-node@1f8c6b94b26d0feae1e387ca63ccbdc44d27b561 # renovate: tag=v2.5.1
         with:
@@ -23,6 +24,8 @@ jobs:
       - run: npm install
       - run: npm run lint
       - run: npm run build
+
+      - run: cd dist && tree -H '.' -L 1 --noreport --charset utf-8 -P "*.html" -o index.html && cd ..
 
       - name: Tar files
         run: tar -cf dist.tar ./dist
