@@ -8,8 +8,7 @@ class: lead
 
 # Is it time to put your pet Kubernetes down?
 
-Chris Nesbitt-Smith
-Graeme Colman
+Chris Nesbitt-Smith Graeme Colman
 
 Appvia
 
@@ -34,8 +33,11 @@ The history of the pets vs cattle terminology is muddy, most link to a presentat
 <!--
 Way back then in the before times, we called ourselves sysadmins and treat our servers like pets
 -->
+
 ---
+
 ![bg](./images/server-bob.png)
+
 <!--
 For example Bob the mail server. If Bob goes down, it’s all hands on deck. The CEO can’t get his email and it’s the end of the world.
 -->
@@ -45,10 +47,11 @@ For example Bob the mail server. If Bob goes down, it’s all hands on deck. The
 # 2022(?) ⌛️ <!--fit-->
 
 <!--
-In the new world, servers are numbered or maybe uuids, like cattle in a herd. 
+In the new world, servers are numbered or maybe uuids, like cattle in a herd.
 -->
 
 ---
+
 ![bg](./images/cows.jpeg)
 
 <!--
@@ -60,6 +63,7 @@ For example, www001 to www100. When one server goes down, it’s taken out back,
 # ☸️ Kubernetes ☸️<!--fit-->
 
 "duh, we're doing kubernetes"
+
 # 🦸‍♀️
 
 <!--
@@ -382,9 +386,11 @@ Choices, choices as far as the eye can see.
 ---
 
 ![bg fit](./images/rubiks2.jpg)
+
 <!--
 Have you seen it recently?
 -->
+
 ---
 
 ![bg](./images/cncf-landscape-feb2022.png)
@@ -406,7 +412,7 @@ I can't possibly think of a faster way to go from enthusastic engineers playing 
 # 🤬 <!--fit-->
 
 <!--
-To deeply unhappy ones trying to fix something at 4am and before they can do anything meaningful they've got an orientering exercise to switch mental context to whatever the intended permutation of things it is they're looking at. 
+To deeply unhappy ones trying to fix something at 4am and before they can do anything meaningful they've got an orientering exercise to switch mental context to whatever the intended permutation of things it is they're looking at.
 -->
 
 ---
