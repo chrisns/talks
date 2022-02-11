@@ -43,7 +43,7 @@ jobs:
         with:
           name: dist.tar
       - name: Untar files
-        run: tar -xf dist.tar dist
+        run: tar -xf dist.tar
       - name: Deploy
         uses: peaceiris/actions-gh-pages@068dc23d9710f1ba62e86896f84735d869951305 # renovate: tag=v3
         with:
