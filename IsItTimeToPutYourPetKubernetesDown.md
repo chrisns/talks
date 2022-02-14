@@ -8,9 +8,9 @@ class: lead
 
 # Is it time to put your pet Kubernetes down?
 
-Chris Nesbitt-Smith Graeme Colman
+Chris Nesbitt-Smith | Graeme Colman
 
-Appvia
+[@appvia_io](https://twitter.com/appvia_io)
 
 ---
 
@@ -439,5 +439,5 @@ What can we do about that?
 # 👋 <!--fit-->
 
 <!--
-.... Graeme
+So with that I'd like to reintroduce Graeme who is surely going to fix all this mess
 -->
