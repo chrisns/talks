@@ -62,12 +62,12 @@ For example, www001 to www100. When one server goes down, it’s taken out back,
 
 # ☸️ Kubernetes ☸️<!--fit-->
 
-"duh, we're doing kubernetes"
+"duh, we're doing Kubernetes"
 
 # 🦸‍♀️
 
 <!--
-Why am I telling you this rather gruesome story? Kubernetes deals with that right? and saves us from the tyrany
+Why am I telling you this rather gruesome story? Kubernetes deals with that right? and saves us from the tyranny
 -->
 
 ---
@@ -84,8 +84,8 @@ ip-10-170-7-99.eu-west-2.compute.internal    Ready    <none>   24h   v1.21.5-eks
 <!--
 And you're right, it does.
 
-All you're computers are called nodes and abstracted and given arbitary names, autoscaling groups and such will automatically detect the sick in your flock, take them out, and bring a replacement in.
-all while seamlessly (ish) resceheduling the workload that was on the failed computer
+All you're computers are called nodes and abstracted and given arbitrary names, autoscaling groups and such will automatically detect the sick in your flock, take them out, and bring a replacement in.
+all while seamlessly (ish) rescheduling the workload that was on the failed computer
 -->
 
 ---
@@ -116,7 +116,7 @@ external-dns        external-dns-689dc89999-s6mjz                         1/1   
 ```
 
 <!--
-And kubernetes takes that a step further, your workload also has unique names
+And Kubernetes takes that a step further, your workload also has unique names
 -->
 
 ---
@@ -162,7 +162,7 @@ eksctl create cluster \
 # Now what?
 
 <!--
-Whats the first thing we do with a brand new kubernetes cluster?
+Whats the first thing we do with a brand new Kubernetes cluster?
 -->
 
 ---
@@ -186,7 +186,7 @@ etc
 ```
 
 <!--
-Look familar?
+Look familiar?
 yeah, we had to do a load of 'things' just to make this cluster able to start running our workloads
 -->
 
@@ -195,7 +195,7 @@ yeah, we had to do a load of 'things' just to make this cluster able to start ru
 # So?</br>🤷<!--fit-->
 
 <!--
-And it's worth noting that with a trend towards more and more features being being 'out of tree' that is to say they're optional add-ons and don't ship with core kubernetes, examples of this are things like flex volumes, and basically all the kubernetes sig projects that many find essential is only exaberating this issue
+And it's worth noting that with a trend towards more and more features being being 'out of tree' that is to say they're optional add-ons and don't ship with core Kubernetes, examples of this are things like flex volumes, and basically all the Kubernetes sig projects that many find essential is only exasperating this issue
 -->
 
 ---
@@ -226,7 +226,7 @@ But what about when you've got dev <click> integration <click> staging <click> q
 - ☸️ team[1-10].qa.notprod.mycompany.com
 
 <!--
-Or worse, when you need seperation between your teams or products
+Or worse, when you need separation between your teams or products
 -->
 
 ---
@@ -274,7 +274,7 @@ Permutations of seemingly common tool choices, some teams might use kong, others
 # ∞<!--fit-->
 
 <!--
-Seemingly infinite possiblities appear across the estate
+Seemingly infinite possibilities appear across the estate
 -->
 
 ---
@@ -311,11 +311,19 @@ But so what, how does this hurt you might ask?
 
 ---
 
+# I❤️<br/>🐶🐱🐕🐇🐈<br/>🐹🐩🦮🐕‍🦺🐈‍⬛🐰<!--fit-->
+
+<!--
+Maybe you like pets?
+-->
+
+---
+
 # 🍸🛒🔫<!--fit-->
 
 <!--
-Presuming of course you're in cloud, your world could roughly be sumerised into a three tiers
-Apps, well these are things that your board room know about, and can probably name, so think your public website, shopping cart system, customer service apps, online chat interfaces, email system etc. These are all implicitly in themselves providing some value in themselves to your end customers.
+Well, presuming of course you're in cloud, your world could roughly be summarized into tiers
+Apps, well these are things that your board room know about, and can probably name, so think your public website, shopping cart system, customer service apps, online chat interfaces, email system etc. These are all implicitly providing some value in of themselves to your end customers.
 -->
 
 ---
@@ -323,8 +331,17 @@ Apps, well these are things that your board room know about, and can probably na
 # 🍸🛒🔫</br>☁️<!--fit-->
 
 <!--
+Infrastructure, with cloud this is all commodity thankfully, the days where anyone in your business caring about the challenges of physically racking up hardware, not overloading the weight in the cabinet, taking pride in how well they've routed cables have hopefully passed;
+and you're consuming infrastructure, hopefully you've codified this but even if you're in to ClickOps, making sure its running is not your problem. No one in your business is concerned with hardware failures, patching routers every-time theres a critical vulnerability, testing the UPS and the generators regularly, upgrading the HVAC when you add more servers.
+"YAWN-orarma" as my 15 year old would say and curse me for repeating. Your interactions with any of this is a few clicks or lines of code and some infra is available to you with an SLA
+-->
 
-Cloud infrastructure, this is all comodity now, the days where anyone in your business caring about the challenges of physically racking up hardware, not overloading the weight in the cabinet, taking pride in how well they've routed cables have hopefully passed; and you're consuming infrastructure, hopefully you've codified this but even if you haven't making sure its running is not your problem. No one in your business is concerned with hardware failures, patching routers everytime theres a critical vulnerability, testing the UPS and the generators regularly, upgrading the HVAC when you add more servers. YAWN-orarma as my 15 year old would say. Your interaction with any of this is a few clicks or lines of code and some infra is available to you with an SLA
+---
+
+# 😮‍💨 <!--fit-->
+
+<!--
+If only the story ended there
 -->
 
 ---
@@ -332,9 +349,18 @@ Cloud infrastructure, this is all comodity now, the days where anyone in your bu
 # 🍸🛒🔫</br>⚙️🥷🔬🪓🔩</br>☁️<!--fit-->
 
 <!--
-If only the story ended there, but sandwiched between those is a grey layer, of all the operational enablers, its where your 'devops' or 'SRE' team lives, so think log aggregation, certificate issues, security policies, monitoring, service mesh and other these are things you do because of all sorts of reasons ranging from sound risk mitigation to emotion and technically unqualified opinion or just without forsight of what was round the corner in 6 months. All of this while technically fascinating for people like to stand and stroke my beard at they are delivering absolutely zero business value, unless your business is building those products, and who'd want to get into that business 😜
+But sandwiched between those is a grey layer, of all the operational enablers, its where your 'devops' or 'SRE' team live.
+So think log aggregation, certificate issues, security policies, monitoring, service mesh and others.
+These are things you do because of all sorts of reasons ranging from risk mitigation to emotion and technically unqualified opinion or just without foresight of what was round the corner in 6 months.
+All of this while technically fascinating for people like me to stand and stroke my beard at they are delivering absolutely zero business value, unless of course your business is building those products. 
 -->
 
+---
+
+# 😜<!--fit-->
+<!--
+and who'd want to get into that business!
+-->
 ---
 
 ![bg](https://media4.giphy.com/media/9V1F9o1pBjsxFzHzBr/giphy.gif)
@@ -348,15 +374,31 @@ And thats not all!
 ![bg](./images/time-travel-meme-ad.jpeg)
 
 <!--
-Recruitment, you might think you want a devops right. oh no wait, devops with kubernetes experience, maybe a CKA? oh yeah, its on AWS, and we use linkerd and in some places istio, no not the current version, or even the same version everywhere. a mix of pod security policy, kyverno and OPA for policy, some terraform, helm, jenkins, github action soup going on, all in a mono-repo apart from all that stuff that isn't.
+Recruitment, you might think you want a devops right. oh no wait, devops with Kubernetes experience, maybe a CKA? oh yeah, its on AWS, and we use linkerd and in some places istio, no not the current version, or even the same version everywhere. a mix of pod security policy, kyverno and OPA for policy, some terraform, helm, jenkins, github action soup going on, all in a mono-repo apart from all that stuff that isn't.
 -->
 
 ---
 
-# 📚 <!--fit-->
+![bg](./images/unicorns.jpeg)
 
 <!--
-Sure you'll find some victims, sorry... I mean candidates that you'll hire, well now you've got one hell of an onboarding issue before they can do anything useful and help your business move forwards faster than it did without them.
+We're well outside the remit of commodity skills and back to hunting unicorns.
+-->
+
+---
+
+![bg](./images/UnicornHunting-1024x683.jpeg)
+
+<!--
+Sure you'll find some victims. sorry...
+-->
+
+---
+
+# 👩‍🎓🧑‍🎓📚 <!--fit-->
+
+<!--
+I mean candidates; that you'll hire, well now you've got one hell of an onboarding issue before they can do anything useful and help your business move forwards faster than it did without them.
 -->
 
 ---
@@ -364,7 +406,7 @@ Sure you'll find some victims, sorry... I mean candidates that you'll hire, well
 # 💡<!--fit-->
 
 <!--
-And they'll hopefully come with experience and their own opinions of what worked for them before, so your landscape gets bigger and bigger
+And if you hired smart people they'll come with experience and their own opinions of what worked for them before, so your landscape gets bigger and bigger and more complex
 -->
 
 ---
@@ -404,7 +446,7 @@ This has got a bit out of hand, I'd say someone aught to have a word but I suspe
 # 👷‍♀️ <!--fit-->
 
 <!--
-I can't possibly think of a faster way to go from enthusastic engineers playing with new exciting tech
+I can't possibly think of a faster way to go from enthusiastic engineers playing with new exciting tech
 -->
 
 ---
@@ -412,7 +454,12 @@ I can't possibly think of a faster way to go from enthusastic engineers playing 
 # 🤬 <!--fit-->
 
 <!--
-To deeply unhappy ones trying to fix something at 4am and before they can do anything meaningful they've got an orientering exercise to switch mental context to whatever the intended permutation of things it is they're looking at.
+To deeply unhappy ones trying to fix something at 4am 
+-->
+---
+![bg](./images/orienteering.jpeg)
+
+<!-- and before they can do anything meaningful they've got an orienteering exercise to switch mental context to whatever the intended permutation of things it is they're looking at.
 -->
 
 ---
