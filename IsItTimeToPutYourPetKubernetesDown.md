@@ -352,15 +352,17 @@ If only the story ended there
 But sandwiched between those is a grey layer, of all the operational enablers, its where your 'devops' or 'SRE' team live.
 So think log aggregation, certificate issues, security policies, monitoring, service mesh and others.
 These are things you do because of all sorts of reasons ranging from risk mitigation to emotion and technically unqualified opinion or just without foresight of what was round the corner in 6 months.
-All of this while technically fascinating for people like me to stand and stroke my beard at they are delivering absolutely zero business value, unless of course your business is building those products. 
+All of this while technically fascinating for people like me to stand and stroke my beard at they are delivering absolutely zero business value, unless of course your business is building those products.
 -->
 
 ---
 
 # 😜<!--fit-->
+
 <!--
 and who'd want to get into that business!
 -->
+
 ---
 
 ![bg](https://media4.giphy.com/media/9V1F9o1pBjsxFzHzBr/giphy.gif)
@@ -454,9 +456,11 @@ I can't possibly think of a faster way to go from enthusiastic engineers playing
 # 🤬 <!--fit-->
 
 <!--
-To deeply unhappy ones trying to fix something at 4am 
+To deeply unhappy ones trying to fix something at 4am
 -->
+
 ---
+
 ![bg](./images/orienteering.jpeg)
 
 <!-- and before they can do anything meaningful they've got an orienteering exercise to switch mental context to whatever the intended permutation of things it is they're looking at.
