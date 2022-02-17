@@ -146,8 +146,7 @@ Theres a whole heap of usability issues you might have encountered if you'd trie
 -->
 
 ---
-
-# TODO: bonding image
+![bg](./images/binding.jpeg)
 
 <!--
 The policy is based on the user that created the pod, not the workload.
@@ -156,16 +155,14 @@ But when was the last time you created a pod and not a deployment, statefulset o
 -->
 
 ---
-
-# TODO: mutating image
+![bg](./images/mutating.jpeg)
 
 <!--
 Some of the parameters aren't simply admission controllers that accept or reject but mutating, this is not clear
 -->
 
 ---
-
-# ⨷ <!--fit-->
+![bg](./images/outoforder.jpeg)
 
 <!--
 The of order of evaluation can be confusing and unpredictable with multiple policies
@@ -540,8 +537,7 @@ Infrastructure as Code is the answer for this all. Developers who write code sol
 -->
 
 ---
-
-TODO: many policy
+![bg](./images/insurance-policy.jpeg)
 
 <!--
 You can have as many policies you like as long as these policies are treated as code, committed into source control and versioned accordingly. This will give you a complete view of the policies in use in your cluster at any point in time and help understand the risk landscape, target what workloads should be supported and when you should stop supporting a given policy version.
@@ -549,7 +545,7 @@ You can have as many policies you like as long as these policies are treated as 
 
 ---
 
-TODO: local
+![bg](./images/devlaptop.jpeg)
 
 <!--
 The key thing is that your developers should be able to evaluate against that policy locally, maybe even within their editor and your CI pipeline and version control can enforce compliance.
@@ -567,7 +563,7 @@ If you’re going to turn on warnings rather than just rejections, be sure someo
 
 ---
 
-TODO: mind the gap
+![bg](./images/mindthegap.jpeg)
 
 <!--
 Some would argue that setting cluster policy is at the point of execution, the last protection as it were.
