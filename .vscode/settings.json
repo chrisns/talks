@@ -1,3 +1,4 @@
 {
-  "markdown.marp.themes": ["./themes/appvia.scss"]
+  "markdown.marp.themes": ["./themes/appvia.scss"],
+  "editor.formatOnType": true
 }

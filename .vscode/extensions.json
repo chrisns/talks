@@ -2,6 +2,7 @@
   "recommendations": [
     "ban.spellright",
     "esbenp.prettier-vscode",
-    "marp-team.marp-vscode"
+    "marp-team.marp-vscode",
+    "wayou.vscode-todo-highlight"
   ]
 }
