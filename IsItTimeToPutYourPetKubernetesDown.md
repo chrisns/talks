@@ -69,11 +69,18 @@ For example, www001 to www100. When one server goes down, it’s taken out back,
 
 ---
 
+<style scoped>
+h2 {
+  font-size: 10em;
+  margin:0
+}
+</style>
+
 # ☸️ Kubernetes ☸️<!--fit-->
 
 "duh, we're doing Kubernetes"
 
-# 🦸‍♀️
+## 🦸‍♀️
 
 <!--
 Why am I telling you this rather gruesome story? Kubernetes deals with that right? and saves us from the tyranny
@@ -81,7 +88,7 @@ Why am I telling you this rather gruesome story? Kubernetes deals with that righ
 
 ---
 
-# ☸️ Kubernetes: Nodes
+# ☸️ Kubernetes: Nodes (naming)
 
 ```bash
 $ kubectl get nodes
@@ -140,7 +147,7 @@ livenessProbe:
 ```
 
 <!--
-Likewise, and more configurable your workload failures can be detected, and replaced seamlessly
+Like the physical servers your workload failures can be detected, and replaced seamlessly
 -->
 
 ---
@@ -377,7 +384,7 @@ and who'd want to get into that business!
 ![bg](https://media4.giphy.com/media/9V1F9o1pBjsxFzHzBr/giphy.gif)
 
 <!--
-And thats not all!
+And thats not all! Recruitment...
 -->
 
 ---
@@ -385,7 +392,7 @@ And thats not all!
 ![bg](./images/time-travel-meme-ad.jpeg)
 
 <!--
-Recruitment, you might think you want a devops right. oh no wait, devops with Kubernetes experience, maybe a CKA? oh yeah, its on AWS, and we use linkerd and in some places istio, no not the current version, or even the same version everywhere. a mix of pod security policy, kyverno and OPA for policy, some terraform, helm, jenkins, github action soup going on, all in a mono-repo apart from all that stuff that isn't.
+You might think you want a devops right? oh no wait, devops with Kubernetes experience, maybe a CKA? oh yeah, its on AWS, and we use linkerd and in some places istio, no not the current version, or even the same version everywhere. a mix of pod security policy, kyverno and OPA for policy, some terraform, helm, jenkins, github action soup going on, all in a mono-repo apart from all that stuff that isn't.
 -->
 
 ---
@@ -449,7 +456,7 @@ Have you seen it recently?
 ![bg](./images/cncf-landscape-feb2022.png)
 
 <!--
-This has got a bit out of hand, I'd say someone aught to have a word but I suspect that'd just make things worse
+This has got a bit out of hand, I'd say someone aught to have a word but I suspect that'd just make things worse by adding yet another thing
 -->
 
 ---
@@ -472,7 +479,8 @@ To deeply unhappy ones trying to fix something at 4am
 
 ![bg](./images/orienteering.jpeg)
 
-<!-- and before they can do anything meaningful they've got an orienteering exercise to switch mental context to whatever the intended permutation of things it is they're looking at.
+<!--
+and before they can do anything meaningful they've got an orienteering exercise to switch mental context to whatever the intended permutation of things it is they're looking at.
 -->
 
 ---
