@@ -146,6 +146,7 @@ Theres a whole heap of usability issues you might have encountered if you'd trie
 -->
 
 ---
+
 ![bg](./images/binding.jpeg)
 
 <!--
@@ -155,6 +156,7 @@ But when was the last time you created a pod and not a deployment, statefulset o
 -->
 
 ---
+
 ![bg](./images/mutating.jpeg)
 
 <!--
@@ -162,6 +164,7 @@ Some of the parameters aren't simply admission controllers that accept or reject
 -->
 
 ---
+
 ![bg](./images/outoforder.jpeg)
 
 <!--
@@ -537,6 +540,7 @@ Infrastructure as Code is the answer for this all. Developers who write code sol
 -->
 
 ---
+
 ![bg](./images/insurance-policy.jpeg)
 
 <!--
