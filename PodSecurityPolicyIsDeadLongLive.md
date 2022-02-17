@@ -223,7 +223,9 @@ Pod Security Standards are most easily thought of as three rigidly defined prede
 
 ---
 
-# Privileged
+<!-- _class:  invert lead -->
+
+# Privileged <!--fit-->
 
 <!--
 Those are privileged, basically anything goes, and is the same as not defining a policy
@@ -231,7 +233,9 @@ Those are privileged, basically anything goes, and is the same as not defining a
 
 ---
 
-# Baseline
+<!-- _class:  invert lead -->
+
+# Baseline<!--fit-->
 
 <!--
 Baseline, middle ground, stops some of the super obvious stuff, most your stuff should run at this tier without change
@@ -239,7 +243,9 @@ Baseline, middle ground, stops some of the super obvious stuff, most your stuff 
 
 ---
 
-# Restricted
+<!-- _class:  invert lead -->
+
+# Restricted<!--fit-->
 
 <!--
 Restricted, The most restrictive policy, stops most things.
@@ -248,6 +254,8 @@ You should aspire to run stuff here, but realistically you'll probably have issu
 
 ---
 
+<!-- _class:  invert lead -->
+
 # 😀 <!--fit-->
 
 <!--
@@ -255,6 +263,8 @@ Rigid universal policies sounds great, its super easy to communicate these betwe
 -->
 
 ---
+
+<!-- _class:  invert lead -->
 
 # ☹️ <!--fit-->
 
@@ -267,6 +277,8 @@ And theres no way to grant fine grained exemptions, so your only option is to ta
 
 ---
 
+<!-- _class:  invert lead -->
+
 # 😱 <!--fit-->
 
 <!--
@@ -277,6 +289,8 @@ So what's it good for, well the only thing I can see this as possibly good for i
 
 ---
 
+<!-- _class:  invert lead -->
+
 # 😜 <!--fit-->
 
 <!--
@@ -284,6 +298,8 @@ And if you're mad enough to be in that business
 -->
 
 ---
+
+<!-- _class:  invert lead -->
 
 # 🌟 <!--fit-->
 
@@ -530,6 +546,8 @@ Basically all the stuff you were promised was left behind in the past has come b
 -->
 
 ---
+
+<!-- _class:  invert lead -->
 
 # Cut to the chase Chris,</br>What’s the answer? <!--fit-->
 
