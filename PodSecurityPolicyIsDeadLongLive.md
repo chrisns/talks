@@ -309,7 +309,15 @@ That said, there has been some work to ease the transition by reproducing the ke
 # 🥁 <!--fit-->
 
 <!--
-The short answer is use our whizz-bang-super-duper tool
+The short answer is...
+-->
+
+---
+
+![bg](./images/psp-chris.jpeg)
+
+<!--
+use our whizz-bang-super-duper tool
 -->
 
 ---
