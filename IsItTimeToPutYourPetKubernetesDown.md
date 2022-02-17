@@ -4,6 +4,7 @@ theme: gaia
 class: lead
 ---
 
+![bg](./images/bg.svg)
 <!-- _class: lead invert -->
 <style scoped>
 h2 {
