@@ -5,12 +5,21 @@ class: lead
 ---
 
 <!-- _class: lead invert -->
+<style scoped>
+h2 {
+  position: absolute;
+  bottom: 1ch;
+  left: 7vw;
+}
+</style>
 
 # Is it time to put your pet Kubernetes down?
 
 Chris Nesbitt-Smith | Graeme Colman
 
 [@appvia_io](https://twitter.com/appvia_io)
+
+## ⬇️ Ask a question! ↙️
 
 ---
 
