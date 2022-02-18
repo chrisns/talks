@@ -3,7 +3,7 @@ marp: true
 theme: gaia
 class: lead
 ---
-
+![bg](./images/bg.svg)
 <!-- _class: lead invert -->
 
 # PodSecurityPolicy is Dead,<br/>Long Live...?
