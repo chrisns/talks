@@ -6,4 +6,3 @@ options:
   themeSet: "themes/cns.scss"
 bespoke:
   progress: true
-    
