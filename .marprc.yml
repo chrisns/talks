@@ -1,3 +1,9 @@
 allowLocalFiles: true
 inputDir: ./
 output: ./dist
+options:
+  minifyCSS: false
+  themeSet: "themes/cns.scss"
+bespoke:
+  progress: true
+    

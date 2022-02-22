@@ -2,3 +2,4 @@ node_modules
 /*.html
 /*.pdf
 dist
+themes/*.css

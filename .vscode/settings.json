@@ -1,4 +1,8 @@
 {
-  "markdown.marp.themes": ["./themes/appvia.scss"],
-  "editor.formatOnType": true
+  "markdown.marp.themes": [
+    "themes/cns.scss"
+  ],
+  "editor.formatOnType": true,
+  "markdown.marp.enableHtml": true,
+  "markdown.marp.exportType": "html"
 }

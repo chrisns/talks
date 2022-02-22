@@ -1,0 +1,22 @@
+@use 'sass:color';
+
+/*!
+ * Marp / Marpit cns theme.
+ *
+ * @theme themes/cns
+ * @author Chris Nesbitt-Smith
+ *
+ * @auto-scaling true
+ * @size 16:9 1280px 720px
+ * @size 4:3 960px 720px
+ */
+
+
+
+* {
+  background: blue !important;
+}
+
+.bespoke-marp-presenter-info-container {
+  background: red !important;
+}

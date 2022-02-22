@@ -1,6 +1,6 @@
 ---
 marp: true
-theme: gaia
+theme: themes/cns
 class: lead
 ---
 ![bg](./images/bg.svg)
