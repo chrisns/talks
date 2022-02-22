@@ -3,7 +3,9 @@ marp: true
 theme: themes/cns
 class: lead
 ---
+
 ![bg](./images/bg.svg)
+
 <!-- _class: lead invert -->
 
 # PodSecurityPolicy is Dead,<br/>Long Live...?
@@ -27,10 +29,43 @@ I'm often told I talk too fast when doing these, please shout at me if this happ
 
 ---
 
+# `kubectl get pods` <!--fit-->
+
+<!--
+By show of hands who's worked with pods before?
+-->
+
+---
+
+# 🙋🙋‍♀️🙋‍♂️<!--fit-->
+
+---
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+    - name: nginx
+      image: nginx:1.14.2
+      ports:
+        - containerPort: 80
+```
+
+<!--
+Cool, and for anyone else, welcome to the party!
+
+Pods are the smallest deployable units of computing that you can create and manage in Kubernetes and represents a single instance of a containerized application running in your cluster.
+-->
+
+---
+
 # PodSecurityWhat?
 
 <!--
-I'm going to talk a bit about pod security policies
+Ok so now for the topic of this talk, pod security policies
 -->
 
 ---
@@ -51,7 +86,7 @@ kind: PodSecurityPolicy
 ```
 
 <!--
-and in that time have never made it past the beta classification, and I believe one if not the last v1beta1 resources to be made real like ingress was not long ago maturing into a v1 resource
+and in that time have never made it past the beta classification, and I believe may be last v1beta1 resource that is routinely used in production after ingress matured to a real v1 not long ago.
 -->
 
 ---
@@ -59,7 +94,7 @@ and in that time have never made it past the beta classification, and I believe 
 # 😢 <!--fit-->
 
 <!--
-Sadly that's not the case for PSPs, they were deprecated in 1.21 April last year, and will be removed entirely in 1.25 which will be around April this year.
+Sadly that's not the case for PSPs, they were deprecated in 1.21 April last year, and will be removed entirely in 1.25 which will be around August this year.
 -->
 
 ---
@@ -80,17 +115,7 @@ What is a PSP apart from more words than I'd put on a slide?
 
 ---
 
-<!-- _class:  invert -->
-
-<style scoped>
-p {
-  color: rgba(255,255,225,.05)
-}
-strong {
-  font-weight: normal;
-  color: white;
-}
-</style>
+<!-- _class:  invert fade -->
 
 # What is a PSP?
 
@@ -197,14 +222,7 @@ Theres a fair amount of choice, here's just a few, you can of course right your 
 
 ---
 
-<style scoped>
-h1 {
-  color: rgba(0,0,0,.05)
-}
-strong {
-  color: black;
-}
-</style>
+<!-- _class: fade lead invert -->
 
 # Admission Control | Anchore | Azure Policy | Istio | jspolicy | K-rail | Kopf | **Kubewarden** | **Kyverno** | **OPA Gatekeeper** | Opslevel | Polaris | Prisma Cloud | Qualys | Regula | Sysdig | TiDB
 
@@ -350,6 +368,27 @@ Simply provide your existing PSP and take your pick of policy engine from Kyvern
 
 <!--
 Or just paste it into our simple web app and let your browser do the work
+-->
+
+---
+
+<!-- _class:  invert lead -->
+<style scoped>
+h1 {
+  bottom: 0;
+  position: absolute;
+  font-size: 4em;
+  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-color: black;
+}
+</style>
+
+# Live demo
+
+![bg](./images/psp-chris.jpeg)
+
+<!--
+Live demo time!
 -->
 
 ---
@@ -536,13 +575,79 @@ I’m not saying you shouldn’t have policies and security controls; but it’s
 # GitOps? <!--fit-->
 
 <!--
-If you’re doing GitOps and you absolutely should be then the only thing that can make changes to your cluster is the CI pipeline, and if it’s not you must accept drift will occur.
 
-The consequence of policy being evaluated and enforced in the cluster is you’ve committed the cardinal sin of devops on accident by shifting all that responsibility right and making it harder to observe.
+If you’re doing the latest buzzword of GitOps and you arguably should be then the only thing that can make changes to your cluster is the CI pipeline, theres a more to gitops but thats another talk for another day; the relevant bit I want to point at is version control is considered truth and no humans access the cluster directly in order to preserve that truth, so surfacing information back out requires some thought and extra process.
 
-You’ll likely have broken master branches, thrashing rework, lots of pull requests with the titles like “fixing policy fail”, a necessity for access to be granted to the upstream cluster  among other things.
+The consequence of policy being evaluated and enforced in the cluster is you’ve committed the cardinal sin of devops by shifting all that responsibility right and making it harder to observe.
 
-Basically all the stuff you were promised was left behind in the past has come back to haunt you.
+A common story might look like this
+-->
+
+---
+
+![bg fit](./images/gitops-Page-7.svg)
+
+<!--
+Person (a) writes a change to a deployment yaml file locally, yaml appears valid, so they push it to a branch and raise a pull request
+-->
+
+---
+
+![bg fit](./images/gitops-Page-6.svg)
+
+<!--
+Person (b) looks at the diff, agrees with the change and approves it
+-->
+
+---
+
+![bg fit](./images/gitops-Page-5.svg)
+
+<!--
+Because we live in an untrusting world, company policy stipulates that two people need to approve, so person (c) also approves
+And one of those three people merges the changes
+-->
+
+---
+
+![bg fit](./images/gitops-Page-4.svg)
+
+<!--
+CI/CD or something like flux picks up the change and successfully applies the changed deployment yaml to the Kubernetes cluster
+-->
+
+---
+
+![bg fit](./images/gitops-Page-3.svg)
+
+<!--
+The deployment yaml was valid so is accepted by the api server
+-->
+
+---
+
+![bg fit](./images/gitops-Page-2.svg)
+
+<!--
+The deployment controller creates a replicaSet and submits it to the Kubernetes API (which is also accepted by the api server)
+-->
+
+---
+
+![bg fit](./images/gitops-Page-1.svg)
+
+<!--
+The replicaSet controller creates pods and submits to the API, the API server rejects these pods since they fail a PodSecurityPolicy Rule or similar cluster enforced policy.
+-->
+
+---
+
+![bg fit](./images/gitops-Page-0.svg)
+
+<!--
+Not only do you need to create this line yourself, when you do eventually find out things aren't right you're left with rework and wasted time delivering zero business value dancing through security theatre, and depending on the application, you may have wiped out production until you can go through the security theatre of pull request approvals etc.
+
+Imagine how much even more complicated this can get with changes to the policy itself!
 -->
 
 ---
@@ -713,7 +818,7 @@ h2 {
   position: absolute;
   bottom: 1ch;
   left: 2vw;
-  width:95%
+  width: 95%
 }
 </style>
 

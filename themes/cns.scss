@@ -1,4 +1,4 @@
-@use 'sass:color';
+@import "gaia";
 
 /*!
  * Marp / Marpit cns theme.
@@ -11,12 +11,28 @@
  * @size 4:3 960px 720px
  */
 
-
-
-* {
-  background: blue !important;
+section.fade h1,
+section.fade p {
+  color: rgba(69, 90, 100, 0.2);
 }
 
-.bespoke-marp-presenter-info-container {
-  background: red !important;
+section.fade.invert h1,
+section.fade.invert p {
+  color: rgba(255, 248, 225, 0.2);
+}
+
+secton {
+  font-weight: bold;
+}
+section.fade.invert strong {
+  color: rgba(255, 248, 225, 1);  
+}
+section.fade strong {
+  color: rgba(69, 90, 100, 1);
+}
+
+section[id="1"] p,
+section[id="1"] h1 {
+  text-shadow: 2px 2px 4px rgb(69, 90, 100);
+
 }
