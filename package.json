@@ -10,8 +10,7 @@
     "start": "run-p postcss-watch marp-server",
     "postcss": "postcss --ext css -d themes themes",
     "postcss-watch": "postcss --watch --ext css -d themes themes",
-    "marp-server": "marp -s",
-    "postinstall": "patch-package"
+    "marp-server": "marp -s"
   },
   "author": "Chris Nesbitt-Smith",
   "license": "MIT",
