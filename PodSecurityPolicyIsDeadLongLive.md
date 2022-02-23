@@ -110,7 +110,7 @@ A Pod Security Policy is a cluster-level resource that controls security sensiti
 https://kubernetes.io/docs/concepts/policy/pod-security-policy/
 
 <!--
-What is a PSP apart from more words than I'd put on a slide?
+What is a PSP apart from more words than should ever be on a slide?
 -->
 
 ---
