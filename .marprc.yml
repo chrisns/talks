@@ -3,6 +3,6 @@ inputDir: ./
 output: ./dist
 options:
   minifyCSS: false
-  themeSet: "themes/cns.scss"
+  themeSet: "themes/cns.css"
 bespoke:
   progress: true

@@ -1,5 +1,5 @@
 @import "gaia";
-
+@use postcss-for;
 /*!
  * Marp / Marpit cns theme.
  *
@@ -12,11 +12,13 @@
  * @size 4:3 960px 720px
  */
 
+section.fade li,
 section.fade h1,
 section.fade p {
   color: rgba(69, 90, 100, 0.2);
 }
 
+section.fade.invert li,
 section.fade.invert h1,
 section.fade.invert p {
   color: rgba(255, 248, 225, 0.2);
@@ -59,5 +61,19 @@ section.listline li:not(:first-of-type):before {
   }
   100% {
     opacity: 1;
+  }
+}
+
+section.listline.animate li {
+  animation-name: pulsate;
+  animation-timing-function: ease-in;
+  animation-delay: calc(var(--animation-order) * 200ms);
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+@for $i from 1 to 100 {
+  section.listline.animate li:nth-child($i) {
+    --animation-order: $i;
   }
 }

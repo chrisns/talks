@@ -1,5 +1,5 @@
 {
-  "markdown.marp.themes": ["themes/cns.scss"],
+  "markdown.marp.themes": ["themes/cns.css"],
   "editor.formatOnType": true,
   "markdown.marp.enableHtml": true,
   "markdown.marp.exportType": "html"

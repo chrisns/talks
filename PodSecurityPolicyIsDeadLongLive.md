@@ -25,7 +25,7 @@ My name is Chris, and I've been trying, with some success to use Kubernetes sinc
 
 I'm Solution Architect at Appvia, instructor at LearnK8s, and tinkerer of open source including maintaining some high profile projects in the home automation space.
 
-I'm often told I talk too fast when doing these, please shout at me when this happens, and jump in with questions though there will hopefully be time at the end.
+I'm often talk too fast when doing these, please shout at me when this happens, and jump in with questions though there will also hopefully be time at the end.
 -->
 
 ---
@@ -104,7 +104,7 @@ Sadly that's not the case for PSPs, they were deprecated in 1.21 April last year
 
 <!-- _class: invert -->
 
-# What is a PSP?
+# `kubectl explain PodSecurityPolicy`
 
 Pod Security Policies enable fine-grained authorization of pod creation and updates.
 
@@ -120,7 +120,7 @@ What is a PSP apart from more words than should ever be on a slide?
 
 <!-- _class:  invert fade -->
 
-# What is a PSP?
+# `kubectl explain PodSecurityPolicy`
 
 Pod Security Policies enable **fine-grained authorization** of **pod** **creation** and **updates**.
 
@@ -177,7 +177,6 @@ Who can give me an example of what this container can actually do, say if a remo
  - eBPF interception of kernel wide activity including network intercept
  - mount the root or any other file system which is a bad day, you've then got root on the node complete with the kubelet, which with a couple of get requests to the api server gives you admin and service account credentials on the api server.
  - Put simply, game over, real fast, everything on your cluster and everything your cluster connects to is at breach.
-
 -->
 
 ---
@@ -297,7 +296,30 @@ So what are the alternatives, what should we do, the clock is ticking, august is
 
 ---
 
-# Admission Control | Anchore | Azure Policy | Istio | jspolicy | K-rail | Kopf | Kubewarden | Kyverno | OPA Gatekeeper | Opslevel | Polaris | Prisma Cloud | Qualys | Regula | Sysdig | TiDB
+<!-- _class: listline animate lead  -->
+<style scoped>
+li {
+  font-size: 2em;
+}
+</style>
+
+- Admission Control
+- Anchore
+- Azure Policy
+- Istio
+- jspolicy
+- K-rail
+- Kopf
+- Kubewarden
+- Kyverno
+- OPA Gatekeeper
+- Opslevel
+- Polaris
+- Prisma Cloud
+- Qualys
+- Regula
+- Sysdig
+- TiDB
 
 <!--
 Theres a fair amount of choice, here's just a few, you can of course write your own, it is just a webhook.
@@ -305,9 +327,30 @@ Theres a fair amount of choice, here's just a few, you can of course write your 
 
 ---
 
-<!-- _class: fade lead  -->
+<!-- _class: fade listline lead  -->
+<style scoped>
+li {
+  font-size: 2em;
+}
+</style>
 
-# Admission Control | Anchore | Azure Policy | Istio | jspolicy | K-rail | Kopf | **Kubewarden** | **Kyverno** | **OPA Gatekeeper** | Opslevel | Polaris | Prisma Cloud | Qualys | Regula | Sysdig | TiDB
+- Admission Control
+- Anchore
+- Azure Policy
+- Istio
+- jspolicy
+- K-rail
+- Kopf
+- **Kubewarden**
+- **Kyverno**
+- **OPA Gatekeeper**
+- Opslevel
+- Polaris
+- Prisma Cloud
+- Qualys
+- Regula
+- Sysdig
+- TiDB
 
 <!--
 I'm going to focus on a few, because with a little help they provide a straight forward-ish migration journey
@@ -667,34 +710,12 @@ As a sign of good faith though
 
 ---
 
-<!-- _class: listline lead -->
+<!-- _class: listline lead animate -->
 
 <style scoped>
 li {
   font-size: 1.6em;
-  animation-name: pulsate;
-  animation-timing-function: ease-in;
-  animation-delay: calc(var(--animation-order) * 200ms);
-  animation-duration: 2s;
-  animation-iteration-count: infinite;
 }
-li:nth-child(1) { --animation-order: 1 }
-li:nth-child(2) { --animation-order: 2 }
-li:nth-child(3) { --animation-order: 3 }
-li:nth-child(4) { --animation-order: 4 }
-li:nth-child(5) { --animation-order: 5 }
-li:nth-child(6) { --animation-order: 6 }
-li:nth-child(7) { --animation-order: 7 }
-li:nth-child(8) { --animation-order: 8 }
-li:nth-child(9) { --animation-order: 9 }
-li:nth-child(10) { --animation-order: 10 }
-li:nth-child(11) { --animation-order: 11 }
-li:nth-child(12) { --animation-order: 12 }
-li:nth-child(13) { --animation-order: 13 }
-li:nth-child(14) { --animation-order: 14 }
-li:nth-child(15) { --animation-order: 15 }
-li:nth-child(16) { --animation-order: 16 }
-li:nth-child(17) { --animation-order: 17 }
 </style>
 
 - AppArmor
