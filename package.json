@@ -18,7 +18,7 @@
     "map": false
   },
   "dependencies": {
-    "@marp-team/marp-cli": "^1.5.2",
+    "@marp-team/marp-cli": "^1.7.0",
     "postcss-for": "^2.1.1"
   },
   "devDependencies": {
