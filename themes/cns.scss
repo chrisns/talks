@@ -7,6 +7,7 @@
  * @author Chris Nesbitt-Smith
  *
  * @auto-scaling true
+ * @size 4K 3840px 2160px
  * @size 16:9 1280px 720px
  * @size 4:3 960px 720px
  */
@@ -21,7 +22,7 @@ section.fade.invert p {
   color: rgba(255, 248, 225, 0.2);
 }
 
-secton {
+section {
   font-weight: bold;
 }
 section.fade.invert strong {
@@ -34,4 +35,29 @@ section.fade strong {
 section[id="1"] p,
 section[id="1"] h1 {
   text-shadow: 2px 2px 4px rgb(69, 90, 100);
+}
+
+section.listline ul {
+  text-align: center;
+}
+
+section.listline li {
+  display: inline;
+}
+
+section.listline li:not(:first-of-type):before {
+  content: " | ";
+  opacity: 0.2;
+}
+
+@keyframes pulsate {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+  100% {
+    opacity: 1;
+  }
 }

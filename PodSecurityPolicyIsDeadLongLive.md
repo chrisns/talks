@@ -19,12 +19,13 @@ Appvia | LearnK8s
 # 👋<!--fit-->
 
 <!--
-Hello! Imagine a thing with human faces, what a treat.
-My name is Chris, and I've been trying to use Kubernetes since 0.4 and I'm a masochist, clearly.
+Hello! Imagine a thing with human faces, what a treat, I get to stand not worry about being on mute, use my clicker and everything!
 
-I'm Solution Architect at Appvia, instructor at LearnK8s, and tinkerer of open source including maintaining some high profile open source projects.
+My name is Chris, and I've been trying, with some success to use Kubernetes since 0.4 and I've got opinions on it, so strap in.
 
-I'm often told I talk too fast when doing these, please shout at me if this happens, and jump in with questions though there will hopefully be time at the end if I don't get covered in rotten tomatoes and booed off.
+I'm Solution Architect at Appvia, instructor at LearnK8s, and tinkerer of open source including maintaining some high profile projects in the home automation space.
+
+I'm often told I talk too fast when doing these, please shout at me when this happens, and jump in with questions though there will hopefully be time at the end.
 -->
 
 ---
@@ -37,7 +38,7 @@ By show of hands who's worked with pods before?
 
 ---
 
-# 🙋🙋‍♀️🙋‍♂️<!--fit-->
+# 🙋👩‍🌾👩‍🚒</br>🙋‍♀️🦹‍♀️🙋‍♂️<!--fit-->
 
 ---
 
@@ -55,14 +56,16 @@ spec:
 ```
 
 <!--
-Cool, and for anyone else, welcome to the party!
+Cool, and for anyone that didn't raise their hand, welcome to the party you almost missed it!
 
-Pods are the smallest deployable units of computing that you can create and manage in Kubernetes and represents a single instance of a containerized application running in your cluster.
+Pods are the smallest deployable units of computing that you can create and manage in Kubernetes, they represent a single instance of a containerized application running in your cluster.
 -->
 
 ---
 
-# PodSecurityWhat?
+# PodSecurityWhat?<!--fit-->
+
+# 🤔 <!--fit-->
 
 <!--
 Ok so now for the topic of this talk, pod security policies
@@ -86,7 +89,7 @@ kind: PodSecurityPolicy
 ```
 
 <!--
-and in that time have never made it past the beta classification, and I believe may be last v1beta1 resource that is routinely used in production after ingress matured to a real v1 not long ago.
+and in that time has never made it past the beta classification, and I believe may be last v1beta1 resource that is routinely used in production, that is after ingress left beta not long ago.
 -->
 
 ---
@@ -119,7 +122,7 @@ What is a PSP apart from more words than should ever be on a slide?
 
 # What is a PSP?
 
-Pod Security Policies enable **fine-grained authorization** of pod **creation** and **updates**.
+Pod Security Policies enable **fine-grained authorization** of **pod** **creation** and **updates**.
 
 A Pod Security Policy is a **cluster-level** resource that controls security sensitive aspects of the pod specification. The PodSecurityPolicy objects define a set of conditions that a pod must run with in order to be accepted into the system, as well as defaults for the related fields.
 
@@ -155,10 +158,90 @@ If you've not seen one before it looks something like this
 
 ---
 
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: demo
+spec:
+  containers:
+    - name: demo
+      image: alpine
+      securityContext:
+        privileged: true
+```
+
+<!--
+Who can give me an example of what this container can actually do, say if a remote code exploit is found, or your code is bad?
+ - repartition disks
+ - eBPF interception of kernel wide activity including network intercept
+ - mount the root or any other file system which is a bad day, you've then got root on the node complete with the kubelet, which with a couple of get requests to the api server gives you admin and service account credentials on the api server.
+ - Put simply, game over, real fast, everything on your cluster and everything your cluster connects to is at breach.
+
+-->
+
+---
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: demo
+spec:
+  containers:
+    - name: demo
+      image: alpine
+    volumeMounts:
+    - mountPath: /storage
+      name: storage
+  volumes:
+  - name: storage
+    hostPath:
+      path: /
+      type: Directory
+```
+
+<!--
+Ok bit more obvious, again game over under the same terms as before
+-->
+
+---
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: demo
+spec:
+  hostNetwork: true
+  containers:
+    - name: demo
+      image: alpine
+```
+
+<!--
+How about this, can anyone help me out?
+
+ - masquerade as other things to the network, maybe get 443 or 80 and get traffic that was intended for cluster wide ingress
+ - talk to and masquerade with all sorts of local systems to the host, like X, dbus, iscsi, the container runtimes
+
+Bit more involved but game over after you've jumped through a few hoops to get root
+-->
+
+---
+
+![bg](./images/etc.jpeg)
+
+<!--
+Basically leave any one of the controls in the PSP open and you can be one bad pod away from loosing absolutely everything.
+-->
+
+---
+
 # 👍 <!--fit-->
 
 <!--
-Sounds like a great idea right?
+So PSPs sound like a great idea right?
 -->
 
 ---
@@ -167,7 +250,7 @@ Sounds like a great idea right?
 
 <!--
 Not so fast bucko!
-Theres a whole heap of usability issues you might have encountered if you'd tried to use them.
+Theres a whole heap of usability issues you might have encountered if you'd tried to use them in anger.
 -->
 
 ---
@@ -193,7 +276,7 @@ Some of the parameters aren't simply admission controllers that accept or reject
 ![bg](./images/outoforder.jpeg)
 
 <!--
-The of order of evaluation can be confusing and unpredictable with multiple policies
+The of order of evaluation can be confusing and unpredictable with multiple policies with overlapping scope especially if some are mutating
 -->
 
 ---
@@ -201,7 +284,7 @@ The of order of evaluation can be confusing and unpredictable with multiple poli
 # 🏃‍♀️ <!--fit-->
 
 <!--
-Only applies to new pods, not to anything already running in the cluster, which means you might not know if you introduce a policy if it breaks your production apps until they happen to try to reschedule and fail.
+Only applies to new pods, not to anything already running in the cluster, which means you might not know when you update the policy that it breaks your production apps, that is until they happen to try to reschedule and fail, maybe on a scale event or node fail.
 -->
 
 ---
@@ -209,7 +292,7 @@ Only applies to new pods, not to anything already running in the cluster, which 
 # So now what? <!--fit-->
 
 <!--
-So what are the alternatives, what should we do
+So what are the alternatives, what should we do, the clock is ticking, august is only another lockdown or two away!
 -->
 
 ---
@@ -217,12 +300,12 @@ So what are the alternatives, what should we do
 # Admission Control | Anchore | Azure Policy | Istio | jspolicy | K-rail | Kopf | Kubewarden | Kyverno | OPA Gatekeeper | Opslevel | Polaris | Prisma Cloud | Qualys | Regula | Sysdig | TiDB
 
 <!--
-Theres a fair amount of choice, here's just a few, you can of course right your own, it is just a webhook.
+Theres a fair amount of choice, here's just a few, you can of course write your own, it is just a webhook.
 -->
 
 ---
 
-<!-- _class: fade lead invert -->
+<!-- _class: fade lead  -->
 
 # Admission Control | Anchore | Azure Policy | Istio | jspolicy | K-rail | Kopf | **Kubewarden** | **Kyverno** | **OPA Gatekeeper** | Opslevel | Polaris | Prisma Cloud | Qualys | Regula | Sysdig | TiDB
 
@@ -232,10 +315,10 @@ I'm going to focus on a few, because with a little help they provide a straight 
 
 ---
 
-# Wait, what about </br>Pod Security Standards </br>and the</br> Pod Security Admission?
+# Wait, what about </br>Pod Security Standards </br>&</br> Pod Security Admission?
 
 <!--
-There is an 'in tree' answer i.e. built in to Kubernetes, so why am I not going to just point at that, grab my drink and walk off.
+There is an 'in tree' answer i.e. built in to Kubernetes, so why am I not pointing at that, grabbing my drink and walk off?
 Pod Security Standards are most easily thought of as three rigidly defined predefined Pod Security Policies
 -->
 
@@ -322,7 +405,7 @@ And if you're mad enough to be in that business
 # 🌟 <!--fit-->
 
 <!--
-If you can make your product run in restricted then it'll give you a good head start for whatever unique configuration your customers have implemented and demonstrate that you have considered the security implications of your product
+Then if you can make your product run in restricted then it'll give you a good head start for whatever unique configuration your customers have implemented and demonstrate that you have considered the security implications of your product
 -->
 
 ---
@@ -529,7 +612,7 @@ That was easy
 But should you?
 Don't be fooled, just because I wrote a tool to help does not mean I think any of this is even remotely a good idea for the vast majority of use cases.
 
-But it got your attention, now let me bend your ear.
+But it got your attention.
 -->
 
 ---
@@ -537,236 +620,7 @@ But it got your attention, now let me bend your ear.
 # 🚫 <!--fit-->
 
 <!--
-Using a cluster enforced policy does not guaranty any real security, and its hard to know the effectiveness of policy without constantly monitoring the impact it is having, by seeing how many requests are being rejected.
--->
-
----
-
-# 🗝 <!--fit-->
-
-<!--
-The key to making this succeed is for all the stakeholders to understand the need, why their thing is being rejected
--->
-
----
-
-# 🧙🧝‍♀️👩‍✈️👩‍🚀👩‍🚒🧑‍⚖️</br>🕵️‍♂️👩‍🌾💂‍♀️👳‍♀️🧕👷‍♀️ <!--fit-->
-
-<!--
-Imagine a problem that can't just be solved with a tools and requires you to focus on the people and process first. Shocking right?!
--->
-
----
-
-# Shift ⬅️ <!--fit-->
-
-<!--
-We should always be thinking about shifting the process to the left so issues are caught as early as possible. Using cluster enforced policy alone does not help, the request to create the resource has to reach the API server, be authenticated and authorised before it is rejected/accepted. In order to get to that point the request would have gone through pipelines to be deployed and if the request is rejected valuable time and resources will have been wasted.
-
-This is further exacerbated if your cluster enforced policy is based on the pod, since your deployment/daemonset/statefulset/job/crd/etc would be accepted by the API server and policy, but the pods it tries to create would be rejected within the internal loops within the controller or other operators present on the cluster.
-
-Kubernetes is already complex enough, adding policies to the cluster adds another layer of complexity that needs to be managed, maintained and documented to ensure smooth operation of your cluster.
-
-I’m not saying you shouldn’t have policies and security controls; but it’s too easy to get carried away and reinvent all the painful bureaucracy that ‘devops’ promised we wouldn’t have to endure.
--->
-
----
-
-# GitOps? <!--fit-->
-
-<!--
-
-If you’re doing the latest buzzword of GitOps and you arguably should be then the only thing that can make changes to your cluster is the CI pipeline, theres a more to gitops but thats another talk for another day; the relevant bit I want to point at is version control is considered truth and no humans access the cluster directly in order to preserve that truth, so surfacing information back out requires some thought and extra process.
-
-The consequence of policy being evaluated and enforced in the cluster is you’ve committed the cardinal sin of devops by shifting all that responsibility right and making it harder to observe.
-
-A common story might look like this
--->
-
----
-
-![bg fit](./images/gitops-Page-7.svg)
-
-<!--
-Person (a) writes a change to a deployment yaml file locally, yaml appears valid, so they push it to a branch and raise a pull request
--->
-
----
-
-![bg fit](./images/gitops-Page-6.svg)
-
-<!--
-Person (b) looks at the diff, agrees with the change and approves it
--->
-
----
-
-![bg fit](./images/gitops-Page-5.svg)
-
-<!--
-Because we live in an untrusting world, company policy stipulates that two people need to approve, so person (c) also approves
-And one of those three people merges the changes
--->
-
----
-
-![bg fit](./images/gitops-Page-4.svg)
-
-<!--
-CI/CD or something like flux picks up the change and successfully applies the changed deployment yaml to the Kubernetes cluster
--->
-
----
-
-![bg fit](./images/gitops-Page-3.svg)
-
-<!--
-The deployment yaml was valid so is accepted by the api server
--->
-
----
-
-![bg fit](./images/gitops-Page-2.svg)
-
-<!--
-The deployment controller creates a replicaSet and submits it to the Kubernetes API (which is also accepted by the api server)
--->
-
----
-
-![bg fit](./images/gitops-Page-1.svg)
-
-<!--
-The replicaSet controller creates pods and submits to the API, the API server rejects these pods since they fail a PodSecurityPolicy Rule or similar cluster enforced policy.
--->
-
----
-
-![bg fit](./images/gitops-Page-0.svg)
-
-<!--
-Not only do you need to create this line yourself, when you do eventually find out things aren't right you're left with rework and wasted time delivering zero business value dancing through security theatre, and depending on the application, you may have wiped out production until you can go through the security theatre of pull request approvals etc.
-
-Imagine how much even more complicated this can get with changes to the policy itself!
--->
-
----
-
-<!-- _class:  invert lead -->
-
-# Cut to the chase Chris,</br>What’s the answer? <!--fit-->
-
-<!--
-Cluster policy is fine but failures should cause alerts you’d be glad to be awoken at 3am to deal with.
-
-They should represent genuine incidents, not just a developer trying to do their job.
--->
-
----
-
-# as-code<!--fit-->
-
-<!--
-Infrastructure as Code is the answer for this all. Developers who write code solved this problem a long time ago with linters and static analysis, and they have a passion for running these FAST, and consistently, in their IDE, and then in CI before any pull request review occurs which assures that the teams code all looks similar and conforms to some mutually agreed standards the team develops.
--->
-
----
-
-![bg](./images/insurance-policy.jpeg)
-
-<!--
-You can have as many policies you like as long as these policies are treated as code, committed into source control and versioned accordingly. This will give you a complete view of the policies in use in your cluster at any point in time and help understand the risk landscape, target what workloads should be supported and when you should stop supporting a given policy version.
--->
-
----
-
-![bg](./images/devlaptop.jpeg)
-
-<!--
-The key thing is that your developers should be able to evaluate against that policy locally, maybe even within their editor and your CI pipeline and version control can enforce compliance.
-
-Your cluster level policy failures should then be limited to real fires where something has gone drastically wrong and a 3am call will cause warranted panic and gratitude for the policy’s existence.
--->
-
----
-
-# ⚠️👀 <!--fit-->
-
-<!--
-If you’re going to turn on warnings rather than just rejections, be sure someone will see them, if your gitops is even vaguely real, that won’t be a human in the first instance, so your teams will need to get that in front of them somehow; otherwise what’s the point?
--->
-
----
-
-![bg](./images/mindthegap.jpeg)
-
-<!--
-Some would argue that setting cluster policy is at the point of execution, the last protection as it were.
-But when we actually look at the mechanics, the checks are run on the control plane, the worker node and container runtime is not checking anything, it is trusting the word of api server with its limited capability to carry out checks, wow, you couldn’t get further from zero trust could you.
--->
-
----
-
-# Trusted<br/>!=<br/>Trustworthy <!--fit-->
-
-<!--
-So how can you get closer to that zero trust nirvana?
-Fortunately the linux kernel, the same marvel that brings us containers, provides a few capabilities for this.
--->
-
----
-
-<style scoped>
-li {
-  font-size: 3em;
-}
-</style>
-
-<!-- prettier-ignore -->
-* seccomp
-* AppArmor
-* SELinux
-
-<!--
-In short [click]
-Seccomp can reduce the chance that a kernel vulnerability will be successfully exploited.[click]
-AppArmor and [click] SELinux can prevent an application from accessing files it should not.
--->
-
----
-
-# + ☸️<!--fit-->
-
-<!--
-And Kubernetes exposes these, hurrah!
--->
-
----
-
-<style scoped>
-h1 {
-  font-size: 4em;
-}
-</style>
-
-# Not Easy
-
-![](./images/hal.jpeg)
-
-<!--
-However, managing them is not easy, so unsurprisingly lots of commercial products have entered the space with all sorts of buzzwords like ‘artificial intelligence’ and ‘machine learning’.
-
-These commercial offerings are great and can simplify the implementation but it’s worth understanding how things are working under the hood and electing how much control you might relinquish to an algorithm.
--->
-
----
-
-![bg fit](./images/securityprofilesoperator.png)
-
-<!--
-Relatively recently a Kubernetes special interest group has developed the Security Profiles Operator which works to expose the power of seccomp, SELinux and AppArmor to end users.
-
-The technologies are not mutually exclusive, and I would encourage combining them.
+Using a cluster enforced policy does not guaranty any real security, you may well find as a cure, its worse than the disease.
 -->
 
 ---
@@ -774,40 +628,95 @@ The technologies are not mutually exclusive, and I would encourage combining the
 ![bg](./images/pwnkit.png)
 
 <!--
-In fact its worth noting that seccomp even the default policy would mitigate some recent high profile vulnerabilities like Polkit's Pwnkit that any cluster admission policy would have waved through.
+We're seeing more and more vulnerabilities and in the wild attacks that cluster enforced policy would not protect against.
 -->
 
 ---
 
-# appvia.github.io/psp-migration
+# sorry <!--fit-->
 
-# github.com/appvia/psp-migration
+## (not sorry)
 
 <!--
-If you must, feel free to use the PSP migration tool.
+If you've been keeping up you'll have realized I've taken you on a roller coaster of explaining a problem with security in Kubernetes, a solution of PSP, another problem of PSPs going away, another solution of a tool that I've built and yet another problem that undermines everything I've just told you.
 -->
 
 ---
+
+![bg fit](./images/GoodNews.jpeg)
+
+<!--
+The good news is there are answers, they are simple but not easy
+-->
+
+---
+
+![bg](./images/baiting.jpeg)
+
+<!--
+but I'm out of time, so you'll have to come back and find out in my next talk
+-->
+
+---
+
+![bg fit](./images/spoiler-alert.jpeg)
+
+<!--
+As a sign of good faith though
+-->
+
+---
+
+<!-- _class: listline lead -->
 
 <style scoped>
 li {
-  font-size: 2em;
+  font-size: 1.6em;
+  animation-name: pulsate;
+  animation-timing-function: ease-in;
+  animation-delay: calc(var(--animation-order) * 200ms);
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
 }
+li:nth-child(1) { --animation-order: 1 }
+li:nth-child(2) { --animation-order: 2 }
+li:nth-child(3) { --animation-order: 3 }
+li:nth-child(4) { --animation-order: 4 }
+li:nth-child(5) { --animation-order: 5 }
+li:nth-child(6) { --animation-order: 6 }
+li:nth-child(7) { --animation-order: 7 }
+li:nth-child(8) { --animation-order: 8 }
+li:nth-child(9) { --animation-order: 9 }
+li:nth-child(10) { --animation-order: 10 }
+li:nth-child(11) { --animation-order: 11 }
+li:nth-child(12) { --animation-order: 12 }
+li:nth-child(13) { --animation-order: 13 }
+li:nth-child(14) { --animation-order: 14 }
+li:nth-child(15) { --animation-order: 15 }
+li:nth-child(16) { --animation-order: 16 }
+li:nth-child(17) { --animation-order: 17 }
 </style>
 
-# Summary
+- AppArmor
+- Continuous Integration
+- Cultural Change
+- eBPF
+- GitOps
+- Keep it Stupid Simple
+- Kernel Level Protection
+- Policy as code
+- seccomp
+- Secure By Design
+- Security Profiles Operator
+- SELinux
+- Shared Responsibility Model
+- Shift Left
+- Testing
+- Version Controlled Policy
+- Zero trust
 
-<!-- prettier-ignore -->
-* appvia.github.io/psp-migration
-* KiSS
-* Shift ⬅️
-* SecurityProfilesOperator
 <!--
-So to wrap things up [click]
-use our tool[click]
-Keep it Stupid Simple, refrain from liberal use of of pod based cluster enforced policy[click]
-carry out as many of those checks using CI/CD pipelines as the priority before looking to cluster enforced policy [click]
-Look at Security Profiles Operator and maybe commercial products in this space that leverage seccomp, apparmor and or selinux 
+You can expect a scenic walk through buzzwords like these and I'm excited to be able to share some hard but simple solutions that can provide a robust level of coverage and also advice on how to tackle the cultural change that needs to go hand in hand with the tech.
 -->
 
 ---
@@ -834,12 +743,13 @@ h2 {
 ## Chris Nesbitt-Smith <!--fit-->
 
 <!--
-Thanks for your time, hopefully this has been interesting
-Feel free to follow me on LinkedIn, Twitter, Github and you can be assured there'll be no spam since I'm awful at self promotion especially on social media. cns.me just points at my linkedin
+Thanks for your time, hopefully this has been interesting if a tease.
+
+Please do follow me on LinkedIn, Twitter, Github and you can be assured there'll be no spam since I'm awful at self promotion especially on social media. cns.me just points at my linkedin
 
 At Appvia we're doing a tonne of opensource, so checkout both mine and the appvia github orgs, star and watch to your hearts content.
 
-The original content for this talk and similar stuff in this space including how to do Policy as Versioned Code are on the appvia blog.
+The original content for this talk and some of the solutions I've alluded to including how to do Policy as Versioned Code are on the appvia blog.
 
 Questions are very welcome on this or anything else, I'll hold the stage as long as I'm allowed, or find me afterwards, I'm pretty thirsty so I'll be over there.
 -->
