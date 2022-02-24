@@ -153,7 +153,7 @@ spec:
 ```
 
 <!--
-If you've not seen one before it looks something like this
+If you've not seen one before it looks something like this [pause]
 -->
 
 ---
