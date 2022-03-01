@@ -1,7 +1,6 @@
 @import "gaia";
-@use postcss-for;
 /*!
- * Marp / Marpit cns theme.
+* Marp / Marpit cns theme.
  *
  * @theme themes/cns
  * @author Chris Nesbitt-Smith
@@ -12,44 +11,64 @@
  * @size 4:3 960px 720px
  */
 
-section.fade li,
-section.fade h1,
-section.fade p {
-  color: rgba(69, 90, 100, 0.2);
-}
-
-section.fade.invert li,
-section.fade.invert h1,
-section.fade.invert p {
-  color: rgba(255, 248, 225, 0.2);
-}
-
 section {
+  &.white {
+    background-color: #fff;
+  }
+  &.fade {
+    li,
+    h1,
+    p {
+      color: rgba(69, 90, 100, 0.2);
+    }
+    strong {
+      color: rgba(69, 90, 100, 1);
+    }
+    &.invert {
+      strong {
+        color: rgba(255, 248, 225, 1);
+      }
+      li,
+      h1,
+      p {
+        color: rgba(255, 248, 225, 0.2);
+      }
+    }
+  }
   font-weight: bold;
-}
-section.fade.invert strong {
-  color: rgba(255, 248, 225, 1);
-}
-section.fade strong {
-  color: rgba(69, 90, 100, 1);
-}
 
-section[id="1"] p,
-section[id="1"] h1 {
-  text-shadow: 2px 2px 4px rgb(69, 90, 100);
-}
-
-section.listline ul {
-  text-align: center;
-}
-
-section.listline li {
-  display: inline;
-}
-
-section.listline li:not(:first-of-type):before {
-  content: " | ";
-  opacity: 0.2;
+  &[id="1"] {
+    p,
+    h1 {
+      text-shadow: 2px 2px 4px rgb(69, 90, 100);
+    }
+  }
+  &.listline {
+    &.animate {
+      li {
+        animation-name: pulsate;
+        animation-timing-function: ease-in;
+        animation-delay: calc(var(--animation-order) * 200ms);
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        @for $i from 1 to 100 {
+          &:nth-child($i) {
+            --animation-order: $i;
+          }
+        }
+      }
+    }
+    ul {
+      text-align: center;
+      li {
+        display: inline;
+        &:not(:first-of-type):before {
+          content: " | ";
+          opacity: 0.2;
+        }
+      }
+    }
+  }
 }
 
 @keyframes pulsate {
@@ -61,19 +80,5 @@ section.listline li:not(:first-of-type):before {
   }
   100% {
     opacity: 1;
-  }
-}
-
-section.listline.animate li {
-  animation-name: pulsate;
-  animation-timing-function: ease-in;
-  animation-delay: calc(var(--animation-order) * 200ms);
-  animation-duration: 2s;
-  animation-iteration-count: infinite;
-}
-
-@for $i from 1 to 100 {
-  section.listline.animate li:nth-child($i) {
-    --animation-order: $i;
   }
 }
