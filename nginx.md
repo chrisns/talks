@@ -83,6 +83,7 @@ May the odds ever be in your favour.
 ![bg fit](./images/OWASP-Combination-mark-r.png)
 
 <!--
+TODO: rather than name drop, explain first
 O-WASP for those that don't know is the The Open Web Application Security Project run by a non-profit foundation of the same name.
 Amongst other great things they periodically publish what is famously referred to as the OWASP top 10 which is broad consensus about the most critical risks to web applications based on the current trends and intel.
 -->
@@ -195,6 +196,7 @@ Its not all doom and gloom there are some things we can do to provide a first li
 -->
 
 ---
+
 <!-- _class: white -->
 <style scoped>
   p {
@@ -203,6 +205,7 @@ Its not all doom and gloom there are some things we can do to provide a first li
     right:0;
   }
 </style>
+
 ![bg fit](./images/exploits_of_a_mom.png)
 
 https://xkcd.com/327
@@ -220,11 +223,13 @@ but however it happens because of the HTTP protocol you're limited to a number o
 -->
 
 ---
+
 <style scoped>
   li {
     font-size: 2em;
   }
 </style>
+
 ![bg right](./images/internet-3116062.jpg)
 
 - GET
@@ -357,6 +362,7 @@ I could insert or update potentially effecting the integrity of the database, ma
  -->
 
 ---
+
 # Encrypt
 
 ```SQL
@@ -384,6 +390,7 @@ Well, theres a few ways I can either try and get an error message to return it
 -->
 
 ---
+
 ![bg fit](./images/product-injected-fields.png)
 
 <!--
@@ -446,10 +453,18 @@ We could look for the obvious things like SQL commands, SELECT, INSERT, TRUNCATE
 
 ---
 
-![bg](./images/lightbulb-1875247.jpg)
+![bg](./images/waf.jpeg)
 
 <!--
-Theres a couple of places we can apply this configuration
+In the before times, you might have reached for things like a web application firewall, either a physical or virtualized appliance, or maybe naxsi, mod_security or some other WAF software product
+-->
+---
+
+![bg](./images/magician-3840x2160.png)
+
+<!--
+Well, welcome to 2022 where Kubernetes is seemingly the answer for all that ails you.
+So you'll be pleased to know that if your application is running in a Kubernetes cluster there are at least a couple of places we can apply this configuration
 -->
 
 ---
@@ -559,16 +574,19 @@ I said a couple of ways, what are the other options?
 -->
 
 ---
+<!-- _class: white -->
 
-![bg fit](./images/waf-ingress.png)
+![bg fit](./images/waf-ingress.svg)
 
 <!--
-What I didn't tell you is this cluster is using nginx-ingress as the ingress controller
+What I didn't tell you is this cluster is using nginx-ingress as the ingress controller,
+naturally other ingress controllers are available and have similar capabilities to configure them
 -->
 
 ---
+<!-- _class: white -->
 
-TODO: show sidecar adding extra hop
+![bg fit](./images/waf-ingress-sidecar.svg)
 
 <!--
 So with a sidecar design we're adding an extra hop for all our traffic since it already passed through
