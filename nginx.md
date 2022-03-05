@@ -29,7 +29,6 @@ It would be great to hear who you are so please leave a comment to say hi, intro
 
 # Chris Nesbitt-Smith
 
-
 <!--
 Hi, My name is Chris Nesbitt-Smith, I'm an instructor at Learnk8s, consultant at Appvia and tinkerer of open source.
 I've spent a fair chunk of my professional career now working in UK Government where you often have to assume you're already at breach somewhere and then work backwards from that in terms of damage limitation, terms like "defense in depth" and "zero trust" are found in many meeting notes.
@@ -80,6 +79,7 @@ This an intentionally vulnerable web app, and as such you can probably do all ma
 So the url is on the screen now, and should hopefully remain in the lower section
 May the odds ever be in your favour.
 -->
+
 ---
 
 <!-- _class: lead white -->
@@ -87,7 +87,7 @@ May the odds ever be in your favour.
 ![bg fit](./images/owasptop10.png)
 
 <!--
-OWASP periodically publish their top 10 which is a broad consensus from the security community of the most critical risks to 
+OWASP periodically publish their top 10 which is a broad consensus from the security community of the most critical risks to
 to web applications based on current trends and intel.
 
 I'm going to be talking about Injection which while down 3 places from its number one spot which it held for 14 years from 2007-2021 is still really important, as we'll see quite common and reasonably easy to mitigate against even when the app has vulnerabilities that you might not know about yet.
@@ -100,26 +100,26 @@ I'm going to be talking about Injection which while down 3 places from its numbe
 ```
 92.105.22.161 - - [14/Feb/2022:03:48:55 +0000] "POST /HNAP1/ HTTP/1.1" 404 134 "-" "Mozila/5.0"
 
-7.53.212.184 - - [14/Feb/2022:04:11:57 +0000] "GET /.env HTTP/1.1" 404 162 "-" 
+7.53.212.184 - - [14/Feb/2022:04:11:57 +0000] "GET /.env HTTP/1.1" 404 162 "-"
 "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:58.0) Gecko/20100101 Firefox/58.0"
 
-92.105.22.161 - - [14/Feb/2022:04:16:54 +0000] "GET /.env HTTP/1.1" 404 197 "-" "Mozilla/5.0 
+92.105.22.161 - - [14/Feb/2022:04:16:54 +0000] "GET /.env HTTP/1.1" 404 197 "-" "Mozilla/5.0
 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.40
 
 24.99.105.22.161 - - [14/Feb/2022:04:16:55 +0000] "POST / HTTP/1.1" 405 568 "-" "Mozilla/5.0
 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.129 Safari/537.36"
 
-7.51.240.114 - - [14/Feb/2022:04:18:57 +0000] "GET /dispatch.asp HTTP/1.1" 404 134 "-" 
+7.51.240.114 - - [14/Feb/2022:04:18:57 +0000] "GET /dispatch.asp HTTP/1.1" 404 134 "-"
 "Mozilla/5.0 (iPad; CPU OS 7_1_2 like Mac OS X; en-US) AppleWebKit/531.5.2 (KHTML, like Gecko)
 Version/4.0.5 Mobile/8B116 Safari/6531.5.2"
 
 215.74.51.24 - - [14/Feb/2022:04:42:23 +0000] "HEAD / HTTP/1.0" 200 0 "-" "-"
 
-193.246.247.130 - - [14/Feb/2022:07:38:40 +0000] "GET /icons/ubuntu-logo.png HTTP/1.1" 404 197 
+193.246.247.130 - - [14/Feb/2022:07:38:40 +0000] "GET /icons/ubuntu-logo.png HTTP/1.1" 404 197
 "http://79.155.234.179/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
 like Gecko) Chrome/98.0.4758.87 Safari/537.36"
 
-193.246.247.130 - - [14/Feb/2022:07:38:42 +0000] "GET /favicon.ico HTTP/1.1" 404 197 
+193.246.247.130 - - [14/Feb/2022:07:38:42 +0000] "GET /favicon.ico HTTP/1.1" 404 197
 "http://79.155.234.179/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
 like Gecko) Chrome/98.0.4758.87 Safari/537.36"
 
@@ -484,6 +484,7 @@ We could look for the obvious things like SQL commands, SELECT, INSERT, TRUNCATE
 <!--
 In the before times, you might have reached for things like a web application firewall, either a physical or virtualized appliance, or maybe naxsi, mod_security or some other WAF software product
 -->
+
 ---
 
 ![bg](./images/magician-3840x2160.png)
@@ -600,6 +601,7 @@ I said a couple of ways, what are the other options?
 -->
 
 ---
+
 <!-- _class: white -->
 
 ![bg fit](./images/waf-ingress.svg)
@@ -610,6 +612,7 @@ naturally other ingress controllers are available and have similar capabilities 
 -->
 
 ---
+
 <!-- _class: white -->
 
 ![bg fit](./images/waf-ingress-sidecar.svg)
