@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app
+  annotations:
+    nginx.org/server-snippets: |
+      location ~* "(\'|\")(.*)(drop|insert|md5|select|union)" {
+          deny all;
+      }
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: "localhost"
+      http:
+        paths:
+          - backend:
+              service:
+                name: app
+                port:
+                  number: 80
+            path: /
+            pathType: Prefix
