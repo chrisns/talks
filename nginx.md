@@ -25,10 +25,16 @@ It would be great to hear who you are so please leave a comment to say hi, intro
 
 ---
 
-# TODO: pic of me
+![bg right](https://cdn.appvia.io/media/pages/cloud-native-landing-zone/f462b0ec53-1643894542/chris-nesbitt-smith-b-w-500x500.jpg)
+# Chris Nesbitt-Smith<!--fit-->
 
-# Chris Nesbitt-Smith
-
+- Learnk8s - Instructor
+- Appvia - Digital Transformation Consultant
+- Home Office (uk gov) - Consultant
+- Opensource:
+  - OpenZWave
+  - Z-Wave JS
+  - Many small projects
 <!--
 Hi, My name is Chris Nesbitt-Smith, I'm an instructor at Learnk8s, consultant at Appvia and tinkerer of open source.
 I've spent a fair chunk of my professional career now working in UK Government where you often have to assume you're already at breach somewhere and then work backwards from that in terms of damage limitation, terms like "defense in depth" and "zero trust" are found in many meeting notes.
@@ -408,15 +414,15 @@ You might have backups, you might notice it before you ship the order, what abou
 -->
 
 ---
-
-TODO: example error page with leak
+<!-- _class: white -->
+![bg fit](./images/error-sqli.png)
 
 <!--
 Well, theres a few ways I can either try and get an error message to return it
 -->
 
 ---
-
+<!-- _class: white -->
 ![bg fit](./images/product-injected-fields.png)
 
 <!--
@@ -715,9 +721,28 @@ Again, apply that and we're good
 
 <!--
 So now its time to put my neck on the line and try this for real
+
 -->
 
 ---
+
+<!-- _class: white -->
+
+![bg fit](./images/9%20livedemo%201.svg)
+
+---
+
+<!-- _class: white -->
+
+![bg fit](./images/9%20livedemo%202%20[sidecar].svg)
+
+---
+<!-- _class: white -->
+
+![bg fit](./images/9%20livedemo%203%20[ingress].svg)
+
+---
+
 
 <!-- _class: lead invert -->
 
