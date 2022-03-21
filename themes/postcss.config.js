@@ -1,3 +1,8 @@
 module.exports = {
-  plugins: [require("postcss-for")],
+  plugins: [
+    require("postcss-use"),
+    require("postcss-nested"),
+    require("postcss-for"),
+    require("postcss-discard-comments"),
+  ],
 };

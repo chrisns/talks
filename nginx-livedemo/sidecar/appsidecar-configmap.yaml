@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: sidecar
+data:
+  nginx.conf: |-
+    events {}
+    http {
+      server {
+        listen 8080 default_server;
+        listen [::]:8080 default_server;
+
+        location ~* "(\'|\")(.*)(drop|insert|md5|select|union)" {
+            deny all;
+        }
+
+        location / {
+            proxy_pass http://localhost:80/;
+        }
+      }
+    }
