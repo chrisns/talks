@@ -3,11 +3,17 @@
 ```
 set +o history
 kind delete cluster
+docker pull nginx
+docker pull nginx/nginx-ingress:2.1.1
+docker pull ghcr.io/learnk8s/f5-microservices-march-three
 helm repo remove nginx-stable
 rm *
 cp /Users/cns/httpdocs/talks/nginx-livedemo/cluster-config.yaml .
 reset
 kind create cluster --config cluster-config.yaml
+kind load docker-image ghcr.io/learnk8s/f5-microservices-march-three
+kind load docker-image nginx/nginx-ingress:2.1.1
+kind load docker-image nginx
 yq cluster-config.yaml
 ```
 
@@ -96,6 +102,7 @@ helm repo add nginx-stable https://helm.nginx.com/stable
 
 helm install main nginx-stable/nginx-ingress \
  --set controller.enableSnippets=true \
+ --set controller.image.pullPolicy=Never \
  --set controller.service.type=NodePort \
  --set controller.service.httpPort.nodePort=30000
 ```
