@@ -24,8 +24,11 @@ It would be great to hear who you are so please leave a comment to say hi, intro
 -->
 
 ---
+
 <!-- _class: white -->
+
 ![bg right](./images/me.png)
+
 # Chris Nesbitt-Smith<!--fit-->
 
 - Learnk8s - Instructor
@@ -415,7 +418,9 @@ You might have backups, you might notice it before you ship the order, what abou
 -->
 
 ---
+
 <!-- _class: white -->
+
 ![bg fit](./images/error-sqli.png)
 
 <!--
@@ -423,7 +428,9 @@ Well, theres a few ways I can either try and get an error message to return it
 -->
 
 ---
+
 <!-- _class: white -->
+
 ![bg fit](./images/product-injected-fields.png)
 
 <!--
@@ -754,6 +761,7 @@ So now its time to put my neck on the line and try this for real
 ![bg fit](./images/9%20livedemo%202%20[sidecar].svg)
 
 ---
+
 <!-- _class: white -->
 
 ![bg fit](./images/9%20livedemo%203%20[ingress].svg)

