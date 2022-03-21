@@ -14,7 +14,7 @@ kind create cluster --config cluster-config.yaml
 kind load docker-image ghcr.io/learnk8s/f5-microservices-march-three
 kind load docker-image nginx/nginx-ingress:2.1.1
 kind load docker-image nginx
-yq cluster-config.yaml
+bat cluster-config.yaml
 ```
 
 # todo:
