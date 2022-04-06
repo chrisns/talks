@@ -1,4 +1,7 @@
 ---
+title: Pod Security Policy is Dead, Long Live...? [directors cut]
+description: The longer version of the Pod Security Policy is Dead, Long Live... talk.
+author: Chris Nesbitt-Smith
 marp: true
 theme: themes/cns
 class: lead
