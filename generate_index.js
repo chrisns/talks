@@ -30,7 +30,11 @@ output.push(`<style>
     border-top-left-radius: 1.5rem;
 
   }
+  body {
+    background: url("images/me.png") no-repeat center left fixed;
+  }
   div.card {
+    background: rgba(255,255,255,.75);
     float: left;
     width: 32rem;
     min-height: 32rem;
