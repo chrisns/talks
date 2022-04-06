@@ -39,6 +39,9 @@ output.push(`<style>
     margin: 0.5rem;
   }
 </style>`);
+output.push(
+  `<title>Chris Nesbitt-Smith talks about software development</title>`
+);
 output.push("</head>");
 output.push("<body>");
 output.push(`<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
