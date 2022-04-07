@@ -50,7 +50,7 @@ output.push("</head>");
 output.push("<body>");
 output.push(`<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 <a class="navbar-brand" href="https://cns.me">Chris Nesbitt-Smith</a> | 
-<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+<div class="navbar" id="navbarNavAltMarkup">
   <div class="navbar-nav">
     <a class="nav-item nav-link active" >Talks <span class="sr-only">(current)</span></a>
     <a class="nav-item nav-link" href="https://cns.me">LinkedIn</a>
