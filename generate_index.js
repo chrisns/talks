@@ -84,6 +84,10 @@ files.forEach((file) =>
     file.title
   } PPTX presentation deck" class="btn btn-primary">
   PPTX</a>
+  <a href="${file.filename.replace(".md", ".txt")}" title="${
+    file.title
+  } TXT presentation notes" class="btn btn-primary">
+  TXT</a>
   </div>
 </div>
 `)
