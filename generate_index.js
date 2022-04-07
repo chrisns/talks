@@ -68,8 +68,17 @@ files.forEach((file) =>
   <p class="card-text">${file.description}</p>
   <a href="${file.filename.replace(".md", ".html")}" title="${
     file.title
-  }" class="btn btn-primary">
-  Presentation Deck</a></div>
+  } HTML presentation deck" class="btn btn-primary">
+  HTML</a>
+  <a href="${file.filename.replace(".md", ".pdf")}" title="${
+    file.title
+  } PDF presentation deck" class="btn btn-primary">
+  PDF</a>
+  <a href="${file.filename.replace(".md", ".pptx")}" title="${
+    file.title
+  } PPTX presentation deck" class="btn btn-primary">
+  PPTX</a>
+  </div>
 </div>
 `)
 );
