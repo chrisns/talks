@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "prettier --check .",
-    "build": "postcss themes --ext css -d themes --no-map && marp && marp --pptx && marp --pdf && cp -vr images dist/ && node generate_index.js > dist/index.html",
+    "build": "postcss themes --ext css -d themes --no-map && marp && marp --pptx && marp --pdf --pdf-notes && marp --image && cp -vr images dist/ && node generate_index.js > dist/index.html",
     "start": "run-p postcss-watch marp-server",
     "postcss": "postcss --ext css -d themes themes",
     "postcss-watch": "postcss --watch --ext css -d themes themes",
