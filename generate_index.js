@@ -62,7 +62,13 @@ output.push(`<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 files.forEach((file) =>
   output.push(`
   <div class="card">
-  ${file.video_embed}
+  ${
+    file.video_embed ||
+    `<img src="images/${file.filename.replace(
+      ".md",
+      ".png"
+    )}" class="card-img-top" alt="${file.title}">`
+  }
 <div class="card-body text-center">
   <h5 class="card-title">${file.title}</h5>
   <p class="card-text">${file.description}</p>
