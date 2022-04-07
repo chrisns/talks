@@ -64,7 +64,7 @@ files.forEach((file) =>
   <div class="card">
   ${
     file.video_embed ||
-    `<img src="images/${file.filename.replace(
+    `<img src="${file.filename.replace(
       ".md",
       ".png"
     )}" class="card-img-top" alt="${file.title}">`
