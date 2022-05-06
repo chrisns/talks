@@ -346,7 +346,6 @@ What if I said:
 
 ![bg fit](images/easy.webp)
 
-
 <!--
   - That policy could be readily consumable, easy to parse, demonstrate compliance, make sense and not be bureaucratic to change when it needs to be and not get in the way?
 -->
@@ -458,10 +457,11 @@ Where do I see policy as code going wrong?
 <!-- _class: invert -->
 
 # `policy`
+
 noun [ C ]
 
-UK  /ˈpɒl.ə.si/ US  /ˈpɑː.lə.si/
- 
+UK /ˈpɒl.ə.si/ US /ˈpɑː.lə.si/
+
 `a set of ideas or a plan of what to do in particular situations that has been agreed to officially by a group of people, a business organization, a government, or a political party`
 
 <!--
@@ -934,7 +934,8 @@ Git
 ---
 
 ![bg fit](./images/cves.png)
-<!-- but i could have picked any of the recent cluster fluffs of vulnerabilities we've seen in the wild recently 
+
+<!-- but i could have picked any of the recent cluster fluffs of vulnerabilities we've seen in the wild recently
 
 https://www.cvedetails.com/vulnerability-list/cvssscoremin-9/cvssscoremax-10/vulnerabilities.html
 -->
@@ -962,6 +963,7 @@ https://www.cvedetails.com/vulnerability-list/cvssscoremin-9/cvssscoremax-10/vul
 <!-- to measure the compliance across the estate -->
 
 ---
+
 ![bg fit](./images/sciencefictionday.jpeg)
 
 <!-- I've just covered a lot of ground, and hopefully sounded convincing, and not just a fictional utopia in powerpoint -->
@@ -975,6 +977,7 @@ https://www.cvedetails.com/vulnerability-list/cvssscoremin-9/cvssscoremax-10/vul
 ---
 
 ![bg cover](./images/words.jpeg)
+
 # 🤣🤣🤣🤣 <!--fit-->
 
 <!--
@@ -1268,7 +1271,7 @@ Hopefully Less contentious application of semver, I've now added a new departmen
 
 # 💡 <!--fit-->
 
-<!-- imagine, if you will, this going through a stage of versions, with risks that inform the mitigations manifested as policy maintained as one. 
+<!-- imagine, if you will, this going through a stage of versions, with risks that inform the mitigations manifested as policy maintained as one.
 so when the risk landscape changes, your policies can move with it -->
 
 ---
