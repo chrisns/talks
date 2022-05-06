@@ -636,7 +636,9 @@ Maybe some of you are screaming your favorite product name at me in your heads a
 ---
 
 <!-- _class: invert lead -->
+
 # But, we just provide <!--fit-->
+
 # `warn`ings not `error`s? <!--fit-->
 
 <!-- sure you might say that you provide warnings, on at least the less important issues or new emerging policy, which is great
@@ -826,6 +828,7 @@ Maybe some of you are screaming your favorite product name at me in your heads a
 ---
 
 <!-- _class: lead invert -->
+
 # `npm install --save-dev eslint`<!--fit-->
 
 <!--you might unwittingly already be doing this if for example you have eslint as a dependency in your javascript package perhaps? -->
@@ -907,7 +910,7 @@ h1 {
 }
 </style>
 
-# ♼ 
+# ♼
 
 <!-- we're well and truly on the home stretch, its a dependency so updating it should be no different to any other -->
 
@@ -942,6 +945,7 @@ h1 {
 ---
 
 <!-- _class: invert lead -->
+
 # CVE-2021-45046 <!--fit-->
 
 <!-- log4j's -->
@@ -1203,6 +1207,7 @@ Hopefully Less contentious application of semver, I've now added a new departmen
 ---
 
 <!-- _class: invert lead -->
+
 # 🪄 <!--fit-->
 
 <!-- there is a small touch of magic, and its not pretty -->
