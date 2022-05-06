@@ -344,7 +344,8 @@ What if I said:
 
 <!-- class: lead invert -->
 
-# easy button
+![bg fit](images/easy.webp)
+
 
 <!--
   - That policy could be readily consumable, easy to parse, demonstrate compliance, make sense and not be bureaucratic to change when it needs to be and not get in the way?
@@ -446,9 +447,7 @@ We've got all your names and employers details, so put your phones down, lend me
 
 ---
 
-# Policy
-
-going around problem graphic
+![bg fit](images/wrongway.gif)
 
 <!--
 Where do I see policy as code going wrong?
@@ -456,7 +455,14 @@ Where do I see policy as code going wrong?
 
 ---
 
-dictionary definition of policy
+<!-- _class: invert -->
+
+# `policy`
+noun [ C ]
+
+UK  /ˈpɒl.ə.si/ US  /ˈpɑː.lə.si/
+ 
+`a set of ideas or a plan of what to do in particular situations that has been agreed to officially by a group of people, a business organization, a government, or a political party`
 
 <!--
 Before we dig into that, what do I mean by policy
@@ -464,7 +470,7 @@ Before we dig into that, what do I mean by policy
 
 ---
 
-# thou shalt not pass🧙‍♀️
+![bg](images/shallnotpass.jpeg)
 
 <!--
 It usually comes in one of two forms
@@ -472,7 +478,7 @@ It usually comes in one of two forms
 
 ---
 
-# 🔐
+# 🔐 <!--fit-->
 
 <!-- Security enforcing, like data at rest being encrypted -->
 
@@ -486,7 +492,9 @@ Consistency enforcing such as code style, tabs being two or four space indentati
 
 ---
 
-# risk
+<!-- _class: invert lead -->
+
+# 🎰 <!--fit-->
 
 <!--
 Or maybe you can think of some others, but in any case its hopefully intended to mitigate a risk of some sort
@@ -508,7 +516,7 @@ However with the best of intentions these are often emotionally led rather than 
 
 ---
 
-# wedge
+![bg](images/splitwedge.jpeg)
 
 <!--
 It often looks like the thin edge of a wedge, where the precedent which may have been an uncomfortable pill to swallow the first time round, becomes dangerous with others looking to expand its scope.
@@ -537,7 +545,7 @@ It often looks like the thin edge of a wedge, where the precedent which may have
 <!-- _class: listline animate lead  -->
 <style scoped>
 li {
-  font-size: 1.8em;
+  font-size: 1.7em;
 }
 </style>
 
@@ -597,27 +605,31 @@ Maybe some of you are screaming your favorite product name at me in your heads a
 
 ---
 
-# scales pic <!--fit-->
+<!-- _class: invert -->
+
+![bg fit invert](images/scales.png)
 
 <!-- Which begs the question of was the policy better than the downtime -->
 
 ---
 
-# bypass
+![bg](images/pointlessgate.jpeg)
 
 <!-- Especially if it leads your engineers who are hopefully all plenty smart finding 'inventive' shall we say ways around the -->
 
 ---
 
-# computer says no
+![bg](images/computersaysno.jpeg)
 
 <!-- computer says no response they got. -->
 
 ---
 
-# update
+![bg](images/update.webp)
 
-## <!-- this is further exasperated when updates to the policy are desired, maybe you get a pen test or something goes wrong so you form that case law and need to apply a new policy, maybe public s3 buckets need to be approved, a change that could be considered a 'breaking change' -->
+<!-- this is further exasperated when updates to the policy are desired, maybe you get a pen test or something goes wrong so you form that case law and need to apply a new policy, maybe public s3 buckets need to be approved, a change that could be considered a 'breaking change' -->
+
+---
 
 # But, we just provide `warn`ings not `error`s?
 
@@ -660,6 +672,8 @@ Maybe some of you are screaming your favorite product name at me in your heads a
 
 ---
 
+![bg right](./images/easy.webp)
+
 # (easily:)
 
 - visible
@@ -698,6 +712,8 @@ Git
 <!-- If you're brave you might even open source it, you'll find it unlocks the ability to work well with prospective suppliers without NDAs and what not, and widely distributed secrets are expensive to maintain, difficult to handle and often only stay secret for so long after all -->
 
 ---
+
+![bg right](./images/easy.webp)
 
 # (easily:)
 
@@ -781,6 +797,8 @@ Git
 
 ---
 
+![bg right](./images/easy.webp)
+
 # (easily:)
 
 - visible ✅
@@ -800,6 +818,8 @@ Git
 <!-- in software we're used to handling dependencies, so what if your policy was just another dependency, you might unwittingly already be doing this if for example you have eslint as a dependency in your javascript package perhaps? -->
 
 ---
+
+![bg right](./images/easy.webp)
 
 # (easily:)
 
@@ -823,6 +843,8 @@ Git
 
 ---
 
+![bg right](./images/easy.webp)
+
 # (easily:)
 
 - visible ✅
@@ -842,6 +864,8 @@ Git
 <!-- consumers of this policy need to be able to test themselves against the policy locally and in CI/CD -->
 
 ---
+
+![bg right](./images/easy.webp)
 
 # (easily:)
 
@@ -869,6 +893,8 @@ Git
 
 ---
 
+![bg right](./images/easy.webp)
+
 # (easily:)
 
 - visible ✅
@@ -883,7 +909,7 @@ Git
 
 ---
 
-# hands up emojis <!--fit-->
+# 🦹‍♀️🙋👩‍🚒</br>🙋‍♀️👩‍🌾🙋‍♂️<!--fit-->
 
 <!-- ok, to check you're awake still, can anyone tell me a recent event that caused people to want to know what version of a certain logging java doohickey you were potentially running literally everywhere in the estate? -->
 
@@ -907,19 +933,21 @@ Git
 
 ---
 
-# cve screenshot
+![bg fit](./images/cves.png)
+<!-- but i could have picked any of the recent cluster fluffs of vulnerabilities we've seen in the wild recently 
 
 https://www.cvedetails.com/vulnerability-list/cvssscoremin-9/cvssscoremax-10/vulnerabilities.html
+-->
 
-<!-- but i could have picked any of the recent cluster fluffs of vulnerabilities we've seen in the wild recently -->
+---
+
+![bg fit](./images/supplychain.jpeg)
+
+<!-- so this situational awareness piece around supply chain is something your organization is hopefully already thinking about if not already addressing, so if our policy is a dependency this at least not a new problem -->
 
 ---
 
-# nothing new here, move along.
-
-<!-- so this situational awareness piece is something your organization is hopefully already thinking about if not already addressing, so if our policy is a dependency this at least not a new problem -->
-
----
+![bg right](./images/easy.webp)
 
 # (easily:)
 
@@ -934,10 +962,9 @@ https://www.cvedetails.com/vulnerability-list/cvssscoremin-9/cvssscoremax-10/vul
 <!-- to measure the compliance across the estate -->
 
 ---
+![bg fit](./images/sciencefictionday.jpeg)
 
-# fictional utopia through ppt?
-
-<!-- I've just covered a lot of ground, and hopefully sounded convincing, -->
+<!-- I've just covered a lot of ground, and hopefully sounded convincing, and not just a fictional utopia in powerpoint -->
 
 ---
 
@@ -947,20 +974,21 @@ https://www.cvedetails.com/vulnerability-list/cvssscoremin-9/cvssscoremax-10/vul
 
 ---
 
-# lots of words overlaying an emoji
+![bg cover](./images/words.jpeg)
+# 🤣🤣🤣🤣 <!--fit-->
 
 <!--
  I know you really came here wanting to see a million words on a slide not just an emoji or two, -->
 
 ---
 
-# excited to see code img
+![bg cover](./images/excitedkidscode.jpeg)
 
 <!-- so we've reached the point where I show you some code, hooray! -->
 
 ---
 
-# long list of things
+![bg cover](./images/longlist.jpeg)
 
 <!-- to maintain scope, I'm going to limit this to talking about two things, to prove its not just one tech, or tool. -->
 
@@ -972,7 +1000,7 @@ https://www.cvedetails.com/vulnerability-list/cvssscoremin-9/cvssscoremax-10/vul
 
 ---
 
-# pick and mix
+![bg cover](./images/picknmix.jpeg)
 
 <!--but I could have picked anything -->
 
@@ -987,7 +1015,7 @@ https://www.cvedetails.com/vulnerability-list/cvssscoremin-9/cvssscoremax-10/vul
 <!-- _class: fade listline lead  -->
 <style scoped>
 li {
-  font-size: 1.8em;
+  font-size: 1.7em;
 }
 </style>
 
@@ -1188,7 +1216,9 @@ Hopefully Less contentious application of semver, I've now added a new departmen
 
 ---
 
-# many to many relationship
+<!-- _class: invert lead -->
+
+# many-to-many
 
 <!-- You may have noticed the way the policy is designed and distributed lends it self well to co-exist in a Kubernetes cluster -->
 
@@ -1212,25 +1242,25 @@ Hopefully Less contentious application of semver, I've now added a new departmen
 
 ---
 
-# mic drop
+![bg](images/micdrop.webp)
 
 <!-- and there we have it a full org all done, all compliant, policy all versioned, CIO all aware of whats going on -->
 
 ---
 
-# culumbo, just one more thing
+![bg](images/columbo.jpeg)
 
-<!-- So this is great, but wouldn't be awesome if the the policy carried a story of why it exists -->
+<!-- So this is great, but just one more thing, wouldn't it be awesome if the the policy carried a story of why it exists -->
 
 ---
 
-# agile?
+![bg cover](images/agile.webp)
 
 <!-- after all if your agile team is even half effective it will reject anything it perceives as friction if it doesn't see value in it -->
 
 ---
 
-# ⁉️
+# ⁉️ <!--fit-->
 
 <!-- it could allow our devs to know why they're compliant, and if they want to do something outside what the policy permits, they don't need any sort of exemption granted per-say, they can have a well reasoned and informed debate with rationale behind a pull request to the policy -->
 
@@ -1238,17 +1268,18 @@ Hopefully Less contentious application of semver, I've now added a new departmen
 
 # 💡 <!--fit-->
 
-<!-- imagine, if you will, this going through a stage of versions, with risks that inform the mitigations manifested as policy maintained as one. so when the risk landscape changes, your policies can move with it -->
+<!-- imagine, if you will, this going through a stage of versions, with risks that inform the mitigations manifested as policy maintained as one. 
+so when the risk landscape changes, your policies can move with it -->
 
 ---
 
-# move
+![bg](./images/movingtarget.jpeg)
 
-<!-- so when some new privacy regulation comes out, or your latest marketing strategy pays off and you acquire more data for example, even if your policy was perfect at one time, the risks and the appetite do not stand still -->
+<!-- when some new privacy regulation comes out, or your latest marketing strategy pays off and you acquire more data for example, even if your policy was perfect at one time, the risks and the appetite stand still for no one -->
 
 ---
 
-# over provision?
+![bg](./images/racks.webp)
 
 <!-- we can liken this to over provisioning, that we might be familiar with elsewhere, where lead times are long, change is hard, and there is a significant pressure in nailing it first time, which can lead to hedging bets against what some future state might be, rather than proportionate mitigation to risks that are more tangibly real in the now -->
 
@@ -1260,19 +1291,19 @@ Hopefully Less contentious application of semver, I've now added a new departmen
 
 ---
 
-# need you pic
+![bg](./images/wantyou.png)
 
 <!-- so how can you help? apart from pull requests -->
 
 ---
 
-# donor card
+![bg](./images/donarcard.jpeg)
 
 <!-- I could really do with a donor organization and management buy in to see this can work for real -->
 
 ---
 
-# end of road
+# 🛣 <!--fit-->
 
 <!-- but we've reached the end of the journey for now -->
 
