@@ -59,10 +59,10 @@ I look at the first person on my left, she's in a suit, she looks really importa
 eye contact with important business woman in suit in lift
 
 <!--
-she looks back to me as if to say yes, go on, 
-eye she nods, 
-Oh. 
-ok perfect the policy maker, the one who's neck is on the block, what are the chances of finding you in my imaginary lift today? 
+she looks back to me as if to say yes, go on,
+eye she nods,
+Oh.
+ok perfect the policy maker, the one who's neck is on the block, what are the chances of finding you in my imaginary lift today?
 
 I ask her, what keeps you up at night?
 -->
@@ -964,7 +964,6 @@ https://www.cvedetails.com/vulnerability-list/cvssscoremin-9/cvssscoremax-10/vul
 
 <!-- to maintain scope, I'm going to limit this to talking about two things, to prove its not just one tech, or tool. -->
 
-
 ---
 
 # terraform + k8s + ...
@@ -1037,6 +1036,7 @@ so likewise I'm going to pick two tools, but again I could use any, some, or eve
 ---
 
 # v1.0.0 screenshot of policy
+
 # terraform | k8s [split]
 
 <!-- so heres where my policy starts at v1.0.0 I've got policy that requires a department label on all resources, so long as its set, doesn't matter what it is -->
@@ -1044,6 +1044,7 @@ so likewise I'm going to pick two tools, but again I could use any, some, or eve
 ---
 
 # v1.0.0 screenshot of policy
+
 # terraform | k8s [split]
 
 <!-- I've written tests for this, note how the passing test cases are usable as a great example of what good and bad looks like -->
@@ -1057,6 +1058,7 @@ so likewise I'm going to pick two tools, but again I could use any, some, or eve
 ---
 
 # v2.0.0 screenshot of policy
+
 # terraform | k8s [split]
 
 <!-- moving on, version 2.0.0 looks similar, only now that department field has to be one of a predetermined list, like before, tests exist, release notes are written, tags are signed -->
@@ -1064,9 +1066,10 @@ so likewise I'm going to pick two tools, but again I could use any, some, or eve
 ---
 
 # v2.1.0 screenshot of policy
+
 # terraform | k8s [split]
 
-<!-- 
+<!--
 You can argue with me that my scenario and use of semver is incorrect here, this might be a major not a minor change, if you've got a better example scenario, please do let me know.
 But this where we notice and correct a spelling mistake of one of the options in that list of departments
 -->
@@ -1074,23 +1077,22 @@ But this where we notice and correct a spelling mistake of one of the options in
 ---
 
 # v2.1.1 screenshot of policy
+
 # terraform | k8s [split]
 
-<!-- 
+<!--
 Hopefully Less contentious application of semver, I've now added a new department to the list.
 -->
 
 ---
 
-# app1 | infra1 
+# app1 | infra1
+
 # k8s | tf
 
-1.0.0 | 2.0.0 | 2.1.0 | 2.1.1
-✅ | ❌ | ❌ | ❌ 
-
+1.0.0 | 2.0.0 | 2.1.0 | 2.1.1 ✅ | ❌ | ❌ | ❌
 
 <!-- app1 and infra1 depend on version 1.0.0 of the policy, it is not compliant with version 2.0.0 or beyond, but how do I know that? -->
-
 
 ---
 
@@ -1119,11 +1121,12 @@ Hopefully Less contentious application of semver, I've now added a new departmen
 ---
 
 # app2 | infra2
+
 # k8s | tf
 
 1.0.0 | 2.0.0 | 2.1.0 | 2.1.1
-- | ✅ | ☑️ | ☑️
 
+- | ✅ | ☑️ | ☑️
 
 <!-- moving on from that app2 and infra2 depend on version 2.0.0 of the policy -->
 
@@ -1136,9 +1139,11 @@ Hopefully Less contentious application of semver, I've now added a new departmen
 ---
 
 # app3 | infra3
+
 # k8s | tf
 
 1.0.0 | 2.0.0 | 2.1.0 | 2.1.1
+
 - | - | - | ✅
 
 <!-- finally app3 and infra3 are dependent on 2.1.1 they get a gold star from the CIO -->
@@ -1164,6 +1169,7 @@ Hopefully Less contentious application of semver, I've now added a new departmen
 ---
 
 # 👩‍💻 <!--fit-->
+
 # split with screenshot from terminal output
 
 <!-- what this does is allows me from my dev laptop or in CI to evaluate my code against the version of policy, ideally this might be less cumbersome, but it is what it is for now, pull requests are welcome! -->
@@ -1207,7 +1213,6 @@ Hopefully Less contentious application of semver, I've now added a new departmen
 ---
 
 # mic drop
-
 
 <!-- and there we have it a full org all done, all compliant, policy all versioned, CIO all aware of whats going on -->
 
@@ -1305,14 +1310,6 @@ Questions are very welcome on this or anything else, I'll hold the stage as long
 
 ---
 
-![bg](./images/etc.jpeg)
-![bg](./images/binding.jpeg)
-![bg](./images/mutating.jpeg)
-![bg](./images/outoforder.jpeg)
-![bg](./images/psp-chris.jpeg)
-![bg fit](./images/easy.webp)
-![bg](./images/pwnkit.png)
-![bg fit](./images/GoodNews.jpeg)
-![bg fit](./images/spoiler-alert.jpeg)
+![bg](./images/etc.jpeg) ![bg](./images/binding.jpeg) ![bg](./images/mutating.jpeg) ![bg](./images/outoforder.jpeg) ![bg](./images/psp-chris.jpeg) ![bg fit](./images/easy.webp) ![bg](./images/pwnkit.png) ![bg fit](./images/GoodNews.jpeg) ![bg fit](./images/spoiler-alert.jpeg)
 
 ---
