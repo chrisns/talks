@@ -354,20 +354,20 @@ What if I said:
 
 <!-- class: lead invert -->
 
-# dependency
+# 👩‍👦 <!--fit-->
 
 <!--
-  - That same policy could be treated as a dependency, and operate like a linter, so you can run compliance checks locally, in CI and guard production ultimately
+That same policy could be treated as a dependency, and operate like a linter, so you can run compliance checks locally, in CI and guard production ultimately
 -->
 
 ---
 
 <!-- class: lead invert -->
 
-# multiple policies
+# 👨‍👨‍👦‍👦 <!--fit-->
 
 <!--
-  - That multiple versions of policy like a dependency are supported, so emergencies like you must update now because theres now known vulnerabilities type updates are a business as usual activity to communicate.
+That multiple versions of policy like a dependency are supported, so emergencies like you must update now because theres now known vulnerabilities type updates are a business as usual activity to communicate.
 -->
 
 ---
@@ -388,7 +388,6 @@ Interesting, ok, hang around.
 
 <!--
 HOW AM I DOING FOR TIME? .... GREAT, THANKS, I THINK I'VE GOT THIS, YOU CAN UNLOCK THE DOOR NOW.
-
 -->
 
 ---
@@ -440,8 +439,13 @@ now how many have sought exemption or consciously bent, broken, circumvented, ig
 # 😜<!--fit-->
 
 <!--
-HA, you fell for it.
-We've got all your names and employers details, so put your phones down, lend me your ears, the stakes just got raised.
+HA, you fell for it.-->
+
+---
+
+# 📝 <!--fit-->
+
+<!--We've got all your names and employers details, so put your phones down, lend me your ears, the stakes just got raised.
 -->
 
 ---
@@ -631,14 +635,16 @@ Maybe some of you are screaming your favorite product name at me in your heads a
 
 ---
 
-# But, we just provide `warn`ings not `error`s?
+<!-- _class: invert lead -->
+# But, we just provide <!--fit-->
+# `warn`ings not `error`s? <!--fit-->
 
 <!-- sure you might say that you provide warnings, on at least the less important issues or new emerging policy, which is great
  -->
 
 ---
 
-# 👀
+# 👀 <!--fit-->
 
 <!-- So long as someone sees them -->
 
@@ -654,7 +660,7 @@ Maybe some of you are screaming your favorite product name at me in your heads a
 
 ---
 
-# tumbleweed
+![bg](images/tumbleweed.gif)
 
 <!-- anyone, every time? -->
 
@@ -666,7 +672,7 @@ Maybe some of you are screaming your favorite product name at me in your heads a
 
 ---
 
-# stone throwing
+![bg](./images/stoneput.jpeg)
 
 <!-- Ok, well I'm not here today to just throw stones -->
 
@@ -688,26 +694,26 @@ Maybe some of you are screaming your favorite product name at me in your heads a
 
 ---
 
-# nothing new under the sun
+![bg](./images/nothingnew.jpeg)
 
 <!-- well theres nothing new under the sun, we've already unwittingly solved these problems elsewhere, we just need to be reminded and join the dots -->
 
 ---
 
-Git
+![bg](./images/git.jpeg)
 
  <!-- well the first is something if you're doing policy as code, you're probably already doing, put it in version control. the thing you might not be doing though is then making that visible -->
 
 ---
 
-# inner source
+# >= inner source <!--fit-->
 
 <!-- so at least inner source this, by which i mean allow anyone within your walled garden (employees, suppliers etc) to see the policy, I'm not saying give all your threat monitoring rules and intel away, you can probably keep those to yourself, but I'd argue visible policy and the gaps therein is often better than downtime, reverse engineered workarounds, and opaque legacied exemption spaghetti soup.
 -->
 
 ---
 
-# opensource?
+# open source? <!--fit-->
 
 <!-- If you're brave you might even open source it, you'll find it unlocks the ability to work well with prospective suppliers without NDAs and what not, and widely distributed secrets are expensive to maintain, difficult to handle and often only stay secret for so long after all -->
 
@@ -731,7 +737,7 @@ Git
 
 # semver <!--fit-->
 
-(semantic versioning)
+# (semantic versioning)
 
 <!-- many of you are no doubt used to semantic versioning, but a quick recap -->
 
@@ -815,7 +821,14 @@ Git
 
 # `sudo apt-get install coffee`<!--fit-->
 
-<!-- in software we're used to handling dependencies, so what if your policy was just another dependency, you might unwittingly already be doing this if for example you have eslint as a dependency in your javascript package perhaps? -->
+<!-- in software we're used to handling dependencies, so what if your policy was just another dependency -->
+
+---
+
+<!-- _class: lead invert -->
+# `npm install --save-dev eslint`<!--fit-->
+
+<!--you might unwittingly already be doing this if for example you have eslint as a dependency in your javascript package perhaps? -->
 
 ---
 
@@ -887,7 +900,14 @@ Git
 
 ---
 
-# ↻ <!--fit-->
+<style scoped>
+h1 {
+  margin-top: -0.21em;
+  font-size: 35em;
+}
+</style>
+
+# ♼ 
 
 <!-- we're well and truly on the home stretch, its a dependency so updating it should be no different to any other -->
 
@@ -921,6 +941,7 @@ Git
 
 ---
 
+<!-- _class: invert lead -->
 # CVE-2021-45046 <!--fit-->
 
 <!-- log4j's -->
@@ -978,10 +999,10 @@ https://www.cvedetails.com/vulnerability-list/cvssscoremin-9/cvssscoremax-10/vul
 
 ![bg cover](./images/words.jpeg)
 
-# 🤣🤣🤣🤣 <!--fit-->
+# 🙄🤖 <!--fit-->
 
 <!--
- I know you really came here wanting to see a million words on a slide not just an emoji or two, -->
+I know you really came here wanting to see a million words on a slide not just an emoji or two-->
 
 ---
 
@@ -997,7 +1018,7 @@ https://www.cvedetails.com/vulnerability-list/cvssscoremin-9/cvssscoremax-10/vul
 
 ---
 
-# terraform + k8s + ...
+# terraform + k8s <!--fit-->
 
 <!--  I've arbitrarily picked terraform and Kubernetes -->
 
@@ -1181,13 +1202,14 @@ Hopefully Less contentious application of semver, I've now added a new departmen
 
 ---
 
+<!-- _class: invert lead -->
 # 🪄 <!--fit-->
 
 <!-- there is a small touch of magic, and its not pretty -->
 
 ---
 
-# `#!/bin/bash`
+# `#!/bin/bash` <!--fit-->
 
 <!-- I've written some bash -->
 
@@ -1296,13 +1318,13 @@ so when the risk landscape changes, your policies can move with it -->
 
 ![bg](./images/wantyou.png)
 
-<!-- so how can you help? apart from pull requests -->
+<!-- so why am I here, what do I want, how can you help? apart from pull requests -->
 
 ---
 
 ![bg](./images/donarcard.jpeg)
 
-<!-- I could really do with a donor organization and management buy in to see this can work for real -->
+<!-- I could really do with a donor organization and management buy in to see if this can work for real -->
 
 ---
 
@@ -1341,9 +1363,3 @@ talks.cns.me contains the this and other talks, they're all open source.
 
 Questions are very welcome on this or anything else, I'll hold the stage as long as I'm allowed, or find me afterwards, I'm pretty thirsty so I'll be over there.
 -->
-
----
-
-![bg](./images/etc.jpeg) ![bg](./images/binding.jpeg) ![bg](./images/mutating.jpeg) ![bg](./images/outoforder.jpeg) ![bg](./images/psp-chris.jpeg) ![bg fit](./images/easy.webp) ![bg](./images/pwnkit.png) ![bg fit](./images/GoodNews.jpeg) ![bg fit](./images/spoiler-alert.jpeg)
-
----
