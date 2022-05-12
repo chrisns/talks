@@ -37,7 +37,7 @@ Ok, policy is a dull thing, its kinda hard to make sexy, but I'm going to try an
 
 ---
 
-Lift with people entering
+![bg](./images/policy1.png)
 
 <!--
 So to set the scene I'm in the lift (yes, American friends we really do call them lifts) four people walk in.
@@ -47,7 +47,7 @@ I think to myself, Chris! this is your moment, now or never. as the door closes,
 
 ---
 
-Important business woman in suit in lift
+2 Important business woman in suit in lift
 
 <!--
 
@@ -56,20 +56,20 @@ I look at the first person on my left, she's in a suit, she looks really importa
 
 ---
 
-eye contact with important business woman in suit in lift
+3 eye contact with important business woman in suit in lift
 
 <!--
 she looks back to me as if to say yes, go on,
 eye she nods,
 Oh.
-ok perfect the policy maker, the one who's neck is on the block, what are the chances of finding you in my imaginary lift today?
+ok perfect the CIO the policy maker, the one who's neck is on the block, what are the chances of finding you in my imaginary lift today?
 
 I ask her, what keeps you up at night?
 -->
 
 ---
 
-important business woman speech bubble: lack of visibility
+![bg](./images/policy4.png)
 
 <!--
 
@@ -79,7 +79,7 @@ I don't know what teams are really doing what, the volume of risk and what I sho
 
 ---
 
-important business woman speech bubble: Updating policy
+![bg](./images/policy5.png)
 
 <!--
 Setting and changing policy is slow and hard to communicate
@@ -87,7 +87,7 @@ Setting and changing policy is slow and hard to communicate
 
 ---
 
-important business woman speech bubble: lack of control
+![bg](./images/policy7.png)
 
 <!--
 
@@ -96,7 +96,7 @@ People just go off and do their own thing, they think they know better, and to b
 
 ---
 
-reassuring look from me in lift
+![bg](./images/policy7.png)
 
 <!--
 
@@ -105,7 +105,7 @@ Ok, I say. trying not to sound like a patronizing snake oil salesman I can help.
 
 ---
 
-man in suit in lift, not as important
+![bg](./images/policy8.png)
 
 <!--
 
@@ -114,7 +114,7 @@ I turn my attention to the second person, in a suit, look less important. I make
 
 ---
 
-man in suit speech bubble: managing risk
+![bg](./images/policy9.png)
 
 <!--
 
@@ -123,7 +123,7 @@ Managing risk, mostly opportunity risk, the fear of missing out. so getting feat
 
 ---
 
-man in suit glances at important business woman in lift
+![bg](./images/policy10.png)
 
 <!--
  (they glance to the CIO) bureaucracy that is designed to slow me down.
@@ -131,7 +131,7 @@ man in suit glances at important business woman in lift
 
 ---
 
-back to me looking confident
+![bg](./images/policy11.png)
 
 <!--
 
@@ -140,7 +140,7 @@ Awesome I say, this is your lucky day.
 
 ---
 
-person dressed in overalls/boiler suit
+![bg](./images/policy12.png)
 
 <!--
 
@@ -148,7 +148,7 @@ I turn to the next person, dressed in overalls, I am in a trendy part of town, t
 
 ---
 
-overalls/boiler suit person speech bubble "cleaner"
+![bg](./images/policy13.png)
 
 <!--
 Cleaner they say, errr ok how did you get in my imagination, let me come back to you.
@@ -156,7 +156,7 @@ Cleaner they say, errr ok how did you get in my imagination, let me come back to
 
 ---
 
-person in hoodie, headphones round neck
+![bg](./images/policy14.png)
 
 <!--
 
@@ -164,7 +164,7 @@ My attention goes to the last person, hoodie, headphones round their neck. Ah my
 
 ---
 
-person in hoodie speech bubble {< code>...</ code>}
+![bg](./images/policy15.png)
 
 <!--
 What code do you write I ask (it doesn't matter), python, cool have you got everything updated to work with, I pause, Python 3? they say, yeah, python 3, that must be hard I add. They don't know it yet but I've won their trust which is important. Nearly they say. cool. Whats important to you?
@@ -172,14 +172,14 @@ What code do you write I ask (it doesn't matter), python, cool have you got ever
 
 ---
 
-person in hoodie speech bubble: patching
+![bg](./images/policy16.png)
 
 <!-- Staying on top of patching dependencies, so we can react to the next log4j patching flurry.
 -->
 
 ---
 
-person in hoodie speech bubble: (some) rules
+![bg](./images/policy17.png)
 
 <!--
 
@@ -188,7 +188,7 @@ person in hoodie speech bubble: (some) rules
 
 ---
 
-person in hoodie speech bubble: Quality
+![bg](./images/policy18.png)
 
 <!--
 
@@ -197,7 +197,7 @@ person in hoodie speech bubble: Quality
 
 ---
 
-person in hoodie speech bubble: 🛠
+![bg](./images/policy19.png)
 
 <!--
 
@@ -207,7 +207,7 @@ Yeah, linters, code quality and test coverage tools, the usual.
 
 ---
 
-me handing a qr code
+20 me handing a qr code
 
 <!--
 
@@ -216,7 +216,7 @@ Great I say, I write code too, lets be friends, I hand them a printed QR code he
 
 ---
 
-person in boiler suit
+21 person in boiler suit
 
 <!--
 
@@ -225,7 +225,7 @@ I return my focus to the cleaner, I've got it, How do you get told what to do, a
 
 ---
 
-memo stuck to notice board
+22 memo stuck to notice board
 
 <!--
 
@@ -235,7 +235,7 @@ Interesting I say, how does that work out, well its up to us to then maintain th
 
 ---
 
-binder full of docs
+23 binder full of docs
 
 <!--
 
@@ -243,7 +243,7 @@ Go wrong at all? yeah, sometimes if when we compile our operational manual we mi
 
 ---
 
-person in boiler suit glances appologetically at man in suit
+24 person in boiler suit glances apologetically at man in suit
 
 <!--
 they glance apologetically to the product manager, like when we hadn't updated the guide that the meeting room on the 3rd floor was being used as a dedicated war room, and we wiped their boards down.
@@ -251,7 +251,7 @@ they glance apologetically to the product manager, like when we hadn't updated t
 
 ---
 
-person in hoodie, nodding
+25 person in hoodie, nodding
 
 <!--
 
@@ -264,7 +264,7 @@ Ah all is not lost, I knew there was a reason I imagined you here.
 
 ---
 
-all of us in lift, focus drawn to floor counter
+26 all of us in lift, focus drawn to floor number counter
 
 <!--
 
@@ -275,7 +275,7 @@ Great, I have got the silver bullet for you too.
 
 ---
 
-important business woman pulling money out their pockets
+27 important business woman pulling money out their pockets
 
 <!--
 
@@ -284,7 +284,7 @@ The CIO looks to me ready to buy whatever it is I'm selling, they ask me as the 
 
 ---
 
-me moving out way of door
+28 me moving out way of door
 
 <!--
 
@@ -293,7 +293,7 @@ As I move out the way so to stop obstructing the door I answer, oh I don't work 
 
 ---
 
-all 4 people leaving lift towards sign to stairs
+29 all 4 people leaving lift towards sign to stairs
 
 <!--
 
@@ -302,7 +302,7 @@ My audience storms out, furious, heading towards the stairs, the door shut, I ge
 
 ---
 
-business woman, business man, dev cleaner in a line up
+30 business woman, business man, dev cleaner in a line up
 
 <!--
 
@@ -540,7 +540,7 @@ It often looks like the thin edge of a wedge, where the precedent which may have
 
 ---
 
-# Policy, as `<code>`?
+# Policy, as `<code/>`?
 
 <!-- we've codified everything else so isn't this the answer, well yes in part but my point of this talk is we do it wrong -->
 
@@ -1074,7 +1074,7 @@ li {
 - TiDB
 
 <!--
-so likewise I'm going to pick two tools, but again I could use any, some, or even all, probably.
+so likewise I'm going to pick two tools, but again I could use any, some, or even all, probably. Checkov will do my terraform, kyverno will to my kubernetes.
 -->
 
 ---
@@ -1109,7 +1109,9 @@ so likewise I'm going to pick two tools, but again I could use any, some, or eve
 
 # v1.0.0 screenshot tagged release
 
-<!-- we've pushed a tag in git, we've added release notes, I can sign it to provide further assurance if my heart desires -->
+<!-- we've pushed a tag in git, we've added release notes, I can sign it to provide further assurance if my heart desires.
+
+it does -->
 
 ---
 
@@ -1172,7 +1174,9 @@ Hopefully Less contentious application of semver, I've now added a new departmen
 
 # screenshot of renovate PRs in org
 
-<!-- I can also see all the pull requests over the org, so I can measure the compliance of my policy -->
+<!-- I can also see all the pull requests over the org, so I can measure the compliance of my policy
+https://github.com/pulls?q=is%3Aopen+is%3Apr+archived%3Afalse+user%3Apolicy-as-versioned-code
+-->
 
 ---
 
@@ -1242,7 +1246,7 @@ Hopefully Less contentious application of semver, I've now added a new departmen
 
 # k8s ~~terraform~~
 
-<!-- I've cheated a bit here, kube gives you admission controllers, its not so easy to get the same policy evaluation in a cloud, they've got their their own policy code, I've not figured how to be able to evaluate that policy locally, again pull requests, contribution, collaboration, sponsorship are all very welcome -->
+<!-- I've cheated a bit here, kube gives you admission controllers, its not so easy to get the same policy evaluation in a cloud, they've got their their own policy code, I've not figured how to be able to evaluate that policy locally, again pull requests, contribution, collaboration are all very welcome -->
 
 ---
 
@@ -1362,7 +1366,7 @@ h2 {
 <!--
 Thanks for your time, hopefully this has been interesting, you're now free to leave, I'll destroy the evidence of your guilt admissions - no really I will
 
-Like subscribe whatever the kids do these days on LinkedIn, Github whatever and you can be assured there'll be no spam or much content at all since I'm awful at self promotion especially on social media. cns.me just points at my linkedin.
+Like subscribe whatever the kids do these days on LinkedIn, Github whatever and you can be assured there'll be no spam or much content at all since I'm awful at self promotion especially on social media. cns.me just points at my LinkedIn.
 
 talks.cns.me contains the this and other talks, they're all open source.
 
