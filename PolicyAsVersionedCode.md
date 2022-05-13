@@ -1090,53 +1090,286 @@ section {
 
 # github.com/policy-as-versioned-code <!--fit-->
 
-![fit](images/policy-ghorg.png)
+![](images/policy-ghorg.png)
 
 <!-- If you want to browse along with me, I've create a example git hub organization here -->
 
 ---
+<style scoped>
+section {
+  background: white;
+}
+</style>
 
-# policy repo screenshot
+![fit bg](images/policy-policyrepo.png)
 
 <!-- The policy is stored here -->
 
 ---
+<!-- _class: -->
+<style scoped>
+pre {
+  width: 45%;
+}
+pre:nth-child(2) {
+  right: 1vh;
+  position: absolute;
+}
+</style>
 
-# v1.0.0 screenshot of policy
+# v1.0.0 policy
 
-# terraform | k8s [split]
+```yaml
+# kyverno kubernetes
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-department-label
+  annotations:
+    policies.kyverno.io/title: Require Department Label
+    policies.kyverno.io/category: Example Org Policy
+    policies.kyverno.io/description: >-
+      It is important we know the department that resources
+      belong to, so you need to define a 'mycompany.com/department'
+      label on all your resources.
+    pod-policies.kyverno.io/autogen-controllers: none
+spec:
+  validationFailureAction: enforce
+  background: false
+  rules:
+  - name: require-department-label
+    validate:
+      message: >-
+        The label `mycompany.com/department` is 
+        required.
+      pattern:
+        metadata:
+          labels:
+            "mycompany.com/department": "?*"
+```
+```yaml
+# checkov terraform
+metadata:
+  name: >-
+    Check that all resources are tagged with
+    the key - department"
+  id: "CUSTOM_AWS_1"
+  category: "CONVENTION"
+scope:
+  provider: aws
+definition:
+  and:
+    - cond_type: "attribute"
+      resource_types: "all"
+      attribute: 'tags.mycompany.com.department'
+      operator: "exists"
+```
 
 <!-- so heres where my policy starts at v1.0.0 I've got policy that requires a department label on all resources, so long as its set, doesn't matter what it is -->
 
 ---
 
-# v1.0.0 screenshot of policy
+<!-- _class: -->
+<style scoped>
+pre {
+  width: 45%;
+}
+pre:nth-child(2) {
+  right: 1vh;
+  position: absolute;
+}
+</style>
 
-# terraform | k8s [split]
+
+# v1.0.0 policy tests
+
+```yaml
+# fail0.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: require-department-label-fail0
+spec: ...
+---
+# pass0.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: require-department-label-pass0
+  labels:
+    mycompany.com/department: finance
+spec: ...
+```
+```js
+// fail0.tf
+resource "aws_s3_bucket" "b" {
+  bucket = "my-tf-test-bucket"
+}
+---
+// pass0.tf
+resource "aws_s3_bucket" "b" {
+  bucket = "my-tf-test-bucket"
+  tags = {
+    mycompany.com.department = "finance"
+  }
+}
+```
 
 <!-- I've written tests for this, note how the passing test cases are usable as a great example of what good and bad looks like -->
 
 ---
+<style scoped>
+section { background:white;}
+</style>
 
-# v1.0.0 screenshot tagged release
+![bg fit](images/policy-100release.png)
 
-<!-- we've pushed a tag in git, we've added release notes, I can sign it to provide further assurance if my heart desires.
-
-it does -->
+<!-- we've pushed a tag in git, we've added release notes, I can sign it to provide further assurance if my heart desires. -->
 
 ---
+<style scoped>
+section { background:white;}
+</style>
 
-# v2.0.0 screenshot of policy
+![bg fit](images/policy-signed100.png)
 
-# terraform | k8s [split]
+<!-- it does -->
+
+---
+<!-- _class: -->
+<style scoped>
+pre {
+  width: 45%;
+}
+pre:nth-child(2) {
+  right: 1vh;
+  position: absolute;
+}
+</style>
+
+# v2.0.0 policy
+
+```yaml
+# kyverno kubernetes
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-department-label
+  annotations:
+    policies.kyverno.io/title: Require Department Label
+    policies.kyverno.io/category: Example Org Policy
+    policies.kyverno.io/description: >-
+      It is important we know the department that resources
+      belong to, so you need to define a 'mycompany.com/department'
+      label on all your resources.
+    pod-policies.kyverno.io/autogen-controllers: none
+spec:
+  validationFailureAction: enforce
+  background: false
+  rules:
+  - name: require-department-label
+    validate:
+      message: >-
+        The label `mycompany.com/department` is required to be one
+        of [acounts|hr]"
+      pattern:
+        metadata:
+          labels:
+            "mycompany.com/department": "acounts|hr"
+```
+```yaml
+# checkov terraform
+metadata:
+  name: >-
+    Check that all resources are tagged with
+    the key - department"
+  id: "CUSTOM_AWS_1"
+  category: "CONVENTION"
+scope:
+  provider: aws
+definition:
+  or:
+    - cond_type: "attribute"
+      resource_types: "all"
+      attribute: 'tags.mycompany.com.department'
+      operator: "equals"
+      value: hr
+    - cond_type: "attribute"
+      resource_types: "all"
+      attribute: 'tags.mycompany.com.department'
+      operator: "equals"
+      value: acounts
+```
 
 <!-- moving on, version 2.0.0 looks similar, only now that department field has to be one of a predetermined list, like before, tests exist, release notes are written, tags are signed -->
 
 ---
 
-# v2.1.0 screenshot of policy
+<!-- _class: invert -->
+<style scoped>
+pre {
+  width: 45%;
+}
+pre:nth-child(2) {
+  right: 1vh;
+  position: absolute;
+}
+</style>
 
-# terraform | k8s [split]
+
+# v2.1.0 policy
+
+```yaml
+# kyverno kubernetes
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-department-label
+  annotations:
+    policies.kyverno.io/title: Require Department Label
+    policies.kyverno.io/category: Example Org Policy
+    policies.kyverno.io/description: >-
+      It is important we know the department that resources
+      belong to, so you need to define a 'mycompany.com/department'
+      label on all your resources.
+    pod-policies.kyverno.io/autogen-controllers: none
+spec:
+  validationFailureAction: enforce
+  background: false
+  rules:
+  - name: require-department-label
+    validate:
+      message: >-
+        The label `mycompany.com/department` is required to be one
+        of [accounts|hr]"
+      pattern:
+        metadata:
+          labels:
+            "mycompany.com/department": "accounts|hr"
+```
+```yaml
+# checkov terraform
+metadata:
+  name: >-
+    Check that all resources are tagged with
+    the key - department"
+  id: "CUSTOM_AWS_1"
+  category: "CONVENTION"
+scope:
+  provider: aws
+definition:
+  or:
+    - cond_type: "attribute"
+      resource_types: "all"
+      attribute: 'tags.mycompany.com.department'
+      operator: "equals"
+      value: hr
+    - cond_type: "attribute"
+      resource_types: "all"
+      attribute: 'tags.mycompany.com.department'
+      operator: "equals"
+      value: accounts
+```
 
 <!--
 You can argue with me that my scenario and use of semver is incorrect here, this might be a major not a minor change, if you've got a better example scenario, please do let me know.
@@ -1145,9 +1378,76 @@ But this where we notice and correct a spelling mistake of one of the options in
 
 ---
 
-# v2.1.1 screenshot of policy
+<!-- _class: -->
+<style scoped>
+pre {
+  width: 45%;
+}
+pre:nth-child(2) {
+  right: 1vh;
+  position: absolute;
+}
+</style>
 
-# terraform | k8s [split]
+
+# v2.1.1 policy
+
+```yaml
+# kyverno kubernetes
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-department-label
+  annotations:
+    policies.kyverno.io/title: Require Department Label
+    policies.kyverno.io/category: Example Org Policy
+    policies.kyverno.io/description: >-
+      It is important we know the department that resources
+      belong to, so you need to define a 'mycompany.com/department'
+      label on all your resources.
+    pod-policies.kyverno.io/autogen-controllers: none
+spec:
+  validationFailureAction: enforce
+  background: false
+  rules:
+  - name: require-department-label
+    validate:
+      message: >-
+        The label `mycompany.com/department` is required to be one
+        of [tech|accounts|hr]"
+      pattern:
+        metadata:
+          labels:
+            "mycompany.com/department": "tech|accounts|hr"
+```
+```yaml
+# checkov terraform
+metadata:
+  name: >-
+    Check that all resources are tagged with
+    the key - department"
+  id: "CUSTOM_AWS_1"
+  category: "CONVENTION"
+scope:
+  provider: aws
+definition:
+  or:
+    - cond_type: "attribute"
+      resource_types: "all"
+      attribute: 'tags.mycompany.com.department'
+      operator: "equals"
+      value: hr
+    - cond_type: "attribute"
+      resource_types: "all"
+      attribute: 'tags.mycompany.com.department'
+      operator: "equals"
+      value: accounts
+    - cond_type: "attribute"
+      resource_types: "all"
+      attribute: 'tags.mycompany.com.department'
+      operator: "equals"
+      value: tech
+```
 
 <!--
 Hopefully Less contentious application of semver, I've now added a new department to the list.
@@ -1257,15 +1557,50 @@ https://github.com/pulls?q=is%3Aopen+is%3Apr+archived%3Afalse+user%3Apolicy-as-v
 
 ---
 
-# screen shot of policy checker repo
+<style scoped>
+section { background:white;}
+</style>
+
+![bg fit](images/policy-policy-checker-repo.png)
 
 <!-- don't judge me, even though I've probably, definitely, written worse -->
 
 ---
 
+<style scoped>
+pre {
+  width: 50%;
+}
+h1 {
+  width: 50% !important;
+  right: 1vh;
+  position: absolute;
+}
+
+section { background:white;}
+</style>
+
 # 👩‍💻 <!--fit-->
 
-# split with screenshot from terminal output
+```bash
+$ docker run --rm -ti \
+  -v $(pwd):/apps \
+  ghcr.io/policy-as-versioned-code/policy-checker
+
+Found kustomization.yaml
+Checking policy version...
+Policy version: 1.0.0
+Fetching Policy...
+Policy fetched.
+Running policy checker...
+
+Applying 1 policy to 1 resource...
+(Total number of result count may vary as the
+policy is mutated by Kyverno. To check the
+mutated policy please try with log level 5)
+
+pass: 1, fail: 0, warn: 0, error: 0, skip: 0
+```
 
 <!-- what this does is allows me from my dev laptop or in CI to evaluate my code against the version of policy, ideally this might be less cumbersome, but it is what it is for now, pull requests are welcome! -->
 
@@ -1291,19 +1626,19 @@ https://github.com/pulls?q=is%3Aopen+is%3Apr+archived%3Afalse+user%3Apolicy-as-v
 
 ---
 
-# screenshot of cluster1 repo
+![bg fit](images/policy-cluster1-repo.png)
 
 <!-- which brings us to the cluster1 which describes a cluster that accepts all the versions we've described so far -->
 
 ---
 
-# screenshot of cluster2 repo
+![bg fit](images/policy-cluster2-repo.png)
 
 <!-- likewise cluster2, only accepts 2.0.0 and greater -->
 
 ---
 
-# screenshots of cluster1 and cluster2 builds
+![bg fit](images/policy-cluster-builds.png)
 
 <!-- we automate using KiND for CI to deploy the apps -->
 
