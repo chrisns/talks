@@ -1139,15 +1139,15 @@ spec:
   validationFailureAction: enforce
   background: false
   rules:
-  - name: require-department-label
-    validate:
-      message: >-
-        The label `mycompany.com/department` is 
-        required.
-      pattern:
-        metadata:
-          labels:
-            "mycompany.com/department": "?*"
+    - name: require-department-label
+      validate:
+        message: >-
+          The label `mycompany.com/department` is 
+          required.
+        pattern:
+          metadata:
+            labels:
+              "mycompany.com/department": "?*"
 ```
 
 ```yaml
@@ -1164,7 +1164,7 @@ definition:
   and:
     - cond_type: "attribute"
       resource_types: "all"
-      attribute: 'tags.mycompany.com.department'
+      attribute: "tags.mycompany.com.department"
       operator: "exists"
 ```
 
@@ -1273,15 +1273,15 @@ spec:
   validationFailureAction: enforce
   background: false
   rules:
-  - name: require-department-label
-    validate:
-      message: >-
-        The label `mycompany.com/department` is required to be one
-        of [acounts|hr]"
-      pattern:
-        metadata:
-          labels:
-            "mycompany.com/department": "acounts|hr"
+    - name: require-department-label
+      validate:
+        message: >-
+          The label `mycompany.com/department` is required to be one
+          of [acounts|hr]"
+        pattern:
+          metadata:
+            labels:
+              "mycompany.com/department": "acounts|hr"
 ```
 
 ```yaml
@@ -1343,15 +1343,15 @@ spec:
   validationFailureAction: enforce
   background: false
   rules:
-  - name: require-department-label
-    validate:
-      message: >-
-        The label `mycompany.com/department` is required to be one
-        of [accounts|hr]"
-      pattern:
-        metadata:
-          labels:
-            "mycompany.com/department": "accounts|hr"
+    - name: require-department-label
+      validate:
+        message: >-
+          The label `mycompany.com/department` is required to be one
+          of [accounts|hr]"
+        pattern:
+          metadata:
+            labels:
+              "mycompany.com/department": "accounts|hr"
 ```
 
 ```yaml
@@ -1416,15 +1416,15 @@ spec:
   validationFailureAction: enforce
   background: false
   rules:
-  - name: require-department-label
-    validate:
-      message: >-
-        The label `mycompany.com/department` is required to be one
-        of [tech|accounts|hr]"
-      pattern:
-        metadata:
-          labels:
-            "mycompany.com/department": "tech|accounts|hr"
+    - name: require-department-label
+      validate:
+        message: >-
+          The label `mycompany.com/department` is required to be one
+          of [tech|accounts|hr]"
+        pattern:
+          metadata:
+            labels:
+              "mycompany.com/department": "tech|accounts|hr"
 ```
 
 ```yaml
@@ -1441,12 +1441,12 @@ definition:
   or:
     - cond_type: "attribute"
       resource_types: "all"
-      attribute: 'tags.mycompany.com.department'
+      attribute: "tags.mycompany.com.department"
       operator: "equals"
       value: hr
     - cond_type: "attribute"
       resource_types: "all"
-      attribute: 'tags.mycompany.com.department'
+      attribute: "tags.mycompany.com.department"
       operator: "equals"
       value: accounts
     - cond_type: "attribute"
