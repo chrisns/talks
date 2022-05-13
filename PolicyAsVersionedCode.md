@@ -47,7 +47,7 @@ I think to myself, Chris! this is your moment, now or never. as the door closes,
 
 ---
 
-2 Important business woman in suit in lift
+![bg](./images/policy2.png)
 
 <!--
 
