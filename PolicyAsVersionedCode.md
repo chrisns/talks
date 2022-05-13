@@ -1079,28 +1079,17 @@ so likewise I'm going to pick two tools, but again I could use any, some, or eve
 
 ---
 
-<style scoped>
-img {
-  width: 100%
-}
-section {
-  background: white;
-}
-</style>
+<!-- _class: white -->
 
 # github.com/policy-as-versioned-code <!--fit-->
 
-![](images/policy-ghorg.png)
+![bg fit](images/policy-ghorg.png)
 
 <!-- If you want to browse along with me, I've create a example git hub organization here -->
 
 ---
 
-<style scoped>
-section {
-  background: white;
-}
-</style>
+<!-- _class: white -->
 
 ![fit bg](images/policy-policyrepo.png)
 
@@ -1222,9 +1211,7 @@ resource "aws_s3_bucket" "b" {
 
 ---
 
-<style scoped>
-section { background:white;}
-</style>
+<!-- _class: white -->
 
 ![bg fit](images/policy-100release.png)
 
@@ -1232,9 +1219,7 @@ section { background:white;}
 
 ---
 
-<style scoped>
-section { background:white;}
-</style>
+<!-- _class: white -->
 
 ![bg fit](images/policy-signed100.png)
 
@@ -1564,15 +1549,15 @@ https://github.com/pulls?q=is%3Aopen+is%3Apr+archived%3Afalse+user%3Apolicy-as-v
 
 ---
 
-<style scoped>
-section { background:white;}
-</style>
+<!-- _class: white -->
 
 ![bg fit](images/policy-policy-checker-repo.png)
 
 <!-- don't judge me, even though I've probably, definitely, written worse -->
 
 ---
+
+<!-- _class: white -->
 
 <style scoped>
 pre {
@@ -1584,7 +1569,6 @@ h1 {
   position: absolute;
 }
 
-section { background:white;}
 </style>
 
 # 👩‍💻 <!--fit-->
