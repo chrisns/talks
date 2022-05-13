@@ -1095,6 +1095,7 @@ section {
 <!-- If you want to browse along with me, I've create a example git hub organization here -->
 
 ---
+
 <style scoped>
 section {
   background: white;
@@ -1106,6 +1107,7 @@ section {
 <!-- The policy is stored here -->
 
 ---
+
 <!-- _class: -->
 <style scoped>
 pre {
@@ -1147,6 +1149,7 @@ spec:
           labels:
             "mycompany.com/department": "?*"
 ```
+
 ```yaml
 # checkov terraform
 metadata:
@@ -1180,7 +1183,6 @@ pre:nth-child(2) {
 }
 </style>
 
-
 # v1.0.0 policy tests
 
 ```yaml
@@ -1200,6 +1202,7 @@ metadata:
     mycompany.com/department: finance
 spec: ...
 ```
+
 ```js
 // fail0.tf
 resource "aws_s3_bucket" "b" {
@@ -1218,6 +1221,7 @@ resource "aws_s3_bucket" "b" {
 <!-- I've written tests for this, note how the passing test cases are usable as a great example of what good and bad looks like -->
 
 ---
+
 <style scoped>
 section { background:white;}
 </style>
@@ -1227,6 +1231,7 @@ section { background:white;}
 <!-- we've pushed a tag in git, we've added release notes, I can sign it to provide further assurance if my heart desires. -->
 
 ---
+
 <style scoped>
 section { background:white;}
 </style>
@@ -1236,6 +1241,7 @@ section { background:white;}
 <!-- it does -->
 
 ---
+
 <!-- _class: -->
 <style scoped>
 pre {
@@ -1277,12 +1283,13 @@ spec:
           labels:
             "mycompany.com/department": "acounts|hr"
 ```
+
 ```yaml
 # checkov terraform
 metadata:
   name: >-
-    Check that all resources are tagged with
-    the key - department"
+    Check that all resources are tagged with the key - department"
+
   id: "CUSTOM_AWS_1"
   category: "CONVENTION"
 scope:
@@ -1291,12 +1298,12 @@ definition:
   or:
     - cond_type: "attribute"
       resource_types: "all"
-      attribute: 'tags.mycompany.com.department'
+      attribute: "tags.mycompany.com.department"
       operator: "equals"
       value: hr
     - cond_type: "attribute"
       resource_types: "all"
-      attribute: 'tags.mycompany.com.department'
+      attribute: "tags.mycompany.com.department"
       operator: "equals"
       value: acounts
 ```
@@ -1315,7 +1322,6 @@ pre:nth-child(2) {
   position: absolute;
 }
 </style>
-
 
 # v2.1.0 policy
 
@@ -1347,12 +1353,13 @@ spec:
           labels:
             "mycompany.com/department": "accounts|hr"
 ```
+
 ```yaml
 # checkov terraform
 metadata:
   name: >-
-    Check that all resources are tagged with
-    the key - department"
+    Check that all resources are tagged with the key - department"
+
   id: "CUSTOM_AWS_1"
   category: "CONVENTION"
 scope:
@@ -1361,12 +1368,12 @@ definition:
   or:
     - cond_type: "attribute"
       resource_types: "all"
-      attribute: 'tags.mycompany.com.department'
+      attribute: "tags.mycompany.com.department"
       operator: "equals"
       value: hr
     - cond_type: "attribute"
       resource_types: "all"
-      attribute: 'tags.mycompany.com.department'
+      attribute: "tags.mycompany.com.department"
       operator: "equals"
       value: accounts
 ```
@@ -1388,7 +1395,6 @@ pre:nth-child(2) {
   position: absolute;
 }
 </style>
-
 
 # v2.1.1 policy
 
@@ -1420,6 +1426,7 @@ spec:
           labels:
             "mycompany.com/department": "tech|accounts|hr"
 ```
+
 ```yaml
 # checkov terraform
 metadata:
@@ -1444,7 +1451,7 @@ definition:
       value: accounts
     - cond_type: "attribute"
       resource_types: "all"
-      attribute: 'tags.mycompany.com.department'
+      attribute: "tags.mycompany.com.department"
       operator: "equals"
       value: tech
 ```
