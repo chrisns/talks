@@ -1079,7 +1079,18 @@ so likewise I'm going to pick two tools, but again I could use any, some, or eve
 
 ---
 
-# github org screenshot
+<style scoped>
+img {
+  width: 100%
+}
+section {
+  background: white;
+}
+</style>
+
+# github.com/policy-as-versioned-code <!--fit-->
+
+![fit](images/policy-ghorg.png)
 
 <!-- If you want to browse along with me, I've create a example git hub organization here -->
 
