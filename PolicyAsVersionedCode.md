@@ -1148,31 +1148,53 @@ Hopefully Less contentious application of semver, I've now added a new departmen
 
 # k8s | tf
 
-1.0.0 | 2.0.0 | 2.1.0 | 2.1.1 ✅ | ❌ | ❌ | ❌
+| 1.0.0 | 2.0.0 | 2.1.0 | 2.1.1 |
+| ----- | ----- | ----- | ----- |
+| ✅    | ❌    | ❌    | ❌    |
 
 <!-- app1 and infra1 depend on version 1.0.0 of the policy, it is not compliant with version 2.0.0 or beyond, but how do I know that? -->
 
 ---
 
-# app1 | infra1 renovate config screenshot
+```json
+$schema: "https://docs.renovatebot.com/renovate-schema.json",
+labels: ["policy"],
+regexManagers: [{
+  fileMatch: ["kustomization.yaml"],
+  matchStrings: ['mycompany.com/policy-version: "(?<currentValue>.*)"\\s+'],
+  datasourceTemplate: "github-tags",
+  depNameTemplate: "policy",
+  packageNameTemplate: "policy-as-versioned-code/policy",
+  versioningTemplate: "semver",
+},{
+  fileMatch: [".*tf$"],
+  matchStrings: [
+    '#\\s*renovate:\\s*policy?\\s*default = "(?<currentValue>.*)"\\s',
+  ],
+  datasourceTemplate: "github-tags",
+  depNameTemplate: "policy",
+  lookupNameTemplate: "policy-as-versioned-code/policy",
+  versioningTemplate: "semver",
+}],
+```
 
 <!-- I've configured renovate to automatically make a pull request -->
 
 ---
 
-# app1 | infra1 policy pull request screenshots
+![bg fit](images/policy-app1pr.png))
 
 <!--  when theres a new version of the policy, so its super obvious if I can update my dependency, and I can see -->
 
 ---
 
-# app1 | infra1 build log errors
+![bg fit](images/policy-app1-builderror.png)
 
 <!-- clear feedback about where and why I'm not compliant -->
 
 ---
 
-# screenshot of renovate PRs in org
+![bg](images/policy-prs-in-org.png)
 
 <!-- I can also see all the pull requests over the org, so I can measure the compliance of my policy
 https://github.com/pulls?q=is%3Aopen+is%3Apr+archived%3Afalse+user%3Apolicy-as-versioned-code
@@ -1184,15 +1206,15 @@ https://github.com/pulls?q=is%3Aopen+is%3Apr+archived%3Afalse+user%3Apolicy-as-v
 
 # k8s | tf
 
-1.0.0 | 2.0.0 | 2.1.0 | 2.1.1
-
-- | ✅ | ☑️ | ☑️
+| 1.0.0 | 2.0.0 | 2.1.0 | 2.1.1 |
+| ----- | ----- | ----- | ----- |
+| -     | ✅    | ☑️    | ☑️    |
 
 <!-- moving on from that app2 and infra2 depend on version 2.0.0 of the policy -->
 
 ---
 
-# screenshot of app2|infra2 policy pull request
+![bg](images/policy-app2-pr.png)
 
 <!-- however we could merge the open pull request all the way up to 2.1.1 -->
 
@@ -1202,9 +1224,9 @@ https://github.com/pulls?q=is%3Aopen+is%3Apr+archived%3Afalse+user%3Apolicy-as-v
 
 # k8s | tf
 
-1.0.0 | 2.0.0 | 2.1.0 | 2.1.1
-
-- | - | - | ✅
+| 1.0.0 | 2.0.0 | 2.1.0 | 2.1.1 |
+| ----- | ----- | ----- | ----- |
+| -     | -     | -     | ✅    |
 
 <!-- finally app3 and infra3 are dependent on 2.1.1 they get a gold star from the CIO -->
 
