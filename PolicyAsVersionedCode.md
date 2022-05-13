@@ -87,7 +87,7 @@ Setting and changing policy is slow and hard to communicate
 
 ---
 
-![bg](./images/policy7.png)
+![bg](./images/policy6.png)
 
 <!--
 
