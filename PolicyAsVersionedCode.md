@@ -540,7 +540,7 @@ It often looks like the thin edge of a wedge, where the precedent which may have
 
 ---
 
-# Policy, as `<code/>`?
+# Policy, as `<code/>`? <!--fit-->
 
 <!-- we've codified everything else so isn't this the answer, well yes in part but my point of this talk is we do it wrong -->
 
@@ -1485,11 +1485,15 @@ regexManagers: [{
 
 ---
 
-![bg fit](images/policy-app1pr.png))
+<!-- _class: white -->
+
+![bg fit](images/policy-app1pr.png)
 
 <!--  when theres a new version of the policy, so its super obvious if I can update my dependency, and I can see -->
 
 ---
+
+<!-- _class: invert -->
 
 ![bg fit](images/policy-app1-builderror.png)
 
@@ -1516,6 +1520,8 @@ https://github.com/pulls?q=is%3Aopen+is%3Apr+archived%3Afalse+user%3Apolicy-as-v
 <!-- moving on from that app2 and infra2 depend on version 2.0.0 of the policy -->
 
 ---
+
+<!-- _class: white -->
 
 ![bg](images/policy-app2-pr.png)
 
@@ -1603,7 +1609,7 @@ pass: 1, fail: 0, warn: 0, error: 0, skip: 0
 
 ---
 
-# k8s ~~terraform~~
+# k8s ~~terraform~~ <!--fit-->
 
 <!-- I've cheated a bit here, kube gives you admission controllers, its not so easy to get the same policy evaluation in a cloud, they've got their their own policy code, I've not figured how to be able to evaluate that policy locally, again pull requests, contribution, collaboration are all very welcome -->
 
@@ -1611,11 +1617,13 @@ pass: 1, fail: 0, warn: 0, error: 0, skip: 0
 
 <!-- _class: invert lead -->
 
-# many-to-many
+# many-to-many <!--fit-->
 
 <!-- You may have noticed the way the policy is designed and distributed lends it self well to co-exist in a Kubernetes cluster -->
 
 ---
+
+<!-- _class: white -->
 
 ![bg fit](images/policy-cluster1-repo.png)
 
@@ -1623,17 +1631,23 @@ pass: 1, fail: 0, warn: 0, error: 0, skip: 0
 
 ---
 
+<!-- _class: white -->
+
 ![bg fit](images/policy-cluster2-repo.png)
 
 <!-- likewise cluster2, only accepts 2.0.0 and greater -->
 
 ---
 
+<!-- _class: white -->
+
 ![bg fit](images/policy-cluster-builds.png)
 
 <!-- we automate using KiND for CI to deploy the apps -->
 
 ---
+
+<!-- _class: white -->
 
 ![bg](images/micdrop.webp)
 
