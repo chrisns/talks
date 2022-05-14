@@ -1364,8 +1364,7 @@ definition:
 ```
 
 <!--
-You can argue with me that my scenario and use of semver is incorrect here, this might be a major not a minor change, if you've got a better example scenario, please do let me know.
-But this where we notice and correct a spelling mistake of one of the options in that list of departments
+This is where we notice and correct a spelling mistake of one of the options in that list of departments
 -->
 
 ---
