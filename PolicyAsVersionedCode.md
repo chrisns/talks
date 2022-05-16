@@ -174,7 +174,7 @@ What code do you write I ask (it doesn't matter), python, cool have you got ever
 
 ![bg](./images/policy16.png)
 
-<!-- Staying on top of patching dependencies, so we can react to the next flurry.
+<!-- Staying on top of patching dependencies, so we can react to the next fire.
 -->
 
 ---
@@ -182,8 +182,7 @@ What code do you write I ask (it doesn't matter), python, cool have you got ever
 ![bg](./images/policy17.png)
 
 <!--
-
-- Knowing what rules exist, what ones I can bend, what I can break, and what might cause me to loose my job.
+Knowing what rules exist, what ones I can bend, what I can break, and what might cause me to loose my job.
 -->
 
 ---
@@ -191,8 +190,7 @@ What code do you write I ask (it doesn't matter), python, cool have you got ever
 ![bg](./images/policy18.png)
 
 <!--
-
-- Writing consistent good quality code, avoiding technical debt, the rest of my team being able to cohesively work as one.
+Writing consistent good quality code, avoiding technical debt, the rest of my team being able to cohesively work as one.
 -->
 
 ---
@@ -200,7 +198,6 @@ What code do you write I ask (it doesn't matter), python, cool have you got ever
 ![bg](./images/policy19.png)
 
 <!--
-
 Use any tools to help you with that I ask?
 Yeah, linters, code quality and test coverage tools, the usual.
 -->
@@ -228,7 +225,6 @@ I return my focus to the cleaner, I've got it, How do you get told what to do, a
 # @TODO: 22 memo stuck to notice board
 
 <!--
-
 We get a memo, or something stuck to the notice board, last week we got a memo saying that all the meeting room whiteboards need to be cleaned every night.
 Interesting I say, how does that work out, well its up to us to then maintain the todo list, so we can on board new people.
 -->
@@ -237,9 +233,7 @@ Interesting I say, how does that work out, well its up to us to then maintain th
 
 # @TODO: 23 binder full of docs
 
-<!--
-
-Go wrong at all? yeah, sometimes if when we compile our operational manual we miss a memo, or don't apply them in sequence we get things wrong, -->
+<!--Go wrong at all? yeah, sometimes if when we compile our operational manual we miss a memo, or don't apply them in sequence we get things wrong, -->
 
 ---
 
@@ -254,7 +248,6 @@ they glance apologetically to the product manager, like when we hadn't updated t
 # @TODO: 25 person in hoodie, nodding
 
 <!--
-
 I look to the dev, sound familiar I ask, they nod.
 
 Turns out we're not all special snowflakes hey!
@@ -278,7 +271,6 @@ Great, I have got the silver bullet for you too.
 # @TODO: 27 important business woman pulling money out their pockets
 
 <!--
-
 The CIO looks to me ready to buy whatever it is I'm selling, they ask me as the doors open who are you, what team are you in?
 -->
 
@@ -287,7 +279,6 @@ The CIO looks to me ready to buy whatever it is I'm selling, they ask me as the 
 # @TODO: 28 me moving out way of door
 
 <!--
-
 As I move out the way so to stop obstructing the door I answer, oh I don't work here, I'm just here to fix the lift, people have been complaining it only goes to the top floor no matter what button they push and is actually pretty slow.
 -->
 
@@ -296,7 +287,6 @@ As I move out the way so to stop obstructing the door I answer, oh I don't work 
 # @TODO: 29 all 4 people leaving lift towards sign to stairs
 
 <!--
-
 My audience storms out, furious, heading towards the stairs, the door shut, I get back to my job.
 -->
 
@@ -305,7 +295,6 @@ My audience storms out, furious, heading towards the stairs, the door shut, I ge
 # @TODO: 30 business woman, business man, dev cleaner in a line up
 
 <!--
-
 Ok so if any of that sounds familiar, and you relate to my imaginary friends then I've got the answers for you.
 -->
 
@@ -316,7 +305,6 @@ Ok so if any of that sounds familiar, and you relate to my imaginary friends the
 # What if... <!--fit-->
 
 <!--
-
 What if I said:
 -->
 
@@ -1255,7 +1243,9 @@ resource "aws_s3_bucket" "b" {
 
 ![bg fit](images/policy-signed100.png)
 
-<!-- it does (obviously) -->
+<!-- it does (obviously)
+
+moving on-->
 
 ---
 
@@ -1325,7 +1315,7 @@ definition:
       value: acounts
 ```
 
-<!-- moving on, version 2.0.0 looks similar, only now that department field has to be one of a predetermined list, like before, tests exist, release notes are written, tags are signed -->
+<!-- version 2.0.0 looks similar, only now that department field has to be one of a predetermined list, like before, tests exist, release notes are written, tags are signed -->
 
 ---
 
@@ -1472,9 +1462,7 @@ definition:
       value: tech
 ```
 
-<!--
-Hopefully Less contentious application of semver, I've now added a new department to the list.
--->
+<!-- I've now added a new department to the list. -->
 
 ---
 
