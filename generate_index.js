@@ -1,6 +1,6 @@
 import fs from "fs";
 
-const exclude = ["CODE_OF_CONDUCT.md", "SECURITY.md"];
+const exclude = ["CODE_OF_CONDUCT.md", "SECURITY.md", "README.md"];
 
 const output = [];
 
