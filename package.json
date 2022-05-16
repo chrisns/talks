@@ -13,8 +13,8 @@
     "build:image": "marp --image",
     "build:notes": "marp --notes",
     "build:pdf": "marp --pdf --pdf-notes && ./compress_pdfs.sh",
-    "build:generateindex:images": "cp -vr images dist/",
-    "build:generateindex:html": "node generate_index.js > dist/index.html",
+    "build:images": "cp -vr images dist/",
+    "build:indexhtml": "node generate_index.js > dist/index.html",
     "start": "run-p server:*",
     "server:postcss": "postcss --watch --ext css -d themes themes",
     "server:marp": "marp -s"
