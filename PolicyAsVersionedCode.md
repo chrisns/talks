@@ -1720,7 +1720,7 @@ so when the risk landscape changes, your policies can move with it -->
 
 ![bg](./images/baiting.jpeg)
 
-<!-- thats where the real culture change is needed, and the execution of that is a long series of talks in itself -->
+<!-- thats where the real culture change is needed, and the execution of that is likely a long series of talks in itself -->
 
 ---
 
@@ -1826,7 +1826,7 @@ h2 {
 
 <!--
 
-I've been Chris Nesbitt-Smith, thanks for your time, you're now free to leave, I'll destroy the evidence of your guilt admissions - no really I will
+I've been Chris Nesbitt-Smith, thanks for your time, you're now free to leave, I'll destroy the evidence of your guilt admissions earlier - no really I will
 
 Like subscribe whatever the kids do these days on LinkedIn, Github whatever and you can be assured there'll be no spam or much content at all since I'm awful at self promotion especially on social media. cns.me just points at my LinkedIn.
 
