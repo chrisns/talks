@@ -31,7 +31,7 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      id-token: write
     needs:
       - build
     if: ${{ github.ref == 'refs/heads/main' }}
@@ -41,3 +41,10 @@ jobs:
           name: dist.tar
       - name: Untar files
         run: tar -xf dist.tar
+      - name: configure aws credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: arn:aws:iam::557195821817:instance-profile/talks.cns.me-write
+          role-session-name: talkscnsmewrite
+          aws-region: eu-west-2
+      - run: aws s3 sync dist s3://talks.cns.me
