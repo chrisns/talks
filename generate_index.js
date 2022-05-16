@@ -32,7 +32,8 @@ output.push(`<style>
 
   }
   body {
-    background: url("images/me.png") no-repeat center left fixed;
+    background: url("images/me.png") no-repeat;
+    background-size: cover;
   }
   div.card {
     background: rgba(255,255,255,.75);
