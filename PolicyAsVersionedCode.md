@@ -981,6 +981,7 @@ https://www.cvedetails.com/vulnerability-list/cvssscoremin-9/cvssscoremax-10/vul
 <!-- What I'm getting at here though is, the situational awareness piece around software supply chain is something your organization is hopefully already  -->
 
 ---
+
 ![bg](./images/sbomerman.png)
 
 <!-- thinking about if not already addressing, so if our policy is a dependency this at least not a new problem. Software Bill of Materials for the win right? -->
@@ -1725,14 +1726,14 @@ so when the risk landscape changes, your policies can move with it -->
 
 ![bg](./images/wantyou.png)
 
-<!-- 
+<!--
 So now this is really over to you, honestly the best thing you could do right now is tell me its madness, already done, irrelevant or otherwise unachievable; something my esteemed echo chamber of peers has yet to do. -->
 
 ---
 
 # @TODO: line up of 4 people again (img30)
 
-<!-- 
+<!--
 So beyond making pull requests and developing the theory more, I'd really like to start building a case study with a willing real organization, and allow me to swap out my imaginary friends for real ones -->
 
 ---
@@ -1785,6 +1786,7 @@ And feel free to say it out loud with me
 <!-- pointless-->
 
 ---
+
 <!-- _class: invert fade -->
 
 # <code>Purposeless policy </br>is potentially</br>practically</br>pointless **policy**.</code><!--fit-->
@@ -1792,6 +1794,7 @@ And feel free to say it out loud with me
 <!-- policy. -->
 
 ---
+
 <!-- _class: invert fade -->
 
 # <code>Purposeless policy </br>is potentially</br>practically</br>pointless policy.</code><!--fit-->
