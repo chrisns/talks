@@ -11,25 +11,25 @@ class: lead
 
 <!-- _class: lead invert -->
 
-# Policy as _[versioned]_ Code
+# Policy as _[versioned]_ Code <!--fit-->
 
-Chris Nesbitt-Smith
+## Chris Nesbitt-Smith
 
-UK Gov | eSynergy | ControlPane | LearnK8s </br>(& lots of open source)
+### UK Gov | eSynergy | ControlPane | LearnK8s </br>(& lots of open source)
 
 ---
 
 # 👋<!--fit-->
 
 <!--
-Hello! Imagine a thing with human faces, what a treat, I get to stand not worry about being on mute, use my clicker and everything!
+Hello! Imagine a thing with human faces, what a treat, I get to stand up, not worry about being on mute, use my clicker and everything!
 
 This is exciting!
 -->
 
 ---
 
-# 🛗<!--fit-->
+# 🥱<!--fit-->
 
 <!--
 Ok, policy is a dull thing, its kinda hard to make sexy, but I'm going to try and get your attention, so bare with me.
@@ -56,7 +56,7 @@ I look at the first person on my left, she's in a suit, she looks really importa
 
 ---
 
-3 eye contact with important business woman in suit in lift
+![bg](./images/policy3.png)
 
 <!--
 she looks back to me as if to say yes, go on,
@@ -207,7 +207,7 @@ Yeah, linters, code quality and test coverage tools, the usual.
 
 ---
 
-20 me handing a qr code
+# @TODO: 20 me handing a qr code
 
 <!--
 
@@ -216,7 +216,7 @@ Great I say, I write code too, lets be friends, I hand them a printed QR code he
 
 ---
 
-21 person in boiler suit
+# @TODO: 21 person in boiler suit
 
 <!--
 
@@ -225,7 +225,7 @@ I return my focus to the cleaner, I've got it, How do you get told what to do, a
 
 ---
 
-22 memo stuck to notice board
+# @TODO: 22 memo stuck to notice board
 
 <!--
 
@@ -235,7 +235,7 @@ Interesting I say, how does that work out, well its up to us to then maintain th
 
 ---
 
-23 binder full of docs
+# @TODO: 23 binder full of docs
 
 <!--
 
@@ -243,7 +243,7 @@ Go wrong at all? yeah, sometimes if when we compile our operational manual we mi
 
 ---
 
-24 person in boiler suit glances apologetically at man in suit
+# @TODO: 24 person in boiler suit glances apologetically at man in suit
 
 <!--
 they glance apologetically to the product manager, like when we hadn't updated the guide that the meeting room on the 3rd floor was being used as a dedicated war room, and we wiped their boards down.
@@ -251,7 +251,7 @@ they glance apologetically to the product manager, like when we hadn't updated t
 
 ---
 
-25 person in hoodie, nodding
+# @TODO: 25 person in hoodie, nodding
 
 <!--
 
@@ -264,7 +264,7 @@ Ah all is not lost, I knew there was a reason I imagined you here.
 
 ---
 
-26 all of us in lift, focus drawn to floor number counter
+# @TODO: 26 all of us in lift, focus drawn to floor number counter
 
 <!--
 
@@ -275,7 +275,7 @@ Great, I have got the silver bullet for you too.
 
 ---
 
-27 important business woman pulling money out their pockets
+# @TODO: 27 important business woman pulling money out their pockets
 
 <!--
 
@@ -284,7 +284,7 @@ The CIO looks to me ready to buy whatever it is I'm selling, they ask me as the 
 
 ---
 
-28 me moving out way of door
+# @TODO: 28 me moving out way of door
 
 <!--
 
@@ -293,7 +293,7 @@ As I move out the way so to stop obstructing the door I answer, oh I don't work 
 
 ---
 
-29 all 4 people leaving lift towards sign to stairs
+# @TODO: 29 all 4 people leaving lift towards sign to stairs
 
 <!--
 
@@ -302,7 +302,7 @@ My audience storms out, furious, heading towards the stairs, the door shut, I ge
 
 ---
 
-30 business woman, business man, dev cleaner in a line up
+# @TODO: 30 business woman, business man, dev cleaner in a line up
 
 <!--
 
@@ -942,7 +942,7 @@ h1 {
 
 # CVE-2021-44228 <!--fit-->
 
-<!-- Ok, I picked on -->
+<!-- yup, as you know all presentations this year are contractually required to reference log4j -->
 
 ---
 
@@ -952,7 +952,7 @@ h1 {
 
 # CVE-2021-45046 <!--fit-->
 
-<!-- log4j's -->
+<!-- even when its almost entirely out of context -->
 
 ---
 
@@ -960,13 +960,16 @@ h1 {
 
 # CVE-2021-45105 <!--fit-->
 
-<!-- recent ones -->
+<!-- and include some memes.
+
+in just a few short months I can remove these and hopefully -->
 
 ---
 
 ![bg fit](./images/cves.png)
 
-<!-- but i could have picked any of the recent cluster fluffs of vulnerabilities we've seen in the wild recently
+<!-- just point broadly at a list of scary looking CVEs in order to command your behavior through fear
+
 
 https://www.cvedetails.com/vulnerability-list/cvssscoremin-9/cvssscoremax-10/vulnerabilities.html
 -->
@@ -975,7 +978,12 @@ https://www.cvedetails.com/vulnerability-list/cvssscoremin-9/cvssscoremax-10/vul
 
 ![bg fit](./images/supplychain.jpeg)
 
-<!-- so this situational awareness piece around supply chain is something your organization is hopefully already thinking about if not already addressing, so if our policy is a dependency this at least not a new problem -->
+<!-- What I'm getting at here though is, the situational awareness piece around software supply chain is something your organization is hopefully already  -->
+
+---
+![bg](./images/sbomerman.png)
+
+<!-- thinking about if not already addressing, so if our policy is a dependency this at least not a new problem. Software Bill of Materials for the win right? -->
 
 ---
 
@@ -991,7 +999,7 @@ https://www.cvedetails.com/vulnerability-list/cvssscoremin-9/cvssscoremax-10/vul
 - updatable ✅
 - measurable ✅
 
-<!-- to measure the compliance across the estate -->
+<!-- Which allows us to measure the compliance across the estate -->
 
 ---
 
@@ -1091,7 +1099,7 @@ so likewise I'm going to pick two tools, but again I could use any, some, or eve
 
 ![bg fit](images/policy-ghorg.png)
 
-<!-- If you want to browse along with me, I've create a example git hub organization here -->
+<!-- If you want to browse along with me, I've created a example git hub organization here, I'm not expecting you to read or grok the code on screen, so don't worry about it too much, its just to prove its real. -->
 
 ---
 
@@ -1167,7 +1175,7 @@ definition:
 
 ---
 
-<!-- _class: -->
+<!-- _class: invert -->
 <style scoped>
 pre {
   width: 45%;
@@ -1452,9 +1460,13 @@ Hopefully Less contentious application of semver, I've now added a new departmen
 
 ---
 
-# app1 | infra1
+<style scoped>
+table {
+  font-size: 2em;
+}
+</style>
 
-# k8s | tf
+# app1 (k8s) | infra1 (tf) <!--fit-->
 
 | 1.0.0 | 2.0.0 | 2.1.0 | 2.1.1 |
 | ----- | ----- | ----- | ----- |
@@ -1514,9 +1526,13 @@ https://github.com/pulls?q=is%3Aopen+is%3Apr+archived%3Afalse+user%3Apolicy-as-v
 
 ---
 
-# app2 | infra2
+<style scoped>
+table {
+  font-size: 2em;
+}
+</style>
 
-# k8s | tf
+# app2 (k8s) | infra2 (tf) <!--fit-->
 
 | 1.0.0 | 2.0.0 | 2.1.0 | 2.1.1 |
 | ----- | ----- | ----- | ----- |
@@ -1534,9 +1550,13 @@ https://github.com/pulls?q=is%3Aopen+is%3Apr+archived%3Afalse+user%3Apolicy-as-v
 
 ---
 
-# app3 | infra3
+<style scoped>
+table {
+  font-size: 2em;
+}
+</style>
 
-# k8s | tf
+# app3 (k8s) | infra3 (tf) <!--fit-->
 
 | 1.0.0 | 2.0.0 | 2.1.0 | 2.1.1 |
 | ----- | ----- | ----- | ----- |
@@ -1705,19 +1725,78 @@ so when the risk landscape changes, your policies can move with it -->
 
 ![bg](./images/wantyou.png)
 
-<!-- so why am I here, what do I want, how can you help? apart from pull requests -->
+<!-- 
+So now this is really over to you, honestly the best thing you could do right now is tell me its madness, already done, irrelevant or otherwise unachievable; something my esteemed echo chamber of peers has yet to do. -->
 
 ---
 
-![bg](./images/donarcard.jpeg)
+# @TODO: line up of 4 people again (img30)
 
-<!-- I could really do with a donor organization and management buy in to see if this can work for real -->
+<!-- 
+So beyond making pull requests and developing the theory more, I'd really like to start building a case study with a willing real organization, and allow me to swap out my imaginary friends for real ones -->
 
 ---
 
-# 🛣 <!--fit-->
+# 🗣📢🧠 <!--fit-->
 
-<!-- but we've reached the end of the journey for now -->
+<!-- But the most important thing I want you to remember from our time together is that.
+
+And feel free to say it out loud with me
+-->
+
+---
+
+<!-- _class: invert fade -->
+
+# <code> **Purposeless** policy </br>is potentially</br>practically</br>pointless policy. </code><!--fit-->
+
+<!-- Purposeless -->
+
+---
+
+<!-- _class: invert fade -->
+
+# <code>Purposeless **policy** </br>is potentially</br>practically</br>pointless policy.</code><!--fit-->
+
+<!-- policy is -->
+
+---
+
+<!-- _class: invert fade -->
+
+# <code>Purposeless policy </br>is **potentially**</br>practically</br>pointless policy.</code><!--fit-->
+
+<!-- potentially -->
+
+---
+
+<!-- _class: invert fade -->
+
+# <code>Purposeless policy </br>is potentially</br>**practically**</br>pointless policy.</code><!--fit-->
+
+<!-- practically -->
+
+---
+
+<!-- _class: invert fade -->
+
+# <code>Purposeless policy </br>is potentially</br>practically</br>**pointless** policy.</code><!--fit-->
+
+<!-- pointless-->
+
+---
+<!-- _class: invert fade -->
+
+# <code>Purposeless policy </br>is potentially</br>practically</br>pointless **policy**.</code><!--fit-->
+
+<!-- policy. -->
+
+---
+<!-- _class: invert fade -->
+
+# <code>Purposeless policy </br>is potentially</br>practically</br>pointless policy.</code><!--fit-->
+
+<!-- I've been practicing saying that far too many times. -->
 
 ---
 
@@ -1738,15 +1817,17 @@ h2 {
 - cns.me
 - talks.cns.me
 - github.com/chrisns
+- learnk8s.io
 
 ## Chris Nesbitt-Smith <!--fit-->
 
 <!--
-Thanks for your time, hopefully this has been interesting, you're now free to leave, I'll destroy the evidence of your guilt admissions - no really I will
+
+I've been Chris Nesbitt-Smith, thanks for your time, you're now free to leave, I'll destroy the evidence of your guilt admissions - no really I will
 
 Like subscribe whatever the kids do these days on LinkedIn, Github whatever and you can be assured there'll be no spam or much content at all since I'm awful at self promotion especially on social media. cns.me just points at my LinkedIn.
 
-talks.cns.me contains the this and other talks, they're all open source.
+talks.cns.me contains this and other talks, they're all open source.
 
 Questions are very welcome on this or anything else, I'll hold the stage as long as I'm allowed, or find me afterwards, I'm pretty thirsty so I'll be over there.
 -->
