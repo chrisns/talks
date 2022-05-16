@@ -6,3 +6,4 @@ options:
   themeSet: "themes/cns.css"
 bespoke:
   progress: true
+html: true

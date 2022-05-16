@@ -4,12 +4,7 @@ on:
   push:
     branches:
       - main
-    tags:
-      - "v*.*.*"
   pull_request:
-    branches:
-      - main
-      - version-bumps
 
 jobs:
   build:
@@ -24,10 +19,10 @@ jobs:
       - run: npm install
       - run: npm run lint
       - run: npm run build
-      - run: ./compress_pdfs.sh
 
       - name: Tar files
         run: tar -cf dist.tar ./dist
+
       - uses: actions/upload-artifact@6673cd052c4cd6fcf4b4e6e60ea986c889389535 # tag=v3.0.0
         with:
           name: dist.tar
@@ -46,9 +41,3 @@ jobs:
           name: dist.tar
       - name: Untar files
         run: tar -xf dist.tar
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@068dc23d9710f1ba62e86896f84735d869951305 # renovate: tag=v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          cname: talks.cns.me
