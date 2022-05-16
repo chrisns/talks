@@ -938,11 +938,15 @@ h1 {
 
 ---
 
+![bg right](images/policy-log4j-toaster.jpg)
+
 # CVE-2021-44228 <!--fit-->
 
 <!-- Ok, I picked on -->
 
 ---
+
+![bg left](images/policy-log4j-meme2.jpeg)
 
 <!-- _class: invert lead -->
 
@@ -951,6 +955,8 @@ h1 {
 <!-- log4j's -->
 
 ---
+
+![bg right fit](images/policy-log4j-meme3.jpeg)
 
 # CVE-2021-45105 <!--fit-->
 
