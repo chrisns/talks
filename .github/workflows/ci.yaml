@@ -24,7 +24,6 @@ jobs:
       - run: npm install
       - run: npm run lint
       - run: npm run build
-      - run: ./compress_pdfs.sh
 
       - name: Tar files
         run: tar -cf dist.tar ./dist
