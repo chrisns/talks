@@ -42,10 +42,9 @@ jobs:
       # - name: Untar files
       #   run: tar -xf dist.tar
       - run: mkdir -p dist && echo hello > dist/index
-      - name: configure aws credentials
-        uses: aws-actions/configure-aws-credentials@v1
+      - uses: aws-actions/configure-aws-credentials@v1
         with:
-          role-to-assume: arn:aws:iam::557195821817:instance-profile/talks.cns.me-write
+          role-to-assume: arn:aws:iam::557195821817:role/github
           role-session-name: talkscnsmewrite
           aws-region: eu-west-2
       - run: aws s3 sync dist s3://talks.cns.me
