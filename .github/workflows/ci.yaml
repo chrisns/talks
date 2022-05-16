@@ -44,7 +44,7 @@ jobs:
       - run: mkdir -p dist && echo hello > dist/index
       - uses: aws-actions/configure-aws-credentials@v1
         with:
-          role-to-assume: arn:aws:iam::557195821817:role/github
+          role-to-assume: arn:aws:iam::557195821817:role/talks-cns-me-write
           role-session-name: talkscnsmewrite
           aws-region: eu-west-2
       - run: aws s3 sync dist s3://talks.cns.me
