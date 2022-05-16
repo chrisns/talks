@@ -32,7 +32,7 @@ This is exciting!
 # 🥱<!--fit-->
 
 <!--
-Ok, policy is a dull thing, its kinda hard to make sexy, but I'm going to try and get your attention, so bare with me.
+Ok, elephant in the room, policy is a dull thing, its kinda hard to make sexy, but I'm going to try and get your attention, so bare with me.
 -->
 
 ---
@@ -174,7 +174,7 @@ What code do you write I ask (it doesn't matter), python, cool have you got ever
 
 ![bg](./images/policy16.png)
 
-<!-- Staying on top of patching dependencies, so we can react to the next log4j patching flurry.
+<!-- Staying on top of patching dependencies, so we can react to the next flurry.
 -->
 
 ---
@@ -324,11 +324,19 @@ What if I said:
 
 <!-- class: lead invert -->
 
-# Update policy.. daily!?
+# Update policy... <!--fit-->
+
+<!-- You could update policy easily, even releasing several version updates, not just in a year, a month -->
+
+---
+
+<!-- class: lead invert fade-->
+
+# Update policy... <br/>**Daily!?**<!--fit-->
 
 <!--
-  - You could update policy easily, even releasing several version updates, not just in a year, a month, what about ten updates in a single day, and seamlessly communicate that to people that need to consume it without derailing them?
-  -->
+what about ten updates in a single day, and seamlessly communicate that to people that need to consume it without derailing them?
+-->
 
 ---
 
@@ -337,7 +345,7 @@ What if I said:
 # 👀<!--fit-->
 
 <!--
-  - You could have visibility on compliance using tools you already use?
+You could have visibility on compliance using tools you already use?
 -->
 
 ---
@@ -347,7 +355,7 @@ What if I said:
 ![bg fit](images/easy.webp)
 
 <!--
-  - That policy could be readily consumable, easy to parse, demonstrate compliance, make sense and not be bureaucratic to change when it needs to be and not get in the way?
+That policy could be readily consumable, easy to parse, demonstrate compliance, make sense and not be bureaucratic to change when it needs to be and not get in the way?
 -->
 
 ---
@@ -458,13 +466,22 @@ Where do I see policy as code going wrong?
 
 ---
 
+<style scoped>
+section {
+  font-size: 2.7em;
+}
+h1 {
+  font-size: 2em;
+}
+</style>
+
 <!-- _class: invert -->
 
 # `policy`
 
-noun [ C ]
+### noun [ C ]
 
-UK /ˈpɒl.ə.si/ US /ˈpɑː.lə.si/
+### UK /ˈpɒl.ə.si/ US /ˈpɑː.lə.si/
 
 `a set of ideas or a plan of what to do in particular situations that has been agreed to officially by a group of people, a business organization, a government, or a political party`
 
@@ -523,7 +540,7 @@ However with the best of intentions these are often emotionally led rather than 
 ![bg](images/splitwedge.jpeg)
 
 <!--
-It often looks like the thin edge of a wedge, where the precedent which may have been an uncomfortable pill to swallow the first time round, becomes dangerous with others looking to expand its scope.
+It often looks like the thin bit of a wedge, where the precedent which may have been an uncomfortable pill to swallow the first time round, becomes dangerous with others looking to expand its scope.
 -->
 
 ---
@@ -631,7 +648,7 @@ Maybe some of you are screaming your favorite product name at me in your heads a
 
 ![bg](images/update.webp)
 
-<!-- this is further exasperated when updates to the policy are desired, maybe you get a pen test or something goes wrong so you form that case law and need to apply a new policy, maybe public s3 buckets need to be approved, a change that could be considered a 'breaking change' -->
+<!-- this is further exasperated when updates to the policy are desired, maybe you get a pen test or something goes wrong so you form that case law and need to apply a new policy, maybe all s3 buckets now need to be encrypted, a change that could be considered a 'breaking change' -->
 
 ---
 
@@ -855,7 +872,7 @@ Maybe some of you are screaming your favorite product name at me in your heads a
 
 ## no really...
 
-<!-- ok, i know testing is a dirty word, but in order to make this an asset everyone can depend on, and also provide known good examples, tests are essential to give everyone confidence in the stability and surface potential side effects -->
+<!-- ok, i know testing is a dirty word, but in order to make this an asset everyone can depend on, and also provide known good examples, tests are essential to give  -->
 
 ---
 
@@ -871,7 +888,7 @@ Maybe some of you are screaming your favorite product name at me in your heads a
 - updatable
 - measurable
 
-<!-- before they hurt everyone involved. WHO KNEW?! -->
+<!-- everyone confidence in the stability and surface potential side effects before they hurt everyone involved. -->
 
 ---
 
@@ -1000,13 +1017,13 @@ https://www.cvedetails.com/vulnerability-list/cvssscoremin-9/cvssscoremax-10/vul
 - updatable ✅
 - measurable ✅
 
-<!-- Which allows us to measure the compliance across the estate -->
+<!-- Which can allow us to measure the compliance across the estate -->
 
 ---
 
 ![bg fit](./images/sciencefictionday.jpeg)
 
-<!-- I've just covered a lot of ground, and hopefully sounded convincing, and not just a fictional utopia in powerpoint -->
+<!-- I've just covered a lot of ground, and hopefully sounded convincing, and not just a fictional utopia painted in powerpoint -->
 
 ---
 
@@ -1100,7 +1117,7 @@ so likewise I'm going to pick two tools, but again I could use any, some, or eve
 
 ![bg fit](images/policy-ghorg.png)
 
-<!-- If you want to browse along with me, I've created a example git hub organization here, I'm not expecting you to read or grok the code on screen, so don't worry about it too much, its just to prove its real. -->
+<!-- If you want to browse along with me, I've created a example git hub organization here, I'm not expecting you to read or grok the code on screen, so don't worry about it too much, its just to prove its a real thing. -->
 
 ---
 
@@ -1230,7 +1247,7 @@ resource "aws_s3_bucket" "b" {
 
 ![bg fit](images/policy-100release.png)
 
-<!-- we've pushed a tag in git, we've added release notes, I can sign it to provide further assurance if my heart desires. -->
+<!-- we've pushed a tag in git, we've added release notes, I can sign it to provide further assurance if my heart so desires. -->
 
 ---
 
@@ -1238,7 +1255,7 @@ resource "aws_s3_bucket" "b" {
 
 ![bg fit](images/policy-signed100.png)
 
-<!-- it does -->
+<!-- it does (obviously) -->
 
 ---
 
