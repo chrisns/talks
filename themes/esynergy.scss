@@ -16,7 +16,6 @@ section {
   &.end {
     -webkit-text-stroke: 0.03em black;
 
-
     h3 {
       color: rgb(223, 191, 191);
       position: relative;
@@ -24,7 +23,7 @@ section {
       animation: glitch 5s 5s infinite;
       font-size: 3em;
       line-height: 1em;
-      margin-top: 0
+      margin-top: 0;
     }
 
     a {
@@ -42,7 +41,7 @@ section {
       font-weight: normal;
     }
 
-    padding-top:10%;
+    padding-top: 10%;
 
     img {
       width: 30%;

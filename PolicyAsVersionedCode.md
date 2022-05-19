@@ -13,7 +13,9 @@ video_embed: <iframe width="560" height="315" src="https://www.youtube.com/embed
 ![bg](./images/esynergy-bg.png)
 
 <!-- _class: invert front -->
+
 ![](images/esynergy-logo.png)
+
 # Policy as _[versioned]_ Code <!--fit-->
 
 ## Chris Nesbitt-Smith
@@ -1851,9 +1853,11 @@ talks.cns.me contains this and other talks, they're all open source.
 </style>
 
 # Q&A🙋‍♀️🙋🙋‍♂️ <!--fit-->
+
 ![bg opacity:0.2](./images/questions.webp)
 
 ![width:250px](images/esynergy-logo.png)
+
 ### </br>
 
 <div class="container">
