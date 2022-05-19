@@ -2,7 +2,7 @@
 title: Policy as [versioned] code
 description: In this talk Chris will trace back the origins of how policies are often incepted, how it can get out of hand, be slow if not impossible to update and measure compliance, and often lead us to question of is the policy helping or hindering. From this talk you'll learn how to use a software development pattern and product ways of thinking towards how your organization can manage policy; achieve continual updates to policy allowing the risk mitigations to move as fast as the risk does, not get in the way and be easy to measure compliance.
 author: Chris Nesbitt-Smith
-image: PolicyAsVersionedCode.png
+image: https://talks.cns.me/PolicyAsVersionedCode.png
 marp: true
 theme: themes/esynergy
 url: https://talks.cns.me/PolicyAsVersionedCode.html
