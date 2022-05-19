@@ -1,22 +1,24 @@
 ---
 title: Policy as [versioned] code
-description: What is policy as code, why are we doing it wrong, how do we fix it?
+description: In this talk Chris will trace back the origins of how policies are often incepted, how it can get out of hand, be slow if not impossible to update and measure compliance, and often lead us to question of is the policy helping or hindering. From this talk you'll learn how to use a software development pattern and product ways of thinking towards how your organization can manage policy; achieve continual updates to policy allowing the risk mitigations to move as fast as the risk does, not get in the way and be easy to measure compliance.
 author: Chris Nesbitt-Smith
+image: PolicyAsVersionedCode.png
 marp: true
-theme: themes/cns
+theme: themes/esynergy
+url: https://talks.cns.me/PolicyAsVersionedCode.html
 class: lead
 video_embed: <iframe width="560" height="315" src="https://www.youtube.com/embed/gVhvXrFXUO0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 ---
 
-![bg](./images/bg.svg)
+![bg](./images/esynergy-bg.png)
 
-<!-- _class: lead invert -->
-
+<!-- _class: invert front -->
+![](images/esynergy-logo.png)
 # Policy as _[versioned]_ Code <!--fit-->
 
 ## Chris Nesbitt-Smith
 
-### UK Gov | eSynergy | ControlPane | LearnK8s </br>(& lots of open source)
+### UK Gov | esynergy | ControlPane | LearnK8s </br>& lots of open source
 
 ---
 
@@ -1826,6 +1828,7 @@ h2 {
 - cns.me
 - talks.cns.me
 - github.com/chrisns
+- github.com/policy-as-versioned-code
 - learnk8s.io
 
 ## Chris Nesbitt-Smith <!--fit-->
@@ -1838,5 +1841,25 @@ Like subscribe whatever the kids do these days on LinkedIn, Github whatever and 
 
 talks.cns.me contains this and other talks, they're all open source.
 
+-->
+
+---
+
+<!-- _class: invert end lead-->
+<style scoped>
+
+</style>
+
+# Q&A🙋‍♀️🙋🙋‍♂️ <!--fit-->
+![width:250px](images/esynergy-logo.png)
+
+![bg opacity:0.2](./images/questions.webp)
+
+### cns.me
+#### github.com/policy-as-versioned-code
+
+## Chris Nesbitt-Smith <!--fit-->
+
+<!--
 Questions are very welcome on this or anything else, I'll hold the stage as long as I'm allowed, or find me afterwards, I'm pretty thirsty so I'll be over there.
 -->
