@@ -1851,11 +1851,17 @@ talks.cns.me contains this and other talks, they're all open source.
 </style>
 
 # Q&A🙋‍♀️🙋🙋‍♂️ <!--fit-->
-![width:250px](images/esynergy-logo.png)
-
 ![bg opacity:0.2](./images/questions.webp)
 
-### cns.me
+![width:250px](images/esynergy-logo.png)
+### </br>
+
+<div class="container">
+  <div class="glitch" data-text="cns.me">cns.me</div>
+  <div class="glow">cns.me</div>
+</div>
+<div class="scanlines"></div>
+
 #### github.com/policy-as-versioned-code
 
 ## Chris Nesbitt-Smith <!--fit-->
