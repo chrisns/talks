@@ -400,7 +400,7 @@ HOW AM I DOING FOR TIME? .... GREAT, THANKS, I THINK I'VE GOT THIS, YOU CAN UNLO
 # Chris Nesbitt-Smith<!--fit-->
 
 - Learnk8s & ControlPlane - Instructor+consultant
-- eSynergy - Digital Transformation Consultant
+- esynergy - Digital Transformation Consultant
 - Crown Prosecution Service (UK gov) - Consultant
 - Opensource
 
