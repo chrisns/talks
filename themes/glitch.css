@@ -9,8 +9,7 @@
 .glow {
   color: white;
   position: relative;
-  font-size: 20vw;
-  --marpit-root-font-size: 20vw;
+  font-size: 5.5em;
   animation: glitch 5s 5s infinite;
 }
 
