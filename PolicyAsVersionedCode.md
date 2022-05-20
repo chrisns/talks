@@ -209,25 +209,23 @@ Yeah, linters, code quality and test coverage tools, the usual.
 
 ---
 
-# @TODO: 20 me handing a qr code
+![bg](./images/policy20.png)
 
 <!--
-
 Great I say, I write code too, lets be friends, I hand them a printed QR code here's my public gpg key, so you know to trust me what I say.
 -->
 
 ---
 
-# @TODO: 21 person in boiler suit
+![bg](./images/policy21.png)
 
 <!--
-
 I return my focus to the cleaner, I've got it, How do you get told what to do, and when it changes.
 -->
 
 ---
 
-# @TODO: 22 memo stuck to notice board
+![bg](./images/policy22.png)
 
 <!--
 We get a memo, or something stuck to the notice board, last week we got a memo saying that all the meeting room whiteboards need to be cleaned every night.
@@ -236,13 +234,13 @@ Interesting I say, how does that work out, well its up to us to then maintain th
 
 ---
 
-# @TODO: 23 binder full of docs
+![bg](./images/policy23.png)
 
 <!--Go wrong at all? yeah, sometimes if when we compile our operational manual we miss a memo, or don't apply them in sequence we get things wrong, -->
 
 ---
 
-# @TODO: 24 person in boiler suit glances apologetically at man in suit
+![bg](./images/policy24.png)
 
 <!--
 they glance apologetically to the product manager, like when we hadn't updated the guide that the meeting room on the 3rd floor was being used as a dedicated war room, and we wiped their boards down.
@@ -250,7 +248,7 @@ they glance apologetically to the product manager, like when we hadn't updated t
 
 ---
 
-# @TODO: 25 person in hoodie, nodding
+![bg](./images/policy25.png)
 
 <!--
 I look to the dev, sound familiar I ask, they nod.
@@ -262,7 +260,7 @@ Ah all is not lost, I knew there was a reason I imagined you here.
 
 ---
 
-# @TODO: 26 all of us in lift, focus drawn to floor number counter
+![bg](./images/policy26.png)
 
 <!--
 
@@ -273,7 +271,7 @@ Great, I have got the silver bullet for you too.
 
 ---
 
-# @TODO: 27 important business woman pulling money out their pockets
+![bg](./images/policy27.png)
 
 <!--
 The CIO looks to me ready to buy whatever it is I'm selling, they ask me as the doors open who are you, what team are you in?
@@ -281,7 +279,7 @@ The CIO looks to me ready to buy whatever it is I'm selling, they ask me as the 
 
 ---
 
-# @TODO: 28 me moving out way of door
+![bg](./images/policy28.png)
 
 <!--
 As I move out the way so to stop obstructing the door I answer, oh I don't work here, I'm just here to fix the lift, people have been complaining it only goes to the top floor no matter what button they push and is actually pretty slow.
@@ -289,7 +287,7 @@ As I move out the way so to stop obstructing the door I answer, oh I don't work 
 
 ---
 
-# @TODO: 29 all 4 people leaving lift towards sign to stairs
+![bg](./images/policy29.png)
 
 <!--
 My audience storms out, furious, heading towards the stairs, the door shut, I get back to my job.
@@ -297,7 +295,7 @@ My audience storms out, furious, heading towards the stairs, the door shut, I ge
 
 ---
 
-# @TODO: 30 business woman, business man, dev cleaner in a line up
+![bg](./images/policy30.png)
 
 <!--
 Ok so if any of that sounds familiar, and you relate to my imaginary friends then I've got the answers for you.
