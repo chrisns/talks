@@ -7,7 +7,7 @@ marp: true
 theme: themes/esynergy
 url: https://talks.cns.me/PolicyAsVersionedCode.html
 class: lead
-video_embed: <iframe width="560" height="315" src="https://www.youtube.com/embed/gVhvXrFXUO0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+video_embed: <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/XeBUxWQAVjU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 ---
 
 ![bg](./images/esynergy-bg.png)
@@ -593,7 +593,7 @@ Maybe some of you are screaming your favorite product name at me in your heads a
 
 ---
 
-# 👹 <!-- fit -->
+# {👹} <!-- fit -->
 
 <!-- Devil in the detail though, throwing some curly braces at something doesn't inherently fix things though. -->
 
@@ -1739,7 +1739,7 @@ So now this is really over to you, honestly the best thing you could do right no
 
 ---
 
-# @TODO: line up of 4 people again (img30)
+![bg](./images/policy30.png)
 
 <!--
 So beyond making pull requests and developing the theory more, I'd really like to start building a case study with a willing real organization, and allow me to swap out my imaginary friends for real ones -->
