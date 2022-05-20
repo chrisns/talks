@@ -1389,7 +1389,7 @@ definition:
 ```
 
 <!--
-This is where we notice and correct a spelling mistake of one of the options in that list of departments
+2.1.0 is where we notice and correct a spelling mistake of one of the options in that list of departments
 -->
 
 ---
@@ -1465,7 +1465,7 @@ definition:
       value: tech
 ```
 
-<!-- I've now added a new department to the list. -->
+<!-- 2.1.1 and I've now added a new department to the list. -->
 
 ---
 
@@ -1685,13 +1685,15 @@ pass: 1, fail: 0, warn: 0, error: 0, skip: 0
 
 ![bg](images/micdrop.webp)
 
-<!-- and there we have it a full org all done, all compliant, policy all versioned, CIO all aware of whats going on -->
+<!-- and there we have it a full org all done, all compliant, policy all versioned, CIO all aware of whats going on.
+
+So this is great, -->
 
 ---
 
 ![bg](images/columbo.jpeg)
 
-<!-- So this is great, but just one more thing, wouldn't it be awesome if the the policy carried a story of why it exists -->
+<!-- but just one more thing, wouldn't it be awesome if the the policy carried a story of why it exists -->
 
 ---
 
