@@ -25,7 +25,7 @@
     "map": false
   },
   "dependencies": {
-    "@marp-team/marp-cli": "^1.7.0",
+    "@marp-team/marp-cli": "^2.0.0",
     "postcss-discard-comments": "^5.0.3",
     "postcss-for": "^2.1.1",
     "postcss-import": "^14.1.0",
