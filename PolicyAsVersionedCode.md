@@ -936,7 +936,7 @@ h1 {
 - updatable ✅
 - measurable
 
-<!-- we can even use some magic like github's dependabot or whitesource's renovate to do that for us, think automatic pull requests, tests, even auto merging if you like -->
+<!-- we can even use some magic like github's dependabot or mend's renovate to do that for us, think automatic pull requests, tests, even auto merging if you like -->
 
 ---
 
