@@ -7,7 +7,7 @@ marp: true
 theme: themes/esynergy
 url: https://talks.cns.me/PolicyAsVersionedCode.html
 class: lead
-video_embed: <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/XeBUxWQAVjU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+video_embed: <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/R57Md8l_PtM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 ---
 
 ![bg](./images/esynergy-bg.png)
