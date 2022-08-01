@@ -1859,7 +1859,6 @@ talks.cns.me contains this and other talks, they're all open source.
 
 ![bg opacity:0.2](./images/questions.webp)
 
-
 ### </br>
 
 <div class="container">
