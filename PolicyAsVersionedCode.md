@@ -14,8 +14,6 @@ video_embed: <iframe width="560" height="315" src="https://www.youtube-nocookie.
 
 <!-- _class: invert front -->
 
-![](images/esynergy-logo.png)
-
 # Policy as _[versioned]_ Code <!--fit-->
 
 ## Chris Nesbitt-Smith
@@ -27,9 +25,13 @@ video_embed: <iframe width="560" height="315" src="https://www.youtube-nocookie.
 # 👋<!--fit-->
 
 <!--
+LIVE:
 Hello! Imagine a thing with human faces, what a treat, I get to stand up, not worry about being on mute, use my clicker and everything!
 
 This is exciting!
+
+RECORDING:
+Hello!
 -->
 
 ---
@@ -55,7 +57,6 @@ I think to myself, Chris! this is your moment, now or never. as the door closes,
 ![bg](./images/policy2.png)
 
 <!--
-
 I look at the first person on my left, she's in a suit, she looks really important, I gesture to her C...
 -->
 
@@ -77,7 +78,6 @@ I ask her, what keeps you up at night?
 ![bg](./images/policy4.png)
 
 <!--
-
 She tells me
 I don't know what teams are really doing what, the volume of risk and what I should show more interest in.
 -->
@@ -95,7 +95,6 @@ Setting and changing policy is slow and hard to communicate
 ![bg](./images/policy6.png)
 
 <!--
-
 People just go off and do their own thing, they think they know better, and to be honest often they do, but I'm left playing catchup with the risk they've signed me up to
 -->
 
@@ -104,7 +103,6 @@ People just go off and do their own thing, they think they know better, and to b
 ![bg](./images/policy7.png)
 
 <!--
-
 Ok, I say. trying not to sound like a patronizing snake oil salesman I can help.
 -->
 
@@ -113,7 +111,6 @@ Ok, I say. trying not to sound like a patronizing snake oil salesman I can help.
 ![bg](./images/policy8.png)
 
 <!--
-
 I turn my attention to the second person, in a suit, look less important. I make a guess, (lets face it, this is my imagination it'd be weird if I was wrong). Product manager I say, they nod. ah the whip cracker I say. What's important to you?
 -->
 
@@ -122,7 +119,6 @@ I turn my attention to the second person, in a suit, look less important. I make
 ![bg](./images/policy9.png)
 
 <!--
-
 Managing risk, mostly opportunity risk, the fear of missing out. so getting features out the door, avoiding getting bogged down with
 -->
 
@@ -139,7 +135,6 @@ Managing risk, mostly opportunity risk, the fear of missing out. so getting feat
 ![bg](./images/policy11.png)
 
 <!--
-
 Awesome I say, this is your lucky day.
 -->
 
@@ -148,7 +143,6 @@ Awesome I say, this is your lucky day.
 ![bg](./images/policy12.png)
 
 <!--
-
 I turn to the next person, dressed in overalls, I am in a trendy part of town, they could be the CTO, before I ask they sense me staring at them. -->
 
 ---
@@ -164,7 +158,6 @@ Cleaner they say, errr ok how did you get in my imagination, let me come back to
 ![bg](./images/policy14.png)
 
 <!--
-
 My attention goes to the last person, hoodie, headphones round their neck. Ah my stereotypical developer, yes I know you well. -->
 
 ---
@@ -263,7 +256,6 @@ Ah all is not lost, I knew there was a reason I imagined you here.
 ![bg](./images/policy26.png)
 
 <!--
-
 The lift is slowing, I feel it coming to its destination
 
 Great, I have got the silver bullet for you too.
@@ -386,7 +378,11 @@ Interesting, ok, hang around.
 # ⏲<!--fit-->
 
 <!--
+LIVE:
 HOW AM I DOING FOR TIME? .... GREAT, THANKS, I THINK I'VE GOT THIS, YOU CAN UNLOCK THE DOOR NOW.
+
+RECORDING:
+Lets crack on
 -->
 
 ---
@@ -405,7 +401,7 @@ HOW AM I DOING FOR TIME? .... GREAT, THANKS, I THINK I'VE GOT THIS, YOU CAN UNLO
 <!--
 Now I've hopefully got your attention, its time to introduce, and start explaining myself.
 
-Hi, My name is Chris Nesbitt-Smith, I'm an instructor for Learnk8s and ControlPlane, consultant at eSynergy, Crown Prosecution Service and tinkerer of open source.
+Hi, My name is Chris Nesbitt-Smith, I'm currently an instructor for Learnk8s and ControlPlane, consultant to the Crown Prosecution Service and tinkerer of open source.
 I've spent a fair chunk of my professional career now working in UK Government and large organizations where problems like these are rife.
 
 I've been promised we'll have time for questions and heckles at the end, even if I run way over, if not come find me at the bar afterwards.
@@ -416,8 +412,12 @@ I've been promised we'll have time for questions and heckles at the end, even if
 # 🙋👩‍🌾👩‍🚒</br>🙋‍♀️🦹‍♀️🙋‍♂️<!--fit-->
 
 <!--
+LIVE:
 Given I've got the luxury of an audience, and most of you have clothes on for a change.
 By show of hands who's with my CIO and set, written, or applied policy before?
+
+RECORDING:
+While this is not live or in person where I could ask you to raise your hands, we can still try some audience participation, so if you could leave a comment of "policy maker" if you're with my CIO and have set, written, or applied policy before.
 -->
 
 ---
@@ -427,8 +427,12 @@ By show of hands who's with my CIO and set, written, or applied policy before?
 # 👩‍🌾🙋🙋‍♂️</br>🦹‍♀️🙋‍♀️👩‍🚒<!--fit-->
 
 <!--
+LIVE:
 Ok, thanks, you can put your hands down.
 now how many have sought exemption or consciously bent, broken, circumvented, ignored, bypassed, whatever a policy with at least good intentions?
+
+RECORDING:
+Ok, next round, if you have ever sought exemption or consciously bent, broken, circumvented, ignored, bypassed, whatever a policy with at least good intentions leave a comment of "policy breaker"
 -->
 
 ---
@@ -1836,7 +1840,6 @@ h2 {
 ## Chris Nesbitt-Smith <!--fit-->
 
 <!--
-
 I've been Chris Nesbitt-Smith, thanks for your time, you're now free to leave, I'll destroy the evidence of your guilt admissions earlier - no really I will
 
 Like subscribe whatever the kids do these days on LinkedIn, Github whatever and you can be assured there'll be no spam or much content at all since I'm awful at self promotion especially on social media. cns.me just points at my LinkedIn.
@@ -1856,7 +1859,6 @@ talks.cns.me contains this and other talks, they're all open source.
 
 ![bg opacity:0.2](./images/questions.webp)
 
-![width:250px](images/esynergy-logo.png)
 
 ### </br>
 
@@ -1866,10 +1868,16 @@ talks.cns.me contains this and other talks, they're all open source.
 </div>
 <div class="scanlines"></div>
 
+### </br>
+
 #### github.com/policy-as-versioned-code
 
 ## Chris Nesbitt-Smith <!--fit-->
 
 <!--
+LIVE:
 Questions are very welcome on this or anything else, I'll hold the stage as long as I'm allowed, or find me afterwards, I'm pretty thirsty so I'll be over there.
+
+RECORDING:
+Questions are very welcome on this or anything else, I'll be hanging out in the comments section, or ping me a message on LinkedIn.
 -->
