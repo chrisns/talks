@@ -950,7 +950,7 @@ h1 {
 
 ---
 
-![bg right](images/policy-log4j-toaster.jpg)
+![bg left](images/policy-log4j-toaster.jpg)
 
 # CVE-2021-44228 <!--fit-->
 
@@ -958,7 +958,7 @@ h1 {
 
 ---
 
-![bg left](images/policy-log4j-meme2.jpeg)
+![bg right](images/policy-log4j-meme2.jpeg)
 
 <!-- _class: invert lead -->
 
@@ -968,7 +968,7 @@ h1 {
 
 ---
 
-![bg right fit](images/policy-log4j-meme3.jpeg)
+![bg left fit](images/policy-log4j-meme3.jpeg)
 
 # CVE-2021-45105 <!--fit-->
 
