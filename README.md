@@ -16,6 +16,7 @@ The code behind https://talks.cns.me
 | 01/09/2022 | Policy as [versioned] code                                  | Docker Community All Hands #6     |                                                                        |
 | 15/09/2022 | Policy as [versioned] code                                  | SREday                            | https://www.sreday.com                                                 |
 | 16/09/2022 | Policy as [versioned] code                                  | Open Source Summit Europe         | https://sched.co/15z1I                                                 |
+| 28/09/2022 | Proactive cluster autoscaling in Kubernetes                 | Linnode                           | bit.ly/k8s-scale-2                                                     |
 | 13/10/2022 | Is it time to put your pet kubernetes down                  | DTX Europe                        | https://dtxevents.io/europe/en/page/dtx-europe                         |
 | 19/10/2022 | Policy as [versioned] code                                  | WeAreDevelopers Live - DevOps Day |                                                                        |
 | 24/10/2022 | Policy as [versioned] code                                  | London Microsoft DevOps Meetup    | https://www.meetup.com/london-microsoft-devops/events/287854448/       |
