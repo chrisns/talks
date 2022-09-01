@@ -22,4 +22,12 @@ The code behind https://talks.cns.me
 | 24/10/2022 | Policy as [versioned] code                                  | London Microsoft DevOps Meetup    | https://www.meetup.com/london-microsoft-devops/events/287854448/       |
 | 24/10/2022 | Policy as [versioned] code                                  | Spinnaker Summit                  | https://sched.co/19kpM                                                 |
 | 25/10/2022 | Policy as [versioned] code                                  | GitOpsCon                         | https://sched.co/1AR8w                                                 |
+| 10/11/2022 | Policy as [versioned] Code                                  | Mobile DevOps Summit              | http://www.mobiledevops.io/summit/agenda/speakers/1773168              |
 | 15/11/2022 | Policy as [versioned] Code                                  | One Summit                        | https://onesummit2022.sched.com/event/69ffdbbc45806a7ae27374dd29d93237 |
+
+<!--
+| Date | Talk                       | Where              | Link |
+| ---- | -------------------------- | ------------------ | ---- |
+| ?    | Policy as [versioned] Code | Cloud with Chris   | ?    |
+| ?    | Policy as [versioned] Code | Docker Switzerland | ?    |
+-->
