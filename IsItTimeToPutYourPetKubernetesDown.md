@@ -1,31 +1,21 @@
 ---
 title: Is It Time To Put Your Pet Kubernetes Down
 description: Explores how Kubernetes is the new pet and the consequences that presents.
-video_embed: <iframe width="560" height="315" src="https://www.youtube.com/embed/4YA9sC6Z1YQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 author: Chris Nesbitt-Smith
 marp: true
-theme: gaia
+theme: cns/esynergy
 class: lead
 ---
 
 ![bg](./images/bg.svg)
 
 <!-- _class: lead invert -->
-<style scoped>
-h2 {
-  position: absolute;
-  bottom: 1ch;
-  left: 7vw;
-}
-</style>
 
 # Is it time to put your pet Kubernetes down?
 
-Chris Nesbitt-Smith | Graeme Colman
+## Chris Nesbitt-Smith
 
-[@appvia_io](https://twitter.com/appvia_io)
-
-## ⬇️ Ask a question! ↙️
+### UK Gov | esynergy | Control Pane | LearnK8s </br>& lots of open source
 
 ---
 
@@ -35,7 +25,7 @@ Chris Nesbitt-Smith | Graeme Colman
 
 # Reminder what is Pets vs Cattle?<!--fit-->
 
-# 🤔<!--fit-->
+# 🐕🐄🤔<!--fit-->
 
 <!--
 The history of the pets vs cattle terminology is muddy, most link to a presentation Bill Baker from Microsoft made in 2006 around scaling SQL server.
@@ -174,10 +164,12 @@ well..
 
 ---
 
+TODO: make code bigger
+
 ```bash
 eksctl create cluster \
  --name my-cluster \
- --version 1.21 \
+ --version 1.24 \
  --without-nodegroup
 ```
 
@@ -217,7 +209,7 @@ yeah, we had to do a load of 'things' just to make this cluster able to start ru
 # So?</br>🤷<!--fit-->
 
 <!--
-And it's worth noting that with a trend towards more and more features being being 'out of tree' that is to say they're optional add-ons and don't ship with core Kubernetes, examples of this are things like flex volumes, and basically all the Kubernetes sig projects that many find essential is only exasperating this issue
+And it's worth noting that with a trend towards more and more features being being 'out of tree' that is to say they're optional add-ons and don't ship with core Kubernetes, examples of this are things like flex volumes, policy and basically all the Kubernetes sig projects that many find essential is only exasperating this issue
 -->
 
 ---
@@ -233,7 +225,7 @@ And it's worth noting that with a trend towards more and more features being bei
 
 <!--
 <click>
-That might work for when you've got a single cluster, but what about when you've got a single cluster <click>
+That might work for when you've got a single cluster<click>
 But what about when you've got dev <click> integration <click> staging <click> qa that your app needs to run on
 -->
 
@@ -272,7 +264,7 @@ However you'll find it won't be long before theres an updated version perhaps pa
 # 📆 Day 2 <!--fit-->
 
 <!--
-This is what we're used to calling day 2 operations, we used to call it BAU or business as usual, and it's where reality catches up with our idealistic good intentions
+This is what we're calling day 2 operations, we used to call it BAU or business as usual, and it's where reality catches up with our idealistic good intentions
 -->
 
 ---
@@ -299,6 +291,8 @@ Permutations of seemingly common tool choices, some teams might use kong, others
 Seemingly infinite possibilities appear across the estate
 -->
 
+TODO: infinite possibilities animated gif
+
 ---
 
 # 🤯<!--fit-->
@@ -308,6 +302,8 @@ Sad times
 -->
 
 ---
+
+TODO: centre align
 
 # 🐶🐱🐕🐇🐈<br/>🐹🐩🦮🐕‍🦺🐈‍⬛🐰<!--fit-->
 
@@ -328,7 +324,7 @@ You can call it a pet factory, but it's a headache
 # 🤕 <!--fit -->
 
 <!--
-But so what, how does this hurt you might ask?
+So what, how does this hurt you might ask?
 -->
 
 ---
@@ -355,7 +351,7 @@ Apps, well these are things that your board room know about, and can probably na
 <!--
 Infrastructure, with cloud this is all commodity thankfully, the days where anyone in your business caring about the challenges of physically racking up hardware, not overloading the weight in the cabinet, taking pride in how well they've routed cables have hopefully passed;
 and you're consuming infrastructure, hopefully you've codified this but even if you're in to ClickOps, making sure its running is not your problem. No one in your business is concerned with hardware failures, patching routers every-time theres a critical vulnerability, testing the UPS and the generators regularly, upgrading the HVAC when you add more servers.
-"YAWN-orarma" as my 15 year old would say and curse me for repeating. Your interactions with any of this is a few clicks or lines of code and some infra is available to you with an SLA
+"YAWN-orarma" as my 16 year old would say and curse me for repeating. Your interactions with any of this is a few clicks or lines of code and some infra is available to you with an SLA
 -->
 
 ---
@@ -387,7 +383,7 @@ and who'd want to get into that business!
 
 ---
 
-![bg](https://media4.giphy.com/media/9V1F9o1pBjsxFzHzBr/giphy.gif)
+![bg](./images/butwaittheresmore.gif)
 
 <!--
 And thats not all! Recruitment...
@@ -508,10 +504,36 @@ What can we do about that?
 
 ---
 
-![bg right](./images/graeme.jpg)
+# 🗑 <!--fit-->
 
-# 👋 <!--fit-->
+<!-- honestly? bin it all -->
+
+---
+
+# ❤️‍🔥 <!--fit-->
+
+<!-- kill it with fire -->
+
+---
+
+# 🍦 <!--fit-->
 
 <!--
-So with that I'd like to reintroduce Graeme who is surely going to fix all this mess
+Learn to love vanilla, vanilla is great
 -->
+
+---
+
+# 💃 <!--fit-->
+
+<!-- I'm not daft I know its not sexy and exciting, you might even find recruitment harder if you're used to-->
+
+---
+
+TODO: magpie pic
+
+<!-- hunting magpies who follow the shiny and don't like boring -->
+
+---
+
+<!--  -->
