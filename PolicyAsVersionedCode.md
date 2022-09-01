@@ -10,7 +10,7 @@ class: lead
 video_embed: <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/YWQG_E7vgiQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 ---
 
-![bg](./images/esynergy-bg.png)
+![bg](./images/bg.svg)
 
 <!-- _class: invert front -->
 
@@ -599,7 +599,13 @@ Maybe some of you are screaming your favorite product name at me in your heads a
 
 # {👹} <!-- fit -->
 
-<!-- Devil in the detail though, throwing some curly braces at something doesn't inherently fix things though. -->
+<!-- Devil in the detail -->
+
+---
+
+# {👹} <!-- fit -->
+
+<!-- throwing some curly braces or yaml at something doesn't inherently fix things. -->
 
 ---
 
