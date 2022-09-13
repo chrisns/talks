@@ -9,41 +9,13 @@ url: https://talks.cns.me/ProactiveClusterAutoscalingInKubernetes.html
 class: lead
 ---
 
-touch on all the bits of latency
-
-- healthchecks, startup, liveness, readiness
-- metrics collection and aggregation and sampling for scale decisions
-- container pull time
-- node provision/startup
-  and how thees can cause you to chase the traffic spike or infra failure you're enduring
-
-reference how much of the node you get for app space (not sure if this is necessary?) point at calculator
-
-demo game
-
-recap
-reference RAID and similar distributed tech of having hot spares
-
-talk through concept of proactive autoscaling with dummy low priority pod
-demo/video
-recap
-talk through why its a bad idea and complexities
-
-- multiple node pools
-- or assumes humongonous node types
-- plan is to waste money
-- assumes you're already at capacity and you don't have resource elsewhere in the cluster, or couldn't use pod priorities with the real workloads
-- its a hack, ideally it'd be in the autoscaler api/config
-
----
-
 ![bg](./images/bg.svg)
 
 # 👋<!--fit-->
 
 <!-- Hi,
 Thank you so much for joining me here today, it'd be great to hear where you're all from so please do leave a comment in the chat and introduce yourself.
-Likewise please use the comments if you've got any questions throughout this webinar and I'll do my best to get to them at the end.-->
+Likewise please use the comments if you've got any questions throughout this webinar and I'll do my best to get to them at the end, I'm also joined by some friends helping me in the chat who may get to them before I do.-->
 
 ---
 
@@ -63,8 +35,10 @@ Likewise please use the comments if you've got any questions throughout this web
 
 <!--
 
-So, to kick things off my name is Chris Nesbitt-Smith, I'm based in London and currently an instructor for Learnk8s, consultant to UK Government and tinkerer of open source.
+So, to kick things off my name is Chris Nesbitt-Smith, I'm based in London and currently an instructor for Learnk8s, consultant to UK Government and tinkerer of open source stuff.
 I've using and abusing Kubernetes in production since it was 0.4, believe me when I say its been a journey!
+
+I've definitely got the scars to show for it.
 -->
 
 ---
@@ -74,7 +48,7 @@ I've using and abusing Kubernetes in production since it was 0.4, believe me whe
 # 🤩 <!--fit-->
 
 <!-- So you believed the hype, that Kubernetes lets you scale infinitely, auto heal and so on.
-Your cluster is self monitoring and scaling up instances of your cloud native stateless app when you need more. -->
+Your cluster is self monitoring and scaling up instances of your cloud native stateless applications on demand when you need more. -->
 
 ---
 
@@ -84,12 +58,12 @@ Your cluster is self monitoring and scaling up instances of your cloud native st
 
 ---
 
-# Cluster autoscaler <!--fit-->
+# Cluster AutoScaler <!--fit-->
 
 ### github.com/kubernetes/autoscaler/tree/master/cluster-autoscaler <!--fit-->
 
 <!--
-Enter the cluster autoscaler and of course a splash of yaml
+Enter the cluster autoscaler and of course a splash of yaml to save the day
 -->
 
 ---
@@ -112,7 +86,7 @@ Enter the cluster autoscaler and of course a splash of yaml
 1. CPU Utilization
 1. Pending pods
 
-<!-- and the autoscaler is configurable -->
+<!-- and good news the autoscaler is configurable -->
 
 ---
 
@@ -143,7 +117,7 @@ since there is little point adding more nodes unless you have workload that need
 
 # Kubernetes Scheduler <!--fit-->
 
-<!-- first lets refresh ourselves on how the Kubernetes scheduler works -->
+<!-- ok, so first lets refresh ourselves on how the Kubernetes scheduler works -->
 
 ---
 
@@ -263,7 +237,9 @@ As more applications
 
 ![bg contain](images/ProactiveClusterAutoscalingInKubernetes/2-2237.svg)
 
-## <!-- are submitted to the cluster, -->
+<!-- are submitted to the cluster, -->
+
+---
 
 ![bg contain](images/ProactiveClusterAutoscalingInKubernetes/2-2121.svg)
 
@@ -306,7 +282,7 @@ Kubernetes tries to fit as many blocks as efficiently as possible.
 But what about the size of the worker nodes
 
 What kind of instance types can you use to build the cluster?
-Nowadays the cloud vendors make almost every instance type available to be part of a cluster now, so you've got free choice.
+Nowadays the cloud vendors make almost every instance type available to be part of a cluster, so you've got free choice.
 There's a catch, though.
 -->
 
@@ -372,7 +348,7 @@ And you should also reserve memory and CPU for the kubelet.
 ![bg contain](images/ProactiveClusterAutoscalingInKubernetes/1-689.svg)
 
 <!--
-Surely the the rest made available to the pods?
+Surely the the rest is made available to the pods?
 -->
 
 ---
@@ -406,7 +382,7 @@ And 11MB of memory for each Pod that you could deploy on that instance.
 ![bg contain](images/ProactiveClusterAutoscalingInKubernetes/1-643.svg)
 
 <!--
-This is the reserved memory for the kubelet. The CPU reserved is usually around 300 to 400MB.
+This is the reserved memory for the kubelet. The CPU reserved is usually around 0.3 to 0.4.
 For the operating system they reserve 100MB of memory and 0.1 CPU and for the eviction threshold, another 100 MB.
 -->
 
@@ -450,6 +426,46 @@ With this particular instance, you can deploy up to 27 pods.
 <!-- Then around another 30 seconds to join the cluster and be ready to run workload
 Then you can of course add on time for pulling your container image that won't be cached
 -->
+
+---
+
+<!-- _class: invert-->
+
+# github.com/appvia/cloud-spend-forecaster <!--fit-->
+
+![height:500](images/ProactiveClusterAutoscalingInKubernetes/grafana-example.png)
+
+<!-- To help visualize the impact this can have I have made a library that fakes a Kubernetes scheduler, and it allows you to specify many different types of pods, and model their scaling dynamics, tracking container startup times, and so on.
+And define your node properties, it takes a lot of shortcuts in order to provide hundreds of thousands of intervals representing days in tens of milliseconds, it is not the real Kubernetes scheduler.
+Pull requests are very welcome if you'd like to improve it!
+-->
+
+---
+
+<style scoped>
+iframe {
+  width: 100%;
+  height: 100%;
+}
+section {
+  padding:0;
+}
+</style>
+<iframe src="https://blackfriday.appvia.io/" title="BlackFriday" frameborder="0"></iframe>
+
+<!-- And to give you a way to play with it, I also made a game as a novelty for kubecon last year called Black Friday.
+
+The scenario is that you're an SRE team supporting a retailer facing a spike in traffic on black friday and again on cyber Monday, with a lull between and a calm before and after.
+
+So the scenario starts Thursday midnight, and ends Tuesday 23:59
+
+There are SLA penalties if you cause a request to be failed
+
+It's a simple three tier app, if you go into the hints, you'll see some of the constraints.
+
+The goal is configure your cluster to as closely follow the traffic spike, with just enough infra, failing some requests and getting a few SLA penalties might actually result in a greater profit.
+
+Please do feel free to play, may the odds ever be in your favour -->
 
 ---
 
@@ -507,7 +523,7 @@ Then you can of course add on time for pulling your container image that won't b
 
 ![bg contain](images/ProactiveClusterAutoscalingInKubernetes/2-3310.svg)
 
-<!-- This isn't easy given the vast array of possible machine sizes, so we've done the hard work for you and create an instance calculator -->
+<!-- This isn't easy given the vast array of possible machine sizes, so we've done the hard work for you and created an instance calculator -->
 
 ---
 
@@ -551,7 +567,7 @@ drag sliders about
 
 ![bg contain](images/ProactiveClusterAutoscalingInKubernetes/2-3392.svg)
 
-<!-- causing the cluster autoscaler to boot a new machine to host the placeholder -->
+<!-- causing the cluster autoscaler to boot a new machine to host the new replacement placeholder, and this will continue as you scale into further nodes, keeping you always one step ahead -->
 
 ---
 
@@ -567,7 +583,7 @@ drag sliders about
 
 ---
 
-<!-- class: invert -->
+<!-- _class: invert -->
 <style scoped>
 pre {
   width: 45%; 
@@ -609,9 +625,9 @@ section {
 <iframe src="https://www.youtube-nocookie.com/embed/kyi2UCzrENA?modestbranding=1&rel=0&iv_load_policy=3&fs=0" title="hpa reactive" frameborder="0"></iframe>
 
 <!--
-I've got a simple application that can handle a fixed number of requests, and I'm ramping up traffic, as you can see we start with two nodes, and we're able to sustainably handle the traffic increasing in, until we fill both nodes, and we continue to start backup pending pods that the HPA has decided it needs.
+I've got a simple application that can handle a fixed number of requests, and I'm ramping up traffic, as you can see we start with two nodes, and we're able to sustainably handle the traffic increasing in, until we fill both nodes, and we continue to start backing up a list of pending pods that the HPA has decided it needs.
 then we finally see Cluster autoscaler provide the nodes. I have manipulated these results a little so as to not leave you waiting the around 4 minutes for the node to be available.
-In that time while we waited for the nodes to be available the traffic really flattens out, but as soon as we've got more resource it goes up
+In that time while we waited for the nodes to be available the traffic we're able to service really flattens out, but as soon as we've got more resource it goes up
 -->
 
 ---
@@ -651,7 +667,7 @@ You can tune your workload to make sure you're not leaving gaps
 
 ---
 
-<!-- class: invert lead -->
+<!-- _class: invert lead -->
 <style scoped>
 pre {
   width: 45%; 
