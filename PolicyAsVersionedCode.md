@@ -597,7 +597,7 @@ Maybe some of you are screaming your favorite product name at me in your heads a
 
 ---
 
-# {👹} <!-- fit -->
+# 👹 <!-- fit -->
 
 <!-- Devil in the detail -->
 
