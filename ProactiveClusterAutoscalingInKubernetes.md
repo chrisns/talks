@@ -579,7 +579,7 @@ drag sliders about
 
 ![bg contain](images/ProactiveClusterAutoscalingInKubernetes/2-3433.svg)
 
-<!-- Firstly we need a placeholder that is big enough to know it'll never be schedule-able along side any real workload on a pod, so it should be sized big enough to fill the node -->
+<!-- Firstly we need a placeholder that is big enough to know it'll never be schedule-able along side any real workload on a node, so it should be sized big enough to fill the node -->
 
 ---
 
