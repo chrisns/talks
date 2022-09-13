@@ -923,7 +923,7 @@ Maybe some of you are screaming your favorite product name at me in your heads a
 
 <style scoped>
 h1 {
-  margin-top: -0.21em;
+  margin-top: -12%;
   font-size: 35em;
 }
 </style>
