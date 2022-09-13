@@ -20,6 +20,7 @@ class: lead
 ### UK Gov | esynergy | Control Pane | LearnK8s </br>& lots of open source
 
 ---
+
 <!-- class: lead invert -->
 
 # ⚡️ <!--fit-->
@@ -27,6 +28,7 @@ class: lead
 <!-- This is a lightning version of a longer talk, of a longer blog, of a longer thesis.
 Strap in, I've only got ten minutes for about a hundred slides
 -->
+
 ---
 
 # 🐘🥱<!--fit-->
@@ -47,6 +49,7 @@ Chris! this is your moment, a captive audience. I hear the doors seal shut behin
 -->
 
 ---
+
 ![bg](./images/policy3.png)
 
 <!--
@@ -81,7 +84,6 @@ People just go off and do their own thing, they do know better, but I'm left pla
 
 ---
 
-
 ![bg](./images/policy8.png)
 
 <!--
@@ -105,7 +107,6 @@ bureaucracy that seems designed to slow me down.
 -->
 
 ---
-
 
 ![bg](./images/policy12.png)
 
@@ -136,7 +137,6 @@ Whats important to you?
 -->
 
 ---
-
 
 ![bg](./images/policy18.png)
 
@@ -412,6 +412,7 @@ Theres plenty of policy as code products out there to help
 <!-- Devil in the detail though -->
 
 ---
+
 # {👹} <!-- fit -->
 
 <!-- Throwing some curly braces at something doesn't inherently fix things. -->
@@ -490,7 +491,9 @@ I know you really came here wanting to see a million words on a slide not just a
 ---
 
 # 🏔 + ☸️ <!--fit-->
-# (Terraform + Kubernetes) 
+
+# (Terraform + Kubernetes)
+
 <!--  I've arbitrarily picked terraform and Kubernetes -->
 
 ---
@@ -1071,9 +1074,9 @@ pass: 1, fail: 0, warn: 0, error: 0, skip: 0
 
 ---
 
-# ~~terraform~~ <br/>kubernetes  <!--fit-->
+# ~~terraform~~ <br/>kubernetes <!--fit-->
 
-<!-- I've cheated, kube gives you admission controllers, 
+<!-- I've cheated, kube gives you admission controllers,
 I haven't found a sane way to evaluate against Azure, GCP or AWS policy without doing it for real -->
 
 ---
