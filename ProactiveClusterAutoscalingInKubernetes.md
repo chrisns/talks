@@ -157,16 +157,14 @@ through filtering viable nodes to then scoring them before creating a binding
 # Requests & Scheduler <!--fit-->
 
 <!--
-You've a number of ways to influence the filter and score
--->
+but how does the scheduler know how much memory and cpu a pod uses? It does not… -->
 
 ---
 
 ![bg contain](images/ProactiveClusterAutoscalingInKubernetes/1-1195.svg)
 
 <!--
-but lets look at requests and limits
-
+you need to spoon feed this with requests and limits
 -->
 
 ---
@@ -465,6 +463,8 @@ It's a simple three tier app, if you go into the hints, you'll see some of the c
 
 The goal is configure your cluster to as closely follow the traffic spike, with just enough infra, failing some requests and getting a few SLA penalties might actually result in a greater profit.
 
+DEMO POINT CLICK, CHANGE MIN THINGS TO 1 OF EACH AND DEMONSTRATE PROFIT, EXPLAIN GRAPHS
+
 Please do feel free to play, may the odds ever be in your favour -->
 
 ---
@@ -625,6 +625,9 @@ section {
 <iframe src="https://www.youtube-nocookie.com/embed/kyi2UCzrENA?modestbranding=1&rel=0&iv_load_policy=3&fs=0" title="hpa reactive" frameborder="0"></iframe>
 
 <!--
+
+Before I start, to provide a little orientation, on the left side we can see requests per second that we're serving, bottom left you can see the nodes and the pods on them as you can see my nodes can take up to four of my workload pods
+
 I've got a simple application that can handle a fixed number of requests, and I'm ramping up traffic, as you can see we start with two nodes, and we're able to sustainably handle the traffic increasing in, until we fill both nodes, and we continue to start backing up a list of pending pods that the HPA has decided it needs.
 then we finally see Cluster autoscaler provide the nodes. I have manipulated these results a little so as to not leave you waiting the around 4 minutes for the node to be available.
 In that time while we waited for the nodes to be available the traffic we're able to service really flattens out, but as soon as we've got more resource it goes up
