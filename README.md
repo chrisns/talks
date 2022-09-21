@@ -24,10 +24,10 @@ The code behind https://talks.cns.me
 | 2022-10-13 | Is it time to put your pet Kubernetes down                  | [DTX Europe](https://dtxevents.io/europe/en/page/dtx-europe)                                                              |
 | 2022-10-15 | Policy as [versioned] Code                                  | [OSCONF 2022](?)                                                                                                          |
 | 2022-10-19 | Policy as [versioned] code                                  | [WeAreDevelopers Live - DevOps Day](?)                                                                                    |
-| 2022-10-24 | Policy as [versioned] code                                  | [London Microsoft DevOps Meetup](https://www.meetup.com/london-microsoft-devops/events/287854448/)                        |
 | 2022-10-24 | Policy as [versioned] code                                  | [Spinnaker Summit](https://sched.co/19kpM)                                                                                |
 | 2022-10-25 | Policy as [versioned] code                                  | [GitOpsCon](https://sched.co/1AR8w)                                                                                       |
 | 2022-10-29 | Policy as [versioned] Code                                  | [INDIA CLOUD SECURITY SUMMIT](?)                                                                                          |
+| 2022-11-02 | Policy as [versioned] code                                  | [London Microsoft DevOps Meetup](https://www.meetup.com/london-microsoft-devops/events/287854448/)                        |
 | 2022-11-10 | Policy as [versioned] Code                                  | [Mobile DevOps Summit](http://www.mobiledevops.io/summit/agenda/speakers/1773168)                                         |
 | 2022-11-15 | Policy as [versioned] Code                                  | [One Summit](https://onesummit2022.sched.com/event/69ffdbbc45806a7ae27374dd29d93237)                                      |
 
