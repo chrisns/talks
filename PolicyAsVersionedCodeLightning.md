@@ -34,7 +34,7 @@ Strap in, I've only got ten minutes for about a hundred slides
 # 🐘🥱<!--fit-->
 
 <!--
-Elephant in the room, policy is a dull thing, its not sexy, but I'm going to try and get your attention.
+Elephant in the room, policy is not sexy, but I'm going to try and get your attention.
 -->
 
 ---
@@ -63,7 +63,7 @@ I ask her, what keeps you up at night?
 ![bg](./images/policy4.png)
 
 <!--
-Don't know what teams are really doing.
+Don't know what teams are doing.
 -->
 
 ---
@@ -79,7 +79,7 @@ Setting and changing policy is slow and hard to communicate
 ![bg](./images/policy6.png)
 
 <!--
-People just go off and do their own thing, they do know better, but I'm left playing catchup with the risk they've signed me up to
+People go off and do their own thing, they do know better, but I'm left playing catchup with the risk they've signed me up to
 -->
 
 ---
@@ -87,7 +87,7 @@ People just go off and do their own thing, they do know better, but I'm left pla
 ![bg](./images/policy8.png)
 
 <!--
-Second person, Product manager? the whip cracker. What's important to you?
+Second person, Product manager - the whip cracker. What's important to you?
 -->
 
 ---
@@ -149,8 +149,7 @@ Writing consistent quality code, avoiding technical debt, the rest of my team be
 ![bg](./images/policy19.png)
 
 <!--
-Use any tools to help you with that I ask?
-Yeah, linters, code quality and test coverage tools, the usual.
+linters, code quality, test coverage tools, the usual help with that.
 -->
 
 ---
@@ -158,7 +157,7 @@ Yeah, linters, code quality and test coverage tools, the usual.
 ![bg](./images/policy20.png)
 
 <!--
-Great I say, I write code too, lets be friends, and hand them a printed QR code of my public gpg key, so you they can trust me.
+Great I say, I write code too, lets be friends, and hand them a printed QR code of my public gpg key, so they can trust me.
 -->
 
 ---
@@ -232,7 +231,7 @@ What if I said:
 # Update policy... <br/>**Daily!?**<!--fit-->
 
 <!--
-in a single day, seamlessly communicated to people without derailing them?
+in a single day, seamlessly communicated without derailing anyone?
 -->
 
 ---
@@ -269,8 +268,8 @@ Multiple concurrent versions of policy are supported
 - Opensource
 
 <!--
-I'm Chris Nesbitt-Smith, I'm currently an instructor for Learnk8s and Control Plane, consultant to the Crown Prosecution Service and tinkerer of open source.
-I've spent a fair chunk of my professional career now working in UK Government and large organizations where problems like these are rife.
+I'm Chris Nesbitt-Smith, I'm an instructor for Learnk8s and Control Plane, consultant to UK Government and tinkerer of open source.
+I've spent a fair chunk of my professional career now working in Government and large organizations where problems like these are rife.
 
 This is a lightning speech, so you'll have to come find me after if you've got questions
 -->
@@ -415,13 +414,13 @@ Theres plenty of policy as code products out there to help
 
 # {👹} <!-- fit -->
 
-<!-- Throwing some curly braces at something doesn't inherently fix things. -->
+<!-- Throwing some curly braces or yaml at something doesn't inherently fix things. -->
 
 ---
 
 ![bg](images/pointlessgate.jpeg)
 
-<!-- Especially if it leads your engineers who are hopefully all plenty smart finding 'inventive' shall we say ways around the -->
+<!-- Especially if it leads your engineers who are hopefully all plenty smart finding 'inventive' ways around the -->
 
 ---
 
@@ -437,7 +436,7 @@ Theres plenty of policy as code products out there to help
 
 # `warn`ings not `error`s? <!--fit-->
 
-<!-- sure you might say that you provide warnings, on at least the less important issues or new emerging policy, but only useful if someone sees them -->
+<!-- sure you might say that you provide warnings, on less important issues or new emerging policy, but only useful if someone sees them -->
 
 ---
 
@@ -486,7 +485,7 @@ I know you really came here wanting to see a million words on a slide not just a
 
 ![bg cover](./images/longlist.jpeg)
 
-<!-- I'm going to limit this to talking about two things, to prove its not just one tech, or tool. -->
+<!-- I'm going to talk about two things, to prove its not just one tech, or tool. -->
 
 ---
 
@@ -494,19 +493,13 @@ I know you really came here wanting to see a million words on a slide not just a
 
 # (Terraform + Kubernetes)
 
-<!--  I've arbitrarily picked terraform and Kubernetes -->
+<!--  I've picked terraform and Kubernetes -->
 
 ---
 
 ![bg cover](./images/picknmix.jpeg)
 
 <!--but I could have picked anything -->
-
----
-
-# 🛠 <!--fit-->
-
-<!-- I'm too lazy to invent anything here -->
 
 ---
 
@@ -544,7 +537,7 @@ li {
 - TiDB
 
 <!--
-so likewise, two tools, but again I could use any, some, or even all, probably. Checkov will do my terraform, kyverno will to my kubernetes.
+likewise, two tools, but again I could use any, some, or even all, probably. Checkov will do my terraform, kyverno will to my kube.
 -->
 
 ---
@@ -555,7 +548,7 @@ so likewise, two tools, but again I could use any, some, or even all, probably. 
 
 ![bg fit](images/policy-ghorg.png)
 
-<!-- I've created a example git hub organization here, I'm not expecting you to read or grok the code on screen, so don't worry about it too much, its just to prove its a real thing. -->
+<!-- I've created a example git hub organization here, I'm not expecting you to read or grok the code on screen, its just to prove its a real thing. -->
 
 ---
 
@@ -677,7 +670,7 @@ resource "aws_s3_bucket" "b" {
 }
 ```
 
-<!-- I've written tests for this, passing test cases are usable as a great example of what good and bad looks like -->
+<!-- I've written tests for this, passing test cases become great examples of what good and bad looks like -->
 
 ---
 
@@ -693,7 +686,7 @@ resource "aws_s3_bucket" "b" {
 
 ![bg fit](images/policy-signed100.png)
 
-<!-- I can sign it -->
+<!-- and signed it -->
 
 ---
 
@@ -763,7 +756,7 @@ definition:
       value: acounts
 ```
 
-<!-- version 2.0.0 looks similar, only now that department field has to be one of a predetermined list, like before, tests exist, release notes are written, tags are signed -->
+<!-- version 2.0.0 looks similar, only now that field has to be from a predetermined list, like before, tests, release notes, tags, signed -->
 
 ---
 
@@ -834,7 +827,7 @@ definition:
 ```
 
 <!--
-2.1.0 is where we notice and correct a spelling mistake of one of the options in that list of departments
+2.1.0 is where we correct a spelling mistake in that list of departments
 -->
 
 ---
@@ -910,7 +903,7 @@ definition:
       value: tech
 ```
 
-<!-- 2.1.1 and I've now added a new department to the list. -->
+<!-- 2.1.1 added a new department to the list. -->
 
 ---
 
@@ -926,7 +919,7 @@ table {
 | ----- | ----- | ----- | ----- |
 | ✅    | ❌    | ❌    | ❌    |
 
-<!-- app1 and infra1 depend on version 1.0.0 of the policy, it is not compliant with version 2.0.0 or beyond, but how do I know that? -->
+<!-- couple more repos in the org, app1 and infra1 depend on version 1, and not compliant with 2 or beyond, but how do I know that? -->
 
 ---
 
@@ -952,7 +945,7 @@ regexManagers: [{
 }],
 ```
 
-<!-- I've configured renovate to automatically make a pull request -->
+<!-- Renovate is automatically making pull requests -->
 
 ---
 
@@ -960,7 +953,7 @@ regexManagers: [{
 
 ![bg fit](images/policy-app1pr.png)
 
-<!--  when theres a new version of the policy, so its super obvious if I can update my dependency -->
+<!--  with new versions of the policy, so I can update my dependency -->
 
 ---
 
@@ -968,13 +961,13 @@ regexManagers: [{
 
 ![bg fit](images/policy-app1-builderror.png)
 
-<!-- with feedback about where I'm not compliant -->
+<!-- and get feedback when I'm not compliant -->
 
 ---
 
 ![bg](images/policy-prs-in-org.png)
 
-<!-- I can also see all the pull requests over the org, so I can measure the compliance of my policy
+<!-- I can also see the pull requests over the org, so I can measure the compliance of my policy
 https://github.com/pulls?q=is%3Aopen+is%3Apr+archived%3Afalse+user%3Apolicy-as-versioned-code
 -->
 
@@ -992,7 +985,7 @@ table {
 | ----- | ----- | ----- | ----- |
 | -     | ✅    | ☑️    | ☑️    |
 
-<!-- moving on from that app2 and infra2 depend on version 2.0.0 of the policy -->
+<!-- couple more repos, app2 and infra2 depend on version 2 of the policy -->
 
 ---
 
@@ -1000,7 +993,7 @@ table {
 
 ![bg](images/policy-app2-pr.png)
 
-<!-- however we could merge the open pull request all the way up to 2.1.1 -->
+<!-- however we could merge the open pull request up to 2.1.1 -->
 
 ---
 
@@ -1016,7 +1009,7 @@ table {
 | ----- | ----- | ----- | ----- |
 | -     | -     | -     | ✅    |
 
-<!-- finally app3 and infra3 are dependent on 2.1.1 -->
+<!-- app3 and infra3 are dependent on 2.1.1 -->
 
 ---
 
@@ -1064,13 +1057,13 @@ mutated policy please try with log level 5)
 pass: 1, fail: 0, warn: 0, error: 0, skip: 0
 ```
 
-<!-- but now from my dev laptop or in CI can evaluate my code against the version of policy -->
+<!-- now from my laptop or in CI can evaluate my code against the right policy version -->
 
 ---
 
 # 🧩 <!--fit-->
 
-<!-- and the last piece to the puzzle is managing the lifecycle of the policies, and allowing multiple versions of policy to be accepted and evaluated within a single runtime -->
+<!-- and the last puzzle piece is managing the lifecycle of the policies, and allowing multiple versions of policy to be accepted and evaluated within a single runtime -->
 
 ---
 
@@ -1109,7 +1102,7 @@ I haven't found a sane way to evaluate against Azure, GCP or AWS policy without 
 
 ![bg fit](images/policy-cluster-builds.png)
 
-<!-- automated for the demo with KiND to deploy the apps -->
+<!-- to demo used KiND to deploy the apps -->
 
 ---
 
@@ -1117,7 +1110,7 @@ I haven't found a sane way to evaluate against Azure, GCP or AWS policy without 
 
 ![bg](images/micdrop.webp)
 
-<!-- and there we have it a full org all done, all compliant, policy all versioned, CIO all aware of whats going on.
+<!-- and there we have it full org all done, all compliant, policy all versioned, CIO all aware of whats going on.
 
 So this is great, -->
 
@@ -1125,7 +1118,7 @@ So this is great, -->
 
 ![bg](./images/movingtarget.jpeg)
 
-<!-- when some new privacy regulation comes out, or your latest marketing strategy pays off and you acquire more data for example, the risks and the appetite stand still for no one and now neither does our policy -->
+<!-- when some new privacy regulation comes out, or you acquire more data, the risks and the appetite stand still for no one and now neither does our policy -->
 
 ---
 
@@ -1219,7 +1212,7 @@ h2 {
 <!--
 I've been Chris Nesbitt-Smith, thanks for your time, you're now free to leave, I'll try destroy the evidence of your guilt admissions earlier.
 
-Like subscribe whatever the kids do these days on LinkedIn, Github whatever and you can be assured there'll be no spam or much content at all since I'm awful at self promotion especially on social media. cns.me just points at my LinkedIn.
+Like subscribe whatever the kids do these days on LinkedIn, Github whatever. cns.me points at my LinkedIn.
 
 talks.cns.me contains this and other talks, they're all open source.
 
