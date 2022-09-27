@@ -3,7 +3,7 @@ title: Is It Time To Put Your Pet Kubernetes Down
 description: Explores how Kubernetes is the new pet and the consequences that presents.
 author: Chris Nesbitt-Smith
 marp: true
-theme: cns/esynergy
+theme: themes/esynergy
 class: lead
 ---
 
@@ -21,6 +21,34 @@ class: lead
 
 # 👋 <br/>Hello<!--fit-->
 
+<!--Hello! Imagine a thing with human faces, what a treat, I get to stand up, not worry about being on mute, use my clicker and everything!-->
+
+---
+
+<!-- _class: invert front -->
+
+![bg right](./images/me.png)
+
+<!-- _class: white -->
+
+## Chris Nesbitt-Smith<!--fit-->
+
+- Learnk8s & Control Plane Instructor + Consultant
+- esynergy - Digital Transformation Consultant
+- Crown Prosecution Service (UK gov) - Consultant
+- Opensource
+
+<!--
+
+So, to kick things off my name is Chris Nesbitt-Smith, I'm based in London and currently work with some well known brands like learnk8s, control plane, esynergy and various bits of UK Government I'm also a tinkerer of open source stuff.
+
+I've using and abusing Kubernetes in production since it was 0.4, believe me when I say its been a journey!
+
+I've definitely got the scars to show for it.
+
+We should hopefully have time for questions and heckles at the end, if not come find me afterwards.
+-->
+
 ---
 
 # Reminder what is Pets vs Cattle?<!--fit-->
@@ -36,7 +64,7 @@ The history of the pets vs cattle terminology is muddy, most link to a presentat
 # The before times ⏳ <!--fit-->
 
 <!--
-Way back then in the before times, we called ourselves sysadmins and treat our servers like pets
+Way back then in the before times, we called ourselves sysadmins and treated our servers like pets
 -->
 
 ---
@@ -44,7 +72,17 @@ Way back then in the before times, we called ourselves sysadmins and treat our s
 ![bg](./images/server-bob.png)
 
 <!--
-For example Bob the mail server. If Bob goes down, it’s all hands on deck. The CEO can’t get his email and it’s the end of the world.
+For example Bob the mail server. If Bob goes down, it’s all hands to the pumps.
+The CEO can’t get his email and it’s the end of the world.
+We do some incantations, make some sacrifices at an alter and resuscitate Bob bringing him back from the dead
+-->
+
+---
+
+# 🦹‍♀️👏 <!--fit-->
+
+<!--
+Crisis averted, cue the applause and accolades for our valiant sysadmins who stayed up late into the night
 -->
 
 ---
@@ -52,7 +90,7 @@ For example Bob the mail server. If Bob goes down, it’s all hands on deck. The
 # 2022(?) ⌛️ <!--fit-->
 
 <!--
-In the new world, servers are numbered or maybe uuids, like cattle in a herd.
+In the new world however, servers are numbered or maybe uuids, like cattle in a herd.
 -->
 
 ---
@@ -184,7 +222,7 @@ Whats the first thing we do with a brand new Kubernetes cluster?
 # <!--fit-->🧐
 
 <!--
-Hint: it's not deploying your application
+Hint: it's not deploying your application or anything the business cares about
 -->
 
 ---
@@ -272,7 +310,7 @@ This is what we're calling day 2 operations, we used to call it BAU or business 
 # ❄️ <!--fit -->
 
 <!--
-You'll quickly find that clusters are running various versions, given the rate of change in the community its unrealistically to run :latest everywhere confidently without breaking production and disrupting your operational teams.
+You'll quickly find that clusters are running various versions, given the rate of change in the community its unrealistic to run :latest everywhere confidently without breaking production and disrupting your operational teams.
 -->
 
 ---
@@ -285,13 +323,11 @@ Permutations of seemingly common tool choices, some teams might use kong, others
 
 ---
 
-# ∞<!--fit-->
+![bg fit](images/infiniteposibilities.gif)
 
 <!--
-Seemingly infinite possibilities appear across the estate
+Seemingly infinite possibilities across the estate emerge
 -->
-
-TODO: infinite possibilities animated gif
 
 ---
 
@@ -302,8 +338,6 @@ Sad times
 -->
 
 ---
-
-TODO: centre align
 
 # 🐶🐱🐕🐇🐈<br/>🐹🐩🦮🐕‍🦺🐈‍⬛🐰<!--fit-->
 
@@ -351,7 +385,7 @@ Apps, well these are things that your board room know about, and can probably na
 <!--
 Infrastructure, with cloud this is all commodity thankfully, the days where anyone in your business caring about the challenges of physically racking up hardware, not overloading the weight in the cabinet, taking pride in how well they've routed cables have hopefully passed;
 and you're consuming infrastructure, hopefully you've codified this but even if you're in to ClickOps, making sure its running is not your problem. No one in your business is concerned with hardware failures, patching routers every-time theres a critical vulnerability, testing the UPS and the generators regularly, upgrading the HVAC when you add more servers.
-"YAWN-orarma" as my 16 year old would say and curse me for repeating. Your interactions with any of this is a few clicks or lines of code and some infra is available to you with an SLA
+"YAWN-orarma" as my 16 year old would say and curse me for repeating. Your interactions with any of this is a few clicks or lines of code and some infra is available to you with an SLA attached to it.
 -->
 
 ---
@@ -368,9 +402,9 @@ If only the story ended there
 
 <!--
 But sandwiched between those is a grey layer, of all the operational enablers, its where your 'devops' or 'SRE' team live.
-So think log aggregation, certificate issues, security policies, monitoring, service mesh and others.
+So think log aggregation, certificate issuers, security policies, monitoring, service mesh and others.
 These are things you do because of all sorts of reasons ranging from risk mitigation to emotion and technically unqualified opinion or just without foresight of what was round the corner in 6 months.
-All of this while technically fascinating for people like me to stand and stroke my beard at they are delivering absolutely zero business value, unless of course your business is building those products.
+All of this while technically fascinating for people like me to stand and stroke my beard at, they are delivering absolutely zero business value, unless of course your business is building or training on those products.
 -->
 
 ---
@@ -426,7 +460,7 @@ I mean candidates; that you'll hire, well now you've got one hell of an onboardi
 # 💡<!--fit-->
 
 <!--
-And if you hired smart people they'll come with experience and their own opinions of what worked for them before, so your landscape gets bigger and bigger and more complex
+And if you hired smart people they'll come with experience and their own opinions of what worked for them before, so your landscape gets bigger and bigger and more complex and diverse
 -->
 
 ---
@@ -442,7 +476,7 @@ I did some googling, this is what the CNCF landscape looked way back in 2017.
 ![bg](./images/rubikscube.jpeg)
 
 <!--
-Choices, choices as far as the eye can see.
+Choices, right? choices as far as the eye can see.
 -->
 
 ---
@@ -530,10 +564,133 @@ Learn to love vanilla, vanilla is great
 
 ---
 
-TODO: magpie pic
+![bg contain](images/magpie.webp)
 
 <!-- hunting magpies who follow the shiny and don't like boring -->
 
 ---
 
-<!--  -->
+![bg contain](images/k8s-operator.webp)
+
+<!--
+and don't get me started on operators, nice idea but betray any ideals of immutability, crazy levels of abstraction for..
+-->
+
+---
+
+![bg contain](images/admission-controller-phases.png)
+
+<!--
+and have you seen the crazy of mutating admission controllers
+-->
+
+---
+
+![bg cover](images/inception.webp)
+
+<!--
+If you're really mad, you can nest these things, with operators that create crds for other operators that are all mutated, heaven forbid someone bumps the version of anything?
+-->
+
+---
+
+# 🔫 ? <!--fit-->
+
+<!--
+So, to question posed in my talk, should you put your pet Kubernetes cluster down?
+-->
+
+---
+
+# 👍 <!--fit-->
+
+<!--
+Yes, yes is it.
+And in the imortal words of s-club 7 if you can
+-->
+
+---
+
+![bg cover](images/sclub-bringitonback.gif)
+
+<!--
+bring it on back
+from code without anyone noticing,
+-->
+
+---
+
+![bg fit](images/youearnedit.gif)
+
+<!--
+Then maybe it can earn the right to stay to
+-->
+
+---
+
+![bg fit](images/dieanotherday.webp)
+
+<!--
+die another day
+-->
+
+---
+
+<!-- _class: invert -->
+<style scoped>
+h2 {
+  position: absolute;
+  bottom: 1ch;
+  left: 2vw;
+  width: 95%
+}
+</style>
+
+# 🙏 Thanks 🙏 <!--fit-->
+
+![bg right](./images/theend.gif)
+
+- cns.me
+- talks.cns.me
+- github.com/chrisns
+- learnk8s.io
+- esynergy.co.uk
+- controlplane.io
+
+## Chris Nesbitt-Smith <!--fit-->
+
+<!--
+I've been Chris Nesbitt-Smith, thank you again for joining me today and enduring my self loathing.
+
+Like subscribe whatever the kids do these days on LinkedIn, Github whatever and you can be assured there'll be no spam or much content at all since I'm awful at self promotion especially on social media. cns.me just points at my LinkedIn.
+
+talks.cns.me contains this and other talks, they're all open source.
+
+-->
+
+---
+
+<!-- _class: invert end lead-->
+<style scoped>
+
+</style>
+
+# Q&A🙋‍♀️🙋🙋‍♂️ <!--fit-->
+
+![bg opacity:0.2](./images/questions.webp)
+
+### </br>
+
+<div class="container">
+  <div class="glitch" data-text="cns.me">cns.me</div>
+  <div class="glow">cns.me</div>
+</div>
+<div class="scanlines"></div>
+
+### </br>
+
+## Chris Nesbitt-Smith <!--fit-->
+
+<!--
+Questions are very welcome on this or anything else, I'll hold the stage as long as I'm allowed, or find me afterwards
+-->
