@@ -455,9 +455,11 @@ section {
 
 The scenario is that you're an SRE team supporting a retailer facing a spike in traffic on black friday and again on cyber Monday, with a lull between and a calm before and after.
 
+It is a three tier service of frontend, backend, and database all of which have different scaling properties, startup times etc
+
 So the scenario starts Thursday midnight, and ends Tuesday 23:59
 
-There are SLA penalties if you cause a request to be failed
+You're on the hook for it so there are SLA penalties if you cause a request to be failed
 
 It's a simple three tier app, if you go into the hints, you'll see some of the constraints.
 
@@ -758,6 +760,8 @@ default       0s          Normal    Started                   pod/podinfo-8558cf
 
 ## <!-- here is the results of kubectl get events -->
 
+---
+
 <style scoped>
 iframe {
   width: 100%;
@@ -837,7 +841,25 @@ With a priority of -1, all other pods will have precedence, and the placeholder 
 
 ---
 
+<style scoped>
+iframe {
+  width: 100%;
+  height: 100%;
+}
+section {
+  padding: 0;
+}
+</style>
+<iframe src="http://localhost:8001/static" title="" frameborder="0"></iframe>
+<!-- before we move on, if I've talked long enough through this we flipping back to my live demo we should hopefully now see the new node for the placeholder has been provisioned -->
+
+---
+
 # DEMO <!--fit-->
+
+<!-- OK now for a demo of how this works with pod autoscaling, in a real-ish world scenario
+I'll be honest with you, I've exhausted my credit with the demo gods, so I'm going to play some video and provide a little narration.
+-->
 
 ---
 
