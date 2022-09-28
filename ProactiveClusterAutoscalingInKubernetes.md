@@ -7,6 +7,7 @@ marp: true
 theme: themes/esynergy
 url: https://talks.cns.me/ProactiveClusterAutoscalingInKubernetes.html
 class: lead
+video_embed: <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/o1U9k-Ng8D0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 ---
 
 ![bg](./images/bg.svg)
