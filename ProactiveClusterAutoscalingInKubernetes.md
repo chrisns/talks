@@ -170,7 +170,6 @@ you need to spoon feed this with requests and limits
 ---
 
 ```yaml
-
 ---
 resources:
   requests:
