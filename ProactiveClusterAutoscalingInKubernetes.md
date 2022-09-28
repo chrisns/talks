@@ -169,6 +169,28 @@ you need to spoon feed this with requests and limits
 
 ---
 
+```yaml
+
+---
+resources:
+  requests:
+    memory: "64Mi"
+    cpu: "250m"
+  limits:
+    memory: "128Mi"
+    cpu: "500m"
+```
+
+<!--
+If you don't specify requests and limits Kubernetes will play blind, your cluster will become overloaded, nodes will become over subscribed and you'll be constantly fighting fires.
+
+So if your only takeaway is that all your containers should have requests and limits defined then we've done something useful here!
+
+Requests are the initial ask, and limits are the point that your container will be throttled if its CPU or killed if its memory,
+-->
+
+---
+
 ![bg contain](images/ProactiveClusterAutoscalingInKubernetes/2-3032.svg)
 
 <!--
@@ -398,6 +420,12 @@ With this particular instance, you can deploy up to 27 pods.
 # Cluster AutoScaler </br>Lead Time <!--fit-->
 
 <!-- The other thing to consider is all this takes time -->
+
+---
+
+![bg contain](images/ProactiveClusterAutoscalingInKubernetes/hpa.png)
+
+<!-- Lets assume you've configured the horizontal pod autoscaler or HPA to scale up your pods dynamically, well thats where the journey probably starts -->
 
 ---
 
@@ -975,6 +1003,22 @@ talks.cns.me contains this and other talks, they're all open source.
 
 ---
 
+![bg cover](images/ProactiveClusterAutoscalingInKubernetes/d5e.png)
+
+<!--
+Next week, you're in for a real treat so please due turn your tvs in for the same bat time, same bat channel.
+Daniele, or as we call him D5e is going to walk you through how to easily scale kubernetes like the hyperscalers do, running many clusters, in many regions, in many cloud vendors.
+If you've got regulatory, performance, disaster recovery reasons, or any other motivations to need to operate in multiple regions or clouds then you simply must not miss this.
+-->
+
+---
+
+![bg fit](images/ProactiveClusterAutoscalingInKubernetes/slack.png)
+
+<!-- if you're not already in it, please do join the linnode slack which I'm sure theres links for in the description and/or being shared as I speak -->
+
+---
+
 <!-- _class: invert end lead-->
 <style scoped>
 
@@ -999,5 +1043,7 @@ talks.cns.me contains this and other talks, they're all open source.
 <!--
 Questions are very welcome on this or anything else.
 
-If I've not got to your question or you're not watching this live I'll do my best to get back to you, or you can find me on LinkedIn.
+If I've not got to your question or you're not watching this live I'll do my best to get back to you, just leave the question in the kubernetes scaling slack channel
+
+feel free to @ me so I see it!
 -->
