@@ -202,16 +202,9 @@ well..
 
 ---
 
-TODO: make code bigger
+# `eksctl create cluster` <!--fit-->
 
-```bash
-eksctl create cluster \
- --name my-cluster \
- --version 1.24 \
- --without-nodegroup
-```
-
-# Now what?
+## ...now what?
 
 <!--
 Whats the first thing we do with a brand new Kubernetes cluster?
@@ -476,7 +469,7 @@ I did some googling, this is what the CNCF landscape looked way back in 2017.
 ![bg](./images/rubikscube.jpeg)
 
 <!--
-Choices, right? choices as far as the eye can see.
+Choices, right? choices and logos as far as the eye can see.
 -->
 
 ---
@@ -493,6 +486,149 @@ Have you seen it recently?
 
 <!--
 This has got a bit out of hand, I'd say someone aught to have a word but I suspect that'd just make things worse by adding yet another thing
+-->
+
+---
+
+![bg contain](images/k8s-operator.webp)
+
+<!--
+and don't get me started on operators, nice idea but betray any ideals of immutability, crazy levels of abstraction for..
+-->
+
+---
+
+![bg contain](images/admission-controller-phases.png)
+
+<!--
+and have you seen the crazy of mutating admission controllers
+-->
+
+---
+
+![bg cover](images/inception.webp)
+
+<!--
+If you're really mad, you can nest these things, with operators that create crds for other operators that are all mutated, heaven forbid someone bumps the version of anything?
+-->
+
+---
+
+![bg cover](images/forky.webp)
+
+<!--
+All no doubt glued together with sticky tape, glue, pipecleaners and
+-->
+
+---
+
+![bg 40%](images/helm.svg)
+
+<!--helm -->
+
+---
+
+![bg 50% hue-rotate:40deg](images/helm.svg)
+
+<!--
+a string based templating engine where any community module has to eventually expose every parameter in every object file abstracted by a glorified string replace
+-->
+
+---
+
+![bg 70% hue-rotate:80deg](images/helm.svg)
+
+<!--
+So now I've got to have in my head all the complexities of a linux/windows host, how the container runtime works, the software defined network and storage, the hypervisor, before the container, the scheduler, controllers, auth and policy and mutating policy in the cluster.
+-->
+
+---
+
+![bg 90% hue-rotate:120deg](images/helm.svg)
+
+<!--
+before I worry about how someone in the nested helm chart mess of hell, has mapped the replica count of one of the deployments to a string called db replica count, and how that has changed in a new version of a dependency not following semver to "database_replica_count", so instead of having my expected 3 I've now only got 1
+-->
+
+---
+
+![bg 100% hue-rotate:170deg](images/helm.svg)
+
+<!--
+when I could have just written a yaml patch for the replica count in the deployment object of the database resource using stable API versioning, schema validation, ahhh
+-->
+
+---
+
+![bg cover](<images/Kids_on_old_computers_(17161290240).jpg>)
+
+<!--
+the kids doing Kubernetes don't seem to have learned from the past
+-->
+
+---
+
+![bg fit](images/tux.png)
+![bg fit](images/reactjs.png)
+![bg fit](images/vscode.jpg)
+![bg fit](images/flutter.png)
+![bg fit](images/nodejs.png)
+![bg fit](images/typescript.png)
+![bg fit](images/python.png)
+![bg fit](images/golang.png)
+![bg fit](images/firefox.png)
+![bg fit](images/gimp.png)
+![bg fit](images/php.png)
+
+<!-- don't get me wrong, I love the open source community with all my heart, its so important -->
+
+---
+
+![bg fit](images/policy-log4j-toaster.jpg)
+
+<!-- and its simply not possible to do anything without it
+sorry, not sorry, yes as a sidebar, every talk this year is contractually required to reference log4j, this is my slide, deal with, its not relevant, it can come out in a couple of months
+-->
+
+---
+
+![bg fit](images/xkcddependency.png)
+
+<!-- everything literally everything that exists around us depends upon it, and the community is brilliant, at building some truly remarkable very high quality things, but we must accept that -->
+
+---
+
+![bg fit](images/ansiblegalaxy.svg)
+
+<!-- the open source community -->
+
+---
+
+![bg fit](images/chefsupermarket.svg)
+
+<!-- is awful at packaging things up -->
+
+---
+
+![bg fit](images/puppetforge.svg)
+
+<!-- in this way for consumption, introducing needless abstractions -->
+
+---
+
+![bg cover](images/seeyouinhell.gif)
+
+<!--
+but enough of that, I'm definitely going to hell now
+-->
+
+---
+
+![bg cover](images/happyplace.gif)
+
+<!--
+happy place chris, happy place
+where was I, right yes so through all of this
 -->
 
 ---
@@ -529,11 +665,11 @@ Meanwhile your business value delivering apps are offline, or worse at breach
 
 ---
 
-# ⏮ <!--fit-->
+![bg](./images/bekindrewind.webp)
 
 <!--
 Rewind a minute we didn't want any of these things, how did we get here?
-What can we do about that?
+What can we do about it?
 -->
 
 ---
@@ -553,51 +689,33 @@ What can we do about that?
 # 🍦 <!--fit-->
 
 <!--
-Learn to love vanilla, vanilla is great
+and then Learn to
 -->
+
+---
+
+# I ❤️ 🍦 <!--fit-->
+
+<!-- love vanilla, vanilla is great, and delicious too -->
 
 ---
 
 # 💃 <!--fit-->
 
-<!-- I'm not daft I know its not sexy and exciting, you might even find recruitment harder if you're used to-->
+<!-- I'm not daft I know it's not sexy and exciting, you might even find recruitment harder if you're used to-->
 
 ---
 
 ![bg contain](images/magpie.webp)
 
-<!-- hunting magpies who follow the shiny and don't like boring -->
-
----
-
-![bg contain](images/k8s-operator.webp)
-
-<!--
-and don't get me started on operators, nice idea but betray any ideals of immutability, crazy levels of abstraction for..
--->
-
----
-
-![bg contain](images/admission-controller-phases.png)
-
-<!--
-and have you seen the crazy of mutating admission controllers
--->
-
----
-
-![bg cover](images/inception.webp)
-
-<!--
-If you're really mad, you can nest these things, with operators that create crds for other operators that are all mutated, heaven forbid someone bumps the version of anything?
--->
+<!-- hunting magpies who follow the shiny and don't like boring stuff that works -->
 
 ---
 
 # 🔫 ? <!--fit-->
 
 <!--
-So, to question posed in my talk, should you put your pet Kubernetes cluster down?
+So, to question posed from the title of my talk, is it time you put your pet Kubernetes cluster down?
 -->
 
 ---
@@ -606,7 +724,7 @@ So, to question posed in my talk, should you put your pet Kubernetes cluster dow
 
 <!--
 Yes, yes is it.
-And in the imortal words of s-club 7 if you can
+And in the immortal words of s-club 7 if you can
 -->
 
 ---
@@ -615,7 +733,7 @@ And in the imortal words of s-club 7 if you can
 
 <!--
 bring it on back
-from code without anyone noticing,
+immutably from code without anyone noticing,
 -->
 
 ---
@@ -623,7 +741,7 @@ from code without anyone noticing,
 ![bg fit](images/youearnedit.gif)
 
 <!--
-Then maybe it can earn the right to stay to
+Then maybe just maybe it can earn the right to stay to
 -->
 
 ---
@@ -672,8 +790,8 @@ talks.cns.me contains this and other talks, they're all open source.
 
 <!-- _class: invert end lead-->
 <style scoped>
-
-</style>
+  
+  </style>
 
 # Q&A🙋‍♀️🙋🙋‍♂️ <!--fit-->
 
@@ -692,5 +810,5 @@ talks.cns.me contains this and other talks, they're all open source.
 ## Chris Nesbitt-Smith <!--fit-->
 
 <!--
-Questions are very welcome on this or anything else, I'll hold the stage as long as I'm allowed, or find me afterwards
+Questions are very welcome on this or anything else, I'll hold the stage as long as I'm allowed, or find me afterwards, this grumpy old man needs to go find somewhere to sit down soon
 -->
