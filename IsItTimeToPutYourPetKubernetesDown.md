@@ -517,7 +517,7 @@ If you're really mad, you can nest these things, with operators that create crds
 ![bg cover](images/forky.webp)
 
 <!--
-All no doubt glued together with sticky tape, glue, pipecleaners and
+All no doubt held together with sticky tape, chewing gum, glue, pipe cleaners, thoughts and prayers and
 -->
 
 ---
@@ -528,6 +528,8 @@ All no doubt glued together with sticky tape, glue, pipecleaners and
 
 ---
 
+<style scoped>section { rotate: 10deg;}</style>
+
 ![bg 50% hue-rotate:40deg](images/helm.svg)
 
 <!--
@@ -535,6 +537,8 @@ a string based templating engine where any community module has to eventually ex
 -->
 
 ---
+
+<style scoped>section { rotate: 20deg;}</style>
 
 ![bg 70% hue-rotate:80deg](images/helm.svg)
 
@@ -544,7 +548,9 @@ So now I've got to have in my head all the complexities of a linux/windows host,
 
 ---
 
-![bg 90% hue-rotate:120deg](images/helm.svg)
+<style scoped>section { rotate: 30deg;}</style>
+
+![bg 90% hue-rotate:120deg brightness:1.5](images/helm.svg)
 
 <!--
 before I worry about how someone in the nested helm chart mess of hell, has mapped the replica count of one of the deployments to a string called db replica count, and how that has changed in a new version of a dependency not following semver to "database_replica_count", so instead of having my expected 3 I've now only got 1
@@ -552,10 +558,24 @@ before I worry about how someone in the nested helm chart mess of hell, has mapp
 
 ---
 
-![bg 100% hue-rotate:170deg](images/helm.svg)
+<style scoped>
+section { 
+  rotate: 30deg;
+  animation-name: spin;
+  animation-duration: 40000ms;
+  animation-iteration-count: infinite;
+}
+
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(7600deg);}
+}
+</style>
+
+![bg 100% hue-rotate:120deg brightness:2](images/helm.svg)
 
 <!--
-when I could have just written a yaml patch for the replica count in the deployment object of the database resource using stable API versioning, schema validation, ahhh
+when I could have just written a yaml patch for the replica count in the deployment object of the database resource using stable API versioning with schema validation for free, ahhh
 -->
 
 ---
@@ -715,7 +735,7 @@ and then Learn to
 # 🔫 ? <!--fit-->
 
 <!--
-So, to question posed from the title of my talk, is it time you put your pet Kubernetes cluster down?
+So, to answer the question posed from the title of my talk, is it time you put your pet Kubernetes cluster down?
 -->
 
 ---
@@ -733,7 +753,9 @@ And in the immortal words of s-club 7 if you can
 
 <!--
 bring it on back
-immutably from code without anyone noticing,
+immutably from code, all without anyone noticing
+
+(I'm referring to the original version of the lyrics)
 -->
 
 ---
