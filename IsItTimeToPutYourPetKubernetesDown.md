@@ -73,7 +73,9 @@ Way back then in the before times, we called ourselves sysadmins and treated our
 
 <!--
 For example Bob the mail server. If Bob goes down, it’s all hands to the pumps.
+
 The CEO can’t get his email and it’s the end of the world.
+
 We do some incantations, make some sacrifices at an alter and resuscitate Bob bringing him back from the dead
 -->
 
@@ -117,7 +119,9 @@ h2 {
 ## 🦸‍♀️
 
 <!--
-Why am I telling you this rather gruesome story? Kubernetes deals with that right? and saves us from the tyranny
+Why am I telling you this rather morbid story?
+
+Kubernetes deals with that right? and saves us from the tyranny
 -->
 
 ---
@@ -135,6 +139,7 @@ ip-10-170-7-99.eu-west-2.compute.internal    Ready    <none>   24h   v1.21.5-eks
 And you're right, it does.
 
 All you're computers are called nodes and abstracted and given arbitrary names, autoscaling groups and such will automatically detect the sick in your flock, take them out, and bring a replacement in.
+
 all while seamlessly (ish) rescheduling the workload that was on the failed computer
 -->
 
@@ -232,6 +237,7 @@ etc
 
 <!--
 Look familiar?
+
 yeah, we had to do a load of 'things' just to make this cluster able to start running our workloads
 -->
 
@@ -240,7 +246,9 @@ yeah, we had to do a load of 'things' just to make this cluster able to start ru
 # So?</br>🤷<!--fit-->
 
 <!--
-And it's worth noting that with a trend towards more and more features being being 'out of tree' that is to say they're optional add-ons and don't ship with core Kubernetes, examples of this are things like flex volumes, policy and basically all the Kubernetes sig projects that many find essential is only exasperating this issue
+And it's worth noting that with a trend towards more and more features being being 'out of tree' that is to say they're optional add-ons and don't ship with core Kubernetes.
+
+Examples of this are things like flex volumes, policy and basically all the Kubernetes sig projects that many find essential is only exasperating this issue
 -->
 
 ---
@@ -256,8 +264,16 @@ And it's worth noting that with a trend towards more and more features being bei
 
 <!--
 <click>
+
 That might work for when you've got a single cluster<click>
-But what about when you've got dev <click> integration <click> staging <click> qa that your app needs to run on
+
+But what about when you've got dev <click>
+
+integration <click>
+
+staging <click>
+
+qa that your app needs to run on
 -->
 
 ---
@@ -368,6 +384,7 @@ Maybe you like pets?
 
 <!--
 Well, presuming of course you're in cloud, your world could roughly be summarized into tiers
+
 Apps, well these are things that your board room know about, and can probably name, so think your public website, shopping cart system, customer service apps, online chat interfaces, email system etc. These are all implicitly providing some value in of themselves to your end customers.
 -->
 
@@ -377,7 +394,16 @@ Apps, well these are things that your board room know about, and can probably na
 
 <!--
 Infrastructure, with cloud this is all commodity thankfully, the days where anyone in your business caring about the challenges of physically racking up hardware, not overloading the weight in the cabinet, taking pride in how well they've routed cables have hopefully passed;
-and you're consuming infrastructure, hopefully you've codified this but even if you're in to ClickOps, making sure its running is not your problem. No one in your business is concerned with hardware failures, patching routers every-time theres a critical vulnerability, testing the UPS and the generators regularly, upgrading the HVAC when you add more servers.
+
+and you're consuming infrastructure, hopefully you've codified this but even if you're in to ClickOps, making sure its running is not your problem.
+
+No one in your business is concerned with hardware failures, patching routers every-time theres a critical vulnerability, testing the UPS and the generators regularly, upgrading the HVAC when you add more servers.
+-->
+
+---
+
+# 🥱 <!--fit-->
+<!--
 "YAWN-orarma" as my 16 year old would say and curse me for repeating. Your interactions with any of this is a few clicks or lines of code and some infra is available to you with an SLA attached to it.
 -->
 
@@ -395,9 +421,37 @@ If only the story ended there
 
 <!--
 But sandwiched between those is a grey layer, of all the operational enablers, its where your 'devops' or 'SRE' team live.
+
 So think log aggregation, certificate issuers, security policies, monitoring, service mesh and others.
+
 These are things you do because of all sorts of reasons ranging from risk mitigation to emotion and technically unqualified opinion or just without foresight of what was round the corner in 6 months.
-All of this while technically fascinating for people like me to stand and stroke my beard at, they are delivering absolutely zero business value, unless of course your business is building or training on those products.
+-->
+
+---
+
+![bg](./images/Goliath.webp)
+
+<!--
+Let's just make the leap and assume for a minute you are more technically competent than your goliath multi-billion dollar cloud vendor
+-->
+
+---
+
+![bg](./images/hand-different-people-stacked-top-each-other_158518-4124.jpg)
+
+<!--
+You've completely negated many of the benefits of going to cloud in the first place by ripping up the shared responsibility model
+
+All of this while technically fascinating for people like me to stand and
+-->
+---
+
+![bg](./images/good-beardstroke.gif)
+
+<!--
+stroke my beard at.
+
+This is delivering absolutely zero business value, unless of course your business is building or training on those products.
 -->
 
 ---
@@ -421,7 +475,10 @@ And thats not all! Recruitment...
 ![bg](./images/time-travel-meme-ad.jpeg)
 
 <!--
-You might think you want a devops right? oh no wait, devops with Kubernetes experience, maybe a CKA? oh yeah, its on AWS, and we use linkerd and in some places istio, no not the current version, or even the same version everywhere. a mix of pod security policy, kyverno and OPA for policy, some terraform, helm, jenkins, github action soup going on, all in a mono-repo apart from all that stuff that isn't.
+You might think you want a devops right?
+oh no wait, devops with Kubernetes experience, maybe a CKA?
+
+oh yeah, its on AWS, and we use linkerd and in some places istio, no not the current version, or even the same version everywhere. a mix of pod security policy, kyverno and OPA for policy, some terraform, helm, jenkins, github action soup going on, all in a mono-repo apart from all that stuff that isn't.
 -->
 
 ---
@@ -720,6 +777,39 @@ and then Learn to
 
 ---
 
+![bg](./images/kiss-band.jpg)
+
+<!-- anyone remember KISS? -->
+
+---
+
+
+![bg](./images/Kiss-Logo.png)
+
+<!-- no, not the band -->
+
+---
+
+# KISS<!--fit-->
+## Keep It Stupid Simple <!--fit-->
+
+<!-- Keep it stupid simple -->
+
+---
+<!-- _class: invert lead -->
+
+# KISS<!--fit-->
+## Keep It Simple, Stupid <!--fit-->
+
+<!-- or Keep it simple, stupid -->
+
+---
+
+![bg ](images/1387400983-time-embrace-brand.jpg)
+<!-- and embrace the shared responsibility model on offer, and make your cloud vendors do more than just provide compute, turns out as it happens, they're not that bad at it -->
+
+---
+
 # 💃 <!--fit-->
 
 <!-- I'm not daft I know it's not sexy and exciting, you might even find recruitment harder if you're used to-->
@@ -732,7 +822,7 @@ and then Learn to
 
 ---
 
-# 🔫 ? <!--fit-->
+# 🐶🔫 ? <!--fit-->
 
 <!--
 So, to answer the question posed from the title of my talk, is it time you put your pet Kubernetes cluster down?
