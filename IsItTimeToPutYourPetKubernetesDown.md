@@ -7,15 +7,34 @@ theme: themes/esynergy
 class: lead
 ---
 
-![bg](./images/bg.svg)
+<!-- _class: title-page-->
 
-<!-- _class: lead invert -->
+<div>
+<svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+<defs>
+<path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+</defs>
+<g class="parallax">
+<use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+<use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+<use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+<use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+</g>
+</svg>
+</div>
 
-# Is it time to put your pet Kubernetes down?
+<div class="scanlines"></div>
+
+# Is it time to put your pet Kubernetes down?<br/><br/> 🐶☸️🔫⁉
+
+<div class="glitch emoji" data-text="🤔">🤔</div>
 
 ## Chris Nesbitt-Smith
 
-### UK Gov | esynergy | Control Pane | LearnK8s </br>& lots of open source
+### UK Gov | esynergy | Control Pane | LearnK8s | lots of open source
+
+---
 
 ---
 
@@ -403,6 +422,7 @@ No one in your business is concerned with hardware failures, patching routers ev
 ---
 
 # 🥱 <!--fit-->
+
 <!--
 "YAWN-orarma" as my 16 year old would say and curse me for repeating. Your interactions with any of this is a few clicks or lines of code and some infra is available to you with an SLA attached to it.
 -->
@@ -444,6 +464,7 @@ You've completely negated many of the benefits of going to cloud in the first pl
 
 All of this while technically fascinating for people like me to stand and
 -->
+
 ---
 
 ![bg](./images/good-beardstroke.gif)
@@ -783,7 +804,6 @@ and then Learn to
 
 ---
 
-
 ![bg](./images/Kiss-Logo.png)
 
 <!-- no, not the band -->
@@ -791,14 +811,17 @@ and then Learn to
 ---
 
 # KISS<!--fit-->
+
 ## Keep It Stupid Simple <!--fit-->
 
 <!-- Keep it stupid simple -->
 
 ---
+
 <!-- _class: invert lead -->
 
 # KISS<!--fit-->
+
 ## Keep It Simple, Stupid <!--fit-->
 
 <!-- or Keep it simple, stupid -->
@@ -806,6 +829,7 @@ and then Learn to
 ---
 
 ![bg ](images/1387400983-time-embrace-brand.jpg)
+
 <!-- and embrace the shared responsibility model on offer, and make your cloud vendors do more than just provide compute, turns out as it happens, they're not that bad at it -->
 
 ---
