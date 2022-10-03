@@ -25,6 +25,7 @@ viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
 </div>
 
 <div class="scanlines"></div>
+<div class="esynergy"></div>
 
 # Is it time to put your pet Kubernetes down?<br/><br/> 🐶☸️🔫⁉
 
@@ -33,8 +34,6 @@ viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
 ## Chris Nesbitt-Smith
 
 ### UK Gov | esynergy | Control Pane | LearnK8s | lots of open source
-
----
 
 ---
 
@@ -924,7 +923,7 @@ talks.cns.me contains this and other talks, they're all open source.
 
 ---
 
-<!-- _class: invert end lead-->
+<!-- _class: invert end lead -->
 <style scoped>
   
   </style>
@@ -942,6 +941,8 @@ talks.cns.me contains this and other talks, they're all open source.
 <div class="scanlines"></div>
 
 ### </br>
+
+![w:302](./images/esynergy-logo.png)
 
 ## Chris Nesbitt-Smith <!--fit-->
 

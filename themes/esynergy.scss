@@ -47,6 +47,22 @@ section {
       width: 30%;
     }
   }
+  div.esynergy {
+    background: url("../images/esynergy-logo.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin: 2%;
+  }
+  &.end {
+    .esynergy {
+      width: 20ch;
+      height: 200px;
+    }
+    .container {
+      position: absolute;
+      top: 50%;
+    }
+  }
 
   &.title-page {
     background: linear-gradient(
@@ -58,6 +74,12 @@ section {
     padding: 0;
     text-align: left;
 
+    .esynergy {
+      width: 20ch;
+      right: 0;
+      width: 20ch;
+      position: absolute;
+    }
     .waves {
       position: absolute;
       bottom: 25%;
@@ -69,6 +91,8 @@ section {
       z-index: 1;
       padding: 3%;
       position: absolute;
+      font-weight: normal;
+      font-size: 2.5em;
     }
     h2 {
       position: absolute;
