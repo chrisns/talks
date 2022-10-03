@@ -3,3 +3,4 @@ CODE_OF_CONDUCT.md
 LICENSE
 .github/FUNDING.yml
 .github/renovate.json5
+themes/*.css
