@@ -10,7 +10,7 @@ on:
       - main
   pull_request:
   schedule:
-    - cron: '1 2 3 * *' # run at 2 AM UTC once a week
+    - cron: "1 2 3 * *" # run at 2 AM UTC once a week
   workflow_dispatch:
 
 jobs:
@@ -38,7 +38,7 @@ jobs:
 
   publish:
     runs-on: ubuntu-latest
-    environment: 
+    environment:
       name: production
       url: https://talks.cns.me
     permissions:
