@@ -31,6 +31,9 @@ jobs:
 
   publish:
     runs-on: ubuntu-latest
+    environment: 
+      name: production
+      url: https://talks.cns.me
     permissions:
       id-token: write
     needs:
