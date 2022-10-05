@@ -54,6 +54,5 @@ jobs:
       - uses: aws-actions/configure-aws-credentials@67fbcbb121271f7775d2e7715933280b06314838 # tag=v1
         with:
           role-to-assume: arn:aws:iam::557195821817:role/talks-cns-me-write
-          role-session-name: talkscnsmewrite
           aws-region: eu-west-2
       - run: aws s3 sync --delete dist s3://talks.cns.me
