@@ -32,7 +32,7 @@
     "postcss-discard-comments": "^5.0.3",
     "postcss-for": "^2.1.1",
     "postcss-import": "^15.0.0",
-    "postcss-nested": "^5.0.6",
+    "postcss-nested": "^6.0.0",
     "postcss-use": "^3.0.0",
     "prettier": "2.7.1"
   }
