@@ -1,6 +1,6 @@
 ---
 title: Proactive cluster autoscaling in Kubernetes
-description: TL;DR; Scaling nodes in a Kubernetes cluster could take several minutes with the default settings. Learn how to size your cluster nodes and proactively create nodes for quicker scaling. When your Kubernetes cluster runs low on resources, the Cluster Autoscaler provision a new node and adds it to the cluster. The cloud provider has to create a virtual machine from scratch, provision it and connect it to the cluster. The process could take more than a few minutes from start to end. But there's an alternative, you can proactively create nodes that are already provisioned when you need them. In this webinar, Chris will demo live how you can configure Pod Priorities and a placeholder pod to pre-warm node instances for quicker scaling. By the end of the session, you will master how to align the Horizontal Pod Autoscaler and Cluster Autoscaler for blazing fast scaling even with occasional traffic spikes.
+description: Scaling nodes in a Kubernetes cluster could take several minutes with the default settings. In this webinar, Chris will demo live how you can configure Pod Priorities and a placeholder pod to pre-warm node instances for quicker scaling. By the end of the session, you will master how to align the Horizontal Pod Autoscaler and Cluster Autoscaler for blazing fast scaling even with occasional traffic spikes.
 author: Chris Nesbitt-Smith
 image: https://talks.cns.me/ProactiveClusterAutoscalingInKubernetes.png
 marp: true
