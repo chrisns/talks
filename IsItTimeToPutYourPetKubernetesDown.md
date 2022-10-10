@@ -29,7 +29,6 @@ viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
 
 ![w:550 esynergylogo](./images/esynergy-logo.png)
 
-
 # Is it time to put your pet Kubernetes down?<br/> 🐶☸️🔫⁉
 
 <div class="glitch emoji" data-text="🤔">🤔</div>
