@@ -74,11 +74,9 @@ section {
     padding: 0;
     text-align: left;
 
-    .esynergy {
-      width: 20ch;
-      right: 0;
-      width: 20ch;
+    img[alt="esynergylogo"] {
       position: absolute;
+      right:2ch;
     }
     .waves {
       position: absolute;

@@ -26,9 +26,11 @@ viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
 </div>
 
 <div class="scanlines"></div>
-<div class="esynergy"></div>
 
-# Is it time to put your pet Kubernetes down?<br/><br/> 🐶☸️🔫⁉
+![w:550 esynergylogo](./images/esynergy-logo.png)
+
+
+# Is it time to put your pet Kubernetes down?<br/> 🐶☸️🔫⁉
 
 <div class="glitch emoji" data-text="🤔">🤔</div>
 
@@ -949,4 +951,10 @@ talks.cns.me contains this and other talks, they're all open source.
 
 <!--
 Questions are very welcome on this or anything else, I'll hold the stage as long as I'm allowed, or find me afterwards, this grumpy old man needs to go find somewhere to sit down soon
+
+<Change to last slide>
 -->
+
+---
+
+![bg cover](./images/DTXesynergyslide.png)
