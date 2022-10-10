@@ -1,6 +1,6 @@
 ---
 title: Microservices Security Pattern in Kubernetes
-description: How do I secure my APIs and apps to be production-ready?” In this session, you’ll learn about the sidecar pattern and policies that can make your services more secure and resilient, including a live hacking demo.
+description: How do I secure my APIs and apps to be production-ready? In this session, you'll learn about the sidecar pattern and policies that can make your services more secure and resilient, including a live hacking demo.
 video_embed: <iframe width="560" height="315" src="https://www.youtube.com/embed/k1TYMMxgldY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 author: Chris Nesbitt-Smith
 marp: true
