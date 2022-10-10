@@ -1,5 +1,5 @@
 ---
-title: Is It Time To Put Your Pet Kubernetes Down
+title: Is It Time To Put Your Pet Kubernetes Down [webinar]
 description: Explores how Kubernetes is the new pet and the consequences that presents.
 video_embed: <iframe width="560" height="315" src="https://www.youtube.com/embed/4YA9sC6Z1YQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 author: Chris Nesbitt-Smith
