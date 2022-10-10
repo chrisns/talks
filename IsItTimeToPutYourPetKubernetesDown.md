@@ -8,6 +8,10 @@ class: lead
 video_embed: <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/l6lN7bIsWDw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 ---
 
+![bg](./images/esynergy-isittime-head.png)
+
+---
+
 <!-- _class: title-page-->
 
 <div>
