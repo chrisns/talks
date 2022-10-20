@@ -23,5 +23,4 @@
 | 2022-10-29    | Policy as [versioned] Code                                  | (v)[India Cloud Security Summit](https://www.indiacloudsecuritysummit.com/#agenda)                                                        |
 | 2022-11-02    | Policy as [versioned] code                                  | (irl)[London Microsoft DevOps Meetup](https://www.meetup.com/london-microsoft-devops/events/287854448/)                                   |
 | 2022-11-10    | Policy as [versioned] Code                                  | (v)[Mobile DevOps Summit](http://www.mobiledevops.io/summit/agenda/speakers/1773168)                                                      |
-| 2022-11-15    | Policy as [versioned] Code                                  | (irl)[One Summit](https://onesummit2022.sched.com/event/69ffdbbc45806a7ae27374dd29d93237)                                                 |
 | 2022-11-22-23 | Policy as [versioned] Code                                  | (irl)[Kubernetes Community Days UK 2022](https://community.cncf.io/events/details/cncf-kcd-uk-presents-kubernetes-community-days-uk-2022) |
