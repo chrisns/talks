@@ -23,4 +23,6 @@
 | 2022-10-29    | Policy as [versioned] Code                                  | (v)[India Cloud Security Summit](https://www.indiacloudsecuritysummit.com/#agenda)                                                        |
 | 2022-11-02    | Policy as [versioned] code                                  | (irl)[London Microsoft DevOps Meetup](https://www.meetup.com/london-microsoft-devops/events/287854448/)                                   |
 | 2022-11-10    | Policy as [versioned] Code                                  | (v)[Mobile DevOps Summit](http://www.mobiledevops.io/summit/agenda/speakers/1773168)                                                      |
-| 2022-11-22-23 | Policy as [versioned] Code                                  | (irl)[Kubernetes Community Days UK 2022](https://community.cncf.io/events/details/cncf-kcd-uk-presents-kubernetes-community-days-uk-2022) |
+| 2022-11-23    | Policy as [versioned] Code                                  | (irl)[Kubernetes Community Days UK 2022](https://community.cncf.io/events/details/cncf-kcd-uk-presents-kubernetes-community-days-uk-2022) |
+| 2022-12-1     | Proactive cluster autoscaling in Kubernetes                 | (v)[Conf42: DevSecOps 2022](https://www.conf42.com/DevSecOps_2022_Chris_NesbittSmith_proactive_cluster_autoscaling_kubernetes)            |
+| 2022-12-07-08 | Is it time to put your pet Kubernetes down                  | (v)[HashiTalks](https://events.hashicorp.com/hashitalksdeploy)                                                                            |
