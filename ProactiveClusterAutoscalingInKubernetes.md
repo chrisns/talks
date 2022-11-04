@@ -1001,24 +1001,6 @@ talks.cns.me contains this and other talks, they're all open source.
 
 -->
 
----
-
-![bg cover](images/ProactiveClusterAutoscalingInKubernetes/d5e.png)
-
-<!--
-Next week, you're in for a real treat so please due turn your tvs in for the same bat time, same bat channel.
-Daniele, or as we call him D5e is going to walk you through how to easily scale kubernetes like the hyperscalers do, running many clusters, in many regions, in many cloud vendors.
-If you've got regulatory, performance, disaster recovery reasons, or any other motivations to need to operate in multiple regions or clouds then you simply must not miss this.
--->
-
----
-
-![bg fit](images/ProactiveClusterAutoscalingInKubernetes/slack.png)
-
-<!-- if you're not already in it, please do join the linnode slack which I'm sure theres links for in the description and/or being shared as I speak -->
-
----
-
 <!-- _class: invert end lead-->
 <style scoped>
 
