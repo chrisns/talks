@@ -5,7 +5,7 @@ author: Chris Nesbitt-Smith
 marp: true
 theme: themes/esynergy
 class: lead
-video_embed: <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/l6lN7bIsWDw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+video_embed: <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/W-FYK8sgSKo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 ---
 
 <!-- _class: title-page-->
@@ -941,8 +941,6 @@ talks.cns.me contains this and other talks, they're all open source.
 <div class="scanlines"></div>
 
 ### </br>
-
-![w:302](./images/esynergy-logo.png)
 
 ## Chris Nesbitt-Smith <!--fit-->
 
