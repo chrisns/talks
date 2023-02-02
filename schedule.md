@@ -29,6 +29,6 @@
 | 2022-12-07 | Policy as [versioned] Code                                  | (v)[DevSecCon](https://www.devseccon.com/events/devseccon-lightning-2022)                                                                 |
 | 2023-01-03 | Policy as [versioned] Code                                  | (v)[DevOps Monthly Online](https://www.youtube.com/watch?v=yUu8l7E2dR0)                                                                   |
 | 2023-01-26 | Is it time to put your pet Kubernetes down                  | (v)[Conf42: DevOps 2023](https://www.conf42.com/DevOps_2023_Chris_NesbittSmith_put_kubernetes_down)                                       |
-| 2023-02-02 | Policy as [versioned] Code                                  | (v)DevSecCon Netherlands(https://www.devseccon.com/events/policy-as-versioned-code)                                                       |
+| 2023-02-02 | Policy as [versioned] Code                                  | (v)[DevSecCon Netherlands(https://www.devseccon.com/events/policy-as-versioned-code)                                                      |
 | 2023-02-16 | Pod Security Policy is Dead, Long Live...?                  | (v)[Conf42 Chaos Engineering 2023](https://www.conf42.com/Chaos_Engineering_2023_Chris_NesbittSmith_pod_security_policy)                  |
-| 2023-03-01 | Policy as [versioned] Code                                  | (irl)Kubernetes Meetup London(https://www.meetup.com/all-things-kubernetes/)                                                              |
+| 2023-03-01 | Policy as [versioned] Code                                  | (irl)[Kubernetes Meetup London(https://www.meetup.com/all-things-kubernetes/)                                                             |
