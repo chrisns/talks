@@ -1,6 +1,6 @@
 | Date       | Talk                                                        | Where                                                                                                                                     |
 | ---------- | ----------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| 2021-06-21 | Juicy: Notorious B.I.G. Data                                | (v))[Appvia podcast](https://www.appvia.io/podcast/8901725)                                                                               |
+| 2021-06-21 | Juicy: Notorious B.I.G. Data                                | (v)[Appvia podcast](https://www.appvia.io/podcast/8901725)                                                                                |
 | 2022-02-28 | Is it time to put your pet kubernetes down                  | (v)[Appvia webinar](https://www.youtube.com/watch?v=4YA9sC6Z1YQ)                                                                          |
 | 2022-03-17 | Pod Security Policy is Dead, Long Live...?                  | (v)[Appvia webinar](https://www.brighttalk.com/webcast/18932/535753)                                                                      |
 | 2022-03-21 | Microservices Security Pattern in Kubernetes                | (v)[NGINX Microservices March](https://www.youtube.com/watch?v=k1TYMMxgldY)                                                               |
@@ -31,4 +31,4 @@
 | 2023-01-26 | Is it time to put your pet Kubernetes down                  | (v)[Conf42: DevOps 2023](https://www.conf42.com/DevOps_2023_Chris_NesbittSmith_put_kubernetes_down)                                       |
 | 2023-02-02 | Policy as [versioned] Code                                  | (v)[DevSecCon Netherlands](https://www.devseccon.com/events/policy-as-versioned-code)                                                     |
 | 2023-02-16 | Pod Security Policy is Dead, Long Live...?                  | (v)[Conf42 Chaos Engineering 2023](https://www.conf42.com/Chaos_Engineering_2023_Chris_NesbittSmith_pod_security_policy)                  |
-| 2023-03-01 | Policy as [versioned] Code                                  | (irl)[Kubernetes Meetup London(https://www.meetup.com/all-things-kubernetes/)                                                             |
+| 2023-03-01 | Policy as [versioned] Code                                  | (irl)[Kubernetes Meetup London](https://www.meetup.com/all-things-kubernetes/)                                                            |
