@@ -10,7 +10,7 @@
 | 2022-06-08 | Policy as [versioned] code                                  | (irl)[Cloud Native Wales](https://twitter.com/CloudNativeWal/status/1534595387658477570)                                                  |
 | 2022-08-24 | Policy as [versioned] code                                  | (irl)[Open Source Summit Latin America](https://sched.co/15Bqa)                                                                           |
 | 2022-09-01 | Policy as [versioned] code                                  | (v)[Docker Community All Hands #6](https://www.youtube.com/watch?v=M4x2G8Toxno)                                                           |
-| 2022-09-15 | Policy as [versioned] code                                  | (irl)[SREday](https://www.sreday.com)                                                                                                     |
+| 2022-09-15 | Policy as [versioned] code                                  | (irl)[SREday](https://www.youtube.com/watch?v=qIx53UfLmLc)                                                                                |
 | 2022-09-15 | Policy as [versioned] Code                                  | (v)[Cloud with Chris](https://www.youtube.com/watch?v=uvGJSqSFCqg)                                                                        |
 | 2022-09-16 | Policy as [versioned] code                                  | (irl)[Open Source Summit Europe](https://sched.co/15z1I)                                                                                  |
 | 2022-09-28 | Proactive cluster autoscaling in Kubernetes                 | (v)[Linode](https://www.linode.com/event/proactive-cluster-autoscaling-in-kubernetes/)                                                    |
