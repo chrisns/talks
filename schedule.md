@@ -32,4 +32,4 @@
 | 2023-02-02 | Policy as [versioned] Code                                  | (v)[DevSecCon Netherlands](https://www.devseccon.com/events/policy-as-versioned-code)                                                     |
 | 2023-02-16 | Pod Security Policy is Dead, Long Live...?                  | (v)[Conf42 Chaos Engineering 2023](https://www.conf42.com/Chaos_Engineering_2023_Chris_NesbittSmith_pod_security_policy)                  |
 | 2023-03-15 | Policy as [versioned] Code                                  | (irl)[Kubernetes Meetup London](https://www.meetup.com/all-things-kubernetes/)                                                            |
-| 2023-30-03 | Proactive cluster autoscaling in Kubernetes                 | (v)[Conf42: DevSecOps 2022](https://www.conf42.com/Cloud_Native_2023_Chris_NesbittSmith_proactive_cluster_autoscaling_kubernetes)         |
+| 2023-03-30 | Proactive cluster autoscaling in Kubernetes                 | (v)[Conf42: DevSecOps 2022](https://www.conf42.com/Cloud_Native_2023_Chris_NesbittSmith_proactive_cluster_autoscaling_kubernetes)         |
