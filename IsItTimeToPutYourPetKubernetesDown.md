@@ -8,6 +8,10 @@ class: lead
 video_embed: <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/W-FYK8sgSKo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 ---
 
+![bg](./images/esynergy-isittime-head.png)
+
+---
+
 <!-- _class: title-page-->
 
 <div>
@@ -26,6 +30,8 @@ viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
 </div>
 
 <div class="scanlines"></div>
+
+![w:550 esynergylogo](./images/esynergy-logo.png)
 
 # Is it time to put your pet Kubernetes down?<br/> 🐶☸️🔫⁉
 
@@ -949,3 +955,7 @@ Questions are very welcome on this or anything else, I'll hold the stage as long
 
 <Change to last slide>
 -->
+
+---
+
+![bg cover](./images/DTXesynergyslide.png)
