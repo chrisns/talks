@@ -198,7 +198,7 @@ kubectl run --rm --privileged --image debian -ti priv
   mkdir /foo && mount /dev/vda1 /foo
   export PATH=$PATH:$(find /foo/ -type f -name kubectl | head -n 1 | sed -r 's|/[^/]+$||')
   ln -s $(find /foo -type l -name kubelet-client-current.pem  | sed -r 's|/[^/]+$||'| sed -r 's|/[^/]+$||') /var/lib/
-  export KUBECONFIG=$(find /foo/ -type f -name kubelet.conf)
+  export KUBECONFIG=$(find /foo/ -type f -name kubelet.conf -print -quit)
   kubectl get pods -A
   kubectl get nodes
 
