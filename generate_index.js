@@ -115,13 +115,14 @@ output.push(`<div class="container-fluid">`);
 output.push(`<div class="row">`);
 output.push(`<div class="col-md-auto schedule">`);
 output.push(`<div class="row">`);
-output.push(
-  `<div class="card schedule future"><h2>Upcoming presentations</h2>${scheduleFuture}</div>`
-);
+if (scheduleFuture)
+  output.push(
+    `<div class="card schedule future"><h2>Upcoming talks</h2>${scheduleFuture}</div>`
+  );
 output.push(`</div>`);
 output.push(`<div class="row">`);
 output.push(
-  `<div class="card schedule past"><h2>Previous presentations</h2>${schedulePast}</div>`
+  `<div class="card schedule past"><h2>Previous talks</h2>${schedulePast}</div>`
 );
 output.push(`</div>`);
 output.push(`</div>`);
