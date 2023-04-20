@@ -22,11 +22,11 @@
 | 2022-10-25 | Policy as [versioned] code                                  | (irl)[GitOpsCon](https://www.youtube.com/watch?v=Nstv7OA4abo)                                                                       |
 | 2022-10-29 | Policy as [versioned] Code                                  | (v)[India Cloud Security Summit](https://www.youtube.com/watch?v=_-oE3646Tpw)                                                       |
 | 2022-11-02 | Policy as [versioned] code                                  | (irl)[London Microsoft DevOps Meetup](https://www.meetup.com/london-microsoft-devops/events/287854448/)                             |
-| 2023-11-03 | Is it time to put your pet Kubernetes down                  | (v)[Devtron webinar](https://www.youtube.com/watch?v=6nDLDmSIBQ0)                                                                   |
+| 2022-11-03 | Is it time to put your pet Kubernetes down                  | (v)[Devtron webinar](https://www.youtube.com/watch?v=6nDLDmSIBQ0)                                                                   |
 | 2022-11-10 | Policy as [versioned] Code                                  | (v)[Mobile DevOps Summit](https://www.youtube.com/watch?v=Qm9a-jJWKak)                                                              |
 | 2022-11-23 | Policy as [versioned] Code                                  | (irl)[Kubernetes Community Days UK 2022](https://www.youtube.com/watch?v=yL62l-XE268)                                               |
 | 2022-12-01 | Proactive cluster autoscaling in Kubernetes                 | (v)[Conf42: DevSecOps 2022](https://www.youtube.com/watch?v=AF2FjGTBRUQ)                                                            |
-| 2022-12-08 | Is it time to put your pet Kubernetes down                  | (v)[HashiTalks](htthttps://www.youtube.com/watch?v=8hIMmNMOtzE)                                                                     |
+| 2022-12-08 | Is it time to put your pet Kubernetes down                  | (v)[HashiTalks](https://www.youtube.com/watch?v=8hIMmNMOtzE)                                                                        |
 | 2022-12-07 | Policy as [versioned] Code                                  | (v)[DevSecCon](https://www.youtube.com/watch?v=_NOmk8gRdXw)                                                                         |
 | 2023-01-03 | Policy as [versioned] Code                                  | (v)[DevOps Monthly Online](https://www.youtube.com/watch?v=yUu8l7E2dR0)                                                             |
 | 2023-01-26 | Is it time to put your pet Kubernetes down                  | (v)[Conf42: DevOps 2023](https://www.youtube.com/watch?v=6-UTY50pGx8)                                                               |
