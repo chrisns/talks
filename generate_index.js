@@ -115,7 +115,7 @@ output.push(`<div class="container-fluid">`);
 output.push(`<div class="row">`);
 output.push(`<div class="col-md-auto schedule">`);
 output.push(`<div class="row">`);
-if (scheduleFuture)
+if (scheduleFuture.includes("<td>"))
   output.push(
     `<div class="card schedule future"><h2>Upcoming talks</h2>${scheduleFuture}</div>`
   );
