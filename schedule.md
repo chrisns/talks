@@ -34,3 +34,4 @@
 | 2023-02-16 | Pod Security Policy is Dead, Long Live...?                  | (v)[Conf42 Chaos Engineering 2023](https://www.youtube.com/watch?v=bpj5bRAJ2J0)                                                   |
 | 2023-03-15 | Is it time to put your pet Kubernetes down                  | (irl)[Civo: Disruptive Tech](https://www.youtube.com/watch?v=czpbXvZ7J_E)                                                         |
 | 2023-03-30 | Proactive cluster autoscaling in Kubernetes                 | (v)[Conf42: CloudNative 2023](https://youtu.be/sVLGhZWDZ-k)                                                                       |
+| 2023-09-27 | Is it time to put your pet Kubernetes down                  | (hybrid)[DevSecCon London](https://www.devseccon.com/events/rethinking-kubernetes-github-azure-passwordless-authentication)       |
