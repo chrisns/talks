@@ -96,7 +96,7 @@ div.card {
 }
 </style>`);
 output.push(
-  `<title>Chris Nesbitt-Smith talks about software development</title>`
+  `<title>Chris Nesbitt-Smith talks about software development</title>`,
 );
 output.push("</head>");
 output.push("<body>");
@@ -117,12 +117,12 @@ output.push(`<div class="col-md-auto schedule">`);
 output.push(`<div class="row">`);
 if (scheduleFuture.includes("<td>"))
   output.push(
-    `<div class="card schedule future"><h2>Upcoming talks</h2>${scheduleFuture}</div>`
+    `<div class="card schedule future"><h2>Upcoming talks</h2>${scheduleFuture}</div>`,
   );
 output.push(`</div>`);
 output.push(`<div class="row">`);
 output.push(
-  `<div class="card schedule past"><h2>Previous talks</h2>${schedulePast}</div>`
+  `<div class="card schedule past"><h2>Previous talks</h2>${schedulePast}</div>`,
 );
 output.push(`</div>`);
 output.push(`</div>`);
@@ -135,7 +135,7 @@ ${
   file.video_embed ||
   `<img src="${file.filename.replace(
     ".md",
-    ".png"
+    ".png",
   )}" class="card-img-top" alt="${file.title}">`
 }
   <div class="card-body text-center">
@@ -159,7 +159,7 @@ ${
   TXT</a>
   </div>
   </div>
-  `)
+  `),
 );
 output.push(`</div>`);
 output.push(`</div>`);

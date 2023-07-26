@@ -21,7 +21,8 @@
   text-shadow: -5px 0 magenta;
   overflow: hidden;
   top: 0;
-  animation: noise-1 3s linear infinite alternate-reverse,
+  animation:
+    noise-1 3s linear infinite alternate-reverse,
     glitch 5s 5.05s infinite;
 }
 
@@ -33,7 +34,9 @@
   text-shadow: -5px 0 lightgreen;
   overflow: hidden;
   top: 0;
-  animation: noise-2 3s linear infinite alternate-reverse, glitch 5s 5s infinite;
+  animation:
+    noise-2 3s linear infinite alternate-reverse,
+    glitch 5s 5s infinite;
 }
 
 @keyframes glitch {
