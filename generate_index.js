@@ -115,8 +115,7 @@ output.push(
 <meta property="twitter:url" content="http://talks.cns.me/" />
 <meta property="twitter:title" content="Chris Nesbitt-Smith talks about software development" />
 <meta property="twitter:description" content="Unleashing Software Brilliance: Explore Mind-Blowing Talks Redefining Enterprise Scale, Policy, and Business Value!" />
-<meta property="twitter:image" content="https://talks.cns.me/images/me.png" />
-,
+<meta property="twitter:image" content="https://talks.cns.me/images/me.png" />`,
 );
 
 output.push("</head>");
