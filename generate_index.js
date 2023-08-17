@@ -98,6 +98,27 @@ div.card {
 output.push(
   `<title>Chris Nesbitt-Smith talks about software development</title>`,
 );
+
+output.push(
+  `<meta name="title" content="Chris Nesbitt-Smith talks about software development" />
+<meta name="description" content="Unleashing Software Brilliance: Explore Mind-Blowing Talks Redefining Enterprise Scale, Policy, and Business Value!" />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://talks.cns.me/" />
+<meta property="og:title" content="Chris Nesbitt-Smith talks about software development" />
+<meta property="og:description" content="Unleashing Software Brilliance: Explore Mind-Blowing Talks Redefining Enterprise Scale, Policy, and Business Value!" />
+<meta property="og:image" content="https://talks.cns.me/images/me.png" />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content="http://talks.cns.me/" />
+<meta property="twitter:title" content="Chris Nesbitt-Smith talks about software development" />
+<meta property="twitter:description" content="Unleashing Software Brilliance: Explore Mind-Blowing Talks Redefining Enterprise Scale, Policy, and Business Value!" />
+<meta property="twitter:image" content="https://talks.cns.me/images/me.png" />
+,
+);
+
 output.push("</head>");
 output.push("<body>");
 output.push(`<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
