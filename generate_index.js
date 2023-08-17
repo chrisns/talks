@@ -106,6 +106,7 @@ output.push(`<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="navbar-nav">
   <a class="nav-item nav-link active" >Talks <span class="sr-only">(current)</span></a>
   <a class="nav-item nav-link" href="https://cns.me">LinkedIn</a>
+  <a class="nav-item nav-link" href="https://devpsyops.com">DevPsyOps</a>
   <a class="nav-item nav-link" href="https://github.com/chrisns">Github</a>
   </div>
   </div>
