@@ -118,6 +118,15 @@ output.push(
 <meta property="twitter:image" content="https://talks.cns.me/images/me.png" />`,
 );
 
+output.push(`<script async src="https://www.googletagmanager.com/gtag/js?id=G-BF3VN6JZZG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-BF3VN6JZZG');
+  </script>`);
+
 output.push("</head>");
 output.push("<body>");
 output.push(`<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
