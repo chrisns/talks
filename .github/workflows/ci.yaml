@@ -51,7 +51,7 @@ jobs:
         with:
           name: dist.tar
       - run: tar -xf dist.tar
-      - uses: aws-actions/configure-aws-credentials@04b98b3f9e85f563fb061be8751a0352327246b0 # v3
+      - uses: aws-actions/configure-aws-credentials@50ac8dd1e1b10d09dac7b8727528b91bed831ac0 # v3
         with:
           role-to-assume: arn:aws:iam::557195821817:role/talks-cns-me-write
           aws-region: eu-west-2
