@@ -33,7 +33,7 @@ viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
 
 ## Chris Nesbitt-Smith
 
-### UK Gov | esynergy | Control Pane | LearnK8s | lots of open source
+### UK Gov | esynergy | Control Plane | LearnK8s | lots of open source
 
 ---
 
