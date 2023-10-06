@@ -1,3 +1,13 @@
+---
+title: Dynamic Workload Balancing and Resource Optimization in Kubernetes
+description: In this talk, Chris will explore the challenges and benefits of dynamically balancing and optimizing the resources of a Kubernetes cluster. He will explain how Kubernetes uses a scheduler to assign pods to nodes based on various factors, such as resource requests, limits, affinity, anti-affinity, and taints. He will also demonstrate how to use tools and techniques, such as horizontal pod autoscaling, cluster autoscaling and the descheduler, to improve the performance and efficiency of your cluster. From this talk, you’ll learn how to leverage the power and flexibility of Kubernetes to achieve optimal resource utilization and workload distribution.
+author: Chris Nesbitt-Smith
+image: https://talks.cns.me/images/DynamicWorkloadBalancing/1-2.svg
+marp: true
+url: https://talks.cns.me/DynamicWorkloadBalancing.html
+class: lead
+---
+
 ![bg contain](images/DynamicWorkloadBalancing/1-4612.svg)
 
 <!--
