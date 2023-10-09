@@ -3,20 +3,37 @@ title: Pod Security Policy is Dead, Long Live...?
 description: What are Pod Security Policies? What do you mean, they are deprecated? What am I going to do?!
 author: Chris Nesbitt-Smith
 marp: true
-theme: themes/cns
+theme: themes/esynergy
 class: lead
 video_embed: <iframe width="560" height="315" src="https://www.youtube.com/embed/C5ohERIhlrY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 ---
 
-![bg](./images/bg.svg)
+<!-- _class: title-page-->
 
-<!-- _class: lead invert -->
+<div>
+<svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+<defs>
+<path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+</defs>
+<g class="parallax">
+<use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+<use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+<use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+<use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+</g>
+</svg>
+</div>
+
+<div class="scanlines"></div>
 
 # PodSecurityPolicy is Dead,<br/>Long Live...?
 
-Chris Nesbitt-Smith
+<div class="glitch emoji" data-text="🤔">🤔</div>
 
-Appvia | LearnK8s
+## Chris Nesbitt-Smith
+
+### UK Gov | Control Plane | LearnK8s | lots of open source
 
 ---
 
@@ -30,6 +47,20 @@ My name is Chris, and I've been trying, with some success to use Kubernetes sinc
 I'm Solution Architect at Appvia, instructor at LearnK8s, and tinkerer of open source including maintaining some high profile projects in the home automation space.
 
 I'm often talk too fast when doing these, please shout at me when this happens, and jump in with questions though there will also hopefully be time at the end.
+
+--- ONLINE ---
+Hello! Thank you so much for joining me here today.
+
+So, to kick things off my name is Chris Nesbitt-Smith, I'm based in London and currently work with some well known brands like learnk8s, control plane, esynergy and various bits of UK Government I'm also a tinkerer of open source stuff.
+
+I've using and abusing Kubernetes in production since it was 0.4, believe me when I say its been a journey!
+
+I've definitely got the scars to show for it.
+
+It'd be great to hear where you're joining from today so if you could drop a comment in the chat and let me know where you are that'd be great.
+
+We'll have time for any questions at the end if you want to drop them into the comments.
+
 -->
 
 ---
@@ -38,6 +69,10 @@ I'm often talk too fast when doing these, please shout at me when this happens, 
 
 <!--
 By show of hands who's worked with pods before?
+
+--- ONLINE ---
+
+In a virtual, bit offline, by show of hands (or dropping off the stream) who's worked with pods before?
 -->
 
 ---
@@ -101,7 +136,7 @@ and in that time has never made it past the beta classification, and I believe m
 # 😢 <!--fit-->
 
 <!--
-Sadly that's not the case for PSPs, they were deprecated in 1.21 April last year, and will be removed entirely in 1.25 which will be around August this year.
+Sadly that's not the case for PSPs, they were deprecated in 1.21, and was removed entirely in 1.25.
 -->
 
 ---
@@ -177,6 +212,11 @@ spec:
 
 <!--
 Who can give me an example of what this container can actually do, say if a remote code exploit is found, or your code is bad?
+
+--- ONLINE ---
+Looking at this pod, can anyone give me an example of what this container can actually do, say if a remote code exploit is found, or your code is bad?
+If you can get ahead of me and leave a comment in the comments.
+
 -->
 
 ---
@@ -188,8 +228,13 @@ Who can give me an example of what this container can actually do, say if a remo
 # Live demo
 
 <!--
+
+Lets have a quick explore and find out:
+
 set +o history
-kind create cluster
+kind create cluster --image=kindest/node:v1.23.0
+
+kubectl run --image debian -ti unpriv
 
 kubectl run --rm --privileged --image debian -ti priv
 
@@ -202,7 +247,6 @@ kubectl run --rm --privileged --image debian -ti priv
   kubectl get pods -A
   kubectl get nodes
 
-kubectl run --image debian -ti unpriv
 
 ---
 
@@ -510,7 +554,7 @@ The short answer is...
 ![bg](./images/psp-chris.jpeg)
 
 <!--
-use our whizz-bang-super-duper tool
+use a whizz-bang-super-duper tool that I made
 -->
 
 ---
@@ -801,9 +845,7 @@ Thanks for your time, hopefully this has been interesting if a tease.
 
 Please do follow me on LinkedIn, Twitter, Github and you can be assured there'll be no spam since I'm awful at self promotion especially on social media. cns.me just points at my linkedin
 
-At Appvia we're doing a tonne of opensource, so checkout both mine and the appvia github orgs, star and watch to your hearts content.
+The original content for this talk and some of the solutions I've alluded to including how to do Policy as Versioned Code are on the appvia.io blog.
 
-The original content for this talk and some of the solutions I've alluded to including how to do Policy as Versioned Code are on the appvia blog.
-
-Questions are very welcome on this or anything else, I'll hold the stage as long as I'm allowed, or find me afterwards, I'm pretty thirsty so I'll be over there.
+Questions are very welcome on this or anything else, If I miss you or you're not watching this live I'll try and keep an eye on the comments, or find me on the DevSecCon discord or LinkedIn.
 -->
