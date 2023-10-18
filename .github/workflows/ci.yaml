@@ -40,6 +40,7 @@ jobs:
         with:
           name: index
           path: dist/index.html
+          retention-days: 1
 
   generate-matrix:
     name: Generate Matrix Build
@@ -97,6 +98,7 @@ jobs:
         with:
           name: ${{ matrix.file }}-${{ matrix.format }}
           path: ${{ matrix.file }}.${{ matrix.format }}
+          retention-days: 1
 
   converge:
     runs-on: ubuntu-latest
@@ -120,6 +122,7 @@ jobs:
         with:
           name: dist.tbz
           path: dist.tbz
+          retention-days: 1
 
   publish:
     runs-on: ubuntu-latest
