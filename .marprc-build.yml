@@ -1,0 +1,7 @@
+allowLocalFiles: true
+options:
+  minifyCSS: false
+  themeSet: "themes/cns.css"
+bespoke:
+  progress: true
+html: true
