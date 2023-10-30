@@ -83,7 +83,7 @@ jobs:
       - run: npm run build:css
         if: matrix.format != 'txt'
 
-      - uses: awalsh128/cache-apt-pkgs-action@1850ee53f6e706525805321a3f2f863dcf73c962 # v1.3.0
+      - uses: awalsh128/cache-apt-pkgs-action@44c33b32f808cdddd5ac0366d70595ed63661ed8 # v1.3.1
         if: matrix.format == 'pdf'
         with:
           packages: ghostscript
