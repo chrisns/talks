@@ -4,7 +4,7 @@ description: In this talk Chris will trace back the origins of how policies are 
 author: Chris Nesbitt-Smith
 image: https://talks.cns.me/PolicyAsVersionedCode.png
 marp: true
-theme: themes/esynergy
+theme: themes/cns
 url: https://talks.cns.me/PolicyAsVersionedCode.html
 class: lead
 video_embed: <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/YWQG_E7vgiQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -35,7 +35,7 @@ viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
 
 ## Chris Nesbitt-Smith
 
-### UK Gov | esynergy | Control Plane | LearnK8s | lots of open source
+### UK Gov | Control Plane | LearnK8s | lots of open source
 
 ---
 
@@ -288,22 +288,6 @@ The CIO looks to me ready to buy whatever it is I'm selling, they ask me as the 
 
 ---
 
-![bg](./images/policy28.png)
-
-<!--
-As I move out the way so to stop obstructing the door I answer, oh I don't work here, I'm just here to fix the lift, people have been complaining it only goes to the top floor no matter what button they push and is actually pretty slow.
--->
-
----
-
-![bg](./images/policy29.png)
-
-<!--
-My audience storms out, furious, heading towards the stairs, the door shut, I get back to my job.
--->
-
----
-
 ![bg](./images/policy30.png)
 
 <!--
@@ -410,15 +394,15 @@ Lets crack on
 
 # Chris Nesbitt-Smith<!--fit-->
 
-- Learnk8s & ControlPlane - Instructor+consultant
-- esynergy - Digital Transformation Consultant
-- Crown Prosecution Service (UK gov) - Consultant
-- Opensource
+- LearnK8s - Instructor
+- Control-Plane - Consultant
+- CDDO (UK gov) - Consultant
+- Open source
 
 <!--
 Now I've hopefully got your attention, its time to introduce, and start explaining myself.
 
-Hi, My name is Chris Nesbitt-Smith, I'm currently an instructor for Learnk8s and ControlPlane, consultant to the Crown Prosecution Service and tinkerer of open source.
+Hi, My name is Chris Nesbitt-Smith, I'm currently an instructor for Learnk8s and ControlPlane, consultant to the CDDO and tinkerer of open source.
 I've spent a fair chunk of my professional career now working in UK Government and large organizations where problems like these are rife.
 
 I've been promised we'll have time for questions and heckles at the end, even if I run way over, if not come find me at the bar afterwards.
@@ -1859,6 +1843,7 @@ h2 {
 - github.com/chrisns
 - github.com/policy-as-versioned-code
 - learnk8s.io
+- control-plane.io
 
 ## Chris Nesbitt-Smith <!--fit-->
 
