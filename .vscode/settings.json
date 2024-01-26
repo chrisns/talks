@@ -1,5 +1,9 @@
 {
-  "markdown.marp.themes": ["themes/cns.css"],
+  "markdown.marp.themes": [
+    "themes/cns.css",
+    "themes/esynergy.css",
+    "themes/cddo.css"
+  ],
   "editor.formatOnType": true,
   "markdown.marp.enableHtml": true,
   "markdown.marp.exportType": "html"

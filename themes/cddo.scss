@@ -1,0 +1,122 @@
+@import-theme "gaia";
+/*!
+* Marp / Marpit cddo theme.
+ *
+ * @theme themes/cddo
+ * @author Chris Nesbitt-Smith
+ *
+ * @auto-scaling true
+ * @size 4K 3840px 2160px
+ * @size 16:9 1280px 720px
+ * @size 4:3 960px 720px
+ */
+
+section {
+  &.white {
+    background-color: #fff;
+  }
+  &.end {
+    -webkit-text-stroke: 0.03em black;
+    .container {
+      position: absolute;
+      top: 50%;
+    }
+    h3 {
+      color: rgb(223, 191, 191);
+      position: relative;
+      font-size: 9vw;
+      animation: glitch 5s 5s infinite;
+      font-size: 3em;
+      line-height: 1em;
+      margin-top: 0;
+    }
+
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+  &.front {
+    h1 {
+      -webkit-text-stroke: 2px black;
+    }
+
+    h3 {
+      font-weight: normal;
+    }
+
+    padding-top: 10%;
+
+    img {
+      width: 30%;
+    }
+  }
+  &.fade {
+    li,
+    h1,
+    p {
+      color: rgba(69, 90, 100, 0.2);
+    }
+    strong {
+      color: rgba(69, 90, 100, 1);
+    }
+    &.invert {
+      strong {
+        color: rgba(255, 248, 225, 1);
+      }
+      li,
+      h1,
+      p {
+        color: rgba(255, 248, 225, 0.2);
+      }
+    }
+  }
+  font-weight: bold;
+
+  &[id="1"] {
+    background-image: url(images/cddo/CDDO-brand-slides.svg) !important;
+    color: black;
+    padding: 0;
+    text-align: left;
+
+    h1 {
+      z-index: 1;
+      bottom: 10vh;
+    }
+    h1,
+    h2 {
+      margin-left: 3%;
+    }
+    h3 {
+      right: 3%;
+    }
+    h2,
+    h3 {
+      bottom: 0;
+    }
+    h1,
+    h2,
+    h3 {
+      padding: 3%;
+      position: absolute;
+    }
+  }
+  &.lead {
+    color: black;
+  }
+  &.frame {
+    background-image: url(images/cddo/bg-frame.svg) !important;
+  }
+  code {
+    font-family: "Courier New", Courier, monospace;
+  }
+  .MathJax {
+    font-size: 3em;
+  }
+  @for $i from 1 to 100 {
+    &[id="$i"].lead {
+      $index: resolve($i % 2);
+      background-image: url(images/cddo/bg$(index).svg);
+    }
+  }
+}
