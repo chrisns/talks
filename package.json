@@ -37,6 +37,6 @@
     "postcss-nested": "^6.0.0",
     "postcss-simple-vars": "^7.0.1",
     "postcss-use": "^3.0.0",
-    "prettier": "3.2.4"
+    "prettier": "3.2.5"
   }
 }
