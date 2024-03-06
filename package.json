@@ -10,7 +10,7 @@
     "build:css": "postcss themes --ext css -d themes --no-map",
     "build:html": "marp",
     "build:pptx": "marp --pptx",
-    "build:image": "marp --image",
+    "_build:image": "marp --image",
     "build:txt": "marp --notes",
     "build:pdf": "marp --pdf --pdf-notes",
     "build:pdf:compress": "./compress_pdfs.sh",
