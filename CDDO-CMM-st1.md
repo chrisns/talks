@@ -13,7 +13,6 @@ class: lead
 
 ### Mar 2024
 
-
 ---
 
 # 🎥 <!--fit-->
@@ -26,6 +25,7 @@ I'm about to start recording, if you don't want to be in it, turn off your camer
 -->
 
 ---
+
 <!-- _class: front -->
 
 # Cloud Maturity Model
@@ -46,7 +46,7 @@ I'm going to talk about a thing I've been working on for a few months, looking a
 
 ## How to be a grown up in the cloud? <!--fit-->
 
-<!-- The original title for this talk was: 
+<!-- The original title for this talk was:
 
 How to be a grown up in the cloud
 because clickbait. -->
@@ -70,10 +70,11 @@ I cheated, I did what everyone else has done for the past 12 months, and asked C
 ---
 
 # &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;🤖&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <!--fit-->
+
 `Cloud maturity is the extent to which an organization can effectively leverage cloud technologies and practices to fulfill its business objectives and drive innovation, efficiency, and growth.`
 
 <!--
-The answer I got after some prompt engineering was: 
+The answer I got after some prompt engineering was:
 
 Cloud maturity is the extent to which an organization can effectively leverage cloud technologies and practices to fulfill its business objectives and drive innovation, efficiency, and growth.
 -->
@@ -99,6 +100,7 @@ Well it's risk, everything from financial risk with spiraling costs to operation
 -->
 
 ---
+
 <!-- _class: frame lead -->
 
 # 😱 <!--fit-->
@@ -140,6 +142,7 @@ So its hard, and it does depend, but thats not useful or actionable
 ---
 
 # ~~it depends...~~ 🙅 <!--fit-->
+
 <!-- lets have some opinions -->
 
 ---
@@ -163,7 +166,7 @@ and they'll respond with no greater context, say 70%. but what is that?
 
 # 💾<!--fit-->
 
-<!-- maybe its the amount of data 
+<!-- maybe its the amount of data
 
 (thats a 3.5 inch floppy disk by the way, it pains me to have to explain that, the astute will notice the emoji is a 720 kilobyte read only one, if you can explain why come find me in white chapel building and I'll buy you a coffee downstairs)
 
