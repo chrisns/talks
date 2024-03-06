@@ -72,7 +72,7 @@ section {
     }
   }
   font-weight: bold;
-
+  &.front,
   &[id="1"] {
     background-image: url(images/cddo/CDDO-brand-slides.svg) !important;
     color: black;
