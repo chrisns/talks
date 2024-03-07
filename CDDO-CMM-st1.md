@@ -172,7 +172,7 @@ and they'll respond with no greater context, say 70%. but what is that?
 
 <!-- maybe its the amount of data
 
-(thats a 3.5 inch floppy disk by the way, it pains me to have to explain that, the astute will notice the emoji is a 720 kilobyte read only one, if you can explain why come find me in white chapel building and I'll buy you a coffee downstairs)
+(thats a 3.5 inch floppy disk by the way, it pains me to have to explain that, the astute will notice the emoji is a 720 kilobyte read-write one, if you can explain why come find me in white chapel building and I'll buy you a coffee downstairs)
 
 TANGENTS
 -->
