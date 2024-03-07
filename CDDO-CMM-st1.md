@@ -64,17 +64,21 @@ because clickbait. -->
 <!--
 What is cloud maturity anyway?
 
-I cheated, I did what everyone else has done for the past 12 months, and asked ChatGPT.
+I did what everyone else has done for the past 12 months, and asked ChatGPT because every talk has to mention AI these days, anyone playing tech talk, bingo take a shot
 -->
 
 ---
 
-# &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;🤖&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <!--fit-->
+<!-- _class:  frame -->
 
-`Cloud maturity is the extent to which an organization can effectively leverage cloud technologies and practices to fulfill its business objectives and drive innovation, efficiency, and growth.`
+# 😀 What is cloud maturity?</br></br>
+
+# 🤖 Cloud maturity denotes the peak </br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;development stage of a cloud,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; marked by its potential for<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;significant rainfall.
 
 <!--
-The answer I got after some prompt engineering was:
+Heres the response. That's another shot.
+
+After some "prompt engineering" since we're not the Met Office:
 
 Cloud maturity is the extent to which an organization can effectively leverage cloud technologies and practices to fulfill its business objectives and drive innovation, efficiency, and growth.
 -->
