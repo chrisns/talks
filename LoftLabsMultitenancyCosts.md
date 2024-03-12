@@ -24,7 +24,7 @@ I've using and abusing Kubernetes in production since it was 0.4, believe me whe
 
 I've definitely got the war wounds to show for it.
 
-We should have time for questions and heckles at the end, but if we run out of time or you're not watching this live, then please find me on LinkedIn or in the loft labs slack.
+We should have time for questions and your best heckles at the end, but if we run out of time or you're not watching this live, then please find me on LinkedIn or in the loft labs slack.
 
 Right lets kick this off
 -->
@@ -51,7 +51,7 @@ So Ideally we'll want to isolate one workload from another
 ![bg contain](images/loftlabs_multitenancy_costs/1-725.svg)
 
 <!--
-We'll want super ease of managing things all of those isolated things, because we need that collective spare time to think up new exciting abstractions of running processes on computers or a new job title? Shout out to my DevSecOps, SREs, and Platform Engineers!
+We'll want super ease of managing all of those isolated things, because we need that collective spare time to think up new exciting abstractions of running processes on computers or a new job title? Shout out to my DevSecOps, SREs, and Platform Engineers!
 -->
 
 ---
@@ -110,7 +110,7 @@ Once the setup is completed, the physical servers are mostly abstracted from you
 
 <!--
 When you want to deploy a container, you submit your request to the cluster.
-Kubernetes takes care of executing some bash or `docker run` and selecting the best server for the job.
+Kubernetes takes care of executing `docker run` and selecting the best server for the job.
 -->
 
 ---
@@ -142,7 +142,7 @@ For every deployment, Kubernetes finds the best place to run the application.
 ![bg contain](images/loftlabs_multitenancy_costs/1-79.svg)
 
 <!--
-Out the box Kubernetes gives you namespaces
+Out the box Kubernetes does give you namespaces
 -->
 
 ---
@@ -295,7 +295,7 @@ If we look at the ingress-nginx helm chart config, you'll see we've got a resour
 ![bg contain](images/loftlabs_multitenancy_costs/5-2456.svg)
 
 <!--
-Lets put scaling for the volume of traffic aside for a minute and assume we're just looking at the standing still cost. while the numbers might seem low in isolation they are like papercuts
+Lets put scaling for the volume of traffic aside for a minute and assume we're just looking at the standing still cost. while the numbers might seem low in isolation they are likely going to turn into papercuts
 -->
 
 ---
@@ -480,7 +480,7 @@ the rabbit hole can go as deep as you like
 ![bg contain](images/loftlabs_multitenancy_costs/12-13083.svg)
 
 <!--
-This is the first of my three demos today, because Daniele and Salman who did the previous two talks thought it'd be funny if I demoed all the hard stuff.
+This is the first of my three demos today, because Daniele and Salman who did the previous two talks thought it'd be really funny if I demoed all the hard stuff.
 So join me in prayers to the demo gods while I try not to mess this up.
 
 
@@ -740,7 +740,6 @@ with a sense that we can give what feels like cluster admin out selectively to t
 
 <!--
 but theres a single parent cluster that exists, and can have controls and configuration set there, and we don't have heaps of fully independent clusters, many highly available.
-but theres a single parent cluster that exists, and can have controls and configuration set there, and we don't have heaps of fully independent clusters.
 -->
 
 ---
@@ -1284,8 +1283,8 @@ and then we covered karmada which is one many products in the space of supportin
 
 <!--
 Finally a quick thank you to loft labs, for hosting these three sessions with us.
-If you've not seen them, then I'd consider Daniele and Salman's talk as essential watching, so absolutely go feast on those.
-Special big thanks to Salman who's been furiously working in the background to support this session by hopefully giving me some well researched hints to any of your questions; so I'll also use that as an opportunity to blame him for any misinformation I pedal.
+If you've not seen them, then I'd consider Daniele and Salman's talks as essential watching, so absolutely go feast on those.
+Special big thanks to Salman who's hopefully been furiously working in the background to support this session by hopefully giving me some well researched hints to any of your questions; so I'll also use that as an opportunity to blame him for any misinformation I pedal.
 -->
 
 ---
