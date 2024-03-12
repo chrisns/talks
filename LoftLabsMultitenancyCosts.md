@@ -10,9 +10,11 @@ size: 4:3
 ---
 
 ![bg contain](images/loftlabs_multitenancy_costs/1-767.svg)
-<!-- 
+
+<!--
 hello!
  -->
+
 ---
 
 ![bg contain](images/DynamicWorkloadBalancing/33-253.svg)
@@ -118,7 +120,7 @@ Kubernetes takes care of executing `docker run` and selecting the best server fo
 ![bg contain](images/loftlabs_multitenancy_costs/1-297.svg)
 
 <!--
-The same happens for 
+The same happens for
 -->
 
 ---
@@ -222,7 +224,7 @@ this getting quite busy
 
 ![bg contain](images/loftlabs_multitenancy_costs/1-1067.svg)
 
-<!-- 
+<!--
 so how big can this get
 -->
 
@@ -230,10 +232,10 @@ so how big can this get
 
 ![bg contain](images/loftlabs_multitenancy_costs/1-1070.svg)
 
-<!-- lets take a couple of scenarios, one with 10 tenants -->
----
+## <!-- lets take a couple of scenarios, one with 10 tenants -->
 
 ![bg contain](images/loftlabs_multitenancy_costs/1-1348.svg)
+
 <!-- and another with 50 tenants -->
 
 ---
