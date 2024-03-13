@@ -488,6 +488,7 @@ So join me in prayers to the demo gods while I try not to mess this up.
 
 cd /Users/cns/httpdocs/learnk8s_loft
 export PATH=$PATH:${PWD}
+kind create cluster
 
 kubectl apply -f https://github.com/kubernetes-sigs/hierarchical-namespaces/releases/download/v1.1.0/default.yaml # setup
 kubectl -n hnc-system patch deployments.apps hnc-controller-manager  --patch-file hnc-patch.yaml # setup
@@ -498,6 +499,7 @@ kubectl hns create tenant-1 -n parent
 kubectl hns config describe
 kubectl hns config set-resource resourcequota --mode Propagate
 kubectl hns config describe
+cat resource-quota.yaml
 kubectl apply -f resource-quota.yaml
 kubectl get resourcequotas -A
 cat hnc-50.sh
@@ -505,6 +507,8 @@ cat hnc-50.sh
 kubectl get resourcequotas -A
 kubectl hns set parent --allowCascadingDeletion
 kubectl delete ns parent
+kubectl delete -f https://github.com/kubernetes-sigs/hierarchical-namespaces/releases/download/v1.1.0/default.yaml # setup
+
 -->
 
 ---
@@ -701,10 +705,10 @@ and allow the pvc to bind to that pv and the pods to connect to it
 <!--
 DEMO
 
-cat pv-values.yaml | yq
+cat pv-values.yaml
 vcluster create tenant1 --upgrade -f pv-values.yaml
 
-cat pv.yaml | yq
+cat pv.yaml
 kubectl apply -f pv.yaml
 vcluster disconnect
 kubectl get pv
@@ -718,6 +722,11 @@ kubectl get pv
 vcluster delete tenant1
 vcluster delete tenant2
 kubectl delete pv --all
+
+cat vcluster-50.sh
+./vcluster-50.sh
+kubectl get ns
+kubectl get pod -A
 -->
 
 ---
@@ -1015,16 +1024,19 @@ DEMO
 export KUBECONFIG=karmada-apiserver.config
 kubectl get cluster
 
-KUBECONFIG=worker-1-kubeconfig.yaml k apply -f deploy.yaml
+#deploy something on a worker
+cat deploy.yaml
+KUBECONFIG=worker-1-kubeconfig.yaml kubectl apply -f deploy.yaml
 
 kubectl get --raw /apis/search.karmada.io/v1alpha1/search/cache/apis/apps/v1/deployments | jq '.items[] | (.metadata.annotations["resource.karmada.io/cached-from-cluster"] + " " + .metadata.name)'
 
 ## demo propagating a deploy
+cat propagating-deploy.yaml
 kubectl apply -f propagating-deploy.yaml
-KUBECONFIG=worker-1-kubeconfig.yaml k get pods -A
-KUBECONFIG=worker-2-kubeconfig.yaml k get pods -A
+KUBECONFIG=worker-1-kubeconfig.yaml kubectl get pods -A
+KUBECONFIG=worker-2-kubeconfig.yaml kubectl get pods -A
 
-KUBECONFIG=worker-1-kubeconfig.yaml k delete deployments.apps hello-world
+KUBECONFIG=worker-1-kubeconfig.yaml kubectl delete -f deploy.yaml
 kubectl delete -f propagating-deploy.yaml
 unset KUBECONFIG
 -->
