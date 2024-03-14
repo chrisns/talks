@@ -28,7 +28,7 @@ I've definitely got the war wounds to show for it.
 
 We should have time for questions and your best heckles at the end, but if we run out of time or you're not watching this live, then please find me on LinkedIn or in the loft labs slack.
 
-Right lets kick this off
+Right lets get going
 -->
 
 ---
