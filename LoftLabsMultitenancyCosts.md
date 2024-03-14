@@ -235,6 +235,8 @@ so how big can this get
 
 ## <!-- lets take a couple of scenarios, one with 10 tenants -->
 
+---
+
 ![bg contain](images/loftlabs_multitenancy_costs/1-1348.svg)
 
 <!-- and another with 50 tenants -->
@@ -1293,6 +1295,8 @@ we looked at some tools along the journey of how to manage something that has so
 <!--
 and then we covered karmada which is one many products in the space of supporting you wrangling multiple clusters
 -->
+
+---
 
 ![bg contain](images/loftlabs_multitenancy_costs/17-53557.svg)
 
