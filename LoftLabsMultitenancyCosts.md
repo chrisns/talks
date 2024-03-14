@@ -7,6 +7,7 @@ url: https://talks.cns.me/LoftLabsMultitenancyCosts.html
 class: lead
 description: In this session, you will explore the tools and techniques necessary to partition a cluster so that multiple teams can use it to deploy workloads.
 size: 4:3
+video_embed: <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/vy9ms3_FIVE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 ---
 
 ![bg contain](images/loftlabs_multitenancy_costs/1-767.svg)
