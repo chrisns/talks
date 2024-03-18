@@ -35,7 +35,7 @@ A lot of my current work here is based on Anecdata and anecdotes, both my own an
 # 👴 <!--fit-->
 
 <!--
-I've been in/around gov and public sector long enough to have experienced some of the issues in this presentation first hand, including being part of a rebel alliance creating the Home Office AWS tenancy on one of the other contractors credit cards.
+I've been in/around gov and public sector long enough to have experienced some of the issues in this presentation first hand, including being part of a skunkworks team creating what is still the Home Office AWS tenancy with one of the other contractors credit cards (it's not there anymore).
 -->
 
 ---
