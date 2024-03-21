@@ -14,27 +14,116 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  lint:
+    name: Lint
     runs-on: ubuntu-latest
     steps:
-      - run: sudo apt-get update
-      - run: sudo apt-get -y install ghostscript
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
       - uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4.0.2
         with:
           node-version-file: ".nvmrc"
-
       - run: npm install
       - run: npm run lint
-      - run: npm run build
 
-      - name: Tar files
-        run: tar -cf dist.tar ./dist
+  indexpage:
+    name: Index Page
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+      - uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65 # v4.0.0
+        with:
+          node-version-file: ".nvmrc"
+      - run: npm install
+      - run: mkdir -p dist
+      - run: npm run build:indexhtml
+      - uses: actions/upload-artifact@a8a3f3ad30e3422c9c7b888a15615d19a852ae32 # v3.1.3
+        with:
+          name: index
+          path: dist/index.html
+          retention-days: 1
+
+  generate-matrix:
+    name: Generate Matrix Build
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+        with:
+          sparse-checkout: .
+      - id: set-matrix
+        run: echo "matrix=$(ls *.md | sed -e 's/.md//g' | jq -R -s -c 'split("\n")[:-1]')" >> $GITHUB_OUTPUT
+
+  build:
+    runs-on: ubuntu-latest
+    needs:
+      - generate-matrix
+    strategy:
+      fail-fast: false
+      matrix:
+        file: ${{ fromJson(needs.generate-matrix.outputs.matrix) }}
+        format:
+          - html
+          - pptx
+          - image
+          - txt
+          - pdf
+        exclude:
+          - file: CODE_OF_CONDUCT
+          - file: README
+          - file: schedule
+          - file: SECURITY
+
+    steps:
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+      - uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65 # v4.0.0
+        with:
+          node-version-file: ".nvmrc"
+      - run: npm install
+      - run: npm run build:css
+        if: matrix.format != 'txt'
+
+      - uses: awalsh128/cache-apt-pkgs-action@44c33b32f808cdddd5ac0366d70595ed63661ed8 # v1.3.1
+        if: matrix.format == 'pdf'
+        with:
+          packages: ghostscript
+          version: 1.0
+
+      - run: npm run build:${{ matrix.format }} -- -c .marprc-build.yml ${{ matrix.file }}.md -o ${{ matrix.file }}.${{ matrix.format }}
+
+      - run: npm run build:pdf:compress
+        if: matrix.format == 'pdf'
 
       - uses: actions/upload-artifact@5d5d22a31266ced268874388b861e4b58bb5c2f3 # v4.3.1
         with:
-          name: dist.tar
-          path: dist.tar
+          name: ${{ matrix.file }}-${{ matrix.format }}
+          path: ${{ matrix.file }}.${{ matrix.format }}
+          retention-days: 1
+
+  converge:
+    runs-on: ubuntu-latest
+    needs:
+      - lint
+      - build
+      - indexpage
+    steps:
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+        with:
+          sparse-checkout: images
+      - run: mkdir -p dist
+      - uses: actions/download-artifact@9bc31d5ccc31df68ecc42ccf4149144866c47d8a # v3.0.2
+        with:
+          path: artifacts/
+      - run: mv artifacts/*/* dist/
+      - run: for file in dist/*.image; do mv "$file" "${file%.image}.png"; done
+      - run: cp -vr images dist/
+      - run: tar -cjf dist.tbz ./dist
+      - uses: actions/upload-artifact@a8a3f3ad30e3422c9c7b888a15615d19a852ae32 # v3.1.3
+        with:
+          name: dist.tbz
+          path: dist.tbz
+          retention-days: 1
+
 
   publish:
     runs-on: ubuntu-latest
@@ -44,7 +133,7 @@ jobs:
     permissions:
       id-token: write
     needs:
-      - build
+      - converge
     if: ${{ github.ref == 'refs/heads/main' }}
     steps:
       - uses: actions/download-artifact@c850b930e6ba138125429b7e5c93fc707a7f8427 # v4.1.4
