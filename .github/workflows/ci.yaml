@@ -79,6 +79,7 @@ jobs:
       - uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65 # v4.0.0
         with:
           node-version-file: ".nvmrc"
+      - run: find . -name "*.md" ! -name ${{ matrix.file }} -exec rm {} +
       - run: npm install
       - run: npm run build:css
         if: matrix.format != 'txt'
@@ -89,7 +90,9 @@ jobs:
           packages: ghostscript
           version: 1.0
 
-      - run: npm run build:${{ matrix.format }} -- -c .marprc-build.yml ${{ matrix.file }}.md -o ${{ matrix.file }}.${{ matrix.format }}
+      - run: npm run build:${{ matrix.format }}
+
+      - run: mv -v dist/*.* ${{ matrix.file }}.${{ matrix.format }}
 
       - run: npm run build:pdf:compress
         if: matrix.format == 'pdf'
