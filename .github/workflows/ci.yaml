@@ -63,11 +63,11 @@ jobs:
       matrix:
         file: ${{ fromJson(needs.generate-matrix.outputs.matrix) }}
         format:
-          # - html
-          # - pptx
+          - html
+          - pptx
           # - image
           - txt
-          # - pdf
+          - pdf
         exclude:
           - file: CODE_OF_CONDUCT
           - file: README
@@ -114,7 +114,7 @@ jobs:
       - uses: actions/download-artifact@c850b930e6ba138125429b7e5c93fc707a7f8427 # v4.1.4
         with:
           path: artifacts/
-      - run: mv artifacts/*/* dist/
+      - run: mv -v artifacts/*/* dist/
       # - run: for file in dist/*.image; do mv "$file" "${file%.image}.png"; done
       - run: cp -vr images dist/
       - run: tar -cvf dist.tar ./dist
