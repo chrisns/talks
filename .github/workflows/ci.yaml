@@ -65,7 +65,7 @@ jobs:
         format:
           - html
           - pptx
-          # - image
+          - image
           - txt
           - pdf
         exclude:
