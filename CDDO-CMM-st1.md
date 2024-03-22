@@ -5,6 +5,8 @@ theme: themes/cddo
 author: Chris Nesbitt-Smith
 marp: true
 class: lead
+description: A show and tell talk describing the development of a cloud maturity model for the UK Public Sector
+url: https://talks.cns.me/CDDO-CMM-st1.html
 ---
 
 # Cloud Maturity Model
