@@ -5,7 +5,7 @@ theme: themes/cddo
 author: Chris Nesbitt-Smith
 marp: true
 class: lead
-description: In this talk, Chris will explore the challenges and benefits of dynamically balancing and optimizing the resources of a Kubernetes cluster. He will explain how Kubernetes uses a scheduler to assign pods to nodes based on various factors, such as resource requests, limits, affinity, anti-affinity, and taints. He will also demonstrate how to use tools and techniques, such as horizontal pod autoscaling, cluster autoscaling and the descheduler, to improve the performance and efficiency of your cluster. From this talk, you will learn how to leverage the power and flexibility of Kubernetes to achieve optimal resource utilization and workload distribution.
+description: An ignite format talk, describing a vision for a UK Public Sector Cloud Marketplace
 video_embed: <iframe width="560" height="315" src="https://www.youtube.com/embed/89TG51e9KAA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 url: https://talks.cns.me/CDDO-UKPSMP_ignite1.html
 ---
