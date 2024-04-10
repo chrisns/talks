@@ -9,7 +9,6 @@
       "extensions": [
         "marp-team.marp-vscode",
         "esbenp.prettier-vscode",
-        "GitHub.vscode-pull-request-github",
         "ban.spellright",
         "GitHub.codespaces",
         "Codeium.codeium",
