@@ -18,7 +18,8 @@
     "build:indexhtml": "node generate_index.js > dist/index.html",
     "start": "run-p server:*",
     "server:postcss": "postcss --watch --ext css -d themes themes",
-    "server:marp": "marp -s"
+    "server:marp": "marp -s",
+    "prepare": "husky"
   },
   "author": "Chris Nesbitt-Smith",
   "license": "MIT",
@@ -27,6 +28,7 @@
   },
   "dependencies": {
     "@marp-team/marp-cli": "^3.0.0",
+    "husky": "^9.0.11",
     "marked": "^12.0.0",
     "npm-run-all2": "6.1.2",
     "postcss-cli": "11.0.0",
