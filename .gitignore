@@ -7,3 +7,4 @@ themes/*.css
 .gitsecret/keys/random_seed
 !*.secret
 /CDDO-UKPSCM-openday1.md
+.gitsecret/S.gpg-agent*
