@@ -1,2 +1,2 @@
-git secret hide -m
 npx prettier -w .
+git secret hide -m
