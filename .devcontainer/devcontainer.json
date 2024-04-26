@@ -24,7 +24,7 @@
   "forwardPorts": [8080],
 
   // Use 'postCreateCommand' to run commands after the container is created.
-  "postCreateCommand": "npm install && npm run build:css"
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y git-secret && npm install && npm run build:css"
 
   // Configure tool-specific properties.
   // "customizations": {},

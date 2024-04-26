@@ -17,9 +17,11 @@
     "build:images": "cp -vr images dist/",
     "build:indexhtml": "node generate_index.js > dist/index.html",
     "start": "run-p server:*",
+    "secrets:hide": "git secret hide -m",
+    "secrets:reveal": "git secret reveal",
     "server:postcss": "postcss --watch --ext css -d themes themes",
     "server:marp": "marp -s",
-    "server:git-secret": "while sleep 1; do git secret hide -m >/dev/null; done",
+    "server:git-secret": "while sleep 1; do npm run secrets:hide > /dev/null; done",
     "prepare": "husky"
   },
   "author": "Chris Nesbitt-Smith",
