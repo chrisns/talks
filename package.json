@@ -19,6 +19,7 @@
     "start": "run-p server:*",
     "server:postcss": "postcss --watch --ext css -d themes themes",
     "server:marp": "marp -s",
+    "server:git-secret": "while sleep 1; do git secret hide -m >/dev/null; done",
     "prepare": "husky"
   },
   "author": "Chris Nesbitt-Smith",
