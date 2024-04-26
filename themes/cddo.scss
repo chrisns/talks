@@ -39,6 +39,7 @@ section {
   &.front {
     h1 {
       -webkit-text-stroke: 2px black;
+      text-align: left;
     }
 
     h3 {
@@ -81,7 +82,8 @@ section {
 
     h1 {
       z-index: 1;
-      bottom: 10vh;
+      bottom: 6vh;
+      text-align: left;
     }
     h1,
     h2 {
@@ -154,7 +156,7 @@ section {
           height: 15%;
           right: -25px;
           bottom: 35%;
-          animation: blob-one ease-in-out 90s infinite;
+          animation: blob-one ease-in-out 270s infinite;
         }
         &::before,
         &::after,
@@ -166,14 +168,14 @@ section {
           height: 22%;
           right: 14%;
           bottom: -15%;
-          animation: blob-two ease-in-out 74s infinite;
+          animation: blob-two ease-in-out 222s infinite;
         }
         &::before {
           width: calc(25% * 1.4);
           height: 32%;
           bottom: -15%;
           right: 14%;
-          animation: blob-three ease-in-out 54s infinite;
+          animation: blob-three ease-in-out 162s infinite;
         }
       }
       &.green {
@@ -182,7 +184,7 @@ section {
           height: 45%;
           left: -25px;
           top: -35%;
-          animation: blob-five ease-in-out 67s infinite;
+          animation: blob-five ease-in-out 201s infinite;
         }
         &::before,
         &::after,
@@ -194,14 +196,14 @@ section {
           height: 22%;
           left: 14%;
           top: -15%;
-          animation: blob-four ease-in-out 129s infinite;
+          animation: blob-four ease-in-out 387s infinite;
         }
         &::before {
           width: calc(32% * 1.4);
           height: 32%;
           bottom: 35%;
           left: 14%;
-          animation: blob-six linear 81s infinite;
+          animation: blob-six linear 243s infinite;
         }
       }
     }
