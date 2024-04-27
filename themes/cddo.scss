@@ -109,6 +109,17 @@ section {
   &.frame {
     background-image: url(images/cddo/bg-frame.svg) !important;
   }
+  &.columns-2 {
+    columns: 2;
+    display: block;
+    h1 {
+      column-span: all;
+    }
+    h2 {
+      break-before: column;
+      margin-top: 0;
+    }
+  }
   code {
     font-family: "Courier New", Courier, monospace;
   }
@@ -272,7 +283,7 @@ section {
       }
     }
   }
-  .columns-2 {
+  .columns-3 {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1rem;
