@@ -4,3 +4,7 @@ node_modules
 dist
 themes/*.css
 /CDDO-CLZ-CTOC1.md
+.gitsecret/keys/random_seed
+!*.secret
+/CDDO-UKPSCM-openday1.md
+.gitsecret/keys/S.gpg-agent*

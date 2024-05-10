@@ -39,6 +39,7 @@ section {
   &.front {
     h1 {
       -webkit-text-stroke: 2px black;
+      text-align: left;
     }
 
     h3 {
@@ -81,7 +82,8 @@ section {
 
     h1 {
       z-index: 1;
-      bottom: 10vh;
+      bottom: 6vh;
+      text-align: left;
     }
     h1,
     h2 {
@@ -107,6 +109,17 @@ section {
   &.frame {
     background-image: url(images/cddo/bg-frame.svg) !important;
   }
+  &.columns-2 {
+    columns: 2;
+    display: block;
+    h1 {
+      column-span: all;
+    }
+    h2 {
+      break-before: column;
+      margin-top: 0;
+    }
+  }
   code {
     font-family: "Courier New", Courier, monospace;
   }
@@ -114,9 +127,165 @@ section {
     font-size: 3em;
   }
   @for $i from 1 to 100 {
+    &[id="$i"].lead.quote {
+      $index: resolve($i % 2);
+      background-size: cover;
+      background-image: url(images/cddo/bg-quote$(index).svg);
+    }
+  }
+  @for $i from 1 to 100 {
     &[id="$i"].lead {
       $index: resolve($i % 2);
       background-image: url(images/cddo/bg$(index).svg);
     }
+  }
+  &.lava {
+    background: #ffe000;
+    background-image: none !important;
+
+    .lava {
+      filter: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" version="1.1"><defs><filter id="goo"><feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" /><feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" /><feBlend in="SourceGraphic" in2="goo" /></filter></defs></svg>#goo');
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      left: 0;
+      z-index: -1;
+
+      &::before,
+      &::after,
+      div {
+        border-radius: 20px;
+        position: absolute;
+        content: "";
+        border-radius: 20px;
+        position: absolute;
+      }
+
+      &.pink {
+        div {
+          width: calc(15% * 1.4);
+          height: 15%;
+          right: -25px;
+          bottom: 35%;
+          animation: blob-one ease-in-out 270s infinite;
+        }
+        &::before,
+        &::after,
+        div {
+          background: #ff8fcf;
+        }
+        &::after {
+          width: calc(22% * 1.4);
+          height: 22%;
+          right: 14%;
+          bottom: -15%;
+          animation: blob-two ease-in-out 222s infinite;
+        }
+        &::before {
+          width: calc(25% * 1.4);
+          height: 32%;
+          bottom: -15%;
+          right: 14%;
+          animation: blob-three ease-in-out 162s infinite;
+        }
+      }
+      &.green {
+        div {
+          width: calc(15% * 1.4);
+          height: 45%;
+          left: -25px;
+          top: -35%;
+          animation: blob-five ease-in-out 201s infinite;
+        }
+        &::before,
+        &::after,
+        div {
+          background: #b5cc17;
+        }
+        &::after {
+          width: calc(12% * 1.4);
+          height: 22%;
+          left: 14%;
+          top: -15%;
+          animation: blob-four ease-in-out 387s infinite;
+        }
+        &::before {
+          width: calc(32% * 1.4);
+          height: 32%;
+          bottom: 35%;
+          left: 14%;
+          animation: blob-six linear 243s infinite;
+        }
+      }
+    }
+    @keyframes blob-one {
+      50%,
+      0% {
+        transform: translatey(0);
+      }
+      25% {
+        transform: translatey(300%);
+      }
+      75% {
+        transform: translatey(-400%);
+      }
+    }
+
+    @keyframes blob-two {
+      0%,
+      100% {
+        transform: translatey(0);
+      }
+      50% {
+        transform: translatey(-420%);
+      }
+    }
+
+    @keyframes blob-three {
+      0%,
+      100% {
+        transform: translatey(0);
+      }
+      50% {
+        transform: translatey(-305%);
+      }
+    }
+
+    @keyframes blob-four {
+      0%,
+      100% {
+        transform: translatey(0);
+      }
+      50% {
+        transform: translatey(700%);
+      }
+    }
+
+    @keyframes blob-five {
+      0%,
+      100% {
+        transform: translatey(0);
+      }
+      50% {
+        transform: translatey(320%);
+      }
+    }
+    @keyframes blob-six {
+      0%,
+      50% {
+        transform: translatey(0);
+      }
+      25% {
+        transform: translatey(205%);
+      }
+      75% {
+        transform: translatey(-185%);
+      }
+    }
+  }
+  .columns-3 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
   }
 }

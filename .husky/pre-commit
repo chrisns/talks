@@ -1,0 +1,2 @@
+npx prettier -w . && \
+git secret hide -m

@@ -17,8 +17,12 @@
     "build:images": "cp -vr images dist/",
     "build:indexhtml": "node generate_index.js > dist/index.html",
     "start": "run-p server:*",
+    "secrets:hide": "git secret hide -m",
+    "secrets:reveal": "git secret reveal",
     "server:postcss": "postcss --watch --ext css -d themes themes",
-    "server:marp": "marp -s"
+    "server:marp": "marp -s",
+    "server:git-secret": "while sleep 1; do npm run secrets:hide > /dev/null; done",
+    "prepare": "husky"
   },
   "author": "Chris Nesbitt-Smith",
   "license": "MIT",
@@ -27,6 +31,7 @@
   },
   "dependencies": {
     "@marp-team/marp-cli": "^3.0.0",
+    "husky": "^9.0.11",
     "marked": "^12.0.0",
     "npm-run-all2": "6.1.2",
     "postcss-cli": "11.0.0",
