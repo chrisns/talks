@@ -94,7 +94,7 @@ jobs:
         with:
           timeout_minutes: 10
           max_attempts: 3
-          command: npm run build:${{ matrix.format }}
+          command: PUPPETEER_TIMEOUT=1200000 npm run build:${{ matrix.format }}
 
       - run: mv -v dist/*.* ${{ matrix.file }}.${{ matrix.format }}
 
