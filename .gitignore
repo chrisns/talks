@@ -8,3 +8,6 @@ themes/*.css
 !*.secret
 /CDDO-UKPSCM-openday1.md
 .gitsecret/keys/S.gpg-agent*
+CDDO-NDX_ignite2.md
+images/cddo/NDA_0.1.png
+images/cddo/postits.jpeg

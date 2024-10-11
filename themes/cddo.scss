@@ -80,6 +80,14 @@ section {
     padding: 0;
     text-align: left;
 
+    img[alt~="top"] {
+      position: absolute;
+      top: 4vh;
+    }
+    img[alt~="right"] {
+      position: absolute;
+      right: 4vh;
+    }
     h1 {
       z-index: 1;
       bottom: 6vh;
@@ -287,5 +295,31 @@ section {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1rem;
+  }
+  &.listline {
+    &.animate {
+      li {
+        animation-name: pulsate;
+        animation-timing-function: ease-in;
+        animation-delay: calc(var(--animation-order) * 200ms);
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        @for $i from 1 to 100 {
+          &:nth-child($i) {
+            --animation-order: $i;
+          }
+        }
+      }
+    }
+    ul {
+      text-align: center;
+      li {
+        display: inline;
+        &:not(:first-of-type):before {
+          content: " | ";
+          opacity: 0.2;
+        }
+      }
+    }
   }
 }
