@@ -39,7 +39,7 @@
     "postcss-for": "^2.1.1",
     "postcss-import": "^16.0.0",
     "postcss-math": "^0.0.10",
-    "postcss-nested": "^6.0.0",
+    "postcss-nested": "^7.0.0",
     "postcss-simple-vars": "^7.0.1",
     "postcss-use": "^3.0.0",
     "prettier": "3.3.3"
