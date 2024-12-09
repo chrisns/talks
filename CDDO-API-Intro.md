@@ -558,6 +558,17 @@ Thank you once again for your attention.
 
 ---
 
+# digitalpeople.blog.gov.uk/2024/09/17/get-cloud-certified-this-autumn
+
+<iframe src="https://digitalpeople.blog.gov.uk/2024/09/17/get-cloud-certified-this-autumn/" width="100%" height="80%" style="zoom:0.5"></iframe>
+
+<!--
+Before I wrap up, I'll get in trouble with my team if I didn't give Get Cloud Certified this Autumn a plug which I think might have a day or two you can still sign up in.
+Which is a fantastic initiative run by some of my colleagues who've negotiated a massive range of courses and certifications that are free for all civil and public servants to take, I'll put the link in the chat and make sure its circulated afterwards too.
+-->
+
+---
+
 <!-- _class: invert -->
 <style scoped>
 h2 {
