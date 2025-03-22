@@ -5,7 +5,19 @@ words_per_minute=155
 
 table="Filename,Slides,Words,Minutes"
 
+filter=""
+if [ "$1" != "" ]; then
+  filter="$1"
+fi
+
 for filename in dist/*.txt; do
+  base_filename=${filename#dist/}
+  base_filename=${base_filename%.txt}
+  
+  # Skip if filter is provided and doesn't match the filename
+  if [ "$filter" != "" ] && [[ "$base_filename" != *"$filter"* ]]; then
+    continue
+  fi
 
   slidecount=$(cat ${filename} | grep -- "---" | wc -w |tr -d '[:blank:]')
   ((slidecount++))
