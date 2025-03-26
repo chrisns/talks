@@ -36,7 +36,7 @@ Right lets get going
 ![bg contain](./images/LoftLabsMultitenancyIsolation/3-65.svg)
 
 <!--
-I'm going to spend a bit of time talking about security in the context of multitenancy security with a case study.
+I'm going to spend a bit of time talking about security in the context of multitenancy with a case study.
 
 With the caveat that I've based this entirely on publicly available information, so I'm likely off the mark on many of the points in how they relate to GitPod, they're a big company with much smarter people than I so they likely came up with more innovative solutions than anything I could consider in a few days to write this talk, but it still gives us something relatable to talk to.
 
@@ -97,7 +97,7 @@ You get a fully dedicated environment dynamically provisioned for you, with a fu
 
 <!--
 This should run shivers down the spine of anyone beginning to think about the security implications of basically giving all your users the ability to execute arbitrary code on a remote server and not let one instance affect another, and thats just within a single organisation with a single trust boundary.
-Imagine providing this publicly one a gigantic Kubernetes cluster.
+Imagine providing this publicly on one a gigantic Kubernetes cluster.
 -->
 
 ---
@@ -1185,7 +1185,6 @@ Well, with gVisor all those calls are proxied and you can set policies on what c
 ![bg contain](./images/LoftLabsMultitenancyIsolation/16-8546.svg)
 
 <!--
-1/2
 Katacontainers takes a different approach
 -->
 
