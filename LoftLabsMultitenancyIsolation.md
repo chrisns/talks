@@ -1320,14 +1320,6 @@ I do want to point one thing out though that if you want crd isolation then its 
 
 ---
 
-<!-- ![bg contain](./images/LoftLabsMultitenancyIsolation/20-10307.svg) -->
-
-<!--
-
--->
-
----
-
 ![bg contain](./images/LoftLabsMultitenancyIsolation/20-10094.svg)
 
 <!--
