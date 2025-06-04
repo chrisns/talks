@@ -10,7 +10,8 @@ on:
       - main
   pull_request:
   schedule:
-    - cron: "1 2 3 * *" # run at 2 AM UTC once a week
+    # Runs monthly on the 3rd day at 02:01 UTC
+    - cron: "1 2 3 * *"
   workflow_dispatch:
 
 jobs:
