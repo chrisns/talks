@@ -24,6 +24,7 @@ jobs:
           node-version-file: ".nvmrc"
       - run: npm install
       - run: npm run lint
+      - run: npm test
 
   indexpage:
     name: Index Page
