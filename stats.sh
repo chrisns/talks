@@ -22,12 +22,12 @@ for filename in dist/*.txt; do
     esac
   fi
 
-  slidecount=$(cat ${filename} | grep -- "---" | wc -w |tr -d '[:blank:]')
+  slidecount=$(grep -- "---" "$filename" | wc -w | tr -d '[:blank:]')
   ((slidecount++))
   if [ "$slidecount" -eq 1 ]; then
     continue
   fi
-  wordcount=$(cat ${filename} | grep -v -- "---" | wc -w| tr -d '[:blank:]')
+  wordcount=$(grep -v -- "---" "$filename" | wc -w | tr -d '[:blank:]')
   minutes=$(echo "scale=2; $wordcount / $words_per_minute" | bc)
 
   filename=${filename#dist/}
