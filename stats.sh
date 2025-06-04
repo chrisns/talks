@@ -15,8 +15,11 @@ for filename in dist/*.txt; do
   base_filename=${base_filename%.txt}
   
   # Skip if filter is provided and doesn't match the filename
-  if [ "$filter" != "" ] && [[ "$base_filename" != *"$filter"* ]]; then
-    continue
+  if [ "$filter" != "" ]; then
+    case "$base_filename" in
+      *"$filter"*) ;;
+      *) continue ;;
+    esac
   fi
 
   slidecount=$(cat ${filename} | grep -- "---" | wc -w |tr -d '[:blank:]')
