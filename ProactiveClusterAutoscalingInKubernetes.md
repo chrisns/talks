@@ -37,7 +37,7 @@ Likewise please use the comments if you've got any questions throughout this web
 <!--
 
 So, to kick things off my name is Chris Nesbitt-Smith, I'm based in London and currently an instructor for Learnk8s, consultant to UK Government and tinkerer of open source stuff.
-I've using and abusing Kubernetes in production since it was 0.4, believe me when I say its been a journey!
+I've been using and abusing Kubernetes in production since it was 0.4, believe me when I say its been a journey!
 
 I've definitely got the scars to show for it.
 -->
