@@ -26,4 +26,6 @@ test("index generation includes headings", () => {
   const html = output.toString();
   expect(html).toContain("Upcoming talks");
   expect(html).toContain("Previous talks");
+  expect(html).not.toContain("[object Object]");
+  expect(html).not.toContain("undefined</table>");
 });
