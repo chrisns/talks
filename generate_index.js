@@ -27,20 +27,37 @@ let scheduleSelect = "future";
 const schedule = fs.readFileSync("schedule.md", "utf8");
 
 const renderer = {
-  table(header, body) {
-    return `<table class="table table-striped table-sm">
-<thead class="thead-dark">${header}</thead>
-${body}
-</table>`;
+  /**
+   * Marked >=15 passes a single token to `table`. Recreate the default
+   * rendering logic and apply our custom classes.
+   */
+  table(token) {
+    let header = "";
+    let cell = "";
+    for (let j = 0; j < token.header.length; j++) {
+      cell += this.tablecell(token.header[j]);
+    }
+    header += this.tablerow({ text: cell });
+    let body = "";
+    for (let j = 0; j < token.rows.length; j++) {
+      const row = token.rows[j];
+      cell = "";
+      for (let k = 0; k < row.length; k++) {
+        cell += this.tablecell(row[k]);
+      }
+      body += this.tablerow({ text: cell });
+    }
+    if (body) body = `<tbody>${body}</tbody>`;
+    return `<table class="table table-striped table-sm">\n<thead class="thead-dark">${header}</thead>\n${body}</table>\n`;
   },
-  tablerow(content) {
-    const date = (content.match(/\d{4}-\d{2}-\d{2}/g) || [])[0];
+  tablerow({ text }) {
+    const date = (text.match(/\d{4}-\d{2}-\d{2}/g) || [])[0];
     if (
       date === undefined ||
       (scheduleSelect === "future" && date && Date.parse(date) > Date.now()) ||
       (scheduleSelect === "past" && date && Date.parse(date) < Date.now())
     )
-      return `<tr>\n${content}</tr>\n`;
+      return `<tr>\n${text}</tr>\n`;
     return "";
   },
 };
