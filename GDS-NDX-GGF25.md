@@ -387,6 +387,6 @@ I've got my conference trousers on to make me easy to spot and I'll be hanging a
 
 # 🙋 Q&A<!--fit-->
 
-## ndx@digital.cabinet-office.gov.uk
+## ndx@dsit.gov.uk
 
 <!-- Do we have time for any questions? Fabulous! If you've got any questions please make yourself known to one of my glamorous assistants will hopefully be able to get a microphone to you. -->
