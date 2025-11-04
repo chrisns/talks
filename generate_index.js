@@ -23,6 +23,16 @@ const files = fs
       video_embed: md.match(/(?<=^video_embed: ).*$/gim)?.[0] ?? "",
     };
   });
+
+// Separate CDDO/GDS talks from other talks
+const govUkTalks = files.filter(
+  (file) =>
+    file.filename.startsWith("CDDO-") || file.filename.startsWith("GDS-"),
+);
+const otherTalks = files.filter(
+  (file) =>
+    !file.filename.startsWith("CDDO-") && !file.filename.startsWith("GDS-"),
+);
 let scheduleSelect = "future";
 const schedule = fs.readFileSync("schedule.md", "utf8");
 
@@ -175,8 +185,8 @@ output.push(`</div>`);
 output.push(`</div>`);
 output.push(`<div class="col">`);
 
-files.forEach((file) =>
-  output.push(`
+// Render function for talk cards
+const renderTalkCard = (file) => `
 <div class="card">
 ${
   file.video_embed ||
@@ -206,8 +216,22 @@ ${
   TXT</a>
   </div>
   </div>
-  `),
-);
+  `;
+
+// Render other talks first
+otherTalks.forEach((file) => output.push(renderTalkCard(file)));
+
+// Add gov.uk section if there are CDDO/GDS talks
+if (govUkTalks.length > 0) {
+  output.push(`
+  <div class="w-100"></div>
+  <div class="col-12">
+    <h2 class="text-center mt-4 mb-3" style="background: rgba(255,255,255,.75); padding: 1rem; border-radius: 0.5rem;">gov.uk talks</h2>
+  </div>
+  `);
+  govUkTalks.forEach((file) => output.push(renderTalkCard(file)));
+}
+
 output.push(`</div>`);
 output.push(`</div>`);
 output.push(`</div>`);
