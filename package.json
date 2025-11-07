@@ -32,7 +32,7 @@
   "dependencies": {
     "@marp-team/marp-cli": "^4.0.0",
     "husky": "^9.0.11",
-    "marked": "^16.0.0",
+    "marked": "^17.0.0",
     "npm-run-all2": "8.0.4",
     "postcss-cli": "11.0.1",
     "postcss-discard-comments": "^7.0.0",
