@@ -38,7 +38,7 @@ jobs:
       - run: npm install
       - run: mkdir -p dist
       - run: npm run build:indexhtml
-      - uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: index
           path: dist/index.html
@@ -103,7 +103,7 @@ jobs:
       - run: npm run build:pdf:compress
         if: matrix.format == 'pdf'
 
-      - uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: ${{ matrix.file }}-${{ matrix.format }}
           path: ${{ matrix.file }}.${{ matrix.format }}
@@ -127,7 +127,7 @@ jobs:
       - run: for file in dist/*.image; do mv "$file" "${file%.image}.png"; done
       - run: cp -vr images dist/
       - run: tar -cvf dist.tar ./dist
-      - uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: dist.tar
           path: dist.tar
