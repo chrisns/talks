@@ -3,7 +3,7 @@
 {
   "name": "Node.js",
   // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-  "image": "mcr.microsoft.com/devcontainers/javascript-node:4-20-bullseye@sha256:9a9d441c810a9d07bc24245cacc3294da084ee15386b6838adc3e176fbba1880",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:4-20-bullseye@sha256:45df95d36a1841ded18cd4e3de4a248df7c782b716950abec1d3dfd4723b7f70",
   "customizations": {
     "vscode": {
       "extensions": [
