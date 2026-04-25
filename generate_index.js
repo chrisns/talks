@@ -1,5 +1,4 @@
 import fs from "fs";
-import { marked } from "marked";
 
 const exclude = [
   "CODE_OF_CONDUCT.md",
@@ -33,60 +32,47 @@ const otherTalks = files.filter(
     !file.filename.startsWith("CDDO-") && !file.filename.startsWith("GDS-"),
 );
 
-let scheduleSelect = "future";
-const schedule = fs.readFileSync("schedule.md", "utf8");
+// Schedule — direct parse of the pipe table; converts the leading
+// `(v)|(irl)|(hybrid)` marker into a venue-mode chip.
+const renderInline = (s) =>
+  s.replace(
+    /\[([^\]]+)\]\(([^)]+)\)/g,
+    (_, text, url) => `<a href="${url}">${text}</a>`,
+  );
 
-// We only need the side effect of collecting rows that match the active
-// `scheduleSelect`. Don't override `table` — the default table() iterates
-// rows/cells and calls our overrides. marked v18 passes tokens; v12 passes
-// strings. Handle both.
-const scheduleRows = [];
-const renderer = {
-  tablerow(arg) {
-    const text = typeof arg === "string" ? arg : arg.text;
-    const date = ((text && text.match(/\d{4}-\d{2}-\d{2}/g)) || [])[0];
-    if (!date) return "";
-    const isFuture = Date.parse(date) > Date.now();
-    if (
-      (scheduleSelect === "future" && isFuture) ||
-      (scheduleSelect === "past" && !isFuture)
-    ) {
-      scheduleRows.push(`<tr>${text}</tr>`);
-    }
-    return "";
-  },
-  tablecell(arg, flags) {
-    if (typeof arg === "string") {
-      const tag = flags && flags.header ? "th" : "td";
-      return `<${tag}>${arg}</${tag}>`;
-    }
-    const tag = arg.header ? "th" : "td";
-    const inner =
-      this.parser && arg.tokens
-        ? this.parser.parseInline(arg.tokens)
-        : arg.text || "";
-    return `<${tag}>${inner}</${tag}>`;
-  },
+const parseSchedule = (md) => {
+  const rows = [];
+  for (const line of md.split("\n")) {
+    if (!line.startsWith("|")) continue;
+    if (line.includes("---")) continue;
+    const cells = line
+      .split("|")
+      .slice(1, -1)
+      .map((c) => c.trim());
+    if (cells.length < 3) continue;
+    const [date, talk, whereRaw] = cells;
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) continue;
+    const m = whereRaw.match(/^\((v|irl|hybrid)\)\s*(.+)$/);
+    const mode = m ? m[1] : null;
+    const whereSrc = m ? m[2] : whereRaw;
+    rows.push({
+      date,
+      talk,
+      where: renderInline(whereSrc),
+      mode,
+    });
+  }
+  return rows;
 };
-marked.use({ renderer });
 
-scheduleRows.length = 0;
-scheduleSelect = "future";
-marked.parse(schedule);
-const futureRows = [...scheduleRows];
-
-scheduleRows.length = 0;
-scheduleSelect = "past";
-marked.parse(schedule);
-const pastRows = [...scheduleRows].reverse();
-
-const renderTable = (rows) => `
-<table class="data-table">
-  <thead><tr><th scope="col">Date</th><th scope="col">Talk</th><th scope="col">Where</th></tr></thead>
-  <tbody>${rows.join("\n")}</tbody>
-</table>`;
-
-const totalCount = files.length;
+const scheduleRecords = parseSchedule(fs.readFileSync("schedule.md", "utf8"));
+const now = Date.now();
+const futureRows = scheduleRecords
+  .filter((r) => Date.parse(r.date) > now)
+  .sort((a, b) => Date.parse(a.date) - Date.parse(b.date));
+const pastRows = scheduleRecords
+  .filter((r) => Date.parse(r.date) <= now)
+  .sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
 
 const youtubeWatchUrl = (embed) => {
   if (!embed) return null;
@@ -94,871 +80,698 @@ const youtubeWatchUrl = (embed) => {
   return m ? `https://www.youtube.com/watch?v=${m[1]}` : null;
 };
 
-const renderTalkCard = (file, index) => {
+const fillFor = (i) => ["warm", "hot", "cool", "paper"][i % 4];
+
+const renderTalkCard = (file, plateIdx) => {
   const slug = file.filename.replace(".md", "");
-  const num = String(index + 1).padStart(2, "0");
+  const num = String(plateIdx).padStart(2, "0");
   const ytUrl = youtubeWatchUrl(file.video_embed);
   const primaryHref = ytUrl || `${slug}.html`;
-  const media = file.video_embed
-    ? `<div class="card-media card-media--video">${file.video_embed}</div>`
-    : `<a class="card-media" href="${primaryHref}"><img src="${slug}.png" alt="${file.title}" loading="lazy" onerror="this.parentElement.classList.add('card-media--placeholder');this.remove();"></a>`;
+  const fill = fillFor(plateIdx - 1);
+  // The thumbnail layer: real marp PNG if present, gradient fill + flamingo
+  // glyph as fallback (revealed by onerror swapping the img out).
+  const thumb = `
+    <a class="talk-thumb-link" href="${primaryHref}">
+      <div class="talk-thumb fill-${fill}">
+        <span class="thumb-label">Plate ${num}</span>
+        <img class="thumb-img" src="${slug}.png" alt="" loading="lazy"
+             onerror="this.classList.add('hidden');this.parentElement.classList.add('thumb-fallback');" />
+        <span class="thumb-glyph" aria-hidden="true">🦩</span>
+      </div>
+    </a>`;
   return `
 <article class="talk-card">
-  <div class="talk-card__num">No.${num}</div>
-  ${media}
-  <div class="talk-card__body">
-    <h3 class="talk-card__title"><a class="talk-card__link" href="${primaryHref}">${file.title}</a></h3>
-    ${file.description ? `<p class="talk-card__desc">${file.description}</p>` : ""}
-    <div class="talk-card__meta">
-      <a href="${slug}.html" title="${file.title} HTML deck"><span class="fmt">HTML</span></a>
-      <a href="${slug}.pdf" title="${file.title} PDF deck"><span class="fmt">PDF</span></a>
-      <a href="${slug}.pptx" title="${file.title} PPTX deck"><span class="fmt">PPTX</span></a>
-      <a href="${slug}.txt" title="${file.title} notes"><span class="fmt">TXT</span></a>
-    </div>
+  <div class="talk-num-row">
+    <span class="talk-num">No.${num}</span>
+    <span class="talk-year">cns.me</span>
+  </div>
+  ${thumb}
+  <h3 class="talk-title"><a href="${primaryHref}">${file.title}</a></h3>
+  ${file.description ? `<p class="talk-desc">${file.description}</p>` : ""}
+  <div class="talk-formats">
+    <a class="format-tag html" href="${slug}.html">HTML</a>
+    <a class="format-tag pdf"  href="${slug}.pdf">PDF</a>
+    <a class="format-tag pptx" href="${slug}.pptx">PPTX</a>
+    <a class="format-tag txt"  href="${slug}.txt">TXT</a>
   </div>
 </article>`;
 };
 
-// SVG noise texture for paper grain — embedded so we don't need an extra request
-const grainSvg = `data:image/svg+xml;utf8,${encodeURIComponent(
-  `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.45'/></svg>`,
-)}`;
+const sectionHeader = ({ idx, kicker, title, count, countLabel, anchor }) => `
+<header class="section-header"${anchor ? ` id="${anchor}"` : ""}>
+  <div class="rule strong"></div>
+  <div class="sh-row">
+    <span class="eyebrow">${idx} ${kicker}</span>
+    <h2 class="sh-title">${title}</h2>
+    ${
+      count != null
+        ? `<span class="sh-count"><span class="num">${count}</span><span class="cap">${countLabel}</span></span>`
+        : ""
+    }
+  </div>
+</header>`;
+
+const filedUnder = (label, items) => `
+<div class="talks-strip">
+  <span class="label">${label}</span>
+  ${items.map((t) => `<span>${t}</span>`).join('<span class="sep">·</span>')}
+</div>`;
+
+const scheduleSubhead = (kicker, title, count) => `
+<div class="schedule-sub">
+  <span class="ss-eyebrow">${kicker}</span>
+  <h3 class="ss-title">${title}</h3>
+  <span class="ss-count">${count}</span>
+</div>`;
+
+const scheduleTable = (rows) => `
+<table class="schedule">
+  <thead><tr><th scope="col">Date</th><th scope="col">Talk</th><th scope="col">Where</th></tr></thead>
+  <tbody>
+    ${rows
+      .map((r) => {
+        const modeClass = r.mode || "v";
+        const modeLabel =
+          r.mode === "irl" ? "irl" : r.mode === "hybrid" ? "hybrid" : "virtual";
+        const chip = r.mode
+          ? `<span class="venue-mode ${modeClass}">${modeLabel}</span>`
+          : "";
+        return `<tr class="recent-row">
+        <td class="sched-date">${r.date}</td>
+        <td class="sched-talk">${r.talk}</td>
+        <td class="sched-where">${chip}${r.where}</td>
+      </tr>`;
+      })
+      .join("\n")}
+  </tbody>
+</table>`;
+
+const masthead = (count) => `
+<header class="masthead">
+  <svg class="masthead-guilloche" aria-hidden="true" viewBox="0 0 1600 120" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <pattern id="masthead-weave" x="0" y="0" width="48" height="48" patternUnits="userSpaceOnUse">
+        <path d="M 0 24 Q 12 0 24 24 T 48 24" fill="none" stroke="currentColor" stroke-width="0.5"></path>
+        <path d="M 0 24 Q 12 48 24 24 T 48 24" fill="none" stroke="currentColor" stroke-width="0.5"></path>
+      </pattern>
+    </defs>
+    <g class="guilloche-drift">
+      <rect x="-200" y="0" width="2000" height="120" fill="url(#masthead-weave)"></rect>
+    </g>
+  </svg>
+  <div class="rule top draw-rule"></div>
+  <div class="masthead-row">
+    <a class="brand" href="https://cns.me">
+      <span class="brand-cns">cns</span>
+      <span class="brand-dot"></span>
+      <span class="brand-me">me</span>
+      <span class="brand-blog">/ talks</span>
+      <svg class="brand-flourish" aria-hidden="true" viewBox="0 0 220 14" preserveAspectRatio="none">
+        <path d="M 2 8 C 30 2, 70 12, 110 6 S 190 4, 218 8" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"></path>
+      </svg>
+    </a>
+    <span class="masthead-meta"><em>A back catalogue</em> · <span class="numeral">EST. MMXXI</span></span>
+    <span class="masthead-count">
+      <span class="num">${count}</span><span class="cap">indexed</span>
+      <span class="masthead-pulse" aria-hidden="true">🦩</span>
+    </span>
+  </div>
+  <div class="rule draw-rule delay-1"></div>
+  <nav class="masthead-nav">
+    <div class="nav-left">
+      <a href="#talks"><span class="sec">§01</span> Talks</a>
+      <a href="#gov"><span class="sec">§02</span> Gov.uk</a>
+      <a href="#schedule"><span class="sec">§03</span> Schedule</a>
+    </div>
+    <div class="nav-right">
+      <a href="https://cns.me">LinkedIn</a>
+      <a href="https://blog.cns.me">Blog</a>
+      <a href="https://devpsyops.com">DevPsyOps</a>
+      <a href="https://github.com/chrisns">GitHub</a>
+    </div>
+  </nav>
+  <div class="rule draw-rule delay-2"></div>
+</header>`;
+
+const bookingStrip = () => `
+<section class="booking-strip">
+  <div class="booking-grid">
+    <div>
+      <span class="booking-eyebrow">§04 — Bookings</span>
+      <h2 class="booking-title">Conferences, in-house <em>workshops,</em> podcasts &amp; the occasional debate.</h2>
+    </div>
+    <div class="booking-cta">
+      <p>Currently only considering offers from organisations who agree that bureaucracy is an impediment to progress.</p>
+      <a class="btn-on-pink" href="mailto:chris@cns.me">Drop a line →</a>
+    </div>
+  </div>
+</section>`;
+
+const colophon = () => `
+<footer class="colophon">
+  <div class="orn">🦩</div>
+  <div class="colophon-grid">
+    <div>
+      <h4 class="cl-h">Colophon</h4>
+      <p class="cl-p">Set in <em>Fraunces,</em> <em>Hanken Grotesk</em> &amp; <em>JetBrains Mono.</em> Hand-built; statically typeset. <a href="https://github.com/chrisns/talks">Source on GitHub.</a></p>
+      <p class="cl-p meta">© <span class="numeral">${new Date().getFullYear()}</span> Chris Nesbitt-Smith — all words my own.</p>
+    </div>
+    <div>
+      <h4 class="cl-h">Elsewhere</h4>
+      <ul class="cl-list">
+        <li><a href="https://cns.me">LinkedIn / cns.me</a></li>
+        <li><a href="https://blog.cns.me">Blog</a></li>
+        <li><a href="https://devpsyops.com">DevPsyOps</a></li>
+        <li><a href="https://github.com/chrisns">GitHub</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="cl-h">Bookings</h4>
+      <p class="cl-p">Conferences, in-house workshops, podcasts and the occasional debate. Drop a line at <a href="mailto:chris@cns.me">chris@cns.me</a>.</p>
+    </div>
+  </div>
+</footer>`;
 
 const css = `
 :root {
-  --paper: #efe6cf;
-  --paper-2: #e6dcc1;
-  --paper-deep: #d8ccae;
-  --ink: #15110a;
-  --ink-2: #2a2218;
-  --ink-soft: #6a5a45;
-  --ink-mute: #968570;
-  --rule: rgba(21, 17, 10, 0.18);
-  --rule-strong: rgba(21, 17, 10, 0.55);
-  --accent: #c0331c;
-  --accent-deep: #8a2010;
-  --gov: #1d4d3a;
-  --maxw: 1320px;
-  --gutter: 32px;
-  --serif: "Fraunces", "Times New Roman", Times, serif;
-  --sans: "Hanken Grotesk", -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --font-display: "Fraunces", "Times New Roman", ui-serif, serif;
+  --font-body:    "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --pink:        #E5197F;
+  --pink-hot:    #FF2D8A;
+  --pink-deep:   #B30E61;
+  --pink-ink:    #5A0830;
+
+  --ink:    #14110F;
+  --ink-2:  #2A2622;
+  --ink-3:  #5C544C;
+  --ink-4:  #8A8077;
+  --rule:   #1F1B17;
+
+  --paper:   #F4EFE7;
+  --paper-2: #EBE4D8;
+  --paper-3: #DDD3C2;
+  --bone:    #FBF8F2;
+
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --maxw-page: 1320px;
 }
 
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
 body {
-  font-family: var(--sans);
-  color: var(--ink);
   background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
   font-size: 16px;
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  font-feature-settings: "ss01", "ss02", "kern", "liga";
-  min-height: 100vh;
-  position: relative;
-  overflow-x: hidden;
 }
-/* paper grain + soft tonal vignette */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background-image: url("${grainSvg}");
-  background-size: 220px 220px;
-  mix-blend-mode: multiply;
-  opacity: 0.55;
-  pointer-events: none;
-  z-index: 1;
-}
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background:
-    radial-gradient(900px 600px at 88% -8%, rgba(192, 51, 28, 0.08), transparent 60%),
-    radial-gradient(800px 700px at -10% 100%, rgba(29, 77, 58, 0.06), transparent 60%);
-  pointer-events: none;
-  z-index: 0;
-}
-main, header, footer { position: relative; z-index: 2; }
+::selection { background: var(--pink); color: var(--bone); }
+a { color: var(--pink-deep); text-decoration: underline; text-underline-offset: 3px; transition: color 220ms var(--ease-out); }
+a:hover { color: var(--pink-hot); }
 
-::selection { background: var(--accent); color: var(--paper); }
+.page { max-width: var(--maxw-page); margin: 0 auto; padding: 32px 48px 0; }
 
-a { color: inherit; text-decoration: none; }
+.rule        { border-top: 1px solid var(--rule); }
+.rule.strong { border-top: 2px solid var(--ink); }
+.rule.top    { border-top: 4px solid var(--ink); }
 
-/* Reusable */
-.wrap {
-  max-width: var(--maxw);
-  margin: 0 auto;
-  padding-left: var(--gutter);
-  padding-right: var(--gutter);
-}
-.rule {
-  height: 1px;
-  background: var(--ink);
-  opacity: 0.85;
-  border: 0;
-  margin: 0;
-}
-.rule--double {
-  height: 4px;
-  border-top: 1px solid var(--ink);
-  border-bottom: 1px solid var(--ink);
-  background: transparent;
-}
-.rule--hair { background: var(--rule); opacity: 1; }
+.numeral { font-family: var(--font-mono); font-feature-settings: "tnum" 1; letter-spacing: 0.02em; }
 
-.section-label {
-  font-family: var(--mono);
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: var(--ink);
-  display: inline-flex;
-  align-items: baseline;
-  gap: 8px;
-}
-.section-label .pilcrow {
-  color: var(--accent);
-  font-style: italic;
-  font-family: var(--serif);
-  font-size: 14px;
-  font-weight: 500;
-}
+/* ============================================================
+   Masthead
+============================================================ */
+.masthead { padding-top: 8px; position: relative; isolation: isolate; }
 
-/* Masthead */
-.masthead {
-  padding-top: 18px;
+.masthead-guilloche {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  pointer-events: none; z-index: 0;
+  color: var(--pink); opacity: 0.10;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 18%, #000 82%, transparent 100%);
+          mask-image: linear-gradient(90deg, transparent 0%, #000 18%, #000 82%, transparent 100%);
 }
+.guilloche-drift { transform-origin: center; animation: guilloche-drift 38s linear infinite; will-change: transform; }
+@keyframes guilloche-drift { from { transform: translateX(0);} to { transform: translateX(-48px);} }
+
+.masthead-row, .masthead-nav, .masthead .rule { position: relative; z-index: 1; }
+
 .masthead-row {
-  display: flex;
-  align-items: baseline;
-  gap: 14px;
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  padding: 12px 0;
-  flex-wrap: wrap;
+  display: grid; grid-template-columns: 1fr auto auto;
+  align-items: baseline; gap: 32px; padding: 14px 0;
 }
-.masthead-row .brand {
-  font-family: var(--serif);
-  font-style: italic;
-  font-weight: 400;
-  font-size: 18px;
-  letter-spacing: -0.01em;
-  text-transform: none;
-  color: var(--ink);
+.brand { position: relative; display: inline-flex; align-items: baseline; gap: 6px; text-decoration: none; color: var(--ink); }
+.brand-cns, .brand-me {
+  font-family: var(--font-display); font-weight: 900; font-size: 28px;
+  letter-spacing: -0.03em; line-height: 1;
 }
-.masthead-row .sep { color: var(--ink-mute); }
-.masthead-row .grow { flex: 1; }
-.masthead-row .stat strong {
-  font-family: var(--serif);
-  font-weight: 500;
-  font-size: 14px;
-  font-style: italic;
-  text-transform: none;
-  letter-spacing: -0.01em;
-  color: var(--accent);
-  margin-right: 4px;
-}
+.brand-me { font-style: italic; }
+.brand-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--pink); transform: translateY(-2px); }
+.brand-blog { font-family: var(--font-mono); font-size: 14px; font-weight: 400; letter-spacing: 0.04em; color: var(--ink-3); margin-left: 6px; align-self: baseline; }
+.brand-flourish { position: absolute; left: 0; bottom: -10px; width: 100%; height: 12px; color: var(--pink); opacity: 0.55; pointer-events: none; overflow: visible; }
+.brand-flourish path { stroke-dasharray: 360; stroke-dashoffset: 360; animation: flourish-draw 1.6s cubic-bezier(0.4,0,0.2,1) 0.4s forwards; }
+.brand:hover .brand-flourish path { animation: flourish-draw 1.2s cubic-bezier(0.4,0,0.2,1) forwards; }
+@keyframes flourish-draw { from { stroke-dashoffset: 360;} to { stroke-dashoffset: 0;} }
 
-.primary-nav {
-  display: flex;
-  align-items: center;
-  gap: 4px 18px;
-  padding: 10px 0;
-  font-family: var(--mono);
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  flex-wrap: wrap;
-}
-.primary-nav a {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 4px;
-  padding: 4px 0;
-  border-bottom: 1px solid transparent;
-  transition: color 0.15s, border-color 0.15s;
-  text-transform: uppercase;
-}
-.primary-nav a .num {
-  color: var(--accent);
-  font-style: italic;
-  font-family: var(--serif);
-  font-size: 13px;
-  text-transform: none;
-}
-.primary-nav a:hover { color: var(--accent); border-color: var(--accent); }
-.primary-nav a.active { border-color: var(--ink); }
-.primary-nav .external::after {
-  content: "↗";
-  font-family: var(--serif);
-  margin-left: 2px;
-  color: var(--ink-soft);
-}
-.primary-nav .grow { flex: 1; }
-.primary-nav .ts {
-  color: var(--ink-mute);
-  font-size: 11px;
-  letter-spacing: 0.18em;
-}
+.masthead-meta { font-family: var(--font-body); font-size: 13px; color: var(--ink-2); }
+.masthead-meta em { font-family: var(--font-display); font-style: italic; font-weight: 500; color: var(--ink); }
+.masthead-meta .numeral { color: var(--ink); }
+.masthead-count { display: inline-flex; align-items: baseline; gap: 6px; }
+.masthead-count .num { font-family: var(--font-display); font-weight: 700; font-size: 22px; color: var(--pink); }
+.masthead-count .cap { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3); }
+.masthead-pulse { display: inline-block; margin-left: 8px; font-size: 14px; transform-origin: center; animation: breathe 5.5s ease-in-out infinite; }
+@keyframes breathe { 0%,100% { transform: scale(1) translateY(0); opacity: 0.85;} 50% { transform: scale(1.08) translateY(-1px); opacity: 1;} }
 
-/* Hero */
-.hero {
-  padding: 48px 0 56px;
-  display: grid;
-  grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
-  grid-template-areas: 'left portrait';
-  gap: 48px;
-  align-items: stretch;
+.draw-rule { position: relative; overflow: hidden; }
+.draw-rule::after {
+  content: ""; position: absolute; inset: 0;
+  background: var(--paper);
+  transform-origin: right center;
+  animation: rule-draw 0.9s cubic-bezier(0.7,0,0.2,1) forwards;
 }
-.hero-left { grid-area: left; }
-.hero-portrait { grid-area: portrait; }
-.hero-left {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 28px;
-}
-.hero-headline {
-  font-family: var(--serif);
-  font-weight: 400;
-  letter-spacing: -0.022em;
-  font-size: clamp(48px, 6.4vw, 104px);
-  line-height: 0.95;
-  margin: 18px 0 0;
-  font-feature-settings: "ss01", "kern", "liga";
-  text-wrap: balance;
-}
-.hero-headline em {
-  font-style: italic;
-  font-weight: 300;
-  color: var(--accent);
-  display: inline-block;
-  /* gives the italic a touch more presence at huge sizes */
-  font-variation-settings: "opsz" 144, "SOFT" 100;
-}
-.hero-headline .ampersand {
-  font-style: italic;
-  font-weight: 300;
-  color: var(--accent);
-  font-size: 0.9em;
-  vertical-align: -0.04em;
-}
-.hero-headline .indent { padding-left: 1em; }
-.hero-headline .indent-2 { padding-left: 2em; }
-.hero-lede {
-  font-family: var(--serif);
-  font-weight: 300;
-  font-size: clamp(18px, 1.9vw, 22px);
-  line-height: 1.45;
-  max-width: 38ch;
-  color: var(--ink-2);
-  margin: 0;
-  letter-spacing: -0.005em;
-}
-.hero-lede::first-letter {
-  font-weight: 400;
-  font-size: 1.15em;
-}
-.hero-actions {
-  display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
-  align-items: center;
-}
+.draw-rule.delay-1::after { animation-delay: 0.2s; }
+.draw-rule.delay-2::after { animation-delay: 0.4s; }
+@keyframes rule-draw { from { transform: scaleX(1);} to { transform: scaleX(0);} }
 
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--mono);
-  text-transform: uppercase;
-  font-size: 12px;
-  letter-spacing: 0.14em;
-  padding: 12px 18px;
-  border: 1px solid var(--ink);
-  background: transparent;
-  color: var(--ink);
-  border-radius: 0;
-  transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
-  cursor: pointer;
-  position: relative;
+.masthead-nav { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; font-family: var(--font-body); }
+.nav-left, .nav-right { display: flex; gap: 22px; flex-wrap: wrap; }
+.masthead-nav a {
+  text-decoration: none; color: var(--ink); font-size: 14px;
+  display: inline-flex; align-items: baseline; gap: 6px;
+  border-bottom: 1px dotted transparent; padding-bottom: 2px;
+  transition: color 200ms;
 }
-.btn::after {
-  content: "→";
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 14px;
-  letter-spacing: 0;
-  transition: transform 0.2s ease;
-}
-.btn:hover { background: var(--ink); color: var(--paper); }
-.btn:hover::after { transform: translateX(3px); }
-.btn--accent { background: var(--accent); color: var(--paper); border-color: var(--accent); }
-.btn--accent:hover { background: var(--ink); border-color: var(--ink); color: var(--paper); }
-.btn--quiet { border-color: var(--rule-strong); }
-
-/* Hero portrait — frame + caption like a photo plate */
-.hero-portrait {
-  display: grid;
-  grid-template-rows: auto auto;
-  align-self: stretch;
-  align-content: end;
-  gap: 10px;
-}
-.portrait-frame {
-  position: relative;
-  background: var(--paper-2);
-  border: 1px solid var(--ink);
-  padding: 8px;
-  aspect-ratio: 4 / 5;
-  overflow: hidden;
-  max-width: 360px;
-  margin-left: auto;
-  box-shadow:
-    -8px 8px 0 0 var(--paper-deep),
-    -8px 8px 0 1px var(--ink);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-.portrait-frame:hover {
-  transform: translate(2px, -2px);
-  box-shadow:
-    -12px 12px 0 0 var(--paper-deep),
-    -12px 12px 0 1px var(--ink);
-}
-.portrait-frame img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 18%;
-  filter: contrast(1.04) saturate(0.92) sepia(0.05);
-}
-.portrait-frame::after {
-  content: "";
-  position: absolute;
-  inset: 10px;
-  background: linear-gradient(160deg, transparent 60%, rgba(21, 17, 10, 0.18) 100%);
-  pointer-events: none;
-}
-.portrait-cap {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  font-family: var(--mono);
-  font-size: 10.5px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-}
-.portrait-cap em {
-  font-family: var(--serif);
-  font-style: italic;
-  font-weight: 300;
-  text-transform: none;
-  letter-spacing: 0;
-  color: var(--accent);
-  font-size: 13px;
-}
-
-/* Section heads */
-.section {
-  padding: 56px 0 24px;
-}
-.section-head {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: end;
-  gap: 16px;
-  padding-bottom: 14px;
-  border-bottom: 1px solid var(--ink);
-  margin-bottom: 28px;
-}
-.section-title {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: clamp(34px, 4.6vw, 64px);
-  letter-spacing: -0.02em;
-  line-height: 1;
-  margin: 6px 0 0;
-}
-.section-title em { font-style: italic; color: var(--accent); font-weight: 300; }
-.section-meta {
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  text-align: right;
-}
-.section-meta strong {
-  font-family: var(--serif);
-  font-style: italic;
-  font-weight: 400;
-  font-size: 22px;
-  letter-spacing: -0.01em;
-  color: var(--accent);
-  text-transform: none;
-  margin-right: 4px;
-}
-
-/* Talks grid */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 28px 24px;
-}
-.talk-card {
-  grid-column: span 4;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  padding-top: 18px;
-  border-top: 1px solid var(--ink);
-  isolation: isolate;
-}
-.talk-card__num {
-  position: absolute;
-  top: 18px;
-  right: 0;
-  font-family: var(--mono);
-  font-size: 10.5px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--ink-mute);
-}
-
-.card-media {
-  position: relative;
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-  background: var(--paper-2);
-  border: 1px solid var(--ink);
-  margin-bottom: 16px;
-  display: block;
-}
-.card-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-  background: var(--paper-2);
-  filter: contrast(1.02) saturate(0.95);
-  transition: transform 0.5s ease;
-}
-.talk-card:hover .card-media img { transform: scale(1.015); }
-.card-media iframe {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
-.card-media--video { aspect-ratio: 16 / 9; }
-.card-media--placeholder {
-  background:
-    repeating-linear-gradient(135deg, var(--paper-2) 0 12px, var(--paper-deep) 12px 13px);
-  position: relative;
-}
-.card-media--placeholder::after {
-  content: "/dev/null";
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  font-family: var(--mono);
-  font-size: 12px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  opacity: 0.7;
-}
-
-.talk-card__body {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  gap: 12px;
-}
-.talk-card__title {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: 22px;
-  line-height: 1.12;
-  letter-spacing: -0.018em;
-  margin: 0;
-  text-wrap: balance;
-}
-.talk-card__link {
-  position: relative;
-  display: inline;
-  color: inherit;
-  background-image: linear-gradient(var(--accent), var(--accent));
-  background-repeat: no-repeat;
-  background-size: 0% 1px;
-  background-position: 0 100%;
-  transition: background-size 0.4s ease, color 0.15s ease;
-  padding-bottom: 2px;
-}
-/* stretched link makes the whole card clickable, while format buttons
-   sit above on a higher z-index */
-.talk-card__link::before {
-  content: "";
-  position: absolute;
-  inset: -18px 0 0 0;
-  z-index: 1;
-}
-.talk-card:hover .talk-card__link { background-size: 100% 2px; }
-.talk-card:hover .talk-card__link { color: var(--ink); }
-.talk-card__body { position: relative; }
-.talk-card__meta { position: relative; z-index: 2; }
-.card-media { position: relative; z-index: 2; }
-.card-media iframe { z-index: 3; }
-.talk-card__desc {
-  font-size: 14.5px;
-  line-height: 1.55;
-  color: var(--ink-2);
-  margin: 0;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-.talk-card__meta {
-  margin-top: auto;
-  padding-top: 14px;
-  display: flex;
-  gap: 14px;
-  align-items: baseline;
-  border-top: 1px dashed var(--rule);
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-.talk-card__meta a {
-  color: var(--ink-soft);
-  transition: color 0.15s ease;
-  position: relative;
-}
-.talk-card__meta a:hover { color: var(--accent); }
-.talk-card__meta a:hover::before {
-  content: "›";
-  position: absolute;
-  left: -10px;
-  color: var(--accent);
-  font-family: var(--serif);
-}
-
-/* gov.uk band */
-.gov-band {
-  margin: 64px 0 28px;
-  padding: 22px 0;
-  border-top: 1px solid var(--ink);
-  border-bottom: 1px solid var(--ink);
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: 24px;
-}
-.gov-band .crown {
-  font-family: var(--serif);
-  font-style: italic;
-  font-weight: 400;
-  color: var(--gov);
-  font-size: 28px;
-  letter-spacing: -0.01em;
-}
-.gov-band .band-title {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: clamp(28px, 3.5vw, 44px);
-  line-height: 1;
-  letter-spacing: -0.02em;
-  margin: 0;
-}
-.gov-band .band-title em { font-style: italic; color: var(--gov); font-weight: 300; }
-.gov-band .band-meta {
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  text-align: right;
-}
-
-/* Schedule */
-.schedule {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 32px;
-}
-.schedule-pane h3 {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: 32px;
-  letter-spacing: -0.018em;
-  margin: 0 0 12px;
-}
-.schedule-pane h3 em { font-style: italic; color: var(--accent); font-weight: 300; }
-.pane-meta {
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  margin-bottom: 14px;
-}
-
-.data-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-family: var(--mono);
-  font-size: 12.5px;
-  border-top: 2px solid var(--ink);
-}
-.data-table thead th {
-  text-align: left;
-  font-family: var(--mono);
-  font-weight: 600;
-  font-size: 10px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  padding: 10px 12px 10px 0;
-  border-bottom: 1px solid var(--ink);
-  background: transparent;
-  position: sticky;
-  top: 0;
-  background-color: var(--paper);
-}
-.data-table tbody td {
-  padding: 10px 12px 10px 0;
-  border-bottom: 1px solid var(--rule);
-  vertical-align: top;
-  color: var(--ink-2);
-}
-.data-table tbody td:first-child {
-  white-space: nowrap;
-  color: var(--ink);
-  font-weight: 500;
-  font-feature-settings: "tnum" 1;
-}
-.data-table tbody td:nth-child(2) {
-  font-family: var(--serif);
-  font-size: 14.5px;
-  letter-spacing: -0.005em;
-  color: var(--ink);
-  line-height: 1.35;
-}
-.data-table tbody td a {
-  color: var(--accent);
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.15s ease;
-}
-.data-table tbody td a:hover { border-color: var(--accent); }
-.data-table tbody tr:hover td { background: rgba(192, 51, 28, 0.04); }
-.scroll {
-  max-height: 480px;
-  overflow-y: auto;
-  border-bottom: 1px solid var(--ink);
-}
-.scroll::-webkit-scrollbar { width: 12px; }
-.scroll::-webkit-scrollbar-track { background: transparent; }
-.scroll::-webkit-scrollbar-thumb {
-  background: var(--ink);
-  border: 4px solid var(--paper);
-}
-
-.empty-pane {
-  border: 1px dashed var(--rule-strong);
-  padding: 36px 24px;
-  font-family: var(--serif);
-  font-style: italic;
-  font-weight: 300;
-  font-size: 18px;
-  line-height: 1.5;
-  color: var(--ink-2);
-  background:
-    repeating-linear-gradient(135deg, transparent 0 12px, rgba(21, 17, 10, 0.03) 12px 13px);
-}
-.empty-pane a { color: var(--accent); border-bottom: 1px solid var(--accent); }
-.empty-pane a:hover { color: var(--ink); border-color: var(--ink); }
-
-/* Footer / colophon */
-.colophon {
-  margin-top: 64px;
-  border-top: 4px double var(--ink);
-  padding: 36px 0 56px;
-  display: grid;
-  grid-template-columns: 1.1fr 1fr 1fr;
-  gap: 32px;
-  font-family: var(--mono);
-  font-size: 12px;
-  letter-spacing: 0.04em;
-  color: var(--ink-soft);
-}
-.colophon h4 {
-  margin: 0 0 12px;
-  font-family: var(--mono);
-  font-weight: 600;
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--ink);
-}
-.colophon a {
-  color: var(--ink);
-  border-bottom: 1px solid var(--rule-strong);
-  transition: color 0.15s ease, border-color 0.15s ease;
-}
-.colophon a:hover { color: var(--accent); border-color: var(--accent); }
-.colophon p { margin: 0 0 8px; }
-.colophon em {
-  font-family: var(--serif);
-  font-style: italic;
-  font-weight: 400;
-  letter-spacing: 0;
-  color: var(--ink);
-}
-
-/* Decorative big numerals (subtle) */
-.section-deco {
-  position: absolute;
-  font-family: var(--serif);
-  font-style: italic;
-  font-weight: 300;
-  color: var(--accent);
-  opacity: 0.08;
-  font-size: clamp(160px, 22vw, 320px);
-  line-height: 1;
-  pointer-events: none;
-  user-select: none;
-  z-index: 0;
-}
-
-/* Reveal animation on load — staggered */
-@keyframes rise {
-  from { opacity: 0; transform: translateY(14px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.rise { animation: rise 0.7s ease both; }
-.rise-1 { animation-delay: 0.05s; }
-.rise-2 { animation-delay: 0.15s; }
-.rise-3 { animation-delay: 0.25s; }
-.rise-4 { animation-delay: 0.35s; }
-.rise-5 { animation-delay: 0.45s; }
+.masthead-nav a:hover { color: var(--pink); }
+.masthead-nav .sec { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; color: var(--pink-deep); }
+.nav-right a { color: var(--ink-2); font-size: 13px; }
 
 @media (prefers-reduced-motion: reduce) {
-  .rise { animation: none; }
+  .guilloche-drift, .brand-flourish path, .masthead-pulse, .draw-rule::after { animation: none !important; }
+  .brand-flourish path { stroke-dashoffset: 0; }
+  .draw-rule::after { display: none; }
 }
 
-/* Responsive */
-@media (max-width: 1080px) {
-  .hero {
-    grid-template-columns: 1fr;
-    grid-template-areas: 'left' 'portrait';
-    gap: 28px;
-  }
-  .hero-portrait { max-width: 320px; }
-  .talk-card { grid-column: span 6; }
+/* ============================================================
+   Hero — Plate I
+============================================================ */
+.talks-hero {
+  display: grid; grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
+  gap: 64px; align-items: start;
+  padding: 56px 0 80px;
+  border-top: 1px solid var(--rule);
 }
-@media (max-width: 720px) {
-  :root { --gutter: 20px; }
-
-  /* Tighter masthead */
-  .masthead { padding-top: 12px; }
-  .masthead-row { padding: 8px 0; gap: 8px 10px; font-size: 10px; }
-  .masthead-row .brand { font-size: 15px; }
-  .primary-nav { padding: 8px 0; gap: 4px 14px; font-size: 11px; }
-  .primary-nav .ts { display: none; }
-
-  /* Hero: portrait floats top-right, headline wraps around it */
-  .hero {
-    display: block;
-    padding: 18px 0 24px;
-  }
-  .hero-portrait {
-    float: right;
-    width: 118px;
-    margin: 6px 0 8px 16px;
-    max-width: 118px;
-    shape-outside: margin-box;
-  }
-  .portrait-frame {
-    aspect-ratio: 4 / 5;
-    padding: 5px;
-    max-width: 118px;
-    margin: 0;
-    box-shadow:
-      -5px 5px 0 0 var(--paper-deep),
-      -5px 5px 0 1px var(--ink);
-  }
-  .portrait-cap {
-    margin-top: 6px;
-    font-size: 9.5px;
-    letter-spacing: 0.12em;
-    flex-direction: column;
-    gap: 2px;
-    align-items: flex-start;
-  }
-  .portrait-cap em { font-size: 11px; }
-  .portrait-cap span:last-child { color: var(--accent); }
-
-  .hero-left { display: block; }
-  .hero-headline {
-    font-size: clamp(38px, 10.6vw, 56px);
-    line-height: 0.98;
-    margin-top: 6px;
-    letter-spacing: -0.025em;
-  }
-  .hero-headline .indent, .hero-headline .indent-2 { padding-left: 0; }
-  .hero-lede {
-    clear: right;
-    font-size: 16px;
-    line-height: 1.45;
-    margin-top: 18px;
-  }
-  .hero-actions { margin-top: 16px !important; }
-  .btn { padding: 10px 14px; font-size: 11px; }
-
-  /* Sections breathe less */
-  .section { padding: 36px 0 16px; }
-  .section-head { padding-bottom: 10px; margin-bottom: 18px; }
-  .section-title { font-size: clamp(30px, 8.8vw, 44px); }
-  .section-meta { font-size: 10px; }
-
-  /* Cards stack */
-  .talk-card { grid-column: span 12; }
-  /* Gov band & schedule & colophon */
-  .gov-band {
-    margin: 36px 0 18px;
-    padding: 16px 0;
-    grid-template-columns: auto 1fr;
-    gap: 14px;
-  }
-  .gov-band .band-meta { display: none; }
-  .gov-band .band-title { font-size: 28px; }
-
-  .schedule { grid-template-columns: 1fr; gap: 22px; }
-  .schedule-pane h3 { font-size: 26px; }
-
-  .colophon {
-    grid-template-columns: 1fr;
-    gap: 22px;
-    padding: 28px 0 40px;
-    margin-top: 40px;
-  }
+.talks-hero .plate { margin: 0; }
+.plate-frame {
+  position: relative;
+  border: 1px solid var(--ink);
+  padding: 14px;
+  background: var(--paper);
 }
-@media (max-width: 420px) {
-  .hero-portrait { width: 104px; margin-left: 12px; }
-  .portrait-frame { padding: 4px; max-width: 104px; }
-  .hero-headline { font-size: 40px; }
-  .section-title { font-size: 32px; }
+.plate-frame img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  object-position: center 18%;
+  filter: contrast(1.03) saturate(1.02);
+}
+.plate-stamp {
+  position: absolute;
+  top: -14px; right: -14px;
+  background: var(--pink);
+  color: var(--bone);
+  font-family: var(--font-mono);
+  font-size: 9.5px; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  padding: 6px 10px 5px;
+  display: inline-flex; align-items: center; gap: 6px;
+  box-shadow: 0 12px 32px -12px rgba(229,25,127,0.45);
+  z-index: 2;
+}
+.plate-stamp::before {
+  content: ""; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--bone); display: inline-block;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+@keyframes pulse-dot { 0%,100% { opacity: 1;} 50% { opacity: 0.4;} }
+
+.plate figcaption {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding-top: 12px;
+  font-family: var(--font-mono);
+  font-size: 10.5px; letter-spacing: 0.10em; color: var(--ink-3);
+}
+.plate figcaption .caption em {
+  color: var(--ink); font-style: italic;
+  font-family: var(--font-display); font-weight: 500; letter-spacing: 0;
+}
+
+.talks-hero-body { display: flex; flex-direction: column; gap: 28px; }
+.eyebrow {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--pink-deep);
+  display: block;
+}
+.talks-hero-headline {
+  font-family: var(--font-display); font-weight: 900;
+  font-size: clamp(48px, 6.4vw, 92px); line-height: 0.96;
+  letter-spacing: -0.03em; color: var(--ink);
+  font-variation-settings: "opsz" 144;
+  margin: 0; text-wrap: balance;
+}
+.talks-hero-headline em { color: var(--pink); font-style: italic; font-weight: 700; }
+.talks-hero-lede {
+  font-family: var(--font-display); font-style: italic; font-weight: 400;
+  font-size: clamp(18px, 1.6vw, 22px); line-height: 1.55;
+  color: var(--ink-2); max-width: 56ch; margin: 0; text-wrap: pretty;
+}
+.talks-hero-lede em { color: var(--pink-deep); }
+
+.talks-hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; padding-top: 4px; }
+
+.talks-hero-meta {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px; margin-top: 8px; padding-top: 24px;
+  border-top: 1px solid var(--rule);
+}
+.talks-hero-meta .stat-num {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 36px; line-height: 1; color: var(--pink);
+  letter-spacing: -0.02em; display: block;
+}
+.talks-hero-meta .stat-cap {
+  font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--ink-3); display: block; margin-top: 4px;
+}
+
+/* ============================================================
+   Buttons
+============================================================ */
+.btn {
+  font-family: var(--font-body); font-weight: 600; font-size: 14px;
+  padding: 13px 26px; border: 0; cursor: pointer;
+  text-decoration: none; display: inline-flex; align-items: center;
+  transition: all 200ms cubic-bezier(0.2,0.7,0.2,1);
+}
+.btn-primary { background: var(--pink); color: var(--bone); border-radius: 999px; }
+.btn-primary:hover { background: var(--pink-hot); box-shadow: 0 12px 32px -12px rgba(229,25,127,0.65); transform: translateY(-1px); }
+.btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--ink); border-radius: 0; }
+.btn-ghost:hover { background: var(--ink); color: var(--paper); }
+.btn-on-pink {
+  background: var(--ink); color: var(--paper); border-radius: 999px;
+  padding: 13px 26px; font-family: var(--font-body); font-weight: 600;
+  font-size: 14px; text-decoration: none; display: inline-flex; align-items: center;
+  transition: all 200ms cubic-bezier(0.2,0.7,0.2,1);
+}
+.btn-on-pink:hover { background: var(--bone); color: var(--ink); transform: translateY(-1px); }
+
+/* ============================================================
+   Section header
+============================================================ */
+.section-header { margin-top: 48px; }
+.sh-row {
+  display: grid; grid-template-columns: auto 1fr auto; gap: 32px;
+  align-items: end; padding: 24px 0;
+}
+.sh-row .eyebrow { margin: 0; min-width: 220px; color: var(--pink-deep); }
+.sh-title {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(36px, 4vw, 56px); line-height: 1; letter-spacing: -0.02em;
+  margin: 0; color: var(--ink); text-align: right; text-wrap: balance;
+}
+.sh-title em { color: var(--pink); font-style: italic; }
+.sh-count { display: inline-flex; flex-direction: column; align-items: end; }
+.sh-count .num { font-family: var(--font-display); font-weight: 700; font-size: 28px; color: var(--pink); line-height: 1; }
+.sh-count .cap { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-3); }
+
+/* ============================================================
+   Topic strip
+============================================================ */
+.talks-strip {
+  display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
+  font-family: var(--font-mono);
+  font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--ink-3);
+  border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+  padding: 12px 0; margin: 0 0 8px;
+}
+.talks-strip .label { color: var(--pink-deep); font-weight: 600; }
+.talks-strip .sep { color: var(--paper-3); }
+
+/* ============================================================
+   Talk grid + card
+============================================================ */
+.talk-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 36px 32px; padding: 24px 0 12px;
+}
+.talk-card {
+  border-top: 1px solid var(--rule); padding-top: 14px;
+  display: flex; flex-direction: column; gap: 10px;
+  min-height: 280px;
+}
+.talk-num-row {
+  display: flex; align-items: baseline; justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 10.5px; letter-spacing: 0.10em; color: var(--ink-3);
+}
+.talk-num { color: var(--pink-deep); font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; }
+.talk-year { color: var(--ink-3); font-size: 10.5px; letter-spacing: 0.16em; }
+
+.talk-thumb-link { display: block; text-decoration: none; }
+.talk-thumb-link:hover .talk-thumb { transform: translateY(-2px); }
+.talk-thumb {
+  position: relative; aspect-ratio: 16/10;
+  border: 1px solid var(--ink); overflow: hidden;
+  margin: 4px 0 6px;
+  transition: transform 200ms var(--ease-out);
+}
+.talk-thumb .thumb-img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: contain; background: var(--paper-2); z-index: 0;
+}
+.talk-thumb .thumb-img.hidden { display: none; }
+.talk-thumb .thumb-label {
+  position: absolute; left: 12px; top: 10px;
+  font-family: var(--font-mono);
+  font-size: 9.5px; letter-spacing: 0.20em; text-transform: uppercase;
+  color: rgba(251,248,242,0.85); z-index: 2;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+}
+.talk-thumb .thumb-glyph {
+  position: absolute; inset: 0;
+  display: none; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-style: italic;
+  font-size: 38px; color: rgba(251,248,242,0.4);
+  z-index: 1;
+}
+.talk-thumb.thumb-fallback .thumb-glyph { display: flex; }
+.talk-thumb.fill-paper { background: var(--paper-2); }
+.talk-thumb.fill-paper .thumb-label { color: var(--ink-4); text-shadow: none; }
+.talk-thumb.fill-paper.thumb-fallback .thumb-glyph { color: var(--ink-4); }
+.talk-thumb.fill-paper::before {
+  content: ""; position: absolute; inset: 14px;
+  border: 1px dashed var(--paper-3); z-index: 1;
+}
+.talk-thumb.fill-paper.thumb-fallback::after {
+  content: ""; position: absolute; inset: 28px;
+  border-top: 1px solid var(--paper-3); transform: rotate(45deg); z-index: 1;
+}
+.talk-thumb.fill-warm.thumb-fallback {
+  background:
+    radial-gradient(circle at 30% 40%, rgba(229,25,127,0.32), transparent 55%),
+    linear-gradient(135deg, #2A2622 0%, #14110F 80%);
+}
+.talk-thumb.fill-hot.thumb-fallback {
+  background:
+    radial-gradient(circle at 70% 30%, rgba(229,25,127,0.50), transparent 55%),
+    linear-gradient(135deg, #3A332D 0%, #14110F 70%);
+}
+.talk-thumb.fill-cool.thumb-fallback {
+  background:
+    radial-gradient(circle at 30% 70%, rgba(229,25,127,0.18), transparent 55%),
+    linear-gradient(160deg, #221E1A 0%, #14110F 80%);
+}
+
+.talk-title {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 22px; line-height: 1.18; letter-spacing: -0.015em;
+  margin: 0; color: var(--ink); text-wrap: balance;
+}
+.talk-title em { color: var(--pink); font-style: italic; }
+.talk-title a { color: var(--ink); text-decoration: none; transition: color 200ms; }
+.talk-title a:hover { color: var(--pink); }
+.talk-title a:hover em { color: var(--pink-hot); }
+
+.talk-desc {
+  font-family: var(--font-body); font-size: 14px; line-height: 1.55;
+  color: var(--ink-2); margin: 0; flex: 1;
+}
+
+.talk-formats { display: flex; gap: 8px; flex-wrap: wrap; padding-top: 12px; margin-top: auto; }
+.format-tag {
+  font-family: var(--font-mono); font-size: 10px; font-weight: 500;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--ink); border: 1px solid var(--ink); padding: 4px 8px 3px;
+  text-decoration: none; transition: background 150ms, color 150ms, border-color 150ms;
+}
+.format-tag:hover { background: var(--ink); color: var(--paper); }
+.format-tag.html { color: var(--pink-deep); border-color: var(--pink-deep); }
+.format-tag.html:hover { background: var(--pink); color: var(--bone); border-color: var(--pink); }
+
+/* Section break */
+.section-break {
+  text-align: center; padding: 56px 0 32px;
+  font-family: var(--font-display); font-size: 28px; color: var(--pink);
+  letter-spacing: 0.4em;
+}
+
+/* ============================================================
+   Schedule
+============================================================ */
+.schedule-wrap { padding: 8px 0 16px; }
+.schedule-sub {
+  display: grid; grid-template-columns: 220px 1fr auto;
+  align-items: baseline; gap: 24px;
+  padding: 16px 0 14px; border-bottom: 2px solid var(--ink);
+  margin-top: 36px;
+}
+.schedule-sub .ss-eyebrow {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--pink-deep);
+}
+.schedule-sub .ss-title {
+  font-family: var(--font-display); font-style: italic; font-weight: 500;
+  font-size: 22px; line-height: 1.2; color: var(--ink); margin: 0;
+}
+.schedule-sub .ss-count {
+  font-family: var(--font-mono); font-size: 10.5px;
+  letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-3);
+}
+
+.schedule-empty {
+  font-family: var(--font-display); font-style: italic;
+  font-size: 19px; line-height: 1.5; color: var(--ink-2);
+  padding: 24px 0 32px; border-bottom: 1px solid var(--rule);
+  text-wrap: pretty;
+}
+.schedule-empty a { color: var(--pink-deep); text-decoration: underline; text-underline-offset: 3px; }
+.schedule-empty a:hover { color: var(--pink-hot); }
+
+.schedule { width: 100%; border-collapse: collapse; margin: 4px 0 0; }
+.schedule th {
+  text-align: left; font-family: var(--font-mono); font-weight: 500;
+  font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--ink-3); padding: 12px 16px 10px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.schedule td {
+  padding: 14px 16px 14px 0; font-size: 14px; color: var(--ink);
+  border-bottom: 1px solid var(--paper-3); vertical-align: baseline;
+}
+.schedule tr.recent-row { transition: background 150ms; }
+.schedule tr.recent-row:hover { background: rgba(229,25,127,0.04); }
+.schedule td.sched-date { font-family: var(--font-mono); color: var(--ink-3); white-space: nowrap; width: 120px; letter-spacing: 0.04em; }
+.schedule td.sched-talk { font-family: var(--font-display); font-weight: 600; font-style: italic; font-size: 15px; color: var(--ink); letter-spacing: -0.005em; }
+.schedule td.sched-where { color: var(--ink-2); font-size: 13.5px; }
+.schedule td.sched-where a { color: var(--pink-deep); text-decoration: underline; text-underline-offset: 3px; }
+.schedule td.sched-where a:hover { color: var(--pink-hot); }
+.schedule td.sched-where .venue-mode {
+  font-family: var(--font-mono); font-size: 10px; font-weight: 500;
+  letter-spacing: 0.10em; text-transform: uppercase;
+  color: var(--pink-deep); border: 1px solid var(--paper-3);
+  padding: 2px 6px 1px; margin-right: 10px; display: inline-block;
+}
+.schedule td.sched-where .venue-mode.irl    { color: var(--pink-deep); border-color: var(--pink-deep); }
+.schedule td.sched-where .venue-mode.v      { color: var(--ink-3); }
+.schedule td.sched-where .venue-mode.hybrid { color: var(--pink); border-color: var(--pink); }
+
+.schedule-more {
+  text-align: center; padding: 24px 0 64px;
+  font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3);
+}
+.schedule-more::before, .schedule-more::after { content: "·"; margin: 0 14px; color: var(--paper-3); }
+
+/* ============================================================
+   Booking strip
+============================================================ */
+.booking-strip {
+  background: var(--pink); color: var(--bone);
+  margin: 56px -48px 0; padding: 80px 48px;
+  position: relative; overflow: hidden;
+}
+.booking-strip::before {
+  content: ""; position: absolute; inset: 24px;
+  border: 1px solid rgba(251,248,242,0.18); pointer-events: none;
+}
+.booking-grid {
+  max-width: 1180px; margin: 0 auto;
+  display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: 64px; align-items: end; position: relative; z-index: 1;
+}
+.booking-eyebrow {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--bone); display: block; margin-bottom: 18px; opacity: 0.85;
+}
+.booking-title {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(36px, 4.4vw, 64px); line-height: 1; letter-spacing: -0.025em;
+  color: var(--bone); margin: 0; text-wrap: balance;
+}
+.booking-title em { font-style: italic; color: var(--ink); }
+.booking-cta p {
+  font-family: var(--font-display); font-style: italic;
+  font-size: 18px; line-height: 1.5; color: var(--bone);
+  margin: 0 0 18px; text-wrap: pretty;
+}
+
+/* ============================================================
+   Colophon
+============================================================ */
+.colophon {
+  padding: 72px 0 48px; border-top: 4px solid var(--ink); margin-top: 32px;
+}
+.colophon .orn { text-align: center; font-family: var(--font-display); font-size: 32px; color: var(--pink); margin-bottom: 32px; }
+.colophon-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; }
+.cl-h { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pink-deep); margin: 0 0 12px; }
+.cl-p { font-family: var(--font-body); font-size: 14px; line-height: 1.55; color: var(--ink-2); margin: 0 0 8px; }
+.cl-p em { font-family: var(--font-display); font-style: italic; color: var(--ink); }
+.cl-p.meta { font-family: var(--font-mono); font-size: 12px; color: var(--ink-3); }
+.cl-p a { color: var(--pink-deep); text-decoration: underline; text-underline-offset: 3px; }
+.cl-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+.cl-list a { font-family: var(--font-body); font-size: 14px; color: var(--ink); text-decoration: none; border-bottom: 1px dotted var(--ink-3); padding-bottom: 1px; }
+.cl-list a:hover { color: var(--pink); border-color: var(--pink); }
+
+/* ============================================================
+   Responsive
+============================================================ */
+@media (max-width: 900px) {
+  .page { padding: 24px; }
+  .talks-hero { grid-template-columns: 1fr; gap: 32px; padding: 36px 0 56px; }
+  .talks-hero .plate { max-width: 320px; }
+  .talks-hero-meta { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .sh-row { grid-template-columns: 1fr; gap: 12px; }
+  .sh-title { text-align: left; }
+  .sh-row .eyebrow { min-width: 0; }
+  .schedule-sub { grid-template-columns: 1fr; gap: 6px; }
+  .booking-strip { margin: 40px -24px 0; padding: 56px 24px; }
+  .booking-grid { grid-template-columns: 1fr; gap: 28px; }
+  .schedule td.sched-date { width: 90px; }
+  .schedule th:nth-child(3), .schedule td:nth-child(3) { display: none; }
+  .colophon-grid { grid-template-columns: 1fr; gap: 32px; }
+  .masthead-row { grid-template-columns: 1fr; gap: 8px; }
+  .masthead-nav { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .nav-left, .nav-right { gap: 14px; }
+}
+@media (max-width: 520px) {
+  .brand-cns, .brand-me { font-size: 24px; }
+  .talks-hero-headline { font-size: 44px; }
+  .sh-title { font-size: clamp(28px, 8vw, 36px); }
 }
 `;
 
@@ -969,24 +782,24 @@ const head = `<!doctype html>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Chris Nesbitt-Smith — talks about software development</title>
 <meta name="title" content="Chris Nesbitt-Smith talks about software development" />
-<meta name="description" content="Talks by Chris Nesbitt-Smith on Kubernetes, platform engineering, policy as code, and digital government." />
-<meta name="theme-color" content="#efe6cf" />
+<meta name="description" content="A back catalogue of conference talks, workshops and webinars by Chris Nesbitt-Smith — Kubernetes, platform engineering, policy as code, and digital government." />
+<meta name="theme-color" content="#F4EFE7" />
 
 <meta property="og:type" content="website" />
-<meta property="og:url" content="http://talks.cns.me/" />
-<meta property="og:title" content="Chris Nesbitt-Smith talks about software development" />
-<meta property="og:description" content="Talks by Chris Nesbitt-Smith on Kubernetes, platform engineering, policy as code, and digital government." />
+<meta property="og:url" content="https://talks.cns.me/" />
+<meta property="og:title" content="Chris Nesbitt-Smith — talks" />
+<meta property="og:description" content="A back catalogue of conference talks, workshops and webinars by Chris Nesbitt-Smith." />
 <meta property="og:image" content="https://talks.cns.me/images/me.png" />
 
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content="http://talks.cns.me/" />
-<meta property="twitter:title" content="Chris Nesbitt-Smith talks about software development" />
-<meta property="twitter:description" content="Talks by Chris Nesbitt-Smith on Kubernetes, platform engineering, policy as code, and digital government." />
+<meta property="twitter:url" content="https://talks.cns.me/" />
+<meta property="twitter:title" content="Chris Nesbitt-Smith — talks" />
+<meta property="twitter:description" content="A back catalogue of conference talks, workshops and webinars by Chris Nesbitt-Smith." />
 <meta property="twitter:image" content="https://talks.cns.me/images/me.png" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..600,30..100;1,9..144,300..600,30..100&family=Hanken+Grotesk:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,400;1,9..144,500;1,9..144,600;1,9..144,700&family=Hanken+Grotesk:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>${css}</style>
 
@@ -999,149 +812,125 @@ const head = `<!doctype html>
 </script>
 </head>`;
 
+const totalCount = files.length;
+
 const otherCardsHtml = otherTalks
-  .map((f, i) => renderTalkCard(f, i))
+  .map((f, i) => renderTalkCard(f, i + 1))
+  .join("\n");
+const govCardsHtml = govUkTalks
+  .map((f, i) => renderTalkCard(f, otherTalks.length + i + 1))
   .join("\n");
 
-const govCardsHtml = govUkTalks
-  .map((f, i) => renderTalkCard(f, otherTalks.length + i))
-  .join("\n");
+const upcomingPane = futureRows.length
+  ? scheduleTable(futureRows)
+  : `<p class="schedule-empty">Nothing on the books just now. <a href="mailto:chris@cns.me">Get in touch</a> if you'd like to invite me to speak — workshops, conferences, podcasts, or in-house briefings.</p>`;
 
 const body = `
 <body>
-<header class="masthead">
-  <div class="wrap">
-    <hr class="rule rule--double" />
-    <div class="masthead-row">
-      <a class="brand" href="/">Chris Nesbitt&#8209;Smith</a>
-      <span class="sep">·</span>
-      <span>A back catalogue</span>
-      <span class="sep">·</span>
-      <span>Est. MMXXI</span>
-      <span class="grow"></span>
-      <span class="stat"><strong>${totalCount}</strong>indexed</span>
-    </div>
-    <hr class="rule rule--hair" />
-    <nav class="primary-nav" aria-label="Primary">
-      <a class="active" href="#talks"><span class="num">§01</span>Talks</a>
-      <a href="#govuk"><span class="num">§02</span>gov.uk</a>
-      <a href="#schedule"><span class="num">§03</span>Schedule</a>
-      <span class="grow"></span>
-      <a class="external" href="https://cns.me">LinkedIn</a>
-      <a class="external" href="https://blog.cns.me">Blog</a>
-      <a class="external" href="https://devpsyops.com">DevPsyOps</a>
-      <a class="external" href="https://github.com/chrisns">GitHub</a>
-      <span class="ts">talks.cns.me</span>
-    </nav>
-    <hr class="rule" />
-  </div>
-</header>
+<div class="page">
+${masthead(totalCount)}
 
 <main>
-<section class="wrap">
-  <div class="hero">
-    <aside class="hero-portrait rise rise-2">
-      <div class="portrait-frame">
-        <img src="images/me.png" alt="Chris Nesbitt-Smith" />
-      </div>
-      <div class="portrait-cap">
-        <span>Plate I — <em>The author</em></span>
-        <span>Available for talks</span>
-      </div>
-    </aside>
-    <div class="hero-left">
-      <div class="rise rise-1">
-        <span class="section-label"><span class="pilcrow">§00</span> Introduction · By the Author</span>
-        <h1 class="hero-headline">
-          Talks on
-          <span class="indent"><em>Kubernetes,</em></span>
-          <span class="indent-2">platforms</span>
-          <span><span class="ampersand">&amp;</span> digital&nbsp;<em>government.</em></span>
-        </h1>
-      </div>
-      <div class="rise rise-3">
-        <p class="hero-lede">A working back catalogue of conference talks, workshops and webinars — covering platform engineering, policy as code, multi&#8209;tenancy, and the realities of building digital services for the public.</p>
-        <div class="hero-actions" style="margin-top:22px;">
-          <a class="btn btn--accent" href="#talks">Browse the catalogue</a>
-          <a class="btn btn--quiet" href="#schedule">See schedule</a>
-        </div>
-      </div>
+<section class="talks-hero">
+  <figure class="plate">
+    <div class="plate-frame">
+      <span class="plate-stamp">Available for talks</span>
+      <img src="images/me.png" alt="Chris Nesbitt-Smith" />
+    </div>
+    <figcaption>
+      <span class="caption">Plate I — <em>The author,</em> on stage.</span>
+      <span class="avail">talks.cns.me</span>
+    </figcaption>
+  </figure>
+
+  <div class="talks-hero-body">
+    <span class="eyebrow">§00 — Introduction · By the author</span>
+    <h1 class="talks-hero-headline">Talks on <em>Kubernetes,</em> platforms &amp; digital government.</h1>
+    <p class="talks-hero-lede">A working back catalogue of conference talks, workshops and webinars — covering platform engineering, <em>policy as [versioned] code,</em> multi&#8209;tenancy, and the realities of building digital services for the public.</p>
+    <div class="talks-hero-ctas">
+      <a class="btn btn-primary" href="#talks">Browse the catalogue →</a>
+      <a class="btn btn-ghost" href="#schedule">See schedule</a>
+    </div>
+    <div class="talks-hero-meta">
+      <div><span class="stat-num">${totalCount}</span><span class="stat-cap">Talks indexed</span></div>
+      <div><span class="stat-num">${pastRows.length}</span><span class="stat-cap">Sessions delivered</span></div>
+      <div><span class="stat-num">2021</span><span class="stat-cap">Catalogue est.</span></div>
     </div>
   </div>
 </section>
 
-<section class="wrap section" id="talks">
-  <div class="section-head">
-    <div>
-      <span class="section-label"><span class="pilcrow">§01</span> Selected talks</span>
-      <h2 class="section-title">A working <em>catalogue</em>.</h2>
-    </div>
-    <div class="section-meta"><strong>${otherTalks.length}</strong>entries / curated</div>
-  </div>
-  <div class="grid">
-    ${otherCardsHtml}
-  </div>
+${sectionHeader({
+  idx: "§01",
+  kicker: "Selected talks",
+  title: "A working <em>catalogue.</em>",
+  count: otherTalks.length,
+  countLabel: "entries · curated",
+  anchor: "talks",
+})}
+
+${filedUnder("Filed under", [
+  "Kubernetes",
+  "Policy as code",
+  "Platform engineering",
+  "Multi-tenancy",
+  "Cloud security",
+])}
+
+<div class="talk-grid">
+  ${otherCardsHtml}
+</div>
 
 ${
   govUkTalks.length
     ? `
-  <div id="govuk" class="gov-band">
-    <span class="crown">❦</span>
-    <h3 class="band-title">UK <em>gov</em>.</h3>
-    <span class="band-meta">§02 — DSIT / GDS / CDDO</span>
-  </div>
-  <div class="grid">
-    ${govCardsHtml}
-  </div>`
+<div class="section-break">🦩</div>
+
+${sectionHeader({
+  idx: "§02",
+  kicker: "UK gov.",
+  title: "<em>DSIT</em> · GDS · CDDO",
+  count: govUkTalks.length,
+  countLabel: "briefings · public sector",
+  anchor: "gov",
+})}
+
+${filedUnder("Audiences", [
+  "Permanent secretaries",
+  "Tech leadership",
+  "Cross-government",
+])}
+
+<div class="talk-grid">
+  ${govCardsHtml}
+</div>`
     : ""
 }
-</section>
 
-<section class="wrap section" id="schedule">
-  <div class="section-head">
-    <div>
-      <span class="section-label"><span class="pilcrow">§03</span> Schedule</span>
-      <h2 class="section-title">Where <em>next</em>, where <em>recently</em>.</h2>
-    </div>
-    <div class="section-meta">UTC · listed reverse-chron</div>
-  </div>
-  <div class="schedule">
-    <div class="schedule-pane">
-      <h3>Upcoming</h3>
-      <div class="pane-meta">${futureRows.length} confirmed</div>
-      ${
-        futureRows.length
-          ? `<div class="scroll">${renderTable(futureRows)}</div>`
-          : `<div class="empty-pane">Nothing on the books just now. <a href="mailto:chris@cns.me">Get in touch</a> if you'd like to invite me to speak — workshops, conferences, podcasts, or in-house briefings.</div>`
-      }
-    </div>
-    <div class="schedule-pane">
-      <h3>Recent</h3>
-      <div class="pane-meta">${pastRows.length} archived · newest first</div>
-      <div class="scroll">${renderTable(pastRows)}</div>
-    </div>
-  </div>
-</section>
+<div class="section-break">🦩</div>
+
+${sectionHeader({
+  idx: "§03",
+  kicker: "Schedule",
+  title: "Where <em>next,</em> where recently.",
+  count: "UTC",
+  countLabel: "listed reverse-chron",
+  anchor: "schedule",
+})}
+
+<div class="schedule-wrap">
+  ${scheduleSubhead("Upcoming", "On the books", `${futureRows.length} confirmed`)}
+  ${upcomingPane}
+
+  ${scheduleSubhead("Recent", "Archived appearances", `${pastRows.length} archived · newest first`)}
+  ${scheduleTable(pastRows)}
+  <div class="schedule-more">End of catalogue</div>
+</div>
+
+${bookingStrip()}
+
+${colophon()}
 </main>
-
-<footer class="wrap colophon">
-  <div>
-    <h4>Colophon</h4>
-    <p>Set in <em>Fraunces</em>, Hanken Grotesk &amp; JetBrains Mono. Hand-built; statically typeset. Source on <a href="https://github.com/chrisns/talks">GitHub</a>.</p>
-    <p>© ${new Date().getFullYear()} Chris Nesbitt&#8209;Smith — all words my own.</p>
-  </div>
-  <div>
-    <h4>Elsewhere</h4>
-    <p><a href="https://cns.me">LinkedIn / cns.me</a></p>
-    <p><a href="https://blog.cns.me">Blog</a></p>
-    <p><a href="https://devpsyops.com">DevPsyOps</a></p>
-    <p><a href="https://github.com/chrisns">GitHub</a></p>
-  </div>
-  <div>
-    <h4>Bookings</h4>
-    <p>Conferences, in-house workshops, podcasts and the occasional debate. Drop a line at <a href="mailto:chris@cns.me">chris@cns.me</a>.</p>
-  </div>
-</footer>
+</div>
 </body>
 </html>`;
 
