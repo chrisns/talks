@@ -24,8 +24,11 @@ test("index generation includes headings", () => {
     cwd: tmp,
   });
   const html = output.toString();
-  expect(html).toContain("Upcoming talks");
-  expect(html).toContain("Previous talks");
+  expect(html).toContain("Upcoming");
+  expect(html).toContain("Recent");
+  expect(html).toContain("Demo Talk");
+  expect(html).toContain("The Future");
+  expect(html).toContain("The Past");
   expect(html).not.toContain("[object Object]");
   expect(html).not.toContain("undefined</table>");
 });
