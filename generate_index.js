@@ -36,26 +36,36 @@ const otherTalks = files.filter(
 let scheduleSelect = "future";
 const schedule = fs.readFileSync("schedule.md", "utf8");
 
+// We only need the side effect of collecting rows that match the active
+// `scheduleSelect`. Don't override `table` — the default table() iterates
+// rows/cells and calls our overrides. marked v18 passes tokens; v12 passes
+// strings. Handle both.
 const scheduleRows = [];
 const renderer = {
-  table() {
-    return "";
-  },
-  tablerow(content) {
-    const date = (content.match(/\d{4}-\d{2}-\d{2}/g) || [])[0];
+  tablerow(arg) {
+    const text = typeof arg === "string" ? arg : arg.text;
+    const date = (text && text.match(/\d{4}-\d{2}-\d{2}/g) || [])[0];
     if (!date) return "";
     const isFuture = Date.parse(date) > Date.now();
     if (
       (scheduleSelect === "future" && isFuture) ||
       (scheduleSelect === "past" && !isFuture)
     ) {
-      scheduleRows.push(`<tr>${content}</tr>`);
+      scheduleRows.push(`<tr>${text}</tr>`);
     }
     return "";
   },
-  tablecell(content, flags) {
-    const tag = flags.header ? "th" : "td";
-    return `<${tag}>${content}</${tag}>`;
+  tablecell(arg, flags) {
+    if (typeof arg === "string") {
+      const tag = flags && flags.header ? "th" : "td";
+      return `<${tag}>${arg}</${tag}>`;
+    }
+    const tag = arg.header ? "th" : "td";
+    const inner =
+      this.parser && arg.tokens
+        ? this.parser.parseInline(arg.tokens)
+        : arg.text || "";
+    return `<${tag}>${inner}</${tag}>`;
   },
 };
 marked.use({ renderer });
