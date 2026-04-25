@@ -84,7 +84,6 @@ const fillFor = (i) => ["warm", "hot", "cool", "paper"][i % 4];
 
 const renderTalkCard = (file, plateIdx) => {
   const slug = file.filename.replace(".md", "");
-  const num = String(plateIdx).padStart(2, "0");
   const ytUrl = youtubeWatchUrl(file.video_embed);
   const primaryHref = ytUrl || `${slug}.html`;
   const fill = fillFor(plateIdx - 1);
@@ -93,7 +92,6 @@ const renderTalkCard = (file, plateIdx) => {
   const thumb = `
     <a class="talk-thumb-link" href="${primaryHref}">
       <div class="talk-thumb fill-${fill}">
-        <span class="thumb-label">Plate ${num}</span>
         <img class="thumb-img" src="${slug}.png" alt="" loading="lazy"
              onerror="this.classList.add('hidden');this.parentElement.classList.add('thumb-fallback');" />
         <span class="thumb-glyph" aria-hidden="true">🦩</span>
@@ -101,10 +99,6 @@ const renderTalkCard = (file, plateIdx) => {
     </a>`;
   return `
 <article class="talk-card">
-  <div class="talk-num-row">
-    <span class="talk-num">No.${num}</span>
-    <span class="talk-year">cns.me</span>
-  </div>
   ${thumb}
   <h3 class="talk-title"><a href="${primaryHref}">${file.title}</a></h3>
   ${file.description ? `<p class="talk-desc">${file.description}</p>` : ""}
@@ -117,11 +111,11 @@ const renderTalkCard = (file, plateIdx) => {
 </article>`;
 };
 
-const sectionHeader = ({ idx, kicker, title, count, countLabel, anchor }) => `
+const sectionHeader = ({ kicker, title, count, countLabel, anchor }) => `
 <header class="section-header"${anchor ? ` id="${anchor}"` : ""}>
   <div class="rule strong"></div>
   <div class="sh-row">
-    <span class="eyebrow">${idx} ${kicker}</span>
+    <span class="eyebrow">${kicker}</span>
     <h2 class="sh-title">${title}</h2>
     ${
       count != null
@@ -190,18 +184,14 @@ const masthead = (count) => `
         <path d="M 2 8 C 30 2, 70 12, 110 6 S 190 4, 218 8" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"></path>
       </svg>
     </a>
-    <span class="masthead-meta"><em>A back catalogue</em> · <span class="numeral">EST. MMXXI</span></span>
-    <span class="masthead-count">
-      <span class="num">${count}</span><span class="cap">indexed</span>
-      <span class="masthead-pulse" aria-hidden="true">🦩</span>
-    </span>
+    <span class="masthead-meta"><em>A back catalogue</em></span>
   </div>
   <div class="rule draw-rule delay-1"></div>
   <nav class="masthead-nav">
     <div class="nav-left">
-      <a href="#talks"><span class="sec">§01</span> Talks</a>
-      <a href="#gov"><span class="sec">§02</span> Gov.uk</a>
-      <a href="#schedule"><span class="sec">§03</span> Schedule</a>
+      <a href="#talks">Talks</a>
+      <a href="#gov">Gov.uk</a>
+      <a href="#schedule">Schedule</a>
     </div>
     <div class="nav-right">
       <a href="https://cns.me">LinkedIn</a>
@@ -217,7 +207,7 @@ const bookingStrip = () => `
 <section class="booking-strip">
   <div class="booking-grid">
     <div>
-      <span class="booking-eyebrow">§04 — Bookings</span>
+      <span class="booking-eyebrow">Bookings</span>
       <h2 class="booking-title">Conferences, in-house <em>workshops,</em> podcasts &amp; the occasional debate.</h2>
     </div>
     <div class="booking-cta">
@@ -232,11 +222,6 @@ const colophon = () => `
   <div class="orn">🦩</div>
   <div class="colophon-grid">
     <div>
-      <h4 class="cl-h">Colophon</h4>
-      <p class="cl-p">Set in <em>Fraunces,</em> <em>Hanken Grotesk</em> &amp; <em>JetBrains Mono.</em> Hand-built; statically typeset. <a href="https://github.com/chrisns/talks">Source on GitHub.</a></p>
-      <p class="cl-p meta">© <span class="numeral">${new Date().getFullYear()}</span> Chris Nesbitt-Smith — all words my own.</p>
-    </div>
-    <div>
       <h4 class="cl-h">Elsewhere</h4>
       <ul class="cl-list">
         <li><a href="https://cns.me">LinkedIn / cns.me</a></li>
@@ -250,6 +235,7 @@ const colophon = () => `
       <p class="cl-p">Conferences, in-house workshops, podcasts and the occasional debate. Drop a line at <a href="mailto:chris@cns.me">chris@cns.me</a>.</p>
     </div>
   </div>
+  <p class="cl-foot">© <span class="numeral">${new Date().getFullYear()}</span> Chris Nesbitt-Smith — all words my own.</p>
 </footer>`;
 
 const css = `
@@ -319,7 +305,7 @@ a:hover { color: var(--pink-hot); }
 .masthead-row, .masthead-nav, .masthead .rule { position: relative; z-index: 1; }
 
 .masthead-row {
-  display: grid; grid-template-columns: 1fr auto auto;
+  display: grid; grid-template-columns: 1fr auto;
   align-items: baseline; gap: 32px; padding: 14px 0;
 }
 .brand { position: relative; display: inline-flex; align-items: baseline; gap: 6px; text-decoration: none; color: var(--ink); }
@@ -337,12 +323,6 @@ a:hover { color: var(--pink-hot); }
 
 .masthead-meta { font-family: var(--font-body); font-size: 13px; color: var(--ink-2); }
 .masthead-meta em { font-family: var(--font-display); font-style: italic; font-weight: 500; color: var(--ink); }
-.masthead-meta .numeral { color: var(--ink); }
-.masthead-count { display: inline-flex; align-items: baseline; gap: 6px; }
-.masthead-count .num { font-family: var(--font-display); font-weight: 700; font-size: 22px; color: var(--pink); }
-.masthead-count .cap { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3); }
-.masthead-pulse { display: inline-block; margin-left: 8px; font-size: 14px; transform-origin: center; animation: breathe 5.5s ease-in-out infinite; }
-@keyframes breathe { 0%,100% { transform: scale(1) translateY(0); opacity: 0.85;} 50% { transform: scale(1.08) translateY(-1px); opacity: 1;} }
 
 .draw-rule { position: relative; overflow: hidden; }
 .draw-rule::after {
@@ -364,11 +344,10 @@ a:hover { color: var(--pink-hot); }
   transition: color 200ms;
 }
 .masthead-nav a:hover { color: var(--pink); }
-.masthead-nav .sec { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; color: var(--pink-deep); }
 .nav-right a { color: var(--ink-2); font-size: 13px; }
 
 @media (prefers-reduced-motion: reduce) {
-  .guilloche-drift, .brand-flourish path, .masthead-pulse, .draw-rule::after { animation: none !important; }
+  .guilloche-drift, .brand-flourish path, .draw-rule::after { animation: none !important; }
   .brand-flourish path { stroke-dashoffset: 0; }
   .draw-rule::after { display: none; }
 }
@@ -533,14 +512,6 @@ a:hover { color: var(--pink-hot); }
   display: flex; flex-direction: column; gap: 10px;
   min-height: 280px;
 }
-.talk-num-row {
-  display: flex; align-items: baseline; justify-content: space-between;
-  font-family: var(--font-mono);
-  font-size: 10.5px; letter-spacing: 0.10em; color: var(--ink-3);
-}
-.talk-num { color: var(--pink-deep); font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; }
-.talk-year { color: var(--ink-3); font-size: 10.5px; letter-spacing: 0.16em; }
-
 .talk-thumb-link { display: block; text-decoration: none; }
 .talk-thumb-link:hover .talk-thumb { transform: translateY(-2px); }
 .talk-thumb {
@@ -554,13 +525,6 @@ a:hover { color: var(--pink-hot); }
   object-fit: contain; background: var(--paper-2); z-index: 0;
 }
 .talk-thumb .thumb-img.hidden { display: none; }
-.talk-thumb .thumb-label {
-  position: absolute; left: 12px; top: 10px;
-  font-family: var(--font-mono);
-  font-size: 9.5px; letter-spacing: 0.20em; text-transform: uppercase;
-  color: rgba(251,248,242,0.85); z-index: 2;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.4);
-}
 .talk-thumb .thumb-glyph {
   position: absolute; inset: 0;
   display: none; align-items: center; justify-content: center;
@@ -570,7 +534,6 @@ a:hover { color: var(--pink-hot); }
 }
 .talk-thumb.thumb-fallback .thumb-glyph { display: flex; }
 .talk-thumb.fill-paper { background: var(--paper-2); }
-.talk-thumb.fill-paper .thumb-label { color: var(--ink-4); text-shadow: none; }
 .talk-thumb.fill-paper.thumb-fallback .thumb-glyph { color: var(--ink-4); }
 .talk-thumb.fill-paper::before {
   content: ""; position: absolute; inset: 14px;
@@ -737,7 +700,17 @@ a:hover { color: var(--pink-hot); }
   padding: 72px 0 48px; border-top: 4px solid var(--ink); margin-top: 32px;
 }
 .colophon .orn { text-align: center; font-family: var(--font-display); font-size: 32px; color: var(--pink); margin-bottom: 32px; }
-.colophon-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; }
+.colophon-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+.cl-foot {
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--ink-3);
+  margin: 40px 0 0;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+}
 .cl-h { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pink-deep); margin: 0 0 12px; }
 .cl-p { font-family: var(--font-body); font-size: 14px; line-height: 1.55; color: var(--ink-2); margin: 0 0 8px; }
 .cl-p em { font-family: var(--font-display); font-style: italic; color: var(--ink); }
@@ -844,7 +817,6 @@ ${masthead(totalCount)}
   </figure>
 
   <div class="talks-hero-body">
-    <span class="eyebrow">§00 — Introduction · By the author</span>
     <h1 class="talks-hero-headline">Talks on <em>Kubernetes,</em> platforms &amp; digital government.</h1>
     <p class="talks-hero-lede">A working back catalogue of conference talks, workshops and webinars — covering platform engineering, <em>policy as [versioned] code,</em> multi&#8209;tenancy, and the realities of building digital services for the public.</p>
     <div class="talks-hero-ctas">
@@ -860,7 +832,6 @@ ${masthead(totalCount)}
 </section>
 
 ${sectionHeader({
-  idx: "§01",
   kicker: "Selected talks",
   title: "A working <em>catalogue.</em>",
   count: otherTalks.length,
@@ -886,7 +857,6 @@ ${
 <div class="section-break">🦩</div>
 
 ${sectionHeader({
-  idx: "§02",
   kicker: "UK gov.",
   title: "<em>DSIT</em> · GDS · CDDO",
   count: govUkTalks.length,
@@ -909,7 +879,6 @@ ${filedUnder("Audiences", [
 <div class="section-break">🦩</div>
 
 ${sectionHeader({
-  idx: "§03",
   kicker: "Schedule",
   title: "Where <em>next,</em> where recently.",
   count: "UTC",
