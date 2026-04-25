@@ -1028,6 +1028,7 @@ const body = `
       <a href="#schedule"><span class="num">§03</span>Schedule</a>
       <span class="grow"></span>
       <a class="external" href="https://cns.me">LinkedIn</a>
+      <a class="external" href="https://blogs.cns.me">Blog</a>
       <a class="external" href="https://devpsyops.com">DevPsyOps</a>
       <a class="external" href="https://github.com/chrisns">GitHub</a>
       <span class="ts">talks.cns.me</span>
@@ -1132,6 +1133,7 @@ ${
   <div>
     <h4>Elsewhere</h4>
     <p><a href="https://cns.me">LinkedIn / cns.me</a></p>
+    <p><a href="https://blogs.cns.me">Blog</a></p>
     <p><a href="https://devpsyops.com">DevPsyOps</a></p>
     <p><a href="https://github.com/chrisns">GitHub</a></p>
   </div>
