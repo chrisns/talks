@@ -44,7 +44,7 @@ const scheduleRows = [];
 const renderer = {
   tablerow(arg) {
     const text = typeof arg === "string" ? arg : arg.text;
-    const date = (text && text.match(/\d{4}-\d{2}-\d{2}/g) || [])[0];
+    const date = ((text && text.match(/\d{4}-\d{2}-\d{2}/g)) || [])[0];
     if (!date) return "";
     const isFuture = Date.parse(date) > Date.now();
     if (
