@@ -876,7 +876,7 @@ ${filedUnder("Audiences", [
     : ""
 }
 
-<div class="section-break">🦩</div>
+${bookingStrip()}
 
 ${sectionHeader({
   kicker: "Schedule",
