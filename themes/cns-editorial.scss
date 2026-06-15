@@ -441,19 +441,16 @@ section.listline {
   ul {
     text-align: center;
     li {
-      display: inline;
-      padding-left: 0;
+      display: inline-block;
+      padding: 0 0.5em;
       font-family: var(--font-mono);
-      letter-spacing: -0.01em;
+      letter-spacing: normal;
       &::before {
         content: none;
       }
-      &:not(:first-of-type)::before {
-        content: "|";
-        margin: 0 0.45em;
-        color: var(--ink-4);
-        font-weight: 300;
-        opacity: 0.35;
+      /* faint hairline divider — box model, never overlaps glyphs */
+      &:not(:first-of-type) {
+        border-left: 1px solid rgba(20, 17, 15, 0.16);
       }
     }
   }
