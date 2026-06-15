@@ -4,7 +4,7 @@ description: In this talk Chris will trace back the origins of how policies are 
 author: Chris Nesbitt-Smith
 image: https://talks.cns.me/PolicyAsVersionedCode.png
 marp: true
-theme: themes/cns-editorial
+theme: themes/cns
 url: https://talks.cns.me/PolicyAsVersionedCode.html
 class: lead
 video_embed: <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/YWQG_E7vgiQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
