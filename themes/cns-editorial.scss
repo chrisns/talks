@@ -66,11 +66,12 @@ section {
   padding: 64px 72px;
 
   /* ----- Headings ----- */
+  /* Fraunces serif display for the big statements; mono eyebrows for h4+. */
   h1 {
     font-family: var(--font-display);
     font-weight: 900;
     font-size: 2.1em;
-    line-height: 1;
+    line-height: 1.02;
     letter-spacing: -0.03em;
     color: var(--ink);
     font-variation-settings: "opsz" 144;
@@ -189,15 +190,16 @@ section {
     padding: 0.06em 0.34em;
   }
 
-  /* code that lives inside a heading should ride the heading, not a chip */
+  /* backtick code inside a heading keeps a (scaled) chip background */
   h1 code,
   h2 code,
   h3 code {
-    background: transparent;
-    border: none;
-    padding: 0;
-    color: var(--pink);
-    font-size: 0.92em;
+    background: var(--paper-2);
+    border: 1px solid var(--paper-3);
+    border-radius: 0.14em;
+    padding: 0.02em 0.2em;
+    color: var(--pink-ink);
+    font-size: 0.9em;
   }
 
   /* ----- Code blocks ----- */
@@ -207,10 +209,10 @@ section {
     background: var(--night);
     color: var(--bone);
     border: 1px solid var(--night-3);
-    border-left: 4px solid var(--pink);
-    border-radius: 12px;
-    box-shadow: var(--sh-pink);
-    padding: 0.7em 0.8em;
+    border-left: 3px solid var(--pink-deep);
+    border-radius: 10px;
+    box-shadow: var(--sh-soft);
+    padding: 0.7em 0.85em;
     line-height: 1.45;
 
     code {
@@ -353,9 +355,9 @@ section.invert {
   h1 code,
   h2 code,
   h3 code {
-    background: transparent;
-    border: none;
-    color: var(--pink-hot);
+    background: var(--night-3);
+    border-color: var(--night-3);
+    color: #ffd0e6;
   }
 
   /* lift code blocks off the dark canvas */
@@ -447,10 +449,10 @@ section.listline {
         content: none;
       }
       &:not(:first-of-type)::before {
-        content: "/";
-        margin: 0 0.45em;
-        color: var(--pink);
-        opacity: 0.55;
+        content: "·";
+        margin: 0 0.4em;
+        color: var(--ink-4);
+        opacity: 0.85;
       }
     }
   }
@@ -510,14 +512,18 @@ section.title-page {
   h1 {
     position: relative;
     z-index: 3;
+    font-family: var(--font-display);
+    font-weight: 900;
     font-size: 2.85em;
     line-height: 1.04;
+    letter-spacing: -0.03em;
     color: var(--bone);
     max-width: 72%;
     margin: 0 0 0.45em;
     text-shadow: 0 14px 40px rgba(0, 0, 0, 0.45);
 
     em {
+      font-family: var(--font-display);
       color: var(--pink-hot);
       font-style: italic;
     }
