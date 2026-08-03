@@ -30,6 +30,7 @@
     "map": false
   },
   "dependencies": {
+    "@chrisns/design": "github:chrisns/design",
     "@marp-team/marp-cli": "^4.0.0",
     "husky": "^9.0.11",
     "marked": "^18.0.0",
