@@ -107,10 +107,10 @@ http://localhost/product/<iframe width='560' height='315' src='https://www.youtu
 helm repo add nginx-stable https://helm.nginx.com/stable
 
 helm install main nginx-stable/nginx-ingress \
- --set controller.enableSnippets=true \
- --set controller.image.pullPolicy=Never \
- --set controller.service.type=NodePort \
- --set controller.service.httpPort.nodePort=30000
+--set controller.enableSnippets=true \
+--set controller.image.pullPolicy=Never \
+--set controller.service.type=NodePort \
+--set controller.service.httpPort.nodePort=30000
 
 ```
 
