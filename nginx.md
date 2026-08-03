@@ -278,6 +278,7 @@ but however it happens because of the HTTP protocol you're limited to a number o
 - PATCH
 - DELETE
 - ETC
+
 <!--
 Theres some obvious methods, but really they're arbitrary stings we agree on with expected behavior
 -->
