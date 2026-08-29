@@ -3,7 +3,9 @@ inputDir: ./
 output: ./dist
 options:
   minifyCSS: false
-  themeSet: "themes/cns.css"
+  themeSet:
+    - "themes/cns.css"
+    - "themes/cns-editorial.css"
 bespoke:
   progress: true
 html: true
