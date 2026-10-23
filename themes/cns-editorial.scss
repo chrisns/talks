@@ -1,0 +1,645 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,600;1,9..144,700&family=Hanken+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap");
+@import "./glitch.scss";
+@import-theme "gaia";
+/*!
+ * Marp / Marpit cns-editorial theme.
+ *
+ * An editorial slide theme built from the cns.me design system
+ * (blog.cns.me · talks.cns.me · govbuy.run.cns.me):
+ * Fraunces display serif, Hanken Grotesk body, JetBrains Mono,
+ * warm cream paper, near-black ink and hot flamingo pink.
+ *
+ * @theme themes/cns-editorial
+ * @author Chris Nesbitt-Smith
+ *
+ * @auto-scaling true
+ * @size 4K 3840px 2160px
+ * @size 16:9 1280px 720px
+ * @size 4:3 960px 720px
+ */
+
+:root {
+  /* ---- Flamingo pinks ---- */
+  --pink: #e5197f;
+  --pink-hot: #ff2d8a;
+  --pink-deep: #b30e61;
+  --pink-ink: #5a0830;
+
+  /* ---- Warm neutrals ---- */
+  --ink: #14110f;
+  --ink-2: #2a2622;
+  --ink-3: #5c544c;
+  --ink-4: #8a8077;
+  --rule: #1f1b17;
+  --paper: #f4efe7;
+  --paper-2: #ebe4d8;
+  --paper-3: #ddd3c2;
+  --bone: #fbf8f2;
+
+  /* ---- Inverse / night ---- */
+  --night: #14110f;
+  --night-2: #221e1a;
+  --night-3: #3a332d;
+
+  /* ---- Type ---- */
+  --font-display: "Fraunces", "Times New Roman", ui-serif, serif;
+  --font-body: "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --sh-pink: 0 18px 40px -18px rgba(229, 25, 127, 0.5);
+  --sh-soft: 0 16px 40px -22px rgba(20, 17, 15, 0.55);
+}
+
+section {
+  /* warm cream paper with a soft top-light */
+  background-color: var(--paper);
+  background-image: radial-gradient(
+    130% 120% at 82% -15%,
+    var(--bone) 0%,
+    transparent 52%
+  );
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.5;
+  padding: 64px 72px;
+
+  /* ----- Headings ----- */
+  /* Fraunces serif display for the big statements; mono eyebrows for h4+. */
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 2.1em;
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    font-variation-settings: "opsz" 144;
+    text-wrap: balance;
+    margin: 0 0 0.35em;
+
+    em {
+      font-style: italic;
+      font-weight: 700;
+      color: var(--pink);
+    }
+    strong {
+      color: var(--pink);
+      font-weight: 900;
+    }
+  }
+
+  h2 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.5em;
+    line-height: 1.12;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    font-variation-settings: "opsz" 96;
+    text-wrap: balance;
+    margin: 0 0 0.3em;
+
+    em {
+      font-style: italic;
+      color: var(--pink);
+    }
+  }
+
+  h3 {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.15em;
+    line-height: 1.3;
+    color: var(--ink-3);
+    text-wrap: balance;
+    margin: 0 0 0.25em;
+  }
+
+  /* mono "eyebrow" voice for the smaller headings */
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--pink-deep);
+    line-height: 1.4;
+    margin: 0 0 0.3em;
+  }
+
+  /* ----- Body copy ----- */
+  p {
+    line-height: 1.55;
+  }
+  strong {
+    color: var(--pink-deep);
+    font-weight: 800;
+  }
+  em {
+    font-style: italic;
+  }
+  del {
+    color: var(--ink-4);
+    text-decoration-color: var(--pink);
+  }
+  a {
+    color: var(--pink-deep);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+    text-decoration-color: rgba(229, 25, 127, 0.45);
+  }
+
+  /* ----- Lists ----- */
+  ul {
+    list-style: none;
+    padding-left: 0;
+    li {
+      position: relative;
+      padding-left: 1.15em;
+      margin: 0.18em 0;
+      &::before {
+        content: "—";
+        position: absolute;
+        left: 0;
+        color: var(--pink);
+        font-weight: 700;
+      }
+    }
+  }
+  ol {
+    li::marker {
+      color: var(--pink-deep);
+      font-family: var(--font-mono);
+      font-weight: 600;
+    }
+  }
+
+  /* ----- Inline code ----- */
+  code {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 0.88em;
+    background: var(--paper-2);
+    color: var(--pink-ink);
+    border: 1px solid var(--paper-3);
+    border-radius: 7px;
+    padding: 0.06em 0.34em;
+  }
+
+  /* backtick code inside a heading keeps a (scaled) chip background */
+  h1 code,
+  h2 code,
+  h3 code {
+    background: var(--paper-2);
+    border: 1px solid var(--paper-3);
+    border-radius: 0.14em;
+    padding: 0.02em 0.2em;
+    color: var(--pink-ink);
+    font-size: 0.9em;
+  }
+
+  /* ----- Code blocks ----- */
+  pre {
+    font-family: var(--font-mono);
+    font-size: 0.62em;
+    background: var(--night);
+    color: var(--bone);
+    border: 1px solid var(--night-3);
+    border-left: 3px solid var(--pink-deep);
+    border-radius: 10px;
+    box-shadow: var(--sh-soft);
+    padding: 0.7em 0.85em;
+    line-height: 1.45;
+
+    code {
+      background: transparent;
+      border: none;
+      padding: 0;
+      color: inherit;
+      font-size: inherit;
+      font-weight: 400;
+    }
+
+    /* highlight.js palette tuned for the dark surface */
+    .hljs-comment,
+    .hljs-quote {
+      color: #9b8f82;
+      font-style: italic;
+    }
+    .hljs-attr,
+    .hljs-attribute,
+    .hljs-name,
+    .hljs-selector-tag {
+      color: #ff9ec7;
+    }
+    .hljs-string,
+    .hljs-meta-string {
+      color: #f0d99a;
+    }
+    .hljs-keyword,
+    .hljs-built_in,
+    .hljs-selector-pseudo,
+    .hljs-section {
+      color: var(--pink-hot);
+      font-weight: 600;
+    }
+    .hljs-number,
+    .hljs-literal,
+    .hljs-type {
+      color: #c9a6ff;
+    }
+    .hljs-meta,
+    .hljs-comment .hljs-doctag {
+      color: var(--ink-4);
+    }
+    .hljs-title,
+    .hljs-class .hljs-title,
+    .hljs-function .hljs-title {
+      color: #ffd0e6;
+    }
+  }
+
+  /* ----- Blockquote ----- */
+  blockquote {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--ink-2);
+    border-left: 4px solid var(--pink);
+    padding-left: 0.7em;
+  }
+
+  /* ----- Tables ----- */
+  table {
+    border-collapse: collapse;
+    border: none;
+
+    thead th {
+      font-family: var(--font-mono);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.78em;
+      background: var(--ink);
+      color: var(--bone);
+      border: none;
+      padding: 0.45em 0.85em;
+    }
+    tbody td {
+      border: none;
+      border-bottom: 1px solid var(--paper-3);
+      padding: 0.4em 0.85em;
+    }
+    tbody tr:nth-child(even) td {
+      background: var(--paper-2);
+    }
+  }
+
+  /* ----- Pagination ----- */
+  &::after {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    color: var(--pink-deep);
+    letter-spacing: 0.1em;
+  }
+}
+
+/* =====================================================================
+ * INVERT — night slides
+ * ===================================================================== */
+section.invert {
+  background-color: var(--night);
+  background-image: radial-gradient(
+    130% 120% at 80% -20%,
+    var(--night-2) 0%,
+    transparent 55%
+  );
+  color: var(--paper);
+
+  h1,
+  h2 {
+    color: var(--bone);
+  }
+  h3 {
+    color: var(--paper-3);
+  }
+  h4,
+  h5,
+  h6 {
+    color: var(--pink-hot);
+  }
+  strong {
+    color: var(--pink-hot);
+  }
+  h1 strong,
+  h1 em {
+    color: var(--pink-hot);
+  }
+  a {
+    color: var(--pink-hot);
+    text-decoration-color: rgba(255, 45, 138, 0.5);
+  }
+  del {
+    color: var(--ink-4);
+  }
+
+  code {
+    background: var(--night-3);
+    color: #ffd0e6;
+    border-color: var(--night-3);
+  }
+  h1 code,
+  h2 code,
+  h3 code {
+    background: var(--night-3);
+    border-color: var(--night-3);
+    color: #ffd0e6;
+  }
+
+  /* lift code blocks off the dark canvas */
+  pre {
+    background: var(--night-2);
+    border-color: var(--night-3);
+    box-shadow: var(--sh-soft);
+  }
+
+  table {
+    th {
+      background: var(--pink);
+      color: var(--bone);
+    }
+    td {
+      color: var(--paper);
+      border-bottom-color: var(--night-3);
+    }
+    tr:nth-child(even) td {
+      background: var(--night-2);
+    }
+  }
+
+  &::after {
+    color: var(--pink-hot);
+  }
+}
+
+/* =====================================================================
+ * FADE — dim the canvas, let the emphasis sing
+ * ===================================================================== */
+section.fade {
+  h1,
+  h2,
+  h3,
+  p,
+  li,
+  code {
+    color: rgba(20, 17, 15, 0.16);
+  }
+  h1 code,
+  h2 code {
+    color: rgba(20, 17, 15, 0.16);
+  }
+  strong {
+    color: var(--pink);
+  }
+
+  &.invert {
+    h1,
+    h2,
+    h3,
+    p,
+    li,
+    code {
+      color: rgba(251, 248, 242, 0.16);
+    }
+    h1 code,
+    h2 code {
+      color: rgba(251, 248, 242, 0.16);
+    }
+    strong {
+      color: var(--pink-hot);
+    }
+  }
+}
+
+/* =====================================================================
+ * WHITE — clean canvas for full-bleed screenshots
+ * ===================================================================== */
+section.white {
+  background-color: #fff;
+  background-image: none;
+  color: var(--ink);
+}
+
+/* =====================================================================
+ * LISTLINE — inline "ticker" of names
+ * ===================================================================== */
+section.listline {
+  ul {
+    text-align: center;
+    line-height: 1.15;
+    margin: 0;
+    li {
+      display: inline;
+      padding: 0 0.28em;
+      font-family: var(--font-mono);
+      letter-spacing: normal;
+      &::before {
+        content: none;
+      }
+      /* faint hairline divider — box model, never overlaps glyphs */
+      &:not(:first-of-type) {
+        border-left: 1px solid rgba(20, 17, 15, 0.16);
+      }
+    }
+  }
+  strong {
+    color: var(--pink);
+  }
+
+  &.animate {
+    li {
+      animation-name: pulsate;
+      animation-timing-function: ease-in;
+      animation-delay: calc(var(--animation-order) * 200ms);
+      animation-duration: 2s;
+      animation-iteration-count: infinite;
+      @for $i from 1 to 100 {
+        &:nth-child($i) {
+          --animation-order: $i;
+        }
+      }
+    }
+  }
+}
+
+/* =====================================================================
+ * TITLE PAGE — editorial dark hero
+ * ===================================================================== */
+section.title-page {
+  background: var(--night);
+  background-image: radial-gradient(
+    100% 90% at 78% 12%,
+    var(--night-2) 0%,
+    transparent 60%
+  );
+  color: var(--paper);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 8% 9% 10%;
+  overflow: hidden;
+
+  /* mono wordmark, top-left */
+  &::before {
+    content: "🦩 talks.cns.me";
+    position: absolute;
+    top: 6.5%;
+    left: 9%;
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 0.62em;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--pink);
+    z-index: 4;
+  }
+
+  h1 {
+    position: relative;
+    z-index: 3;
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 2.85em;
+    line-height: 1.04;
+    letter-spacing: -0.03em;
+    color: var(--bone);
+    max-width: 72%;
+    margin: 0 0 0.45em;
+    text-shadow: 0 14px 40px rgba(0, 0, 0, 0.45);
+
+    em {
+      font-family: var(--font-display);
+      color: var(--pink-hot);
+      font-style: italic;
+    }
+  }
+
+  h2 {
+    position: relative;
+    z-index: 3;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.45em;
+    color: var(--paper);
+    margin: 0;
+  }
+
+  h3 {
+    position: relative;
+    z-index: 3;
+    font-family: var(--font-mono);
+    font-style: normal;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 0.6em;
+    color: var(--pink);
+    margin: 0.5em 0 0;
+  }
+
+  /* flamingo-pink waves anchored to the floor */
+  .waves {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 30%;
+    z-index: 1;
+    fill: var(--pink);
+  }
+  .parallax > use:nth-child(1) {
+    opacity: 0.25;
+  }
+  .parallax > use:nth-child(2) {
+    opacity: 0.4;
+  }
+  .parallax > use:nth-child(3) {
+    opacity: 0.6;
+  }
+  .parallax > use:nth-child(4) {
+    opacity: 0.9;
+    fill: var(--pink-hot);
+  }
+  .parallax > use {
+    animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+  }
+  .parallax > use:nth-child(1) {
+    animation-delay: -2s;
+    animation-duration: 7s;
+  }
+  .parallax > use:nth-child(2) {
+    animation-delay: -3s;
+    animation-duration: 10s;
+  }
+  .parallax > use:nth-child(3) {
+    animation-delay: -4s;
+    animation-duration: 13s;
+  }
+  .parallax > use:nth-child(4) {
+    animation-delay: -5s;
+    animation-duration: 20s;
+  }
+  @keyframes move-forever {
+    0% {
+      transform: translate3d(-90px, 0, 0);
+    }
+    100% {
+      transform: translate3d(85px, 0, 0);
+    }
+  }
+
+  .glitch.emoji {
+    z-index: 4;
+    position: absolute;
+    font-size: 6em;
+    right: 7%;
+    top: 24%;
+  }
+}
+
+/* =====================================================================
+ * END — glitchy Q&A close
+ * ===================================================================== */
+section.end {
+  .container {
+    position: absolute;
+    top: 50%;
+  }
+  .glitch {
+    color: var(--bone);
+  }
+  .glow {
+    text-shadow: 0 0 140px var(--pink-hot);
+  }
+  a {
+    color: var(--pink-hot);
+    text-decoration: none;
+  }
+}
+
+@keyframes pulsate {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+  100% {
+    opacity: 1;
+  }
+}
